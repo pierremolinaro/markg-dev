@@ -1,0 +1,32 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P R O G R A M                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+case . "mg"
+message "an '.mg' source file"
+grammar spec_grammar
+?sourceFilePath:@lstring inSourceFile {
+  @uint hashMapSize
+  @uint garbagePeriod
+  @typeVarMap placesMap
+  @typeTransitionList transitionList
+  @typeInitialMarkingList initialMarkingList
+  @countList countList
+  grammar spec_grammar in inSourceFile
+    ?hashMapSize
+    ?garbagePeriod
+    ?placesMap
+    ?transitionList
+    ?initialMarkingList
+    ?countList
+  generate_code (
+    !hashMapSize
+    !garbagePeriod
+    !placesMap
+    !transitionList
+    !initialMarkingList
+    !countList
+  )
+}

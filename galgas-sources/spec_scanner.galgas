@@ -1,0 +1,89 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   L E X I Q U E                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+lexique spec_scanner {
+
+@string theString
+@uint ulongValue
+
+style identifier   -> "Identifiers"
+style keyWords     -> "Key words"
+style delimitors   -> "Delimitors"
+style integerStyle -> "Integer constants"
+style stringStyle  -> "String constants"
+
+# -------------------------- identifier or key word --------------------
+# keywords can be written in lower
+# for identifiers, case is significant
+$identifier$ ! theString  style identifier error message "an identifier"
+
+list galgasKeyWordList style keyWords error message "the '%K' key word"{
+ "system", "var", "rule", "init", "end", "true", "false",
+ "const", "count", "infinity", "hashmapsize", "garbageperiod" }
+
+rule 'a'->'z' | 'A'->'Z' {
+  repeat
+    enterCharacterIntoString ( !?theString !* )
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end
+  send search theString in galgasKeyWordList default $identifier$
+}
+
+# -------------------- Characters string --------------------------------------
+$literal_string$ ! theString  style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
+
+message incorrectStringEnd : "string does not end with '\"'"
+
+rule '"' {
+  repeat
+   while ' ' | '!' | '#'-> '\u007E' :
+    enterCharacterIntoString ( !?theString !* )
+  end
+  select
+  case '"' :
+    send $literal_string$
+  default
+    error incorrectStringEnd
+  end
+}
+
+#------------------------------- Delimitors ------------------------------
+  list delimitorsList style delimitors error message "the '%K' delimitor"{
+    ">=", ">", "<", "<=", "==", "!=", "&", "|", "~", ",", ";", "(", ")",
+    "++", "--", "+=", "-=", ":=", "{", "}", ":", "-", "=", "[", "]"  }
+  rule list delimitorsList
+
+#------------------------------- Decimal positive number ------------------
+$literal_integer$ ! ulongValue  style integerStyle error message "a decimal number"
+
+message decimalNumberTooLarge : "decimal number too large"
+
+message internalError : "internal error"
+
+rule '0'->'9' {
+  enterDigitIntoUInt ( !* !?ulongValue error decimalNumberTooLarge, internalError )
+  repeat
+  while '0'->'9' :
+    enterDigitIntoUInt ( !* !?ulongValue error decimalNumberTooLarge, internalError )
+  while '_' :
+  end
+  send $literal_integer$
+}
+
+# ------------------------------------ Comment ----------------------------
+rule '#' {
+  repeat
+  while '\u0001' ->'\u0009' | '\u000B' | '\u000C' | '\u000E'-> '\uFFFD' :
+  end
+}
+
+# ------------------------------------ Separators ----------------------------
+rule '\u0001' -> ' ' {
+}
+
+}
+
+#--------------------------------------------------------------------------------*

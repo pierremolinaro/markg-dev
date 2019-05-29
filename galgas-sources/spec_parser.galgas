@@ -1,0 +1,372 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S Y N T A X                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax spec_parser (spec_scanner) {
+
+rule <axiome>
+  !@uint outHashMapSize
+  !@uint outGarbagePeriod
+  !@typeVarMap outPlacesMap
+  !@typeTransitionList outTransitionList
+  !@typeInitialMarkingList outInitialMarkingList
+  !@countList outCountList
+
+rule <parse_precondition>
+  ?!@typeVarMap outPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions
+
+rule <term>
+  ?!@typeVarMap outPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions
+
+rule <factor>
+  ?!@typeVarMap outPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions
+
+rule <primary>
+  ?!@typeVarMap outPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions
+
+rule <parse_postcondition>
+  ?!@typeVarMap outPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePostconditionList outPostConditionsList
+
+rule <parse_constant>
+  ?!@typeCstMap ioConstantMap
+  !@bool outSign
+  !@luint outValue
+
+rule <parse_bound>
+ !@uint lowTemporalBound
+ !@uint highTemporalBound
+
+#---------------------------------------------------------------------------*
+
+rule <parse_precondition>
+  ?!@typeVarMap inPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions {
+  <term> !?inPlacesMap !?ioConstantMap ?outPreConditions
+  repeat
+  while
+    $|$
+    @typePreconditionExpression right
+    <term> !?inPlacesMap !?ioConstantMap ?right
+    outPreConditions = @typeOrExpression. new { !outPreConditions !right}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <term>
+  ?!@typeVarMap inPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions {
+  <factor> !?inPlacesMap !?ioConstantMap ?outPreConditions
+  repeat
+  while
+    $&$
+    @typePreconditionExpression right
+    <factor> !?inPlacesMap !?ioConstantMap ?right
+    outPreConditions = @typeAndExpression. new { !outPreConditions !right}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <factor>
+  ?!@typeVarMap inPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions {
+ select
+   $~$
+   <factor> !?inPlacesMap !?ioConstantMap ?outPreConditions
+   outPreConditions = @typeComplementExpression. new { !outPreConditions}
+  or
+   <primary> !?inPlacesMap !?ioConstantMap ?outPreConditions
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <primary>
+  ?!@typeVarMap inPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePreconditionExpression outPreConditions {
+  select
+    $($
+    <parse_precondition> !?inPlacesMap !?ioConstantMap ?outPreConditions
+    $)$
+  or
+    $true$
+    outPreConditions = @typeTrueExpression. new
+  or
+    $false$
+    outPreConditions = @typeFalseExpression. new
+  or
+    ${$
+    @lstring name
+    $identifier$ ?name
+    @uint idx
+    [inPlacesMap searchKey !name ?idx]
+    select
+      $==$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      outPreConditions = @typeEqualExpression. new { !idx !sign !cst}
+    or
+      $!=$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      outPreConditions = @typeNonEqualExpression. new { !idx !sign !cst}
+    or
+      $<=$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      outPreConditions = @typeInfOrEqualExpression. new { !idx !sign !cst}
+    or
+      $>=$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      outPreConditions = @typeSupOrEqualExpression. new { !idx !sign !cst}
+    or
+      $<$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      outPreConditions = @typeStrictInfExpression. new { !idx !sign !cst}
+    or
+      $>$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      outPreConditions = @typeStrictSupExpression. new { !idx !sign !cst}
+    end
+    $}$
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <parse_constant>
+  ?!@typeCstMap ioConstantMap
+  !@bool outSign
+  !@luint outValue {
+  select
+    @lstring constantName
+    $identifier$ ? constantName
+    [ioConstantMap searchKey !constantName ?outSign ?outValue]
+  or
+    $-$
+    outSign = true
+    $literal_integer$ ? outValue
+  or
+    outSign = false
+    $literal_integer$ ? outValue
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <parse_postcondition>
+  ?!@typeVarMap outPlacesMap
+  ?!@typeCstMap ioConstantMap
+  !@typePostconditionList outPostConditionsList {
+  outPostConditionsList = @typePostconditionList. emptyList
+  repeat
+    @lstring name
+    $identifier$ ?name
+    @uint idx
+    [outPlacesMap searchKey !name ?idx]
+    @typePostcondition p
+    select
+      $--$
+      p = @typePostDecrement. new { !name !idx}
+    or
+      $++$
+      p = @typePostIncrement. new { !name !idx}
+    or
+      $+=$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      p = @typeAddConstant. new { !name !idx !sign !cst}
+    or
+      $-=$
+      @bool sign @luint cst
+      <parse_constant> !?ioConstantMap ?sign ?cst
+      p = @typeSubConstant. new { !name !idx !sign !cst}
+    or
+      $:=$
+      select
+        @bool sign @luint cst
+        <parse_constant> !?ioConstantMap ?sign ?cst
+        p = @typeAssignConstant. new { !name !idx !sign !cst}
+      or
+        $infinity$
+        p = @typeAssignInfinity. new { !name !idx}
+      end
+    end
+    outPostConditionsList += !p
+  while
+    $,$
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <parse_bound>
+ !@uint lowTemporalBound
+ !@uint highTemporalBound {
+  lowTemporalBound = 0
+  highTemporalBound = 0
+}
+
+#---------------------------------------------------------------------------*
+
+rule <parse_bound>
+ !@uint lowTemporalBound
+ !@uint highTemporalBound {
+  $[$
+  @luint low
+  $literal_integer$ ? low
+  $,$
+  @luint high
+  $literal_integer$ ? high
+  $]$
+  lowTemporalBound = [low uint]
+  highTemporalBound = [high uint]
+  if lowTemporalBound > highTemporalBound then
+    error high : "High bound must be greater than or equal to low bound" 
+  end
+}
+
+##---------------------------------------------------------------------------*
+#
+#abstract class @MyAbstractClass {
+# @typeInitialMarkingList mInitialMarkingList ;
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#class @MyClass extends @MyAbstractClass {
+# @typeTransitionList mTransitionList ;
+#}
+#
+##---------------------------------------------------------------------------*
+
+rule <axiome>
+  !@uint outHashMapSize
+  !@uint outGarbagePeriod
+  !@typeVarMap outPlacesMap
+  !@typeTransitionList outTransitionList
+  !@typeInitialMarkingList outInitialMarkingList
+  !@countList outCountList {
+  $system$
+#--- Options
+  select
+    $hashmapsize$
+    @luint n
+    $literal_integer$ ?n
+    $;$
+    outHashMapSize = [n uint]
+  or
+    outHashMapSize = 16
+  end
+  select
+    $garbageperiod$
+    @luint n
+    $literal_integer$ ?n
+    $;$
+    outGarbagePeriod = [n uint]
+  or
+    outGarbagePeriod = 16
+  end
+  outTransitionList = @typeTransitionList. emptyList
+  outPlacesMap = @typeVarMap. emptyMap
+  var constantMap =@typeCstMap.emptyMap{}
+  outCountList = @countList. emptyList
+  repeat
+#--- constant
+  while
+    $const$
+    @lstring constantName
+    $identifier$ ? constantName
+    $=$
+    @bool sign
+    @luint value
+    <parse_constant> !?constantMap ?sign ?value
+    [!?constantMap insertKey !constantName !sign !value]
+    $;$
+#--- Variables
+  while
+    $var$
+    repeat
+      @lstring placeName
+      $identifier$ ? placeName
+      [!?outPlacesMap insertKey !placeName ![outPlacesMap count]]
+    while
+      $,$
+    end
+    $;$
+#--- Rule
+  while
+    $rule$
+    @lstring transitionName
+    $literal_string$ ?transitionName
+    @typePreconditionExpression preConditions
+    <parse_precondition> !?outPlacesMap !?constantMap ?preConditions
+    @uint lowTemporalBound
+    @uint highTemporalBound
+    <parse_bound> ?lowTemporalBound ?highTemporalBound
+    $:$
+    @typePostconditionList postConditions
+    <parse_postcondition> !?outPlacesMap !?constantMap ?postConditions
+    $;$
+    outTransitionList += !transitionName !preConditions !postConditions !lowTemporalBound !highTemporalBound
+  end
+#--- Init
+  $init$
+  outInitialMarkingList = @typeInitialMarkingList. emptyList
+  repeat
+    @lstring placeName
+    $identifier$ ? placeName
+    @uint placeID
+    [outPlacesMap searchKey !placeName ?placeID]
+    $:=$
+    select
+      @luint cst
+      @bool sign
+      <parse_constant> !?constantMap ?sign ?cst
+      @typePostcondition init = @typeAssignConstant. new { !placeName !placeID !sign !cst}
+      outInitialMarkingList += !init
+    or
+      $infinity$
+      @typePostcondition init = @typeAssignInfinity. new { !placeName !placeID}
+      outInitialMarkingList += !init
+    end
+  while
+    $,$
+  end
+  $;$
+#--- Count list
+  repeat
+  while
+    $count$
+    @lstring name
+    $literal_string$ ? name
+    $:$
+    @typePreconditionExpression conditions
+    <parse_precondition> !?outPlacesMap !?constantMap ?conditions
+    $;$
+    outCountList += !name !conditions
+  end
+  $end$
+}
+
+}

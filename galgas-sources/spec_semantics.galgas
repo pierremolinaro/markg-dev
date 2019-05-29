@@ -1,0 +1,160 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S E M A N T I C S                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#--- Places map
+map @typeVarMap {
+  @uint mIndex
+  insert insertKey error message "the '%K' place is already declared"
+  search searchKey error message "the '%K' place is not declared"
+}
+
+#--- Constants map
+map @typeCstMap {
+  @bool mSign
+  @luint mValue
+  insert insertKey error message "the '%K' constant is already declared"
+  search searchKey error message "there '%K' constant is not defined"
+}
+
+#--- Precondition description
+abstract class @typePreconditionExpression %generatedInSeparateFile {
+}
+
+class @typeTrueExpression : @typePreconditionExpression {
+}
+
+class @typeFalseExpression : @typePreconditionExpression {
+}
+
+class @typeComplementExpression : @typePreconditionExpression {
+  @typePreconditionExpression mExpression
+}
+
+class @typeAndExpression : @typePreconditionExpression {
+  @typePreconditionExpression mLeftExpression
+  @typePreconditionExpression mRightExpression
+}
+
+class @typeOrExpression : @typePreconditionExpression {
+  @typePreconditionExpression mLeftExpression
+  @typePreconditionExpression mRightExpression
+}
+
+class @typeEqualExpression : @typePreconditionExpression {
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeNonEqualExpression : @typePreconditionExpression {
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeInfOrEqualExpression : @typePreconditionExpression {
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeSupOrEqualExpression : @typePreconditionExpression {
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeStrictInfExpression : @typePreconditionExpression {
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeStrictSupExpression : @typePreconditionExpression {
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+#--- Post condition
+abstract class @typePostcondition %generatedInSeparateFile {
+}
+
+class @typePostIncrement : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+}
+
+class @typePostDecrement : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+}
+
+class @typeAddConstant : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeSubConstant : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeAssignConstant : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+class @typeAssignInfinity : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+}
+
+#--- Post condition list
+list @typePostconditionList {
+  @typePostcondition mPostcondition
+}
+
+#--- Transition list
+list @typeTransitionList {
+  @lstring mTransitionName
+  @typePreconditionExpression mPreconditionExpression
+  @typePostconditionList mPostconditionList
+  @uint mLowTemporalBound
+  @uint mHighTemporalBound
+}
+
+#--- Initial marking description
+list @typeInitialMarkingList {
+  @typePostcondition mInitValue
+}
+
+#--- count list
+list @countList {
+  @lstring mName
+  @typePreconditionExpression mCondition
+}
+
+#---------------------------------------------------------------------------*
+
+extern proc generate_code
+  ?let @uint hashMapSize
+  ?let @uint garbagePeriod
+  ?let @typeVarMap placesMap
+  ?let @typeTransitionList transitionList
+  ?let @typeInitialMarkingList initialMarkingList
+  ?let @countList countList
+
+#---------------------------------------------------------------------------*
+

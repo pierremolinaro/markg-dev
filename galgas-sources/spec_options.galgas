@@ -1,0 +1,21 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   O P T I O N S                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+option spec_options {
+  @bool printNodes : 'N', "print-nodes" -> "print accessibility set nodes"
+  @bool printStates : 'S', "print-states" -> "print accessibility states"
+  @bool printPreConditions : 'P', "print-preconditions" -> "print precondition expression for each transition"
+  @bool printInference : '\0', "print-inference" -> "print inference expression for each transition"
+  @bool printTemporalBounds : 't', "print-temporal-bounds" -> "print temporal bounds for each transition"
+  @bool doNotPrintIteration : 'D', "do-not-print-iterations-message" -> "do not print a message for every iteration"
+  @bool printFiring : 'f', "print-transitions-firing-count" -> "print transitions firing count"
+  @bool printIterationStates : 'i', "print-iterations-states" -> "print source and target states for each transition of every iteration"
+  @bool printMinMax : 'p', "print-min-maxs" -> "print min and max value for each variable"
+  @uint stopAfterIteration : 's', "stop-after-iteration" -> "stop after performing given iterations (0 means never stop)"
+  @bool computeSimultaneousFiring : '\0', "simultaneous-firing" -> "perform simultaneous firing"
+}
+
+#---------------------------------------------------------------------------*
