@@ -19,24 +19,21 @@
 -projets-auxiliaires/computed-property-analysis/computed-property-analysis.xcodeproj/xcuserdata/*
 -projets-auxiliaires/computed-property-analysis/computed-property-analysis.xcodeproj/project.xcworkspace/*
 
-build/*
+build/cli-objets/*
+build/indexes/*
 
 xcode-project/build/*
-xcode-project/plm.xcodeproj/xcuserdata/*
-xcode-project/plm.xcodeproj/project.xcworkspace/*
+xcode-project/markg.xcodeproj/xcuserdata/*
+xcode-project/markg.xcodeproj/project.xcworkspace/*
 
-makefile-macosx/plm
-makefile-macosx/plm-debug
-makefile-x86linux32-on-macosx/plm
-makefile-x86linux32-on-macosx/plm-debug
-makefile-x86linux64-on-macosx/plm
-makefile-x86linux64-on-macosx/plm-debug
-makefile-win32-on-macosx/plm.exe
-makefile-win32-on-macosx/plm-debug.exe
-
-doc-plm/galgas-book.pdf
-doc-plm/temp.galgas
-doc-plm/temp.galgas.tex
+makefile-macosx/markg
+makefile-macosx/markg-debug
+makefile-x86linux32-on-macosx/markg
+makefile-x86linux32-on-macosx/markg-debug
+makefile-x86linux64-on-macosx/markg
+makefile-x86linux64-on-macosx/markg-debug
+makefile-win32-on-macosx/markg.exe
+makefile-win32-on-macosx/markg-debug.exe
 
 *.dot
 

@@ -164,7 +164,8 @@ uint32_t C_VDD::getCachesSizeInBytes (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-static C_VDD gVDLlistRoot ;
+static C_VDD * gFirstVDD = NULL ;
+static C_VDD * gLastVDD = NULL ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -231,13 +232,21 @@ mRootPointer (kEMPTY_SET) {
 //---------------------------------------------------------------------------*
 
 void C_VDD::initLinks (void) {
-  mPtrToNextExisting = this ;
-  mPtrToPreviousExisting = this ;
-  C_VDD * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
-  mPtrToPreviousExisting = & gVDLlistRoot ;
-  nextFromRoot->mPtrToPreviousExisting = this ;
-  mPtrToNextExisting = nextFromRoot ;
-  gVDLlistRoot.mPtrToNextExisting = this ;
+  if (gFirstVDD == NULL) {
+    gLastVDD = this ;
+  }else{
+    gFirstVDD->mPtrToPreviousExisting = this ;
+  }
+  mPtrToNextExisting = gFirstVDD ;
+  gFirstVDD = this ;
+
+//  mPtrToNextExisting = this ;
+//  mPtrToPreviousExisting = this ;
+//  C_VDD * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
+//  mPtrToPreviousExisting = & gVDLlistRoot ;
+//  nextFromRoot->mPtrToPreviousExisting = this ;
+//  mPtrToNextExisting = nextFromRoot ;
+//  gVDLlistRoot.mPtrToNextExisting = this ;
 }
 
 //---------------------------------------------------------------------------*
@@ -249,10 +258,21 @@ void C_VDD::initLinks (void) {
 C_VDD::~C_VDD (void) {
   mRootPointer = kEMPTY_SET ;
 //--- Unlink
-  C_VDD * next = mPtrToNextExisting ;
-  C_VDD * previous = mPtrToPreviousExisting ;
-  previous->mPtrToNextExisting = next ;
-  next->mPtrToPreviousExisting = previous ;
+  if (mPtrToPreviousExisting == NULL) {
+    gFirstVDD = gFirstVDD->mPtrToNextExisting ;
+  }else{
+    mPtrToPreviousExisting->mPtrToNextExisting = mPtrToNextExisting ;
+  }
+  if (mPtrToNextExisting == NULL) {
+    gLastVDD = gLastVDD->mPtrToPreviousExisting ;
+  }else{
+    mPtrToNextExisting->mPtrToPreviousExisting = mPtrToPreviousExisting ;
+  }
+
+//  C_VDD * next = mPtrToNextExisting ;
+//  C_VDD * previous = mPtrToPreviousExisting ;
+//  previous->mPtrToNextExisting = next ;
+//  next->mPtrToPreviousExisting = previous ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1711,8 +1731,8 @@ void C_VDD::internalMarkNode (cVDDnodeInfo * const inPtr) {
 
 void C_VDD::collectUnusedNodes (void) {
 //--- Second : mark all used elements
-  C_VDD * p = gVDLlistRoot.mPtrToNextExisting ;
-  while (p != & gVDLlistRoot) {
+  C_VDD * p = gFirstVDD ;
+  while (p != NULL) {
     internalMarkNode (p->mRootPointer) ;
     p = p->mPtrToNextExisting ;
   }
@@ -1723,7 +1743,7 @@ void C_VDD::collectUnusedNodes (void) {
 //--- Third : sweep unused objets
   smCurrentNodeCount -= gMap.sweepUnmarkedObjects () ;
 //--- Four : if no VDD object, collect cVDDmaxInfos objects from free list
-  if (gVDLlistRoot.mPtrToNextExisting == & gVDLlistRoot) {
+  if (gFirstVDD == NULL) {
     while (gNodeInfoFreeList != NULL) {
       cVDDmaxInfos * ptr = gNodeInfoFreeList->mPtrToNext ;
       delete gNodeInfoFreeList ;

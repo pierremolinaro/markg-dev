@@ -65,7 +65,8 @@ void C_ZSV::reallocUniqueTable (const int32_t inTableUniqueNewSize) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-static C_ZSV gVDLlistRoot ;
+static C_ZSV * gFirstZSV = NULL ;
+static C_ZSV * gLastZSV = NULL ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -101,13 +102,22 @@ mRootPointer (NULL) {
 //---------------------------------------------------------------------------*
 
 void C_ZSV::initLinks (void) {
-  mPtrToNextExisting = this ;
-  mPtrToPreviousExisting = this ;
-  C_ZSV * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
-  mPtrToPreviousExisting = & gVDLlistRoot ;
-  nextFromRoot->mPtrToPreviousExisting = this ;
-  mPtrToNextExisting = nextFromRoot ;
-  gVDLlistRoot.mPtrToNextExisting = this ;
+  if (gFirstZSV == NULL) {
+    gLastZSV = this ;
+  }else{
+    gFirstZSV->mPtrToPreviousExisting = this ;
+  }
+  mPtrToNextExisting = gFirstZSV ;
+  gFirstZSV = this ;
+
+
+//  mPtrToNextExisting = this ;
+//  mPtrToPreviousExisting = this ;
+//  C_ZSV * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
+//  mPtrToPreviousExisting = & gVDLlistRoot ;
+//  nextFromRoot->mPtrToPreviousExisting = this ;
+//  mPtrToNextExisting = nextFromRoot ;
+//  gVDLlistRoot.mPtrToNextExisting = this ;
 }
 
 //---------------------------------------------------------------------------*
@@ -117,8 +127,20 @@ void C_ZSV::initLinks (void) {
 //---------------------------------------------------------------------------*
 
 C_ZSV::~C_ZSV (void) {
-  mRootPointer = (cZSVinfo *) NULL ;
+  mRootPointer = NULL ;
 //--- Unlink
+  if (mPtrToPreviousExisting == NULL) {
+    gFirstZSV = gFirstZSV->mPtrToNextExisting ;
+  }else{
+    mPtrToPreviousExisting->mPtrToNextExisting = mPtrToNextExisting ;
+  }
+  if (mPtrToNextExisting == NULL) {
+    gLastZSV = gLastZSV->mPtrToPreviousExisting ;
+  }else{
+    mPtrToNextExisting->mPtrToPreviousExisting = mPtrToPreviousExisting ;
+  }
+
+
   C_ZSV * next = mPtrToNextExisting ;
   C_ZSV * previous = mPtrToPreviousExisting ;
   previous->mPtrToNextExisting = next ;
@@ -629,8 +651,8 @@ void C_ZSV::collectUnusedNodes (void) {
 //--- First : clear all addition cache entries
   gCache.clearAllCacheEntries () ;
 //--- Second : mark all used elements
-  C_ZSV * p = gVDLlistRoot.mPtrToNextExisting ;
-  while (p != & gVDLlistRoot) {
+  C_ZSV * p = gFirstZSV ;
+  while (p != NULL) {
     cZSVinfo * infoPtr = p->mRootPointer ;
     while ((infoPtr != NULL) && ! infoPtr->isMarked ()) {
       infoPtr->mark () ;

@@ -184,8 +184,7 @@ uint32_t C_AEDD::C_AEDDnode::smComparisonsCount = 0UL ;
 //---------------------------------------------------------------------*
 
 
-static inline C_AEDD::C_AEDDnode *
-getAEDDnodePointer (const intptr_t inValue) {
+static inline C_AEDD::C_AEDDnode * getAEDDnodePointer (const intptr_t inValue) {
   return (C_AEDD::C_AEDDnode *) (inValue & -2) ;
 }
 
@@ -450,14 +449,15 @@ int32_t C_AEDD::getExistingNodesCount (void) {
 
 //---------------------------------------------------------------------*
 
-static C_AEDD gBDDinstancesListRoot ;
+static C_AEDD * gFirstAEDD = NULL ;
+static C_AEDD * gLastAEDD = NULL ;
 
 //------------------------------------------------------------------------*
 
 int32_t C_AEDD::getAEDDinstancesCount (void) {
   int32_t n = 0 ;
-  C_AEDD * p = gBDDinstancesListRoot.mPtrToNextBDD ;
-  while (p != & gBDDinstancesListRoot) {
+  C_AEDD * p = gFirstAEDD ;
+  while (p != NULL) {
     n ++ ;
     p = p->mPtrToNextBDD ;
   }
@@ -545,8 +545,8 @@ void C_AEDD::markAndSweepUnusedNodes  (void) {
 //--- Effacer tous les champ marquage des elements BDD existants
   unmarkAllExistingAEDDnodes () ;
 //--- Marquer tous les elements utilises
-  C_AEDD * p = gBDDinstancesListRoot.mPtrToNextBDD ;
-  while (p != & gBDDinstancesListRoot) {
+  C_AEDD * p = gFirstAEDD ;
+  while (p != NULL) {
     markBDDNodes (p->mAEDDvalue) ;
     p = p->mPtrToNextBDD ;
   }
@@ -588,22 +588,41 @@ mPtrToNextBDD (this) {
 //---------------------------------------------------------------------*
 
 void C_AEDD::initLinks (void) {
-  mPtrToPreviousBDD = this ;
-  mPtrToNextBDD = this ;
-  C_AEDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
-  mPtrToPreviousBDD = & gBDDinstancesListRoot ;
-  suivantRacine->mPtrToPreviousBDD = this ;
-  mPtrToNextBDD = suivantRacine ;
-  gBDDinstancesListRoot.mPtrToNextBDD = this ;
+  if (gFirstAEDD == NULL) {
+    gLastAEDD = this ;
+  }else{
+    gFirstAEDD->mPtrToPreviousBDD = this ;
+  }
+  mPtrToNextBDD = gFirstAEDD ;
+  gFirstAEDD = this ;
+
+//  mPtrToPreviousBDD = this ;
+//  mPtrToNextBDD = this ;
+//  C_AEDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
+//  mPtrToPreviousBDD = & gBDDinstancesListRoot ;
+//  suivantRacine->mPtrToPreviousBDD = this ;
+//  mPtrToNextBDD = suivantRacine ;
+//  gBDDinstancesListRoot.mPtrToNextBDD = this ;
 }
 
 //---------------------------------------------------------------------*
 
 C_AEDD::~C_AEDD (void) {
-  C_AEDD * suivant = mPtrToNextBDD ;
-  C_AEDD * precedent = mPtrToPreviousBDD ;
-  precedent->mPtrToNextBDD = suivant ;
-  suivant->mPtrToPreviousBDD = precedent ;
+  if (mPtrToPreviousBDD == NULL) {
+    gFirstAEDD = gFirstAEDD->mPtrToNextBDD ;
+  }else{
+    mPtrToPreviousBDD->mPtrToNextBDD = mPtrToNextBDD ;
+  }
+  if (mPtrToNextBDD == NULL) {
+    gLastAEDD = gLastAEDD->mPtrToPreviousBDD ;
+  }else{
+    mPtrToNextBDD->mPtrToPreviousBDD = mPtrToPreviousBDD ;
+  }
+
+//  C_AEDD * suivant = mPtrToNextBDD ;
+//  C_AEDD * precedent = mPtrToPreviousBDD ;
+//  precedent->mPtrToNextBDD = suivant ;
+//  suivant->mPtrToPreviousBDD = precedent ;
 }
 
 //---------------------------------------------------------------------*

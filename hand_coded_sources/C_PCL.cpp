@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2001, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 2001, ..., 2019 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -69,7 +69,8 @@ void C_PCL::reallocUniqueTable (const int32_t inTableUniqueNewSize) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-static C_PCL gVDLlistRoot ;
+static C_PCL * gFirstPCL = NULL ;
+static C_PCL * gLastPCL = NULL ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -112,13 +113,21 @@ mRootPointer (NULL) {
 //---------------------------------------------------------------------------*
 
 void C_PCL::initLinks (void) {
-  mPtrToNextExisting = this ;
-  mPtrToPreviousExisting = this ;
-  C_PCL * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
-  mPtrToPreviousExisting = & gVDLlistRoot ;
-  nextFromRoot->mPtrToPreviousExisting = this ;
-  mPtrToNextExisting = nextFromRoot ;
-  gVDLlistRoot.mPtrToNextExisting = this ;
+  if (gFirstPCL == NULL) {
+    gLastPCL = this ;
+  }else{
+    gFirstPCL->mPtrToPreviousExisting = this ;
+  }
+  mPtrToNextExisting = gFirstPCL ;
+  gFirstPCL = this ;
+
+//  mPtrToNextExisting = this ;
+//  mPtrToPreviousExisting = this ;
+//  C_PCL * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
+//  mPtrToPreviousExisting = & gVDLlistRoot ;
+//  nextFromRoot->mPtrToPreviousExisting = this ;
+//  mPtrToNextExisting = nextFromRoot ;
+//  gVDLlistRoot.mPtrToNextExisting = this ;
 }
 
 //---------------------------------------------------------------------------*
@@ -128,12 +137,24 @@ void C_PCL::initLinks (void) {
 //---------------------------------------------------------------------------*
 
 C_PCL::~C_PCL (void) {
-  mRootPointer = (cVDLnodeInfo *) NULL ;
+  mRootPointer = NULL ;
+  if (mPtrToPreviousExisting == NULL) {
+    gFirstPCL = gFirstPCL->mPtrToNextExisting ;
+  }else{
+    mPtrToPreviousExisting->mPtrToNextExisting = mPtrToNextExisting ;
+  }
+  if (mPtrToNextExisting == NULL) {
+    gLastPCL = gLastPCL->mPtrToPreviousExisting ;
+  }else{
+    mPtrToNextExisting->mPtrToPreviousExisting = mPtrToPreviousExisting ;
+  }
+
+
 //--- Unlink
-  C_PCL * next = mPtrToNextExisting ;
-  C_PCL * previous = mPtrToPreviousExisting ;
-  previous->mPtrToNextExisting = next ;
-  next->mPtrToPreviousExisting = previous ;
+//  C_PCL * next = mPtrToNextExisting ;
+//  C_PCL * previous = mPtrToPreviousExisting ;
+//  previous->mPtrToNextExisting = next ;
+//  next->mPtrToPreviousExisting = previous ;
 }
 
 //---------------------------------------------------------------------------*
@@ -517,8 +538,8 @@ void C_PCL::collectUnusedNodes (void) {
 //--- First : clear all addition cache entries
   gCache.clearAllCacheEntries () ;
 //--- Second : mark all used elements
-  C_PCL * p = gVDLlistRoot.mPtrToNextExisting ;
-  while (p != & gVDLlistRoot) {
+  C_PCL * p = gFirstPCL ;
+  while (p != NULL) {
     cVDLnodeInfo * infoPtr = p->mRootPointer ;
     while ((infoPtr != NULL) && ! infoPtr->isMarked ()) {
       infoPtr->mark () ;
