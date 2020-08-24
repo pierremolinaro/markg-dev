@@ -6600,7 +6600,8 @@
       GCC_OPTIMIZATION_LEVEL = 0 ;
       GCC_PREPROCESSOR_DEFINITIONS = () ;
       INFOPLIST_FILE = "Info.plist";
-      PRODUCT_NAME = "CocoaMarkg" ;
+      PRODUCT_NAME = "CocoaMarkg";
+      PRODUCT_BUNDLE_IDENTIFIER = "fr.irccyn.markg";
     };
     name = Default;
   };

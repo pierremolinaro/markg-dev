@@ -1,31 +1,31 @@
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               LEXIQUE spec_5F_scanner                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//LEXIQUE spec_5F_scanner
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                    E X T E R N    R O U T I N E S                                                                   *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                    E X T E R N    R O U T I N E S                                             
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                    E X T E R N    F U N C T I O N S                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                    E X T E R N    F U N C T I O N S                                           
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                       T O K E N    C L A S S                                                                        *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                       T O K E N    C L A S S                                                  
+//----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_spec_5F_scanner : public cToken {
   public : C_String mLexicalAttribute_theString ;
@@ -34,9 +34,9 @@ class cTokenFor_spec_5F_scanner : public cToken {
   public : cTokenFor_spec_5F_scanner (void) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                     S C A N N E R    C L A S S                                                                      *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                     S C A N N E R    C L A S S                                                
+//----------------------------------------------------------------------------------------------------------------------
 
 class C_Lexique_spec_5F_scanner : public C_Lexique {
 //--- Constructors
@@ -148,19 +148,19 @@ class C_Lexique_spec_5F_scanner : public C_Lexique {
   protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @typeVarMap map                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeVarMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_typeVarMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_typeVarMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeVarMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -169,7 +169,7 @@ class GALGAS_typeVarMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_typeVarMap (const GALGAS_typeVarMap & inSource) ;
   public : GALGAS_typeVarMap & operator = (const GALGAS_typeVarMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -221,6 +221,11 @@ class GALGAS_typeVarMap : public AC_GALGAS_map {
                                                                           COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_typeVarMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -233,9 +238,9 @@ class GALGAS_typeVarMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_typeVarMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_typeVarMap : public cGenericAbstractEnumerator {
   public : cEnumerator_typeVarMap (const GALGAS_typeVarMap & inEnumeratedObject,
@@ -248,15 +253,15 @@ class cEnumerator_typeVarMap : public cGenericAbstractEnumerator {
   public : class GALGAS_typeVarMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeVarMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Class for element of '@typeVarMap' map                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@typeVarMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_typeVarMap : public cMapElement {
 //--- Map attributes
@@ -280,11 +285,11 @@ class cMapElement_typeVarMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @typeVarMap_2D_element struct                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeVarMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeVarMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -341,29 +346,31 @@ class GALGAS_typeVarMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeVarMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeVarMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @typeCstMap map                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeCstMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_typeCstMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_typeCstMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeCstMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -372,7 +379,7 @@ class GALGAS_typeCstMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_typeCstMap (const GALGAS_typeCstMap & inSource) ;
   public : GALGAS_typeCstMap & operator = (const GALGAS_typeCstMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -436,6 +443,12 @@ class GALGAS_typeCstMap : public AC_GALGAS_map {
                                                                           COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_bool & outOperand1,
+                                                     class GALGAS_luint & outOperand2) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_typeCstMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -448,9 +461,9 @@ class GALGAS_typeCstMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_typeCstMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_typeCstMap : public cGenericAbstractEnumerator {
   public : cEnumerator_typeCstMap (const GALGAS_typeCstMap & inEnumeratedObject,
@@ -464,15 +477,15 @@ class cEnumerator_typeCstMap : public cGenericAbstractEnumerator {
   public : class GALGAS_typeCstMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeCstMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Class for element of '@typeCstMap' map                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@typeCstMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_typeCstMap : public cMapElement {
 //--- Map attributes
@@ -498,11 +511,11 @@ class cMapElement_typeCstMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @typeCstMap_2D_element struct                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeCstMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeCstMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -565,21 +578,23 @@ class GALGAS_typeCstMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mValue (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeCstMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeCstMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @typePreconditionExpression class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typePreconditionExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePreconditionExpression : public AC_GALGAS_class {
 //--- Constructor
@@ -611,23 +626,25 @@ class GALGAS_typePreconditionExpression : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typePreconditionExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePreconditionExpression ;
 
 #include "separateHeaderFor_typePreconditionExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typeTrueExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeTrueExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeTrueExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -665,23 +682,25 @@ class GALGAS_typeTrueExpression : public GALGAS_typePreconditionExpression {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeTrueExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeTrueExpression ;
 
 #include "separateHeaderFor_typeTrueExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @typeFalseExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeFalseExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeFalseExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -719,23 +738,25 @@ class GALGAS_typeFalseExpression : public GALGAS_typePreconditionExpression {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeFalseExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeFalseExpression ;
 
 #include "separateHeaderFor_typeFalseExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @typeComplementExpression class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeComplementExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeComplementExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -776,23 +797,25 @@ class GALGAS_typeComplementExpression : public GALGAS_typePreconditionExpression
   public : VIRTUAL_IN_DEBUG class GALGAS_typePreconditionExpression getter_mExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeComplementExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeComplementExpression ;
 
 #include "separateHeaderFor_typeComplementExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typeAndExpression class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeAndExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeAndExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -839,23 +862,25 @@ class GALGAS_typeAndExpression : public GALGAS_typePreconditionExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_typePreconditionExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeAndExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeAndExpression ;
 
 #include "separateHeaderFor_typeAndExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @typeOrExpression class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeOrExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeOrExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -902,23 +927,25 @@ class GALGAS_typeOrExpression : public GALGAS_typePreconditionExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_typePreconditionExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeOrExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeOrExpression ;
 
 #include "separateHeaderFor_typeOrExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typePostcondition class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typePostcondition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePostcondition : public AC_GALGAS_class {
 //--- Constructor
@@ -950,23 +977,25 @@ class GALGAS_typePostcondition : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typePostcondition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePostcondition ;
 
 #include "separateHeaderFor_typePostcondition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @typePostconditionList list                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typePostconditionList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePostconditionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1068,6 +1097,8 @@ class GALGAS_typePostconditionList : public AC_GALGAS_list {
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1076,9 +1107,9 @@ class GALGAS_typePostconditionList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_typePostconditionList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_typePostconditionList : public cGenericAbstractEnumerator {
   public : cEnumerator_typePostconditionList (const GALGAS_typePostconditionList & inEnumeratedObject,
@@ -1090,15 +1121,15 @@ class cEnumerator_typePostconditionList : public cGenericAbstractEnumerator {
   public : class GALGAS_typePostconditionList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePostconditionList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @typePostconditionList_2D_element struct                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typePostconditionList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePostconditionList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1146,21 +1177,23 @@ class GALGAS_typePostconditionList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_typePostcondition getter_mPostcondition (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typePostconditionList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePostconditionList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typeTransitionList list                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeTransitionList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeTransitionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1334,6 +1367,8 @@ class GALGAS_typeTransitionList : public AC_GALGAS_list {
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1342,9 +1377,9 @@ class GALGAS_typeTransitionList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_typeTransitionList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_typeTransitionList : public cGenericAbstractEnumerator {
   public : cEnumerator_typeTransitionList (const GALGAS_typeTransitionList & inEnumeratedObject,
@@ -1360,15 +1395,15 @@ class cEnumerator_typeTransitionList : public cGenericAbstractEnumerator {
   public : class GALGAS_typeTransitionList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeTransitionList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @typeTransitionList_2D_element struct                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeTransitionList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeTransitionList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1440,21 +1475,23 @@ class GALGAS_typeTransitionList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTransitionName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeTransitionList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeTransitionList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @typeInitialMarkingList list                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeInitialMarkingList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeInitialMarkingList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1556,6 +1593,8 @@ class GALGAS_typeInitialMarkingList : public AC_GALGAS_list {
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1564,9 +1603,9 @@ class GALGAS_typeInitialMarkingList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_typeInitialMarkingList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_typeInitialMarkingList : public cGenericAbstractEnumerator {
   public : cEnumerator_typeInitialMarkingList (const GALGAS_typeInitialMarkingList & inEnumeratedObject,
@@ -1578,15 +1617,15 @@ class cEnumerator_typeInitialMarkingList : public cGenericAbstractEnumerator {
   public : class GALGAS_typeInitialMarkingList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeInitialMarkingList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @typeInitialMarkingList_2D_element struct                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeInitialMarkingList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeInitialMarkingList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1634,21 +1673,23 @@ class GALGAS_typeInitialMarkingList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_typePostcondition getter_mInitValue (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeInitialMarkingList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeInitialMarkingList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @countList list                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @countList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_countList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1768,6 +1809,8 @@ class GALGAS_countList : public AC_GALGAS_list {
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1776,9 +1819,9 @@ class GALGAS_countList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_countList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_countList : public cGenericAbstractEnumerator {
   public : cEnumerator_countList (const GALGAS_countList & inEnumeratedObject,
@@ -1791,15 +1834,15 @@ class cEnumerator_countList : public cGenericAbstractEnumerator {
   public : class GALGAS_countList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_countList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @countList_2D_element struct                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @countList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_countList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1853,21 +1896,23 @@ class GALGAS_countList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_countList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_countList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Parser class 'spec_parser' declaration                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Parser class 'spec_parser' declaration
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cParser_spec_5F_parser {
 //--- Virtual destructor
@@ -2036,11 +2081,11 @@ class cParser_spec_5F_parser {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @typeAddConstant class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeAddConstant class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeAddConstant : public GALGAS_typePostcondition {
 //--- Constructor
@@ -2102,23 +2147,25 @@ class GALGAS_typeAddConstant : public GALGAS_typePostcondition {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeAddConstant class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeAddConstant ;
 
 #include "separateHeaderFor_typeAddConstant.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typeAssignConstant class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeAssignConstant class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeAssignConstant : public GALGAS_typePostcondition {
 //--- Constructor
@@ -2180,23 +2227,25 @@ class GALGAS_typeAssignConstant : public GALGAS_typePostcondition {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeAssignConstant class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeAssignConstant ;
 
 #include "separateHeaderFor_typeAssignConstant.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typeAssignInfinity class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeAssignInfinity class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeAssignInfinity : public GALGAS_typePostcondition {
 //--- Constructor
@@ -2246,23 +2295,25 @@ class GALGAS_typeAssignInfinity : public GALGAS_typePostcondition {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeAssignInfinity class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeAssignInfinity ;
 
 #include "separateHeaderFor_typeAssignInfinity.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @typeEqualExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeEqualExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeEqualExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -2318,23 +2369,25 @@ class GALGAS_typeEqualExpression : public GALGAS_typePreconditionExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeEqualExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeEqualExpression ;
 
 #include "separateHeaderFor_typeEqualExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @typeInfOrEqualExpression class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeInfOrEqualExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeInfOrEqualExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -2390,23 +2443,25 @@ class GALGAS_typeInfOrEqualExpression : public GALGAS_typePreconditionExpression
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeInfOrEqualExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeInfOrEqualExpression ;
 
 #include "separateHeaderFor_typeInfOrEqualExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @typeNonEqualExpression class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeNonEqualExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeNonEqualExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -2462,23 +2517,25 @@ class GALGAS_typeNonEqualExpression : public GALGAS_typePreconditionExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeNonEqualExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNonEqualExpression ;
 
 #include "separateHeaderFor_typeNonEqualExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typePostDecrement class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typePostDecrement class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePostDecrement : public GALGAS_typePostcondition {
 //--- Constructor
@@ -2528,23 +2585,25 @@ class GALGAS_typePostDecrement : public GALGAS_typePostcondition {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typePostDecrement class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePostDecrement ;
 
 #include "separateHeaderFor_typePostDecrement.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @typePostIncrement class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typePostIncrement class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typePostIncrement : public GALGAS_typePostcondition {
 //--- Constructor
@@ -2594,23 +2653,25 @@ class GALGAS_typePostIncrement : public GALGAS_typePostcondition {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typePostIncrement class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePostIncrement ;
 
 #include "separateHeaderFor_typePostIncrement.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @typeStrictInfExpression class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeStrictInfExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeStrictInfExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -2666,23 +2727,25 @@ class GALGAS_typeStrictInfExpression : public GALGAS_typePreconditionExpression 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeStrictInfExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeStrictInfExpression ;
 
 #include "separateHeaderFor_typeStrictInfExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @typeStrictSupExpression class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeStrictSupExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeStrictSupExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -2738,23 +2801,25 @@ class GALGAS_typeStrictSupExpression : public GALGAS_typePreconditionExpression 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeStrictSupExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeStrictSupExpression ;
 
 #include "separateHeaderFor_typeStrictSupExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @typeSubConstant class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeSubConstant class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeSubConstant : public GALGAS_typePostcondition {
 //--- Constructor
@@ -2816,23 +2881,25 @@ class GALGAS_typeSubConstant : public GALGAS_typePostcondition {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeSubConstant class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeSubConstant ;
 
 #include "separateHeaderFor_typeSubConstant.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @typeSupOrEqualExpression class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeSupOrEqualExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeSupOrEqualExpression : public GALGAS_typePreconditionExpression {
 //--- Constructor
@@ -2888,21 +2955,23 @@ class GALGAS_typeSupOrEqualExpression : public GALGAS_typePreconditionExpression
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeSupOrEqualExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeSupOrEqualExpression ;
 
 #include "separateHeaderFor_typeSupOrEqualExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 //  GRAMMAR spec_grammar
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 //------------------------------------- 'axiome' non terminal
@@ -3054,13 +3123,13 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
   public : virtual int32_t select_spec_5F_parser_15 (C_Lexique_spec_5F_scanner *) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Bool options                                                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 extern C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ;
 
@@ -3082,33 +3151,33 @@ extern C_BoolCommandLineOption gOption_spec_5F_options_printStates ;
 
 extern C_BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               UInt options                                                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 extern C_UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              String options                                                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              String List options                                                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               Routine 'generate_code'                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'generate_code'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generate_5F_code (const class GALGAS_uint constinArgument0,
                                const class GALGAS_uint constinArgument1,
