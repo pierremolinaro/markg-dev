@@ -1864,13 +1864,13 @@ typeComparisonResult GALGAS_typePreconditionExpression::objectCompare (const GAL
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_typePreconditionExpression::GALGAS_typePreconditionExpression (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_typePreconditionExpression::GALGAS_typePreconditionExpression (const cPtr_typePreconditionExpression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typePreconditionExpression) ;
 }
 
@@ -2798,13 +2798,13 @@ typeComparisonResult GALGAS_typePostcondition::objectCompare (const GALGAS_typeP
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_typePostcondition::GALGAS_typePostcondition (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_typePostcondition::GALGAS_typePostcondition (const cPtr_typePostcondition * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typePostcondition) ;
 }
 

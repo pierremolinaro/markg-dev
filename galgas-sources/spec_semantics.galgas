@@ -22,101 +22,101 @@ map @typeCstMap {
 }
 
 #--- Precondition description
-abstract class @typePreconditionExpression %generatedInSeparateFile {
+abstract shared class @typePreconditionExpression %generatedInSeparateFile {
 }
 
-class @typeTrueExpression : @typePreconditionExpression {
+shared class @typeTrueExpression : @typePreconditionExpression {
 }
 
-class @typeFalseExpression : @typePreconditionExpression {
+shared class @typeFalseExpression : @typePreconditionExpression {
 }
 
-class @typeComplementExpression : @typePreconditionExpression {
+shared class @typeComplementExpression : @typePreconditionExpression {
   @typePreconditionExpression mExpression
 }
 
-class @typeAndExpression : @typePreconditionExpression {
+shared class @typeAndExpression : @typePreconditionExpression {
   @typePreconditionExpression mLeftExpression
   @typePreconditionExpression mRightExpression
 }
 
-class @typeOrExpression : @typePreconditionExpression {
+shared class @typeOrExpression : @typePreconditionExpression {
   @typePreconditionExpression mLeftExpression
   @typePreconditionExpression mRightExpression
 }
 
-class @typeEqualExpression : @typePreconditionExpression {
+shared class @typeEqualExpression : @typePreconditionExpression {
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeNonEqualExpression : @typePreconditionExpression {
+shared class @typeNonEqualExpression : @typePreconditionExpression {
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeInfOrEqualExpression : @typePreconditionExpression {
+shared class @typeInfOrEqualExpression : @typePreconditionExpression {
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeSupOrEqualExpression : @typePreconditionExpression {
+shared class @typeSupOrEqualExpression : @typePreconditionExpression {
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeStrictInfExpression : @typePreconditionExpression {
+shared class @typeStrictInfExpression : @typePreconditionExpression {
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeStrictSupExpression : @typePreconditionExpression {
+shared class @typeStrictSupExpression : @typePreconditionExpression {
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
 #--- Post condition
-abstract class @typePostcondition %generatedInSeparateFile {
+abstract shared class @typePostcondition %generatedInSeparateFile {
 }
 
-class @typePostIncrement : @typePostcondition {
+shared class @typePostIncrement : @typePostcondition {
   @lstring mVarName
   @uint mVar
 }
 
-class @typePostDecrement : @typePostcondition {
+shared class @typePostDecrement : @typePostcondition {
   @lstring mVarName
   @uint mVar
 }
 
-class @typeAddConstant : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
-}
-
-class @typeSubConstant : @typePostcondition {
+shared class @typeAddConstant : @typePostcondition {
   @lstring mVarName
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeAssignConstant : @typePostcondition {
+shared class @typeSubConstant : @typePostcondition {
   @lstring mVarName
   @uint mVar
   @bool mNegativeConstant
   @luint mConstant
 }
 
-class @typeAssignInfinity : @typePostcondition {
+shared class @typeAssignConstant : @typePostcondition {
+  @lstring mVarName
+  @uint mVar
+  @bool mNegativeConstant
+  @luint mConstant
+}
+
+shared class @typeAssignInfinity : @typePostcondition {
   @lstring mVarName
   @uint mVar
 }
