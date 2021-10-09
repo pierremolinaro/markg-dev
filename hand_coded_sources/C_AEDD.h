@@ -94,9 +94,9 @@ class C_AEDD {
 
 //--- Controlling nodes unique map
   public : static void changeHashMapSize (const uint16_t inSizeInKBytes) ;
-  public : static int32_t getHashMapEntriesCount (void) ;
-  public : static int32_t getAEDDinstancesCount (void) ;
-  public : static int32_t getCreatedNodesCount (void)  ;
+  public : static size_t getHashMapEntriesCount (void) ;
+  public : static size_t getAEDDinstancesCount (void) ;
+  public : static size_t getCreatedNodesCount (void)  ;
 
 //--- Controlling caches
   public : static void clearAllCacheEntries (void) ;
@@ -111,7 +111,7 @@ class C_AEDD {
   public : static int32_t getMarkedNodesCount (void) ;
 
 //--- Get existing nodes count
-  public : static int32_t getExistingNodesCount (void) ;
+  public : static size_t getExistingNodesCount (void) ;
 
 //---- Suppress unused nodes
   public : static void markAndSweepUnusedNodes (void) ;
@@ -188,7 +188,7 @@ class C_AEDD {
                                                        const intptr_t inBranch1,
                                                        const uint16_t inVar,
                                                        const intptr_t inConstant,
-                                                       const int32_t inMapSize) {
+                                                       const size_t inMapSize) {
        uintptr_t hCode = ((uintptr_t) inBranch0) << 7 ;
        hCode = (~hCode) ^ (uintptr_t) inBranch1 ;
        hCode = ((~hCode) << 3) ^ inVar ;

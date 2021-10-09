@@ -56,29 +56,29 @@ class C_ZSV_hashmap {
   public : C_ZSV::cZSVinfo * search (const C_ZSV::cZSVinfo & inInfo) ;
 
 //--- Change size
-  public : void reallocMap (const int32_t inNewSize) ;
+  public : void reallocMap (const size_t inNewSize) ;
 
 //--- Get map size (in bytes)
-  public : uint32_t getMapSizeInBytes (void) const ;
+  public : size_t getMapSizeInBytes (void) const ;
 
 //--- Get marked nodes count
-  public : int32_t getMarkedNodesCount (void) const ;
+  public : size_t getMarkedNodesCount (void) const ;
 
 //--- Sweep unmarked objects
-  public : uint32_t sweepUnmarkedObjects (void) ;
+  public : size_t sweepUnmarkedObjects (void) ;
 
 //--- Unmarked all objects
   public : void unmarkAllObjects (void) ;
 
 //--- Current Entry count
-  protected : int32_t mEntryCurrentCount ;
-  public : inline int32_t getHashMapEntryCount (void) const { return mEntryCurrentCount ; }
+  protected : size_t mEntryCurrentCount ;
+  public : inline size_t getHashMapEntryCount (void) const { return mEntryCurrentCount ; }
 
 //--- Get node size (in bytes)
-  public : static uint32_t getNodeSize (void) { return (uint32_t) sizeof (MyBlockavltree_element_for_collision) ; }
+  public : static size_t getNodeSize (void) { return sizeof (MyBlockavltree_element_for_collision) ; }
 
 //--- Get allocated size (in bytes)
-  public : static uint32_t getAllocatedSizeInBytes (void) ;
+  public : static size_t getAllocatedSizeInBytes (void) ;
 
 //--- No copy
   private : C_ZSV_hashmap (const C_ZSV_hashmap &) ;
@@ -100,10 +100,10 @@ class C_ZSV_hashmap {
   public : inline C_ZSV::cZSVinfo * search (const C_ZSV::cZSVinfo & inInfo) ;
 
 //--- Get marked nodes count
-  public : int32_t getMarkedNodesCount (void) const ;
+  public : size_t getMarkedNodesCount (void) const ;
 
 //--- Sweep unmarked objects
-  public : uint32_t sweepUnmarkedObjects (void) ;
+  public : size_t sweepUnmarkedObjects (void) ;
 
 //--- No copy
   private : C_TreeForCollision (const C_TreeForCollision &) ;
@@ -120,7 +120,7 @@ class C_ZSV_hashmap {
 
 //--- Transfer object in a new map array
   public : void transfertElementsInNewMapArray (C_TreeForCollision * inNewMapArray,
-                                                const uint32_t inNewSize) ;
+                                                const size_t inNewSize) ;
 
 //--- Internal methods
   protected : static void rotateLeft (MyBlockavltree_element_for_collision * & ioPtr) ;
@@ -140,16 +140,16 @@ class C_ZSV_hashmap {
                                            bool & outExtension,
                                            bool & outInsertionPerformed) ;
 
-  protected : int32_t internalMarkedNodeCount (const MyBlockavltree_element_for_collision * const inElement) const ;
+  protected : size_t internalMarkedNodeCount (const MyBlockavltree_element_for_collision * const inElement) const ;
 
-  protected : uint32_t internalRecursiveSweep (MyBlockavltree_element_for_collision * inElement) ;
+  protected : size_t internalRecursiveSweep (MyBlockavltree_element_for_collision * inElement) ;
 
   protected : void internalRecursiveUnmark (MyBlockavltree_element_for_collision * inElement) ;
 
   protected : static void recursiveTransfertElementsInNewMapArray
                                              (MyBlockavltree_element_for_collision * const inElementPointer,
                                               C_TreeForCollision * inNewMapArray,
-                                              const uint32_t inNewSize) ;
+                                              const size_t inNewSize) ;
 //--- Friend
   friend class MyBlockavltree_element_for_collision ;
   friend class cAllocInfo ;
@@ -183,11 +183,11 @@ class C_ZSV_hashmap {
 //------------------- MyBlockavltree_element_for_collision embedded class
   private : class cAllocInfo {
     public : char * * mAllocatedBlockList ;
-    public : int32_t mAllocatedBlockListSize ;
-    public : int32_t mAllocatedBlockCount ;
+    public : size_t mAllocatedBlockListSize ;
+    public : size_t mAllocatedBlockCount ;
     public : MyBlockavltree_element_for_collision * mFreeList ;
-    public : int32_t mAllocatedObjectCount ;
-    public : int32_t mCreatedObjectCount ;
+    public : size_t mAllocatedObjectCount ;
+    public : size_t mCreatedObjectCount ;
     public : cAllocInfo (void) :
     mAllocatedBlockList (NULL),
     mAllocatedBlockListSize (0),
@@ -205,10 +205,10 @@ class C_ZSV_hashmap {
   protected : C_TreeForCollision * mMapArray ;
 
 //--- Get created element count
-  public : static int32_t getCreatedObjectCount (void) { return smAllocInfo.mCreatedObjectCount ; }
+  public : static size_t getCreatedObjectCount (void) { return smAllocInfo.mCreatedObjectCount ; }
 
 //--- Get currently used element count
-  public : static int32_t getCurrentObjectCount (void) { return smAllocInfo.mAllocatedObjectCount ; }
+  public : static size_t getCurrentObjectCount (void) { return smAllocInfo.mAllocatedObjectCount ; }
 
 //--- Allocation info (static variable)
   protected : static cAllocInfo smAllocInfo ;

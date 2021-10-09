@@ -75,11 +75,11 @@ class cBDDcollisionsMap {
 //--- Allocation information (BDD nodes are block-allocated for efficiency)
 class cAllocInfo {
   public : char * * mAllocatedBlockList ;
-  public : int32_t mAllocatedBlockListSize ;
-  public : int32_t mAllocatedBlockCount ;
+  public : size_t mAllocatedBlockListSize ;
+  public : size_t mAllocatedBlockCount ;
   public : C_AEDD::C_AEDDnode * mFreeList ;
-  public : int32_t mAllocatedObjectsCount ;
-  public : int32_t mCreatedObjectsCount ;
+  public : size_t mAllocatedObjectsCount ;
+  public : size_t mCreatedObjectsCount ;
   public : cAllocInfo (void) :
     mAllocatedBlockList (NULL),
     mAllocatedBlockListSize (0),
@@ -104,9 +104,9 @@ static const int32_t kBlockSize = 640000 ;
 static void allocBlock (void) {
 //--- Realloc block list ?
   if (gBDDallocationInfo.mAllocatedBlockListSize <= gBDDallocationInfo.mAllocatedBlockCount) {
-    const int32_t newSize = gBDDallocationInfo.mAllocatedBlockCount + 1024 ;
+    const size_t newSize = gBDDallocationInfo.mAllocatedBlockCount + 1024 ;
     char ** newBlockList = new char * [newSize] ;
-    for (int32_t i=0 ; i<gBDDallocationInfo.mAllocatedBlockCount ; i++) {
+    for (size_t i=0 ; i<gBDDallocationInfo.mAllocatedBlockCount ; i++) {
       newBlockList [i] = gBDDallocationInfo.mAllocatedBlockList [i] ;
     }
     delete [] gBDDallocationInfo.mAllocatedBlockList ;
@@ -117,15 +117,15 @@ static void allocBlock (void) {
   gBDDallocationInfo.mAllocatedBlockList [gBDDallocationInfo.mAllocatedBlockCount] = new char [kBlockSize] ;
   char * ptr = & (gBDDallocationInfo.mAllocatedBlockList [gBDDallocationInfo.mAllocatedBlockCount] [0]) ;
   gBDDallocationInfo.mAllocatedBlockCount ++ ;
-  int32_t blockSize = kBlockSize ;
-  const int32_t ALIGNMENT = 32 ;
+  size_t blockSize = kBlockSize ;
+  const size_t ALIGNMENT = 32 ;
 //--- Align pointer
-  if ((((intptr_t) ptr) % ALIGNMENT) != 0) {
-    ptr = (char *) (((((intptr_t) ptr) / ALIGNMENT) + 1) * ALIGNMENT) ;
+  if ((size_t (ptr) % ALIGNMENT) != 0) {
+    ptr = (char *) (((size_t (ptr) / ALIGNMENT) + 1) * ALIGNMENT) ;
     blockSize -= ALIGNMENT ;
   }
-  const int32_t nbNewObjects = (blockSize / (int32_t) sizeof (C_AEDD::C_AEDDnode)) ;
-  for (int32_t i=0 ; i<nbNewObjects ; i++) {
+  const size_t nbNewObjects = blockSize / sizeof (C_AEDD::C_AEDDnode) ;
+  for (size_t i=0 ; i<nbNewObjects ; i++) {
     C_AEDD::C_AEDDnode * newObjectPtr = (C_AEDD::C_AEDDnode *) ptr ;
     newObjectPtr->mPtrToSup = gBDDallocationInfo.mFreeList ;
     gBDDallocationInfo.mFreeList = newObjectPtr ;
@@ -154,7 +154,7 @@ void C_AEDD::C_AEDDnode::operator delete (void * inPtr) {
   gBDDallocationInfo.mFreeList = p ;
   gBDDallocationInfo.mAllocatedObjectsCount -- ;
   if (gBDDallocationInfo.mAllocatedObjectsCount == 0) {
-    for (int32_t i=0 ; i<gBDDallocationInfo.mAllocatedBlockCount ; i++) {
+    for (size_t i=0 ; i<gBDDallocationInfo.mAllocatedBlockCount ; i++) {
       delete [] gBDDallocationInfo.mAllocatedBlockList [i] ;
     }
     delete [] gBDDallocationInfo.mAllocatedBlockList ;
@@ -171,7 +171,7 @@ void C_AEDD::C_AEDDnode::operator delete (void * inPtr) {
 //---------------------------------------------------------------------------*
 
 static cBDDcollisionsMap * gMap = new cBDDcollisionsMap [kInitialHashMapSize] ;
-static int32_t gHashMapSize = kInitialHashMapSize ;
+static size_t gHashMapSize = kInitialHashMapSize ;
 
 //---------------------------------------------------------------------*
 
@@ -407,7 +407,7 @@ recursiveTransfertElementsInNewMapArray (C_AEDD::C_AEDDnode * inElementPointer,
                                                        inElementPointer->mTrueBranch,
                                                        inElementPointer->mVar,
                                                        inElementPointer->mConstant,
-                                                       (int32_t) inNewSize) ;
+                                                       inNewSize) ;
     bool extension ; // Unused
     recursiveInsertBDDnode (inNewMapArray [hash].mRoot, inElementPointer, extension) ;
   }
@@ -416,10 +416,10 @@ recursiveTransfertElementsInNewMapArray (C_AEDD::C_AEDDnode * inElementPointer,
 //---------------------------------------------------------------------*
 
 void C_AEDD::changeHashMapSize (const uint16_t inSizeInKBytes) {
-  const int32_t newSize = ((int32_t) getPrimeGreaterThan ((inSizeInKBytes < 1) ? 1 : inSizeInKBytes)) * 1000 ;
+  const size_t newSize = (getPrimeGreaterThan ((inSizeInKBytes < 1) ? 1 : inSizeInKBytes)) * 1000 ;
   if (newSize != gHashMapSize) {
     cBDDcollisionsMap * newMapArray = new cBDDcollisionsMap [newSize] ;
-    for (int32_t i=0 ; i<gHashMapSize ; i++) {
+    for (size_t i=0 ; i<gHashMapSize ; i++) {
       recursiveTransfertElementsInNewMapArray (gMap [i].mRoot, newMapArray, (uint32_t) newSize) ;
       gMap [i].mRoot = (C_AEDDnode *) NULL ;
     }
@@ -431,19 +431,19 @@ void C_AEDD::changeHashMapSize (const uint16_t inSizeInKBytes) {
 
 //---------------------------------------------------------------------*
 
-int32_t C_AEDD::getHashMapEntriesCount (void) {
+size_t C_AEDD::getHashMapEntriesCount (void) {
   return gHashMapSize ;
 }
 
 //---------------------------------------------------------------------*
 
-int32_t C_AEDD::getCreatedNodesCount (void) {
+size_t C_AEDD::getCreatedNodesCount (void) {
   return gBDDallocationInfo.mCreatedObjectsCount ;
 }
 
 //------------------------------------------------------------------------*
 
-int32_t C_AEDD::getExistingNodesCount (void) {
+size_t C_AEDD::getExistingNodesCount (void) {
   return gBDDallocationInfo.mAllocatedObjectsCount ;
 }
 
@@ -454,8 +454,8 @@ static C_AEDD * gLastAEDD = NULL ;
 
 //------------------------------------------------------------------------*
 
-int32_t C_AEDD::getAEDDinstancesCount (void) {
-  int32_t n = 0 ;
+size_t C_AEDD::getAEDDinstancesCount (void) {
+  size_t n = 0 ;
   C_AEDD * p = gFirstAEDD ;
   while (p != NULL) {
     n ++ ;
@@ -477,7 +477,7 @@ static void internalRecursiveUnmark (C_AEDD::C_AEDDnode * inElement) {
 //------------------------------------------------------------------------*
 
 void C_AEDD::unmarkAllExistingAEDDnodes (void) {
-  for (int32_t i=0 ; i<gHashMapSize ; i++) {
+  for (size_t i=0 ; i<gHashMapSize ; i++) {
     internalRecursiveUnmark (gMap [i].mRoot) ;
   }
 }
@@ -500,7 +500,7 @@ static int32_t internalMarkedNodeCount (const C_AEDD::C_AEDDnode * const inEleme
 
 int32_t C_AEDD::getMarkedNodesCount (void) {
   int32_t count = 0 ;
-  for (int32_t i=0 ; i<gHashMapSize ; i++) {
+  for (size_t i=0 ; i<gHashMapSize ; i++) {
     count += internalMarkedNodeCount (gMap [i].mRoot) ;
   }
   return count ;
@@ -551,7 +551,7 @@ void C_AEDD::markAndSweepUnusedNodes  (void) {
     p = p->mPtrToNextBDD ;
   }
 //--- Parcourir la table des elements BDD et recycler ceux qui sont inutilises
-  for (int32_t i=0 ; i<gHashMapSize ; i++) {
+  for (size_t i=0 ; i<gHashMapSize ; i++) {
    C_AEDDnode * temporaryRoot = gMap [i].mRoot ;
    gMap [i].mRoot = (C_AEDDnode *) NULL ;
    internalRecursiveSweep (temporaryRoot, gMap [i].mRoot) ;
@@ -966,8 +966,8 @@ void C_AEDD::
 printAEDDpackageOperationsSummary (AC_OutputStream & inStream) {
   inStream << "\n"
               "Bilan du AEDD (" << cStringWithSigned (getAEDDnodeSize ()) << " octets par element AEDD)\n"
-              "  Nombre courant de AEDD  : " << cStringWithSigned (getAEDDinstancesCount ()) << "\n"
-              "  Nombre d'elements crees : " << cStringWithSigned (getCreatedNodesCount ()) << "\n"
+              "  Nombre courant de AEDD  : " << cStringWithUnsigned (getAEDDinstancesCount ()) << "\n"
+              "  Nombre d'elements crees : " << cStringWithUnsigned (getCreatedNodesCount ()) << "\n"
               "  Nombre de comparaisons pour recherches/insertions des elements : " << cStringWithUnsigned (C_AEDDnode::smComparisonsCount) << "\n" ;
   gAndOperationCache.printStatistics (inStream, "AND") ;
 }

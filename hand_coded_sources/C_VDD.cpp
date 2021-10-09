@@ -79,7 +79,7 @@ void C_VDD::reallocUniqueTable (const int32_t inTableUniqueNewSize) {
 
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::getUniqueTableSizeInBytes (void) {
+size_t C_VDD::getUniqueTableSizeInBytes (void) {
   return gMap.getMapSizeInBytes () + C_VDD_hashmap::getAllocatedSizeInBytes () ;
 }
 
@@ -97,8 +97,8 @@ static uint32_t gInstanciedMaxInfosObjects = 0 ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::getSizeOf_cVDDmaxInfos_objects (void) {
-  return (uint32_t) (gInstanciedMaxInfosObjects * sizeof (cVDDmaxInfos)) ;
+size_t C_VDD::getSizeOf_cVDDmaxInfos_objects (void) {
+  return gInstanciedMaxInfosObjects * sizeof (cVDDmaxInfos) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -137,7 +137,7 @@ static cAddVectorCacheClass gAddVectorCache ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_VDD::reallocCaches (const int32_t inNewCachesSize) {
+void C_VDD::reallocCaches (const size_t inNewCachesSize) {
 // will select a prime greater than this value
   gGetFirableCache.reallocCache (inNewCachesSize) ;
   gAddVectorCache.reallocCache (inNewCachesSize) ;
@@ -146,16 +146,16 @@ void C_VDD::reallocCaches (const int32_t inNewCachesSize) {
 
 //---------------------------------------------------------------------------*
 
-int32_t C_VDD::getCachesSizeEntriesCount (void) {
-  return gGetFirableCache.getCacheEntriesCount () ;
+size_t C_VDD::getCachesSizeEntriesCount (void) {
+  return (size_t) gGetFirableCache.getCacheEntriesCount () ;
 }
 
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::getCachesSizeInBytes (void) {
-  return (uint32_t) (gGetFirableCache.getCacheSizeInBytes ()
+size_t C_VDD::getCachesSizeInBytes (void) {
+  return gGetFirableCache.getCacheSizeInBytes ()
        + gAddVectorCache.getCacheSizeInBytes ()
-       + gSetUnionCache.getCacheSizeInBytes ()) ;
+       + gSetUnionCache.getCacheSizeInBytes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -173,7 +173,7 @@ static C_VDD * gLastVDD = NULL ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::smNodeCount = 0 ;
+size_t C_VDD::smNodeCount = 0 ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -181,7 +181,7 @@ uint32_t C_VDD::smNodeCount = 0 ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::smCurrentNodeCount = 0 ;
+size_t C_VDD::smCurrentNodeCount = 0 ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -450,7 +450,7 @@ uint64_t C_VDD::smAddVectorCacheSuccesses = 0ULL ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::getNodeSize (void) {
+size_t C_VDD::getNodeSize (void) {
   return C_VDD_hashmap::getNodeSize () ;
 }
 
@@ -460,7 +460,7 @@ uint32_t C_VDD::getNodeSize (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-int32_t C_VDD::smNodeCompare = 0 ;
+size_t C_VDD::smNodeCompare = 0 ;
 
 intptr_t C_VDD::cVDDnodeInfo::compare (const cVDDnodeInfo & inInfo) const {
   smNodeCompare ++ ;
@@ -620,7 +620,7 @@ void C_VDD
     inStream << "  <>\n" ;
   }else{
     int32_t * array = (int32_t *) NULL ;
-    macroMyNewArray (array, int32_t, inNames.count ()) ;
+    macroMyNewArray (array, int32_t, size_t (inNames.count ())) ;
     internalPrintSet (inStream, mRootPointer, inNames, array, 0) ;
     macroMyDeleteArray (array) ;
   }
@@ -848,29 +848,18 @@ C_VDD::cVDDnodeInfo * C_VDD
   }else if (inPtr == kNULL_SET) {
     result = kEMPTY_SET ;
   }else{
-//    bool cacheSuccess = false ; int32_t hashCode ; int32_t tag = 0 ;
-//    if (smEnableAddVectorCache) {
-//      gAddVectorCache.getCacheEntry ((int32_t) inPtr, inVector.getLongID (), cacheSuccess, hashCode, tag, result) ;
-//      smAddVectorCacheSuccesses += cacheSuccess ;
-//    }
-//    if (! cacheSuccess) {
-    {
-      const T_vdd_zsl_index index = inPtr->mIndex ;
-      const T_vdd_zsl_value value = inPtr->mValue ;
-      if (value < 0) {
-        result = find_or_add (index, value,
-                              inPtr->mPtrToNextIndex,
-                              internalGetNullSuppressed (inPtr->mPtrToSameIndex)) ;
-      }else if (value == 0) {
-        result = find_or_add (index, value,
-                              internalGetNullSuppressed (inPtr->mPtrToNextIndex),
-                              inPtr->mPtrToSameIndex) ;
-      }else{ // value > 0
-        result = inPtr ;
-      }
-//      if (smEnableAddVectorCache) {
-//        gAddVectorCache.writeCacheEntry ((int32_t) inPtr, inVector.getLongID (), hashCode, tag, result) ;
-//      }
+    const T_vdd_zsl_index index = inPtr->mIndex ;
+    const T_vdd_zsl_value value = inPtr->mValue ;
+    if (value < 0) {
+      result = find_or_add (index, value,
+                            inPtr->mPtrToNextIndex,
+                            internalGetNullSuppressed (inPtr->mPtrToSameIndex)) ;
+    }else if (value == 0) {
+      result = find_or_add (index, value,
+                            internalGetNullSuppressed (inPtr->mPtrToNextIndex),
+                            inPtr->mPtrToSameIndex) ;
+    }else{ // value > 0
+      result = inPtr ;
     }
   }
   return result ;
@@ -1260,7 +1249,7 @@ C_VDD::cVDDnodeInfo * C_VDD
     smTrivialAddVector ++ ;
   }else{
     bool cacheSuccess = false ; int32_t hashCode ;
-    gAddVectorCache.getCacheEntry ((intptr_t) inPtr, inVector.getLongID (), cacheSuccess, hashCode, result) ;
+    gAddVectorCache.getCacheEntry (intptr_t (inPtr), inVector.getLongID (), cacheSuccess, hashCode, result) ;
     if (cacheSuccess) {
       smAddVectorCacheSuccesses ++ ;
     }else{
@@ -1754,13 +1743,13 @@ void C_VDD::collectUnusedNodes (void) {
 
 //---------------------------------------------------------------------------*
 
-int32_t C_VDD::getHashMapEntriesCount (void) {
+size_t C_VDD::getHashMapEntriesCount (void) {
   return gMap.getHashMapEntryCount () ;
 }
 
 //---------------------------------------------------------------------------*
 
-uint32_t C_VDD::getMapSizeInBytes (void) {
+size_t C_VDD::getMapSizeInBytes (void) {
   return gMap.getMapSizeInBytes () ;
 }
 
@@ -1774,12 +1763,12 @@ void C_VDD::printVDDsummary (AC_OutputStream & inOutputStream) {
   inOutputStream << "Summary of VDD operations :\n"
                     "  " <<  cStringWithUnsigned (getCurrentVDDnodeCount ())
                  << " VDD currently used nodes ;\n"
-                    "  " <<  cStringWithSigned (C_VDD_hashmap::getCreatedObjectCount ()) << " created nodes ("
+                    "  " <<  cStringWithUnsigned (C_VDD_hashmap::getCreatedObjectCount ()) << " created nodes ("
                     "each node : " << cStringWithUnsigned (getNodeSize ()) << " bytes, total : "
                  << cStringWithUnsigned ((uint32_t) (C_VDD_hashmap::getAllocatedSizeInBytes () / 1048576)) << " Mb)\n"
-                    "  VDD unique table : " << cStringWithSigned (gMap.getHashMapEntryCount ()) << " entries ("
+                    "  VDD unique table : " << cStringWithUnsigned (gMap.getHashMapEntryCount ()) << " entries ("
                  << cStringWithUnsigned ((uint32_t) (gMap.getMapSizeInBytes () / 1048576)) << " Mb).\n"
-                    "  " << cStringWithSigned (getNodeComparesCount ()) << " VDD comparisons ;\n"
+                    "  " << cStringWithUnsigned (getNodeComparesCount ()) << " VDD comparisons ;\n"
 //--- Set union statistics
                     "Statistics about 'SetUnion' operations :\n"
                     "  " << cStringWithUnsigned (getSetUnionCacheEntriesCount ())

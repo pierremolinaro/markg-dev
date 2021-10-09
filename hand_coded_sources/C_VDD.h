@@ -122,19 +122,19 @@ class C_VDD {
   public : static void reallocUniqueTable (const int32_t inTableUniqueNewSize) ;
 
 //--- Get unique table size (in bytes)
-  public : static uint32_t getUniqueTableSizeInBytes (void) ;
+  public : static size_t getUniqueTableSizeInBytes (void) ;
 
 //--- Realloc caches
-  public : static void reallocCaches (const int32_t inNewCachesSize) ;
+  public : static void reallocCaches (const size_t inNewCachesSize) ;
 
 //--- Get caches size (in bytes)
-  public : static uint32_t getCachesSizeInBytes (void) ;
+  public : static size_t getCachesSizeInBytes (void) ;
 
 //--- Get caches size (in entries count)
-  public : static int32_t getCachesSizeEntriesCount (void) ;
+  public : static size_t getCachesSizeEntriesCount (void) ;
 
 //--- Get RAM size allocated for cVDDmaxInfos objects
-  public : static uint32_t getSizeOf_cVDDmaxInfos_objects (void) ;
+  public : static size_t getSizeOf_cVDDmaxInfos_objects (void) ;
 
 //--- Save an array of VDD objects in text file
   public : static void saveArrayOnFile (const TC_UniqueArray <C_VDD> & inArray,
@@ -220,8 +220,8 @@ class C_VDD {
 //--- Collect unused elements
   public : static void collectUnusedNodes (void) ;
 
-  public : static int32_t getHashMapEntriesCount (void) ;
-  public : static uint32_t getMapSizeInBytes (void) ;
+  public : static size_t getHashMapEntriesCount (void) ;
+  public : static size_t getMapSizeInBytes (void) ;
 
 //--- Statistics about SetUnion cache
   protected : static uint64_t smTrivialUnion ;
@@ -320,13 +320,13 @@ class C_VDD {
   private : static void internalSaveNode (cVDDnodeInfo * const inPtr,
                                           AC_OutputStream & inOutputStream) ;
 
-  protected : static int32_t smNodeCompare ;
-  public : static uint32_t getNodeSize (void) ;
-  public : static int32_t getNodeComparesCount (void) { return smNodeCompare ; }
-  protected : static uint32_t smNodeCount ;
-  public : static uint32_t getVDDnodeCount (void) { return smNodeCount ; }
-  protected : static uint32_t smCurrentNodeCount ;
-  public : static uint32_t getCurrentVDDnodeCount (void) { return smCurrentNodeCount ; }
+  protected : static size_t smNodeCompare ;
+  public : static size_t getNodeSize (void) ;
+  public : static size_t getNodeComparesCount (void) { return smNodeCompare ; }
+  protected : static size_t smNodeCount ;
+  public : static size_t getVDDnodeCount (void) { return smNodeCount ; }
+  protected : static size_t smCurrentNodeCount ;
+  public : static size_t getCurrentVDDnodeCount (void) { return smCurrentNodeCount ; }
 
 //--- kEMPTY_SET denotes the empty set
   protected : static cVDDnodeInfo * const kEMPTY_SET ;

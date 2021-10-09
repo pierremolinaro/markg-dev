@@ -97,7 +97,7 @@ class C_AEDDPrimeCache2 {
   protected : cCacheEntry * mCache ;
 
 //--- Cache size
-  protected : int32_t mCacheSize ;
+  protected : size_t mCacheSize ;
 
 //--- Integer square root of cache size
   protected : int32_t mCacheSizeIntegerSquareRoot ;
@@ -123,15 +123,15 @@ class C_AEDDPrimeCache2 {
   public : inline int32_t getCacheOverrideCount (void) const { return mCacheOverridesCount ; }
 
 //--- Get cache entries count
-  public : inline int32_t getCacheEntriesCount (void) {
+  public : inline size_t getCacheEntriesCount (void) {
     return mCacheSize ;
   }
 
 //--- Get cache size in kbytes
-  public : inline int32_t getCacheSizeInKBytes (void) ;
+  public : inline size_t getCacheSizeInKBytes (void) ;
 
 //--- Get unused entries count
-  public : int32_t getUnusedCacheEntriesCount (void) const ;
+  public : size_t getUnusedCacheEntriesCount (void) const ;
 
 //--- Print statistics
   public : void printStatistics (AC_OutputStream & inStream,

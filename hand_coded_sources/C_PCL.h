@@ -90,7 +90,7 @@ class C_PCL {
   public : static void reallocUniqueTable (const int32_t inTableUniqueNewSize) ;
 
 //--- Realloc addition cache
-  public : static void reallocAdditionCache (const int32_t inNewCacheSize) ;
+  public : static void reallocAdditionCache (const size_t inNewCacheSize) ;
 
 //--- Decision list
   protected : cVDLnodeInfo * mRootPointer ;

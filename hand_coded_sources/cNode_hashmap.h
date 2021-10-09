@@ -71,8 +71,8 @@ class cVDDnodeInfo_hashmap {
   public : void unmarkAllObjects (void) ;
 
 //--- Current Entry count
-  protected : int32_t mEntryCurrentCount ;
-  public : inline int32_t getHashMapEntryCount (void) const { return mEntryCurrentCount ; }
+  protected : size_t mEntryCurrentCount ;
+  public : inline size_t getHashMapEntryCount (void) const { return mEntryCurrentCount ; }
 
 //--- Get node size (in bytes)
   public : static uint32_t getNodeSize (void) { return (uint32_t) sizeof (MyBlockavltree_element_for_collision) ; }
@@ -183,11 +183,11 @@ class cVDDnodeInfo_hashmap {
 //------------------- MyBlockavltree_element_for_collision embedded class
   private : class cAllocInfo {
     public : char * * mAllocatedBlockList ;
-    public : int32_t mAllocatedBlockListSize ;
-    public : int32_t mAllocatedBlockCount ;
+    public : size_t mAllocatedBlockListSize ;
+    public : size_t mAllocatedBlockCount ;
     public : MyBlockavltree_element_for_collision * mFreeList ;
-    public : int32_t mAllocatedObjectCount ;
-    public : int32_t mCreatedObjectCount ;
+    public : size_t mAllocatedObjectCount ;
+    public : size_t mCreatedObjectCount ;
     public : cAllocInfo (void) :
     mAllocatedBlockList (NULL),
     mAllocatedBlockListSize (0),
@@ -205,10 +205,10 @@ class cVDDnodeInfo_hashmap {
   protected : C_TreeForCollision * mMapArray ;
 
 //--- Get created element count
-  public : static int32_t getCreatedObjectCount (void) { return smAllocInfo.mCreatedObjectCount ; }
+  public : static size_t getCreatedObjectCount (void) { return smAllocInfo.mCreatedObjectCount ; }
 
 //--- Get currently used element count
-  public : static int32_t getCurrentObjectCount (void) { return smAllocInfo.mAllocatedObjectCount ; }
+  public : static size_t getCurrentObjectCount (void) { return smAllocInfo.mAllocatedObjectCount ; }
 
 //--- Allocation info (static variable)
   protected : static cAllocInfo smAllocInfo ;

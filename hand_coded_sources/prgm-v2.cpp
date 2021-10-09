@@ -343,10 +343,10 @@ vddComputation (uint32_t inGarbagePeriod,
     if ((iteration % inGarbagePeriod) == 0) {
       C_Timer garbageTimer ;
       garbageTimer.startTimer () ;
-      const uint32_t previousNodeCount = C_VDD::getCurrentVDDnodeCount () ;
+      const size_t previousNodeCount = C_VDD::getCurrentVDDnodeCount () ;
       C_VDD::collectUnusedNodes () ;
-      const uint32_t newNodeCount = C_VDD::getCurrentVDDnodeCount () ;
-      uint32_t ramSize = C_VDD::getCachesSizeInBytes () ;
+      const size_t newNodeCount = C_VDD::getCurrentVDDnodeCount () ;
+      size_t ramSize = C_VDD::getCachesSizeInBytes () ;
       ramSize += C_VDD::getUniqueTableSizeInBytes () ;
       ramSize += C_VDD::getSizeOf_cVDDmaxInfos_objects () ;
       ramSize /= 1 << 20 ;
@@ -441,7 +441,7 @@ vddComputation (uint32_t inGarbagePeriod,
     allStatesSet.printSet (co, inPlaceNames) ;
   }
 //--- Display  state count, transitions count, duration and used RAM size
-  uint32_t ramSize = C_VDD::getCachesSizeInBytes () ;
+  size_t ramSize = C_VDD::getCachesSizeInBytes () ;
   ramSize += C_VDD::getUniqueTableSizeInBytes () ;
   ramSize += C_VDD::getSizeOf_cVDDmaxInfos_objects () ;
   ramSize /= 1 << 20 ; // in Mb
@@ -644,10 +644,10 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
     if ((iteration % inGarbagePeriod) == 0) {
       C_Timer garbageTimer ;
       garbageTimer.startTimer () ;
-      const uint32_t previousNodeCount = C_VDD::getCurrentVDDnodeCount () ;
+      const size_t previousNodeCount = C_VDD::getCurrentVDDnodeCount () ;
       C_VDD::collectUnusedNodes () ;
-      const uint32_t newNodeCount = C_VDD::getCurrentVDDnodeCount () ;
-      uint32_t ramSize = C_VDD::getCachesSizeInBytes () ;
+      const size_t newNodeCount = C_VDD::getCurrentVDDnodeCount () ;
+      size_t ramSize = C_VDD::getCachesSizeInBytes () ;
       ramSize += C_VDD::getUniqueTableSizeInBytes () ;
       ramSize += C_VDD::getSizeOf_cVDDmaxInfos_objects () ;
       ramSize /= 1 << 20 ;
@@ -719,7 +719,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
     allStatesSet.printSet (co, inPlaceNames) ;
   }
 //--- Display  state count, transitions count, duration and used RAM size
-  uint32_t ramSize = C_VDD::getCachesSizeInBytes () ;
+  size_t ramSize = C_VDD::getCachesSizeInBytes () ;
   ramSize += C_VDD::getUniqueTableSizeInBytes () ;
   ramSize += C_VDD::getSizeOf_cVDDmaxInfos_objects () ;
   ramSize /= 1 << 20 ; // in Mb
@@ -828,10 +828,10 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
 //--- Print Garbage period
   co << "  Garbage period : " << cStringWithUnsigned (inGarbagePeriod.uintValue ()) << "\n" ;
 //--- VDD map
-  co << "  VDD hash map parameter : " << cStringWithUnsigned (inHashMapSize.uintValue ()) << " -> " << cStringWithSigned (C_VDD::getHashMapEntriesCount ())
+  co << "  VDD hash map parameter : " << cStringWithUnsigned (inHashMapSize.uintValue ()) << " -> " << cStringWithUnsigned (C_VDD::getHashMapEntriesCount ())
      << " entries (" << cStringWithUnsigned ((uint32_t) (C_VDD::getMapSizeInBytes () / (1 << 20))) << " Mb).\n" ;
 //--- VDD map
-  co << "  VDD operations cache hash maps parameter : " << cStringWithUnsigned (inHashMapSize.uintValue ()) << " -> " << cStringWithSigned (C_VDD::getCachesSizeEntriesCount ())
+  co << "  VDD operations cache hash maps parameter : " << cStringWithUnsigned (inHashMapSize.uintValue ()) << " -> " << cStringWithUnsigned (C_VDD::getCachesSizeEntriesCount ())
      << " entries (" << cStringWithUnsigned ((uint32_t) (C_VDD::getCachesSizeInBytes () / (1UL << 20))) << " Mb).\n" ;
   fflush (stdout) ;
 //--- Print preconditions

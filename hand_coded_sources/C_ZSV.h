@@ -86,10 +86,10 @@ class C_ZSV {
   } ;
 
 //--- Realloc unique table
-  public : static void reallocUniqueTable (const int32_t inTableUniqueNewSize) ;
+  public : static void reallocUniqueTable (const size_t inTableUniqueNewSize) ;
 
 //--- Realloc addition cache
-  public : static void reallocAdditionCache (const int32_t inNewCacheSize) ;
+  public : static void reallocAdditionCache (const size_t inNewCacheSize) ;
 
 //--- Decision list
   protected : cZSVinfo * mRootPointer ;
@@ -174,11 +174,11 @@ class C_ZSV {
 
   protected : static enumCompare internalGreaterThan (C_ZSV::cZSVinfo * inCurrentNodePointer,
                                                       C_ZSV::cZSVinfo * inOperandNodePointer) ;
-  protected : static int32_t smNodeCompare ;
-  public : static uint32_t getNodeSize (void) ;
-  public : static int32_t getNodeComparesCount (void) { return smNodeCompare ; }
-  protected : static int32_t smNodeCount ;
-  public : static int32_t getVDLnodeCount (void) { return smNodeCount ; }
+  protected : static size_t smNodeCompare ;
+  public : static size_t getNodeSize (void) ;
+  public : static size_t getNodeComparesCount (void) { return smNodeCompare ; }
+  protected : static size_t smNodeCount ;
+  public : static size_t getVDLnodeCount (void) { return smNodeCount ; }
   protected : static uint64_t smTrivialAdd ;
   public : static uint64_t getTrivialAddCount (void) { return smTrivialAdd ; }
   public : static uint64_t getCacheSuccessCount (void) ;

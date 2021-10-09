@@ -36,7 +36,7 @@
 
 C_AEDDPrimeCache2::C_AEDDPrimeCache2 (const int32_t inCacheSize) :
 mCache (NULL),
-mCacheSize ((int32_t) getPrimeGreaterThan ((inCacheSize < 1) ? 1 : (uint32_t) inCacheSize)),
+mCacheSize ((size_t) getPrimeGreaterThan ((inCacheSize < 1) ? 1 : (uint32_t) inCacheSize)),
 mCacheSizeIntegerSquareRoot ((int32_t) ::sqrt ((float) mCacheSize)),
 mTrivialOperationsCount (0),
 mCacheSuccessCount (0),
@@ -64,22 +64,22 @@ void C_AEDDPrimeCache2::freeCache (void) {
 //---------------------------------------------------------------------------*
 
 void C_AEDDPrimeCache2::reallocCache (const int32_t inCacheSize
-                                  COMMA_LOCATION_ARGS) {
-  const int32_t newCacheSize = (int32_t) getPrimeGreaterThan ((uint32_t) inCacheSize) ;
+                                      COMMA_LOCATION_ARGS) {
+  const size_t newCacheSize = (size_t) getPrimeGreaterThan ((uint32_t) inCacheSize) ;
   if (newCacheSize != mCacheSize) {
     cCacheEntry * newCache = NULL ;
     macroMyNewArrayThere (newCache, cCacheEntry, newCacheSize) ;
     if (newCache != NULL) {
       cCacheEntry * previousCache = mCache ;
       mCache = newCache ;
-      const int32_t previousCacheSize = mCacheSize ;
+      const size_t previousCacheSize = mCacheSize ;
       mCacheSize = newCacheSize ;
       mCacheSizeIntegerSquareRoot = (int32_t) ::sqrt ((float) mCacheSize) ;
       clearAllCacheEntries () ;
       bool cacheSuccess ;
       int32_t hashCode ;
       intptr_t cacheResult ;
-      for (int32_t i=0 ; i<previousCacheSize ; i++) {
+      for (size_t i=0 ; i<previousCacheSize ; i++) {
         if (previousCache [i].mOperand1 != 0) {
           getCacheEntry (previousCache [i].mOperand1,
                          previousCache [i].mOperand2,
@@ -103,7 +103,7 @@ void C_AEDDPrimeCache2::reallocCache (const int32_t inCacheSize
 
 void C_AEDDPrimeCache2::clearAllCacheEntries (void) {
   if (! mCacheIsClear) {
-    for (int32_t i=0 ; i<mCacheSize ; i++) {
+    for (size_t i=0 ; i<mCacheSize ; i++) {
       mCache [i].mOperand1 = 0 ;
     }
     mCacheIsClear = true ;
@@ -113,15 +113,15 @@ void C_AEDDPrimeCache2::clearAllCacheEntries (void) {
 
 //---------------------------------------------------------------------------*
 
-int32_t C_AEDDPrimeCache2::getCacheSizeInKBytes (void) {
-  return (mCacheSize * (int32_t) sizeof (cCacheEntry)) / 1024 ;
+size_t C_AEDDPrimeCache2::getCacheSizeInKBytes (void) {
+  return (mCacheSize * sizeof (cCacheEntry)) / 1024 ;
 }
 
 //---------------------------------------------------------------------------*
 
-int32_t C_AEDDPrimeCache2::getUnusedCacheEntriesCount (void) const {
-  int32_t unusedEntriesCount = 0 ;
-  for (int32_t i=0 ; i<mCacheSize ; i++) {
+size_t C_AEDDPrimeCache2::getUnusedCacheEntriesCount (void) const {
+  size_t unusedEntriesCount = 0 ;
+  for (size_t i=0 ; i<mCacheSize ; i++) {
     unusedEntriesCount += (mCache [i].mOperand1 == 0) ;
   }
   return unusedEntriesCount ;
@@ -135,11 +135,11 @@ printStatistics (AC_OutputStream & inStream,
   const int32_t total = mTrivialOperationsCount
                      + mCacheSuccessCount
                      + mCacheMissCount ;
-  const int32_t used = mCacheSize - getUnusedCacheEntriesCount () ;
+  const size_t used = mCacheSize - getUnusedCacheEntriesCount () ;
   inStream << "Statistics about " << inTitle << " operations :\n"
 //--- Cache properties
-              "  cache entries: " << cStringWithSigned (mCacheSize)
-           << ", used: " << cStringWithSigned (used)
+              "  cache entries: " << cStringWithUnsigned (mCacheSize)
+           << ", used: " << cStringWithUnsigned (used)
            << " (" << cStringWithSigned ((int32_t) ((used * 100) / mCacheSize)) << "%)"
            << ", size " << cStringWithSigned (mCacheSize * ((int32_t) sizeof (cCacheEntry)) / 1024) << " kbytes\n"
 //--- Trivial

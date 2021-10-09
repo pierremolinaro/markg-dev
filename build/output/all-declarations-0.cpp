@@ -2867,24 +2867,24 @@ GALGAS_typePostcondition GALGAS_typePostcondition::extractObject (const GALGAS_o
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typePostconditionList : public cCollectionElement {
-  public : GALGAS_typePostconditionList_2D_element mObject ;
+  public: GALGAS_typePostconditionList_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_typePostconditionList (const GALGAS_typePostcondition & in_mPostcondition
-                                                     COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_typePostconditionList (const GALGAS_typePostconditionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typePostconditionList (const GALGAS_typePostcondition & in_mPostcondition
+                                                    COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typePostconditionList (const GALGAS_typePostconditionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3284,28 +3284,28 @@ GALGAS_typePostconditionList GALGAS_typePostconditionList::extractObject (const 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typeTransitionList : public cCollectionElement {
-  public : GALGAS_typeTransitionList_2D_element mObject ;
+  public: GALGAS_typeTransitionList_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_typeTransitionList (const GALGAS_lstring & in_mTransitionName,
-                                                  const GALGAS_typePreconditionExpression & in_mPreconditionExpression,
-                                                  const GALGAS_typePostconditionList & in_mPostconditionList,
-                                                  const GALGAS_uint & in_mLowTemporalBound,
-                                                  const GALGAS_uint & in_mHighTemporalBound
-                                                  COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_typeTransitionList (const GALGAS_typeTransitionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typeTransitionList (const GALGAS_lstring & in_mTransitionName,
+                                                 const GALGAS_typePreconditionExpression & in_mPreconditionExpression,
+                                                 const GALGAS_typePostconditionList & in_mPostconditionList,
+                                                 const GALGAS_uint & in_mLowTemporalBound,
+                                                 const GALGAS_uint & in_mHighTemporalBound
+                                                 COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typeTransitionList (const GALGAS_typeTransitionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3961,24 +3961,24 @@ GALGAS_typeTransitionList GALGAS_typeTransitionList::extractObject (const GALGAS
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typeInitialMarkingList : public cCollectionElement {
-  public : GALGAS_typeInitialMarkingList_2D_element mObject ;
+  public: GALGAS_typeInitialMarkingList_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_typeInitialMarkingList (const GALGAS_typePostcondition & in_mInitValue
-                                                      COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_typeInitialMarkingList (const GALGAS_typeInitialMarkingList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typeInitialMarkingList (const GALGAS_typePostcondition & in_mInitValue
+                                                     COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typeInitialMarkingList (const GALGAS_typeInitialMarkingList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4378,25 +4378,25 @@ GALGAS_typeInitialMarkingList GALGAS_typeInitialMarkingList::extractObject (cons
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_countList : public cCollectionElement {
-  public : GALGAS_countList_2D_element mObject ;
+  public: GALGAS_countList_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_countList (const GALGAS_lstring & in_mName,
-                                         const GALGAS_typePreconditionExpression & in_mCondition
-                                         COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_countList (const GALGAS_countList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_countList (const GALGAS_lstring & in_mName,
+                                        const GALGAS_typePreconditionExpression & in_mCondition
+                                        COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_countList (const GALGAS_countList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

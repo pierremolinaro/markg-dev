@@ -55,7 +55,7 @@ static C_ZSV_hashmap gMap ;
 
 //---------------------------------------------------------------------------*
 
-void C_ZSV::reallocUniqueTable (const int32_t inTableUniqueNewSize) {
+void C_ZSV::reallocUniqueTable (const size_t inTableUniqueNewSize) {
   gMap.reallocMap (inTableUniqueNewSize) ;
 }
 
@@ -74,7 +74,7 @@ static C_ZSV * gLastZSV = NULL ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-int32_t C_ZSV::smNodeCount = 0 ;
+size_t C_ZSV::smNodeCount = 0 ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -82,7 +82,7 @@ int32_t C_ZSV::smNodeCount = 0 ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_ZSV::reallocAdditionCache (const int32_t inNewCacheSize) {
+void C_ZSV::reallocAdditionCache (const size_t inNewCacheSize) {
   gCache.reallocCache (inNewCacheSize) ;
 }
 
@@ -109,15 +109,6 @@ void C_ZSV::initLinks (void) {
   }
   mPtrToNextExisting = gFirstZSV ;
   gFirstZSV = this ;
-
-
-//  mPtrToNextExisting = this ;
-//  mPtrToPreviousExisting = this ;
-//  C_ZSV * nextFromRoot = gVDLlistRoot.mPtrToNextExisting ;
-//  mPtrToPreviousExisting = & gVDLlistRoot ;
-//  nextFromRoot->mPtrToPreviousExisting = this ;
-//  mPtrToNextExisting = nextFromRoot ;
-//  gVDLlistRoot.mPtrToNextExisting = this ;
 }
 
 //---------------------------------------------------------------------------*
@@ -315,7 +306,8 @@ C_ZSV::cZSVinfo * C_ZSV::internalSum (cZSVinfo * const inPtr1,
   }else{
   //--- In cache ?
  //   int32_t ID1 = ((int32_t) inPtr1) >> 5 ; int32_t ID2 = ((int32_t) inPtr2) >> 5 ;
-    intptr_t ID1 = inPtr1->mID ; intptr_t ID2 = inPtr2->mID ;
+    intptr_t ID1 = inPtr1->mID ;
+    intptr_t ID2 = inPtr2->mID ;
   //--- Exchange ID1 and ID2 ?
     if (ID1 > ID2) {
       ID1 ^= ID2 ; ID2 ^= ID1 ; ID1 ^= ID2 ;
@@ -430,7 +422,7 @@ C_ZSV::cZSVinfo * C_ZSV::internalAdd (const T_vdd_zsl_index inIndex,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-int32_t C_ZSV::smNodeCompare = 0 ;
+size_t C_ZSV::smNodeCompare = 0 ;
 
 intptr_t C_ZSV::cZSVinfo::compare (const cZSVinfo & inInfo) const {
   smNodeCompare ++ ;
@@ -450,7 +442,7 @@ intptr_t C_ZSV::cZSVinfo::compare (const cZSVinfo & inInfo) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32_t C_ZSV::getNodeSize (void) {
+size_t C_ZSV::getNodeSize (void) {
   return C_ZSV_hashmap::getNodeSize () ;
 }
 
@@ -474,7 +466,7 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
     const T_vdd_zsl_value max = (inPointerToNext == NULL) ? ((T_vdd_zsl_value) 0) : inPointerToNext->mMaxVectorValue ;
     p->mMaxVectorValue = (inValue > max) ? inValue : max ;
     smNodeCount ++ ;
-    p->mID = smNodeCount ;
+    p->mID = intptr_t (smNodeCount) ;
   }
   return p ;
 }
@@ -673,13 +665,13 @@ void C_ZSV::collectUnusedNodes (void) {
 void C_ZSV::printVDLsummary (AC_OutputStream & inOutputStream) {
   const uint64_t n = getTrivialAddCount () + getCacheSuccessCount () + getCacheFailureCount () ;
   inOutputStream << "Summary of VDL operations :\n"
-                    "  " << cStringWithSigned (getVDLnodeCount ())
+                    "  " << cStringWithUnsigned (getVDLnodeCount ())
                  << " VDL used nodes (size " << cStringWithUnsigned (getNodeSize ()) << " bytes) ;\n"
-                    "  " << cStringWithSigned (C_ZSV_hashmap::getCreatedObjectCount ())
+                    "  " << cStringWithUnsigned (C_ZSV_hashmap::getCreatedObjectCount ())
                  << " VDL created nodes (total size "
                  << cStringWithUnsigned (((uint32_t) C_ZSV_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL)
                  << " kbytes) ;\n"
-                    "  " << cStringWithSigned (getNodeComparesCount ()) << " comparisons ;\n"
+                    "  " << cStringWithUnsigned (getNodeComparesCount ()) << " comparisons ;\n"
                     "  " << cStringWithUnsigned (getTrivialAddCount ())
                  << " trivial additions (" << cStringWithUnsigned ((100ULL * getTrivialAddCount ()) / n)
                  << "%) ;\n"
