@@ -17,7 +17,7 @@ class cPtr_typePostIncrement : public cPtr_typePostcondition {
   public : virtual void buildInitialMarking (C_VDD & ioInitialMarking) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
   public: GALGAS_uint mProperty_mVar ;
 
@@ -30,10 +30,6 @@ class cPtr_typePostIncrement : public cPtr_typePostcondition {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMVarName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mVar (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMVar (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

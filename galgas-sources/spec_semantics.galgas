@@ -8,142 +8,142 @@
 
 #--- Places map
 map @typeVarMap {
-  @uint mIndex
+  public var @uint mIndex
   insert insertKey error message "the '%K' place is already declared"
   search searchKey error message "the '%K' place is not declared"
 }
 
 #--- Constants map
 map @typeCstMap {
-  @bool mSign
-  @luint mValue
+  public var @bool mSign
+  public var @luint mValue
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "there '%K' constant is not defined"
 }
 
 #--- Precondition description
-abstract shared class @typePreconditionExpression %generatedInSeparateFile {
+abstract refclass @typePreconditionExpression %generatedInSeparateFile {
 }
 
-shared class @typeTrueExpression : @typePreconditionExpression {
+refclass @typeTrueExpression : @typePreconditionExpression {
 }
 
-shared class @typeFalseExpression : @typePreconditionExpression {
+refclass @typeFalseExpression : @typePreconditionExpression {
 }
 
-shared class @typeComplementExpression : @typePreconditionExpression {
-  @typePreconditionExpression mExpression
+refclass @typeComplementExpression : @typePreconditionExpression {
+  public var @typePreconditionExpression mExpression
 }
 
-shared class @typeAndExpression : @typePreconditionExpression {
-  @typePreconditionExpression mLeftExpression
-  @typePreconditionExpression mRightExpression
+refclass @typeAndExpression : @typePreconditionExpression {
+  public var @typePreconditionExpression mLeftExpression
+  public var @typePreconditionExpression mRightExpression
 }
 
-shared class @typeOrExpression : @typePreconditionExpression {
-  @typePreconditionExpression mLeftExpression
-  @typePreconditionExpression mRightExpression
+refclass @typeOrExpression : @typePreconditionExpression {
+  public var @typePreconditionExpression mLeftExpression
+  public var @typePreconditionExpression mRightExpression
 }
 
-shared class @typeEqualExpression : @typePreconditionExpression {
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeEqualExpression : @typePreconditionExpression {
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeNonEqualExpression : @typePreconditionExpression {
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeNonEqualExpression : @typePreconditionExpression {
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeInfOrEqualExpression : @typePreconditionExpression {
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeInfOrEqualExpression : @typePreconditionExpression {
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeSupOrEqualExpression : @typePreconditionExpression {
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeSupOrEqualExpression : @typePreconditionExpression {
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeStrictInfExpression : @typePreconditionExpression {
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeStrictInfExpression : @typePreconditionExpression {
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeStrictSupExpression : @typePreconditionExpression {
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeStrictSupExpression : @typePreconditionExpression {
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
 #--- Post condition
-abstract shared class @typePostcondition %generatedInSeparateFile {
+abstract refclass @typePostcondition %generatedInSeparateFile {
 }
 
-shared class @typePostIncrement : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
+refclass @typePostIncrement : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
 }
 
-shared class @typePostDecrement : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
+refclass @typePostDecrement : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
 }
 
-shared class @typeAddConstant : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeAddConstant : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeSubConstant : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeSubConstant : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeAssignConstant : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
-  @bool mNegativeConstant
-  @luint mConstant
+refclass @typeAssignConstant : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
 }
 
-shared class @typeAssignInfinity : @typePostcondition {
-  @lstring mVarName
-  @uint mVar
+refclass @typeAssignInfinity : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
 }
 
 #--- Post condition list
 list @typePostconditionList {
-  @typePostcondition mPostcondition
+  public var @typePostcondition mPostcondition
 }
 
 #--- Transition list
 list @typeTransitionList {
-  @lstring mTransitionName
-  @typePreconditionExpression mPreconditionExpression
-  @typePostconditionList mPostconditionList
-  @uint mLowTemporalBound
-  @uint mHighTemporalBound
+  public var @lstring mTransitionName
+  public var @typePreconditionExpression mPreconditionExpression
+  public var @typePostconditionList mPostconditionList
+  public var @uint mLowTemporalBound
+  public var @uint mHighTemporalBound
 }
 
 #--- Initial marking description
 list @typeInitialMarkingList {
-  @typePostcondition mInitValue
+  public var @typePostcondition mInitValue
 }
 
 #--- count list
 list @countList {
-  @lstring mName
-  @typePreconditionExpression mCondition
+  public var @lstring mName
+  public var @typePreconditionExpression mCondition
 }
 
 #---------------------------------------------------------------------------*

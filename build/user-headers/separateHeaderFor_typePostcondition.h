@@ -8,7 +8,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_typePostcondition : public acPtr_class {
+class cPtr_typePostcondition : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,
@@ -17,7 +17,7 @@ class cPtr_typePostcondition : public acPtr_class {
   public : virtual void buildInitialMarking (class C_VDD & ioInitialMarking) const = 0 ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_typePostcondition (LOCATION_ARGS) ;

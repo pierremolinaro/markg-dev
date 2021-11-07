@@ -14,7 +14,7 @@ class cPtr_typeTrueExpression : public cPtr_typePreconditionExpression {
   public : virtual C_AEDD buildAEDDexpression (void) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_typeTrueExpression (LOCATION_ARGS) ;

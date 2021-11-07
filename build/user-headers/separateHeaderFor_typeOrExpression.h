@@ -14,7 +14,7 @@ class cPtr_typeOrExpression : public cPtr_typePreconditionExpression {
   public : virtual C_AEDD buildAEDDexpression (void) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_typePreconditionExpression mProperty_mLeftExpression ;
   public: GALGAS_typePreconditionExpression mProperty_mRightExpression ;
 
@@ -27,10 +27,6 @@ class cPtr_typeOrExpression : public cPtr_typePreconditionExpression {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_typePreconditionExpression getter_mLeftExpression (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_typePreconditionExpression inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_typePreconditionExpression getter_mRightExpression (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_typePreconditionExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

@@ -221,21 +221,24 @@ C_AEDD cPtr_typeFalseExpression::buildAEDDexpression (void) const {
 /*--------------------------------------------------------------------------*/
 
 C_AEDD cPtr_typeComplementExpression::buildAEDDexpression (void) const {
-  return ~ (mProperty_mExpression.ptr ()->buildAEDDexpression ()) ;
+  auto p = (const cPtr_typePreconditionExpression *) mProperty_mExpression.embeddedObjectPtr () ;
+  return ~ (p->buildAEDDexpression ()) ;
 }
 
 /*--------------------------------------------------------------------------*/
 
 C_AEDD cPtr_typeAndExpression::buildAEDDexpression (void) const {
-  return mProperty_mLeftExpression.ptr ()->buildAEDDexpression () &
-         mProperty_mRightExpression.ptr ()->buildAEDDexpression () ;
+  auto p = (const cPtr_typePreconditionExpression *) mProperty_mLeftExpression.embeddedObjectPtr () ;
+  auto q = (const cPtr_typePreconditionExpression *) mProperty_mRightExpression.embeddedObjectPtr () ;
+  return p->buildAEDDexpression () & q->buildAEDDexpression () ;
 }
 
 /*--------------------------------------------------------------------------*/
 
 C_AEDD cPtr_typeOrExpression::buildAEDDexpression (void) const {
-  return mProperty_mLeftExpression.ptr ()->buildAEDDexpression () |
-         mProperty_mRightExpression.ptr ()->buildAEDDexpression () ;
+  auto p = (const cPtr_typePreconditionExpression *) mProperty_mLeftExpression.embeddedObjectPtr () ;
+  auto q = (const cPtr_typePreconditionExpression *) mProperty_mRightExpression.embeddedObjectPtr () ;
+  return p->buildAEDDexpression () | q->buildAEDDexpression () ;
 }
 
 /*--------------------------------------------------------------------------*/
@@ -396,7 +399,8 @@ vddComputation (uint32_t inGarbagePeriod,
 //--- Compute count list
   cEnumerator_countList current (inCountList, kENUMERATION_UP) ;
   while (current.hasCurrentObject ()) {
-    const C_AEDD aedd = current.current_mCondition (HERE).ptr ()->buildAEDDexpression () ;
+    auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).embeddedObjectPtr () ;
+    const C_AEDD aedd = p->buildAEDDexpression () ;
     const C_VDD s = allStatesSet.getFirableFromAEDD (aedd) ;
     const uint64_t c = s.getSetCardinal () ;
     co << "'" << current.current_mName (HERE) << "' : " << cStringWithUnsigned (c) << " state" << ((c > 1) ? "s" : "") << "\n" ;
@@ -682,7 +686,8 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 //--- Compute count list
   cEnumerator_countList current (inCountList, kENUMERATION_UP) ;
   while (current.hasCurrentObject ()) {
-    const C_AEDD aedd = current.current_mCondition (HERE).ptr ()->buildAEDDexpression () ;
+    auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).embeddedObjectPtr () ;
+    const C_AEDD aedd = p->buildAEDDexpression () ;
     const C_VDD s = allStatesSet.getFirableFromAEDD (aedd) ;
     const uint64_t c = s.getSetCardinal () ;
     co << "'" << current.current_mName (HERE) << "' : " << cStringWithUnsigned (c) << " state" << ((c > 1) ? "s" : "") << "\n" ;
@@ -765,7 +770,8 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
   initialMarking.setToNullSet () ;
   cEnumerator_typeInitialMarkingList currentPlace (inInitialMarkingList, kENUMERATION_UP) ;
   while (currentPlace.hasCurrentObject ()) {
-    currentPlace.current_mInitValue (HERE).ptr ()->buildInitialMarking (initialMarking) ;
+    auto q = (const cPtr_typePostcondition *) currentPlace.current_mInitValue (HERE).embeddedObjectPtr () ;
+    q->buildInitialMarking (initialMarking) ;
     currentPlace.gotoNextObject () ;
   }
 //--- Build transition name array, precondition expression array, post condition array
@@ -782,7 +788,8 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
     highBounds.appendObject (currentTrans.current_mHighTemporalBound (HERE).uintValue ()) ;
     transitionsNames.appendObject (currentTrans.current_mTransitionName (HERE).mProperty_string.stringValue ()) ;
 //    printf ("BUILD FROM TRANSITION '%s'\n", currentTrans->mTransitionName.cString ()) ; fflush (stdout) ;
-    preconditionExp (t COMMA_HERE) = currentTrans.current_mPreconditionExpression (HERE).ptr ()->buildAEDDexpression () ;
+    auto ptr = (const cPtr_typePreconditionExpression *) currentTrans.current_mPreconditionExpression (HERE).embeddedObjectPtr () ;
+    preconditionExp (t COMMA_HERE) = ptr->buildAEDDexpression () ;
     const uintptr_t nodesCount = preconditionExp (t COMMA_HERE).getAEDDnodesCount () ;
     if (nodesCount == 0) {
       co << "*** WARNING: NO AEDD NODES FOR '" << currentTrans.current_mTransitionName (HERE) << "' TRANSITION ***\n" ;
@@ -791,7 +798,8 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
 //    printf ("post expression\n") ; fflush (stdout) ;
     cEnumerator_typePostconditionList p (currentTrans.current_mPostconditionList (HERE), kENUMERATION_UP) ;
     while (p.hasCurrentObject ()) {
-      p.current_mPostcondition (HERE).ptr ()->buildPostCondition (t, inCompiler, postcondition) ;
+      auto q = (const cPtr_typePostcondition *) p.current_mPostcondition (HERE).embeddedObjectPtr () ;
+      q->buildPostCondition (t, inCompiler, postcondition) ;
       p.gotoNextObject () ;
     }
     t ++ ;
@@ -848,7 +856,8 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
     while (currentCount.hasCurrentObject ()) {
       C_String s ;
       s << "Count \"" << currentCount.current_mName (HERE) << "\" : " ;
-      const C_AEDD expr = currentCount.current_mCondition (HERE).ptr ()->buildAEDDexpression () ;
+      auto q = (const cPtr_typePreconditionExpression *) currentCount.current_mCondition (HERE).embeddedObjectPtr () ;
+      const C_AEDD expr = q->buildAEDDexpression () ;
       expr.printAEDDnodes (s.cString (HERE)) ;
       currentCount.gotoNextObject () ;
     }
