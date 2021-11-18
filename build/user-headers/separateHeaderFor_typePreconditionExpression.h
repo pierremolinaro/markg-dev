@@ -9,6 +9,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typePreconditionExpression : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public : virtual class C_AEDD buildAEDDexpression (void) const = 0 ;

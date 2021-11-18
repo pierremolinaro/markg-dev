@@ -9,6 +9,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typePostcondition : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,

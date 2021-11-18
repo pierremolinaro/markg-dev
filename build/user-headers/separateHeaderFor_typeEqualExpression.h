@@ -9,6 +9,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typeEqualExpression : public cPtr_typePreconditionExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public : virtual C_AEDD buildAEDDexpression (void) const ;

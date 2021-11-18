@@ -9,6 +9,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_typeAssignConstant : public cPtr_typePostcondition {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,
