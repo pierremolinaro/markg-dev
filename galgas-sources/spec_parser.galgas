@@ -58,8 +58,7 @@ rule <parse_precondition>
   repeat
   while
     $|$
-    var @typePreconditionExpression right
-    <term> !?inPlacesMap !?ioConstantMap ?right
+    <term> !?inPlacesMap !?ioConstantMap ?let right
     outPreConditions = @typeOrExpression. new { !outPreConditions !right}
   end
 }
@@ -74,8 +73,7 @@ rule <term>
   repeat
   while
     $&$
-    var @typePreconditionExpression right
-    <factor> !?inPlacesMap !?ioConstantMap ?right
+    <factor> !?inPlacesMap !?ioConstantMap ?let right
     outPreConditions = @typeAndExpression. new { !outPreConditions !right}
   end
 }
@@ -113,39 +111,31 @@ rule <primary>
     outPreConditions = @typeFalseExpression. new
   or
     ${$
-    var @lstring name
-    $identifier$ ?name
-    var @uint idx
-    [inPlacesMap searchKey !name ?idx]
+    $identifier$ ?let name
+    [inPlacesMap searchKey !name ?let idx]
     select
       $==$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       outPreConditions = @typeEqualExpression. new { !idx !sign !cst}
     or
       $!=$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       outPreConditions = @typeNonEqualExpression. new { !idx !sign !cst}
     or
       $<=$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       outPreConditions = @typeInfOrEqualExpression. new { !idx !sign !cst}
     or
       $>=$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       outPreConditions = @typeSupOrEqualExpression. new { !idx !sign !cst}
     or
       $<$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       outPreConditions = @typeStrictInfExpression. new { !idx !sign !cst}
     or
       $>$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       outPreConditions = @typeStrictSupExpression. new { !idx !sign !cst}
     end
     $}$
@@ -159,8 +149,7 @@ rule <parse_constant>
   !@bool outSign
   !@luint outValue {
   select
-    var @lstring constantName
-    $identifier$ ? constantName
+    $identifier$ ?let constantName
     [ioConstantMap searchKey !constantName ?outSign ?outValue]
   or
     $-$
@@ -180,11 +169,9 @@ rule <parse_postcondition>
   !@typePostconditionList outPostConditionsList {
   outPostConditionsList = @typePostconditionList. emptyList
   repeat
-    var @lstring name
-    $identifier$ ?name
-    var @uint idx
-    [outPlacesMap searchKey !name ?idx]
-    var @typePostcondition p
+    $identifier$ ?let name
+    [outPlacesMap searchKey !name ?let idx]
+    let @typePostcondition p
     select
       $--$
       p = @typePostDecrement. new { !name !idx}
@@ -193,19 +180,16 @@ rule <parse_postcondition>
       p = @typePostIncrement. new { !name !idx}
     or
       $+=$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       p = @typeAddConstant. new { !name !idx !sign !cst}
     or
       $-=$
-      var @bool sign var @luint cst
-      <parse_constant> !?ioConstantMap ?sign ?cst
+      <parse_constant> !?ioConstantMap ?let sign ?let cst
       p = @typeSubConstant. new { !name !idx !sign !cst}
     or
       $:=$
       select
-        var @bool sign var @luint cst
-        <parse_constant> !?ioConstantMap ?sign ?cst
+        <parse_constant> !?ioConstantMap ?let sign ?let cst
         p = @typeAssignConstant. new { !name !idx !sign !cst}
       or
         $infinity$
@@ -233,11 +217,9 @@ rule <parse_bound>
  !@uint lowTemporalBound
  !@uint highTemporalBound {
   $[$
-  var @luint low
-  $literal_integer$ ? low
+  $literal_integer$ ?let low
   $,$
-  var @luint high
-  $literal_integer$ ? high
+  $literal_integer$ ?let high
   $]$
   lowTemporalBound = low.uint
   highTemporalBound = high.uint
@@ -271,8 +253,7 @@ rule <axiome>
 #--- Options
   select
     $hashmapsize$
-    var @luint n
-    $literal_integer$ ?n
+    $literal_integer$ ?let n
     $;$
     outHashMapSize = n.uint
   or
@@ -280,8 +261,7 @@ rule <axiome>
   end
   select
     $garbageperiod$
-    var @luint n
-    $literal_integer$ ?n
+    $literal_integer$ ?let n
     $;$
     outGarbagePeriod = n.uint
   or
@@ -295,20 +275,16 @@ rule <axiome>
 #--- constant
   while
     $const$
-    var @lstring constantName
-    $identifier$ ? constantName
+    $identifier$ ?let constantName
     $=$
-    var @bool sign
-    var @luint value
-    <parse_constant> !?constantMap ?sign ?value
+    <parse_constant> !?constantMap ?let sign ?let value
     [!?constantMap insertKey !constantName !sign !value]
     $;$
 #--- Variables
   while
     $var$
     repeat
-      var @lstring placeName
-      $identifier$ ? placeName
+      $identifier$ ?let placeName
       [!?outPlacesMap insertKey !placeName ![outPlacesMap count]]
     while
       $,$
@@ -317,16 +293,11 @@ rule <axiome>
 #--- Rule
   while
     $rule$
-    var @lstring transitionName
-    $literal_string$ ?transitionName
-    var @typePreconditionExpression preConditions
-    <parse_precondition> !?outPlacesMap !?constantMap ?preConditions
-    var @uint lowTemporalBound
-    var @uint highTemporalBound
-    <parse_bound> ?lowTemporalBound ?highTemporalBound
+    $literal_string$ ?let transitionName
+    <parse_precondition> !?outPlacesMap !?constantMap ?let preConditions
+    <parse_bound> ?let lowTemporalBound ?let highTemporalBound
     $:$
-    var @typePostconditionList postConditions
-    <parse_postcondition> !?outPlacesMap !?constantMap ?postConditions
+    <parse_postcondition> !?outPlacesMap !?constantMap ?let postConditions
     $;$
     outTransitionList += !transitionName !preConditions !postConditions !lowTemporalBound !highTemporalBound
   end
@@ -334,20 +305,16 @@ rule <axiome>
   $init$
   outInitialMarkingList = @typeInitialMarkingList. emptyList
   repeat
-    var @lstring placeName
-    $identifier$ ? placeName
-    var @uint placeID
-    [outPlacesMap searchKey !placeName ?placeID]
+    $identifier$ ?let placeName
+    [outPlacesMap searchKey !placeName ?let placeID]
     $:=$
     select
-      var @luint cst
-      var @bool sign
-      <parse_constant> !?constantMap ?sign ?cst
-      var @typePostcondition init = @typeAssignConstant. new { !placeName !placeID !sign !cst}
+      <parse_constant> !?constantMap ?let sign ?let cst
+      let @typePostcondition init = @typeAssignConstant. new { !placeName !placeID !sign !cst}
       outInitialMarkingList += !init
     or
       $infinity$
-      var @typePostcondition init = @typeAssignInfinity. new { !placeName !placeID}
+      let @typePostcondition init = @typeAssignInfinity. new { !placeName !placeID}
       outInitialMarkingList += !init
     end
   while
@@ -358,11 +325,9 @@ rule <axiome>
   repeat
   while
     $count$
-    var @lstring name
-    $literal_string$ ? name
+    $literal_string$ ?let name
     $:$
-    var @typePreconditionExpression conditions
-    <parse_precondition> !?outPlacesMap !?constantMap ?conditions
+    <parse_precondition> !?outPlacesMap !?constantMap ?let conditions
     $;$
     outCountList += !name !conditions
   end
