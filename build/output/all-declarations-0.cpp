@@ -12218,21 +12218,21 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint var_hashMapSize_553 ;
-  GALGAS_uint var_garbagePeriod_576 ;
-  GALGAS_typeVarMap var_placesMap_595 ;
-  GALGAS_typeTransitionList var_transitionList_619 ;
-  GALGAS_typeInitialMarkingList var_initialMarkingList_647 ;
-  GALGAS_countList var_countList_666 ;
-  var_hashMapSize_553.drop () ;
-  var_garbagePeriod_576.drop () ;
-  var_placesMap_595.drop () ;
-  var_transitionList_619.drop () ;
-  var_initialMarkingList_647.drop () ;
-  var_countList_666.drop () ;
-  cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_553, var_garbagePeriod_576, var_placesMap_595, var_transitionList_619, var_initialMarkingList_647, var_countList_666  COMMA_SOURCE_FILE ("spec_main.galgas", 11)) ;
+  GALGAS_uint var_hashMapSize_539 ;
+  GALGAS_uint var_garbagePeriod_562 ;
+  GALGAS_typeVarMap var_placesMap_581 ;
+  GALGAS_typeTransitionList var_transitionList_605 ;
+  GALGAS_typeInitialMarkingList var_initialMarkingList_633 ;
+  GALGAS_countList var_countList_652 ;
+  var_hashMapSize_539.drop () ;
+  var_garbagePeriod_562.drop () ;
+  var_placesMap_581.drop () ;
+  var_transitionList_605.drop () ;
+  var_initialMarkingList_633.drop () ;
+  var_countList_652.drop () ;
+  cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_539, var_garbagePeriod_562, var_placesMap_581, var_transitionList_605, var_initialMarkingList_633, var_countList_652  COMMA_SOURCE_FILE ("spec_main.galgas", 11)) ;
   {
-  routine_generate_5F_code (var_hashMapSize_553, var_garbagePeriod_576, var_placesMap_595, var_transitionList_619, var_initialMarkingList_647, var_countList_666, inCompiler  COMMA_SOURCE_FILE ("spec_main.galgas", 18)) ;
+  routine_generate_5F_code (var_hashMapSize_539, var_garbagePeriod_562, var_placesMap_581, var_transitionList_605, var_initialMarkingList_633, var_countList_652, inCompiler  COMMA_SOURCE_FILE ("spec_main.galgas", 19)) ;
   }
 }
 

@@ -8,13 +8,14 @@ case . "mg"
 message "an '.mg' source file"
 grammar spec_grammar
 ?sourceFilePath:@lstring inSourceFile {
-  grammar spec_grammar in inSourceFile
+  grammar spec_grammar (
     ?let hashMapSize
     ?let garbagePeriod
     ?let placesMap
     ?let transitionList
     ?let initialMarkingList
     ?let countList
+  ) in inSourceFile
   generate_code (
     !hashMapSize
     !garbagePeriod
