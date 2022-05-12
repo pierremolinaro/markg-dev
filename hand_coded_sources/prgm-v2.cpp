@@ -221,23 +221,23 @@ C_AEDD cPtr_typeFalseExpression::buildAEDDexpression (void) const {
 /*--------------------------------------------------------------------------*/
 
 C_AEDD cPtr_typeComplementExpression::buildAEDDexpression (void) const {
-  auto p = (const cPtr_typePreconditionExpression *) mProperty_mExpression.embeddedObjectPtr () ;
+  auto p = (const cPtr_typePreconditionExpression *) mProperty_mExpression.ptr () ;
   return ~ (p->buildAEDDexpression ()) ;
 }
 
 /*--------------------------------------------------------------------------*/
 
 C_AEDD cPtr_typeAndExpression::buildAEDDexpression (void) const {
-  auto p = (const cPtr_typePreconditionExpression *) mProperty_mLeftExpression.embeddedObjectPtr () ;
-  auto q = (const cPtr_typePreconditionExpression *) mProperty_mRightExpression.embeddedObjectPtr () ;
+  auto p = (const cPtr_typePreconditionExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_typePreconditionExpression *) mProperty_mRightExpression.ptr () ;
   return p->buildAEDDexpression () & q->buildAEDDexpression () ;
 }
 
 /*--------------------------------------------------------------------------*/
 
 C_AEDD cPtr_typeOrExpression::buildAEDDexpression (void) const {
-  auto p = (const cPtr_typePreconditionExpression *) mProperty_mLeftExpression.embeddedObjectPtr () ;
-  auto q = (const cPtr_typePreconditionExpression *) mProperty_mRightExpression.embeddedObjectPtr () ;
+  auto p = (const cPtr_typePreconditionExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_typePreconditionExpression *) mProperty_mRightExpression.ptr () ;
   return p->buildAEDDexpression () | q->buildAEDDexpression () ;
 }
 
@@ -399,7 +399,7 @@ vddComputation (uint32_t inGarbagePeriod,
 //--- Compute count list
   cEnumerator_countList current (inCountList, kENUMERATION_UP) ;
   while (current.hasCurrentObject ()) {
-    auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).embeddedObjectPtr () ;
+    auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).ptr () ;
     const C_AEDD aedd = p->buildAEDDexpression () ;
     const C_VDD s = allStatesSet.getFirableFromAEDD (aedd) ;
     const uint64_t c = s.getSetCardinal () ;
@@ -410,10 +410,10 @@ vddComputation (uint32_t inGarbagePeriod,
 //--- Compute transition firing count
   if (inPrintTransitionsFiring) {
     co << "Transitions firing :\n" ;
-    uint64_t VDDtransitionsCount = 0 ;
+//    uint64_t VDDtransitionsCount = 0 ;
     for (int32_t i=0 ; i<inTransitionsCount ; i++) {
       VDDtransitionsFiringCount (i COMMA_HERE) = transitionSourceSet (i COMMA_HERE).getSetCardinal () ;
-      VDDtransitionsCount += VDDtransitionsFiringCount (i COMMA_HERE) ;
+//      VDDtransitionsCount += VDDtransitionsFiringCount (i COMMA_HERE) ;
       co << "  " << inTransitionNames (i COMMA_HERE) << " : "
          << cStringWithUnsigned (VDDtransitionsFiringCount (i COMMA_HERE))
          << " states in " << cStringWithSigned (transitionSourceSet (i COMMA_HERE).getNodesCount ())
@@ -686,7 +686,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 //--- Compute count list
   cEnumerator_countList current (inCountList, kENUMERATION_UP) ;
   while (current.hasCurrentObject ()) {
-    auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).embeddedObjectPtr () ;
+    auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).ptr () ;
     const C_AEDD aedd = p->buildAEDDexpression () ;
     const C_VDD s = allStatesSet.getFirableFromAEDD (aedd) ;
     const uint64_t c = s.getSetCardinal () ;
@@ -770,7 +770,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
   initialMarking.setToNullSet () ;
   cEnumerator_typeInitialMarkingList currentPlace (inInitialMarkingList, kENUMERATION_UP) ;
   while (currentPlace.hasCurrentObject ()) {
-    auto q = (const cPtr_typePostcondition *) currentPlace.current_mInitValue (HERE).embeddedObjectPtr () ;
+    auto q = (const cPtr_typePostcondition *) currentPlace.current_mInitValue (HERE).ptr () ;
     q->buildInitialMarking (initialMarking) ;
     currentPlace.gotoNextObject () ;
   }
@@ -788,7 +788,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
     highBounds.appendObject (currentTrans.current_mHighTemporalBound (HERE).uintValue ()) ;
     transitionsNames.appendObject (currentTrans.current_mTransitionName (HERE).mProperty_string.stringValue ()) ;
 //    printf ("BUILD FROM TRANSITION '%s'\n", currentTrans->mTransitionName.cString ()) ; fflush (stdout) ;
-    auto ptr = (const cPtr_typePreconditionExpression *) currentTrans.current_mPreconditionExpression (HERE).embeddedObjectPtr () ;
+    auto ptr = (const cPtr_typePreconditionExpression *) currentTrans.current_mPreconditionExpression (HERE).ptr () ;
     preconditionExp (t COMMA_HERE) = ptr->buildAEDDexpression () ;
     const uintptr_t nodesCount = preconditionExp (t COMMA_HERE).getAEDDnodesCount () ;
     if (nodesCount == 0) {
@@ -798,7 +798,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
 //    printf ("post expression\n") ; fflush (stdout) ;
     cEnumerator_typePostconditionList p (currentTrans.current_mPostconditionList (HERE), kENUMERATION_UP) ;
     while (p.hasCurrentObject ()) {
-      auto q = (const cPtr_typePostcondition *) p.current_mPostcondition (HERE).embeddedObjectPtr () ;
+      auto q = (const cPtr_typePostcondition *) p.current_mPostcondition (HERE).ptr () ;
       q->buildPostCondition (t, inCompiler, postcondition) ;
       p.gotoNextObject () ;
     }
@@ -856,7 +856,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
     while (currentCount.hasCurrentObject ()) {
       C_String s ;
       s << "Count \"" << currentCount.current_mName (HERE) << "\" : " ;
-      auto q = (const cPtr_typePreconditionExpression *) currentCount.current_mCondition (HERE).embeddedObjectPtr () ;
+      auto q = (const cPtr_typePreconditionExpression *) currentCount.current_mCondition (HERE).ptr () ;
       const C_AEDD expr = q->buildAEDDexpression () ;
       expr.printAEDDnodes (s.cString (HERE)) ;
       currentCount.gotoNextObject () ;
