@@ -10,11 +10,9 @@
 
 class cPtr_typeEqualExpression : public cPtr_typePreconditionExpression {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- START OF USER ZONE 2
 
-  public : virtual C_AEDD buildAEDDexpression (void) const ;
+  public : virtual C_AEDD buildAEDDexpression (void) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties
@@ -29,16 +27,16 @@ class cPtr_typeEqualExpression : public cPtr_typePreconditionExpression {
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 

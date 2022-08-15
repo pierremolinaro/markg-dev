@@ -6,102 +6,102 @@
 
 syntax spec_parser (spec_scanner) {
 
-rule <axiome>
+rule <axiome>(
   !@uint outHashMapSize
   !@uint outGarbagePeriod
   !@typeVarMap outPlacesMap
   !@typeTransitionList outTransitionList
   !@typeInitialMarkingList outInitialMarkingList
-  !@countList outCountList
+  !@countList outCountList)
 
-rule <parse_precondition>
+rule <parse_precondition>(
   ?!@typeVarMap outPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions
+  !@typePreconditionExpression outPreConditions)
 
-rule <term>
+rule <term>(
   ?!@typeVarMap outPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions
+  !@typePreconditionExpression outPreConditions)
 
-rule <factor>
+rule <factor>(
   ?!@typeVarMap outPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions
+  !@typePreconditionExpression outPreConditions)
 
-rule <primary>
+rule <primary>(
   ?!@typeVarMap outPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions
+  !@typePreconditionExpression outPreConditions)
 
-rule <parse_postcondition>
+rule <parse_postcondition>(
   ?!@typeVarMap outPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePostconditionList outPostConditionsList
+  !@typePostconditionList outPostConditionsList)
 
-rule <parse_constant>
+rule <parse_constant>(
   ?!@typeCstMap ioConstantMap
   !@bool outSign
-  !@luint outValue
+  !@luint outValue)
 
-rule <parse_bound>
+rule <parse_bound>(
  !@uint lowTemporalBound
- !@uint highTemporalBound
+ !@uint highTemporalBound)
 
 #---------------------------------------------------------------------------*
 
-rule <parse_precondition>
+rule <parse_precondition>(
   ?!@typeVarMap inPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions {
-  <term> !?inPlacesMap !?ioConstantMap ?outPreConditions
+  !@typePreconditionExpression outPreConditions) {
+  <term>( !?inPlacesMap !?ioConstantMap ?outPreConditions)
   repeat
   while
     $|$
-    <term> !?inPlacesMap !?ioConstantMap ?let right
-    outPreConditions = @typeOrExpression. new { !outPreConditions !right}
+    <term>( !?inPlacesMap !?ioConstantMap ?let right)
+    outPreConditions = @typeOrExpression. new ( !outPreConditions !right)
   end
 }
 
 #---------------------------------------------------------------------------*
 
-rule <term>
+rule <term>(
   ?!@typeVarMap inPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions {
-  <factor> !?inPlacesMap !?ioConstantMap ?outPreConditions
+  !@typePreconditionExpression outPreConditions) {
+  <factor>( !?inPlacesMap !?ioConstantMap ?outPreConditions)
   repeat
   while
     $&$
-    <factor> !?inPlacesMap !?ioConstantMap ?let right
-    outPreConditions = @typeAndExpression. new { !outPreConditions !right}
+    <factor>( !?inPlacesMap !?ioConstantMap ?let right)
+    outPreConditions = @typeAndExpression. new ( !outPreConditions !right)
   end
 }
 
 #---------------------------------------------------------------------------*
 
-rule <factor>
+rule <factor>(
   ?!@typeVarMap inPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions {
+  !@typePreconditionExpression outPreConditions) {
  select
    $~$
-   <factor> !?inPlacesMap !?ioConstantMap ?outPreConditions
-   outPreConditions = @typeComplementExpression. new { !outPreConditions}
+   <factor>( !?inPlacesMap !?ioConstantMap ?outPreConditions)
+   outPreConditions = @typeComplementExpression. new ( !outPreConditions)
   or
-   <primary> !?inPlacesMap !?ioConstantMap ?outPreConditions
+   <primary>( !?inPlacesMap !?ioConstantMap ?outPreConditions)
   end
 }
 
 #---------------------------------------------------------------------------*
 
-rule <primary>
+rule <primary>(
   ?!@typeVarMap inPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePreconditionExpression outPreConditions {
+  !@typePreconditionExpression outPreConditions) {
   select
     $($
-    <parse_precondition> !?inPlacesMap !?ioConstantMap ?outPreConditions
+    <parse_precondition>( !?inPlacesMap !?ioConstantMap ?outPreConditions)
     $)$
   or
     $true$
@@ -111,32 +111,32 @@ rule <primary>
     outPreConditions = @typeFalseExpression. new
   or
     ${$
-    $identifier$ ?let name
+    $identifier$( ?let name)
     [inPlacesMap searchKey !name ?let idx]
     select
       $==$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      outPreConditions = @typeEqualExpression. new { !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      outPreConditions = @typeEqualExpression. new ( !idx !sign !cst)
     or
       $!=$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      outPreConditions = @typeNonEqualExpression. new { !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      outPreConditions = @typeNonEqualExpression. new ( !idx !sign !cst)
     or
       $<=$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      outPreConditions = @typeInfOrEqualExpression. new { !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      outPreConditions = @typeInfOrEqualExpression. new ( !idx !sign !cst)
     or
       $>=$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      outPreConditions = @typeSupOrEqualExpression. new { !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      outPreConditions = @typeSupOrEqualExpression. new ( !idx !sign !cst)
     or
       $<$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      outPreConditions = @typeStrictInfExpression. new { !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      outPreConditions = @typeStrictInfExpression. new ( !idx !sign !cst)
     or
       $>$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      outPreConditions = @typeStrictSupExpression. new { !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      outPreConditions = @typeStrictSupExpression. new ( !idx !sign !cst)
     end
     $}$
   end
@@ -144,56 +144,56 @@ rule <primary>
 
 #---------------------------------------------------------------------------*
 
-rule <parse_constant>
+rule <parse_constant>(
   ?!@typeCstMap ioConstantMap
   !@bool outSign
-  !@luint outValue {
+  !@luint outValue) {
   select
-    $identifier$ ?let constantName
+    $identifier$( ?let constantName)
     [ioConstantMap searchKey !constantName ?outSign ?outValue]
   or
     $-$
     outSign = true
-    $literal_integer$ ? outValue
+    $literal_integer$( ? outValue)
   or
     outSign = false
-    $literal_integer$ ? outValue
+    $literal_integer$( ? outValue)
   end
 }
 
 #---------------------------------------------------------------------------*
 
-rule <parse_postcondition>
+rule <parse_postcondition>(
   ?!@typeVarMap outPlacesMap
   ?!@typeCstMap ioConstantMap
-  !@typePostconditionList outPostConditionsList {
+  !@typePostconditionList outPostConditionsList) {
   outPostConditionsList = @typePostconditionList. emptyList
   repeat
-    $identifier$ ?let name
+    $identifier$( ?let name)
     [outPlacesMap searchKey !name ?let idx]
     let @typePostcondition p
     select
       $--$
-      p = @typePostDecrement. new { !name !idx}
+      p = @typePostDecrement. new ( !name !idx)
     or
       $++$
-      p = @typePostIncrement. new { !name !idx}
+      p = @typePostIncrement. new ( !name !idx)
     or
       $+=$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      p = @typeAddConstant. new { !name !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      p = @typeAddConstant. new ( !name !idx !sign !cst)
     or
       $-=$
-      <parse_constant> !?ioConstantMap ?let sign ?let cst
-      p = @typeSubConstant. new { !name !idx !sign !cst}
+      <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+      p = @typeSubConstant. new ( !name !idx !sign !cst)
     or
       $:=$
       select
-        <parse_constant> !?ioConstantMap ?let sign ?let cst
-        p = @typeAssignConstant. new { !name !idx !sign !cst}
+        <parse_constant>( !?ioConstantMap ?let sign ?let cst)
+        p = @typeAssignConstant. new ( !name !idx !sign !cst)
       or
         $infinity$
-        p = @typeAssignInfinity. new { !name !idx}
+        p = @typeAssignInfinity. new ( !name !idx)
       end
     end
     outPostConditionsList += !p
@@ -204,22 +204,22 @@ rule <parse_postcondition>
 
 #---------------------------------------------------------------------------*
 
-rule <parse_bound>
+rule <parse_bound>(
  !@uint lowTemporalBound
- !@uint highTemporalBound {
+ !@uint highTemporalBound) {
   lowTemporalBound = 0
   highTemporalBound = 0
 }
 
 #---------------------------------------------------------------------------*
 
-rule <parse_bound>
+rule <parse_bound>(
  !@uint lowTemporalBound
- !@uint highTemporalBound {
+ !@uint highTemporalBound) {
   $[$
-  $literal_integer$ ?let low
+  $literal_integer$( ?let low)
   $,$
-  $literal_integer$ ?let high
+  $literal_integer$( ?let high)
   $]$
   lowTemporalBound = low.uint
   highTemporalBound = high.uint
@@ -242,18 +242,18 @@ rule <parse_bound>
 #
 ##---------------------------------------------------------------------------*
 
-rule <axiome>
+rule <axiome>(
   !@uint outHashMapSize
   !@uint outGarbagePeriod
   !@typeVarMap outPlacesMap
   !@typeTransitionList outTransitionList
   !@typeInitialMarkingList outInitialMarkingList
-  !@countList outCountList {
+  !@countList outCountList) {
   $system$
 #--- Options
   select
     $hashmapsize$
-    $literal_integer$ ?let n
+    $literal_integer$( ?let n)
     $;$
     outHashMapSize = n.uint
   or
@@ -261,7 +261,7 @@ rule <axiome>
   end
   select
     $garbageperiod$
-    $literal_integer$ ?let n
+    $literal_integer$( ?let n)
     $;$
     outGarbagePeriod = n.uint
   or
@@ -269,22 +269,22 @@ rule <axiome>
   end
   outTransitionList = @typeTransitionList. emptyList
   outPlacesMap = @typeVarMap. emptyMap
-  var constantMap =@typeCstMap.emptyMap{}
+  var constantMap =@typeCstMap.emptyMap()
   outCountList = @countList. emptyList
   repeat
 #--- constant
   while
     $const$
-    $identifier$ ?let constantName
+    $identifier$( ?let constantName)
     $=$
-    <parse_constant> !?constantMap ?let sign ?let value
+    <parse_constant>( !?constantMap ?let sign ?let value)
     [!?constantMap insertKey !constantName !sign !value]
     $;$
 #--- Variables
   while
     $var$
     repeat
-      $identifier$ ?let placeName
+      $identifier$( ?let placeName)
       [!?outPlacesMap insertKey !placeName ![outPlacesMap count]]
     while
       $,$
@@ -293,11 +293,11 @@ rule <axiome>
 #--- Rule
   while
     $rule$
-    $literal_string$ ?let transitionName
-    <parse_precondition> !?outPlacesMap !?constantMap ?let preConditions
-    <parse_bound> ?let lowTemporalBound ?let highTemporalBound
+    $literal_string$( ?let transitionName)
+    <parse_precondition>( !?outPlacesMap !?constantMap ?let preConditions)
+    <parse_bound>( ?let lowTemporalBound ?let highTemporalBound)
     $:$
-    <parse_postcondition> !?outPlacesMap !?constantMap ?let postConditions
+    <parse_postcondition>( !?outPlacesMap !?constantMap ?let postConditions)
     $;$
     outTransitionList += !transitionName !preConditions !postConditions !lowTemporalBound !highTemporalBound
   end
@@ -305,16 +305,16 @@ rule <axiome>
   $init$
   outInitialMarkingList = @typeInitialMarkingList. emptyList
   repeat
-    $identifier$ ?let placeName
+    $identifier$( ?let placeName)
     [outPlacesMap searchKey !placeName ?let placeID]
     $:=$
     select
-      <parse_constant> !?constantMap ?let sign ?let cst
-      let @typePostcondition init = @typeAssignConstant. new { !placeName !placeID !sign !cst}
+      <parse_constant>( !?constantMap ?let sign ?let cst)
+      let @typePostcondition init = @typeAssignConstant. new ( !placeName !placeID !sign !cst)
       outInitialMarkingList += !init
     or
       $infinity$
-      let @typePostcondition init = @typeAssignInfinity. new { !placeName !placeID}
+      let @typePostcondition init = @typeAssignInfinity. new ( !placeName !placeID)
       outInitialMarkingList += !init
     end
   while
@@ -325,9 +325,9 @@ rule <axiome>
   repeat
   while
     $count$
-    $literal_string$ ?let name
+    $literal_string$( ?let name)
     $:$
-    <parse_precondition> !?outPlacesMap !?constantMap ?let conditions
+    <parse_precondition>( !?outPlacesMap !?constantMap ?let conditions)
     $;$
     outCountList += !name !conditions
   end

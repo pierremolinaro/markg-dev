@@ -10,14 +10,12 @@
 
 class cPtr_typePostDecrement : public cPtr_typePostcondition {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,
                                             C_Compiler * inLexique,
-                                            cPostConditionArray & ioPostCondition) const ;
-  public : virtual void buildInitialMarking (C_VDD & ioInitialMarking) const ;
+                                            cPostConditionArray & ioPostCondition) const override ;
+  public : virtual void buildInitialMarking (C_VDD & ioInitialMarking) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties
@@ -30,16 +28,16 @@ class cPtr_typePostDecrement : public cPtr_typePostcondition {
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 

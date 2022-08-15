@@ -8,13 +8,13 @@ project (0:0:1) -> "markg" {
   %codeblocks-windows
   %applicationBundleBase : "fr.irccyn"
 
-  "galgas-sources/spec_scanner.galgas"
-  "galgas-sources/spec_options.galgas"
-  "galgas-sources/spec_semantics.galgas"
-  "galgas-sources/spec_parser.galgas"
-  "galgas-sources/spec_grammar.galgas"
-  "galgas-sources/spec_cocoa.galgas"
-  "galgas-sources/spec_main.galgas"
+  "galgas-sources/spec_scanner.ggs"
+  "galgas-sources/spec_options.ggs"
+  "galgas-sources/spec_semantics.ggs"
+  "galgas-sources/spec_parser.ggs"
+  "galgas-sources/spec_grammar.ggs"
+  "galgas-sources/spec_cocoa.ggs"
+  "galgas-sources/spec_main.ggs"
 
   %tool-source : "hand_coded_sources/prgm-v2.cpp"
   %tool-source : "hand_coded_sources/C_AEDD.cpp"

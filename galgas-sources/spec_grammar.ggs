@@ -6,13 +6,13 @@
 
 grammar spec_grammar "LL1" {
   syntax spec_parser
-   <axiome>
+   <axiome>(
     !@uint outHashMapSize
     !@uint outGarbagePeriod
     !@typeVarMap outPlacesMap
     !@typeTransitionList outTransitionList
     !@typeInitialMarkingList outInitialMarkingList
-    !@countList outCountList
+    !@countList outCountList)
 }
 
 #---------------------------------------------------------------------------*

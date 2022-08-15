@@ -22,101 +22,101 @@ map @typeCstMap {
 }
 
 #--- Precondition description
-abstract refclass @typePreconditionExpression %generatedInSeparateFile {
+abstract class @typePreconditionExpression %generatedInSeparateFile {
 }
 
-refclass @typeTrueExpression : @typePreconditionExpression {
+class @typeTrueExpression : @typePreconditionExpression {
 }
 
-refclass @typeFalseExpression : @typePreconditionExpression {
+class @typeFalseExpression : @typePreconditionExpression {
 }
 
-refclass @typeComplementExpression : @typePreconditionExpression {
+class @typeComplementExpression : @typePreconditionExpression {
   public var @typePreconditionExpression mExpression
 }
 
-refclass @typeAndExpression : @typePreconditionExpression {
+class @typeAndExpression : @typePreconditionExpression {
   public var @typePreconditionExpression mLeftExpression
   public var @typePreconditionExpression mRightExpression
 }
 
-refclass @typeOrExpression : @typePreconditionExpression {
+class @typeOrExpression : @typePreconditionExpression {
   public var @typePreconditionExpression mLeftExpression
   public var @typePreconditionExpression mRightExpression
 }
 
-refclass @typeEqualExpression : @typePreconditionExpression {
+class @typeEqualExpression : @typePreconditionExpression {
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeNonEqualExpression : @typePreconditionExpression {
+class @typeNonEqualExpression : @typePreconditionExpression {
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeInfOrEqualExpression : @typePreconditionExpression {
+class @typeInfOrEqualExpression : @typePreconditionExpression {
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeSupOrEqualExpression : @typePreconditionExpression {
+class @typeSupOrEqualExpression : @typePreconditionExpression {
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeStrictInfExpression : @typePreconditionExpression {
+class @typeStrictInfExpression : @typePreconditionExpression {
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeStrictSupExpression : @typePreconditionExpression {
+class @typeStrictSupExpression : @typePreconditionExpression {
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
 #--- Post condition
-abstract refclass @typePostcondition %generatedInSeparateFile {
+abstract class @typePostcondition %generatedInSeparateFile {
 }
 
-refclass @typePostIncrement : @typePostcondition {
+class @typePostIncrement : @typePostcondition {
   public var @lstring mVarName
   public var @uint mVar
 }
 
-refclass @typePostDecrement : @typePostcondition {
+class @typePostDecrement : @typePostcondition {
   public var @lstring mVarName
   public var @uint mVar
 }
 
-refclass @typeAddConstant : @typePostcondition {
-  public var @lstring mVarName
-  public var @uint mVar
-  public var @bool mNegativeConstant
-  public var @luint mConstant
-}
-
-refclass @typeSubConstant : @typePostcondition {
+class @typeAddConstant : @typePostcondition {
   public var @lstring mVarName
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeAssignConstant : @typePostcondition {
+class @typeSubConstant : @typePostcondition {
   public var @lstring mVarName
   public var @uint mVar
   public var @bool mNegativeConstant
   public var @luint mConstant
 }
 
-refclass @typeAssignInfinity : @typePostcondition {
+class @typeAssignConstant : @typePostcondition {
+  public var @lstring mVarName
+  public var @uint mVar
+  public var @bool mNegativeConstant
+  public var @luint mConstant
+}
+
+class @typeAssignInfinity : @typePostcondition {
   public var @lstring mVarName
   public var @uint mVar
 }
@@ -148,13 +148,13 @@ list @countList {
 
 #---------------------------------------------------------------------------*
 
-extern proc generate_code
+extern proc generate_code((
   ?let @uint hashMapSize
   ?let @uint garbagePeriod
   ?let @typeVarMap placesMap
   ?let @typeTransitionList transitionList
   ?let @typeInitialMarkingList initialMarkingList
-  ?let @countList countList
+  ?let @countList countList))
 
 #---------------------------------------------------------------------------*
 
