@@ -7661,11 +7661,11 @@ mProperty_mPostcondition (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typePostconditionList_2D_element GALGAS_typePostconditionList_2D_element::constructor_new (const GALGAS_typePostcondition & inOperand0 
+GALGAS_typePostconditionList_2D_element GALGAS_typePostconditionList_2D_element::constructor_new (const GALGAS_typePostcondition & in_mPostcondition 
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typePostconditionList_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_typePostconditionList_2D_element (inOperand0) ;
+  if (in_mPostcondition.isValid ()) {
+    result = GALGAS_typePostconditionList_2D_element (in_mPostcondition) ;
   }
   return result ;
 }
@@ -7767,11 +7767,11 @@ mProperty_mInitValue (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typeInitialMarkingList_2D_element GALGAS_typeInitialMarkingList_2D_element::constructor_new (const GALGAS_typePostcondition & inOperand0 
+GALGAS_typeInitialMarkingList_2D_element GALGAS_typeInitialMarkingList_2D_element::constructor_new (const GALGAS_typePostcondition & in_mInitValue 
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeInitialMarkingList_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_typeInitialMarkingList_2D_element (inOperand0) ;
+  if (in_mInitValue.isValid ()) {
+    result = GALGAS_typeInitialMarkingList_2D_element (in_mInitValue) ;
   }
   return result ;
 }
@@ -11356,12 +11356,12 @@ GALGAS_typeVarMap_2D_element GALGAS_typeVarMap_2D_element::constructor_default (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typeVarMap_2D_element GALGAS_typeVarMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_uint & inOperand1 
+GALGAS_typeVarMap_2D_element GALGAS_typeVarMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                            const GALGAS_uint & in_mIndex 
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeVarMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_typeVarMap_2D_element (inOperand0, inOperand1) ;
+  if (in_lkey.isValid () && in_mIndex.isValid ()) {
+    result = GALGAS_typeVarMap_2D_element (in_lkey, in_mIndex) ;
   }
   return result ;
 }
@@ -11483,13 +11483,13 @@ GALGAS_typeCstMap_2D_element GALGAS_typeCstMap_2D_element::constructor_default (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typeCstMap_2D_element GALGAS_typeCstMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_bool & inOperand1,
-                                                                            const GALGAS_luint & inOperand2 
+GALGAS_typeCstMap_2D_element GALGAS_typeCstMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                            const GALGAS_bool & in_mSign,
+                                                                            const GALGAS_luint & in_mValue 
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeCstMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_typeCstMap_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_lkey.isValid () && in_mSign.isValid () && in_mValue.isValid ()) {
+    result = GALGAS_typeCstMap_2D_element (in_lkey, in_mSign, in_mValue) ;
   }
   return result ;
 }
@@ -11615,15 +11615,15 @@ mProperty_mHighTemporalBound (inOperand4) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_typeTransitionList_2D_element GALGAS_typeTransitionList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                            const GALGAS_typePreconditionExpression & inOperand1,
-                                                                                            const GALGAS_typePostconditionList & inOperand2,
-                                                                                            const GALGAS_uint & inOperand3,
-                                                                                            const GALGAS_uint & inOperand4 
+GALGAS_typeTransitionList_2D_element GALGAS_typeTransitionList_2D_element::constructor_new (const GALGAS_lstring & in_mTransitionName,
+                                                                                            const GALGAS_typePreconditionExpression & in_mPreconditionExpression,
+                                                                                            const GALGAS_typePostconditionList & in_mPostconditionList,
+                                                                                            const GALGAS_uint & in_mLowTemporalBound,
+                                                                                            const GALGAS_uint & in_mHighTemporalBound 
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeTransitionList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_typeTransitionList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
+  if (in_mTransitionName.isValid () && in_mPreconditionExpression.isValid () && in_mPostconditionList.isValid () && in_mLowTemporalBound.isValid () && in_mHighTemporalBound.isValid ()) {
+    result = GALGAS_typeTransitionList_2D_element (in_mTransitionName, in_mPreconditionExpression, in_mPostconditionList, in_mLowTemporalBound, in_mHighTemporalBound) ;
   }
   return result ;
 }
@@ -11752,12 +11752,12 @@ mProperty_mCondition (inOperand1) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_countList_2D_element GALGAS_countList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_typePreconditionExpression & inOperand1 
+GALGAS_countList_2D_element GALGAS_countList_2D_element::constructor_new (const GALGAS_lstring & in_mName,
+                                                                          const GALGAS_typePreconditionExpression & in_mCondition 
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_countList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_countList_2D_element (inOperand0, inOperand1) ;
+  if (in_mName.isValid () && in_mCondition.isValid ()) {
+    result = GALGAS_countList_2D_element (in_mName, in_mCondition) ;
   }
   return result ;
 }
