@@ -1259,7 +1259,8 @@ mProperty_mIndex (in_mIndex) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_typeVarMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1532,7 +1533,8 @@ mProperty_mValue (in_mValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_typeCstMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mSign.isValid () && mProperty_mValue.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mSign.isValid () && mProperty_mValue.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4941,7 +4943,7 @@ mObject (inElement.mProperty_mPostcondition) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_typePostconditionList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5366,7 +5368,7 @@ mObject (inElement.mProperty_mTransitionName, inElement.mProperty_mPreconditionE
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_typeTransitionList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6035,7 +6037,7 @@ mObject (inElement.mProperty_mInitValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_typeInitialMarkingList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6454,7 +6456,7 @@ mObject (inElement.mProperty_mName, inElement.mProperty_mCondition) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_countList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
