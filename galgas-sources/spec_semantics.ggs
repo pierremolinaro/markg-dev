@@ -148,13 +148,13 @@ list @countList {
 
 #---------------------------------------------------------------------------*
 
-extern proc generate_code((
+extern proc generate_code (
   ?let @uint hashMapSize
   ?let @uint garbagePeriod
   ?let @typeVarMap placesMap
   ?let @typeTransitionList transitionList
   ?let @typeInitialMarkingList initialMarkingList
-  ?let @countList countList))
+  ?let @countList countList)
 
 #---------------------------------------------------------------------------*
 
