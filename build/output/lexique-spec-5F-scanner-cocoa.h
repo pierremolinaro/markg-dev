@@ -94,8 +94,6 @@ enum {spec_scanner_1_,
 
 - (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex ;
 
-- (NSString *) indexingDirectory ;
-
 - (NSArray *) indexingTitles ; // Array of NSString
 
 - (BOOL) isTemplateLexique ;

@@ -10,6 +10,9 @@
 
 class cPtr_typePostcondition : public acStrongPtr_class {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,

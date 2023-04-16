@@ -42,14 +42,6 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//                 I N D E X I N G    D I R E C T O R Y                                          
-//----------------------------------------------------------------------------------------------------------------------
-
-C_String C_Lexique_spec_5F_scanner::indexingDirectory (void) const {
-  return "" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //                        Lexical error message list                                             
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1478,7 +1470,7 @@ bool GALGAS_typeVarMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeVarMap type
+//     @typeVarMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1804,7 +1796,7 @@ bool GALGAS_typeCstMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeCstMap type
+//     @typeCstMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1849,6 +1841,14 @@ GALGAS_typeCstMap GALGAS_typeCstMap::extractObject (const GALGAS_object & inObje
 // @typePreconditionExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePreconditionExpression::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_typePreconditionExpression::objectCompare (const GALGAS_typePreconditionExpression & inOperand) const {
@@ -1861,7 +1861,7 @@ typeComparisonResult GALGAS_typePreconditionExpression::objectCompare (const GAL
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -1890,7 +1890,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePreconditionExpression type
+//     @typePreconditionExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2001,7 +2001,7 @@ GALGAS_typePreconditionExpression GALGAS_typePreconditionExpression_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePreconditionExpression-weak type
+//     @typePreconditionExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2046,6 +2046,14 @@ GALGAS_typePreconditionExpression_2D_weak GALGAS_typePreconditionExpression_2D_w
 // @typeTrueExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeTrueExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeTrueExpression::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -2063,7 +2071,7 @@ typeComparisonResult GALGAS_typeTrueExpression::objectCompare (const GALGAS_type
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -2125,7 +2133,7 @@ acPtr_class * cPtr_typeTrueExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeTrueExpression type
+//     @typeTrueExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2236,7 +2244,7 @@ GALGAS_typeTrueExpression GALGAS_typeTrueExpression_2D_weak::bang_typeTrueExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeTrueExpression-weak type
+//     @typeTrueExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2281,6 +2289,14 @@ GALGAS_typeTrueExpression_2D_weak GALGAS_typeTrueExpression_2D_weak::extractObje
 // @typeFalseExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeFalseExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeFalseExpression::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -2298,7 +2314,7 @@ typeComparisonResult GALGAS_typeFalseExpression::objectCompare (const GALGAS_typ
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -2360,7 +2376,7 @@ acPtr_class * cPtr_typeFalseExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeFalseExpression type
+//     @typeFalseExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2471,7 +2487,7 @@ GALGAS_typeFalseExpression GALGAS_typeFalseExpression_2D_weak::bang_typeFalseExp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeFalseExpression-weak type
+//     @typeFalseExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2516,6 +2532,15 @@ GALGAS_typeFalseExpression_2D_weak GALGAS_typeFalseExpression_2D_weak::extractOb
 // @typeComplementExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeComplementExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeComplementExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeComplementExpression * p = (const cPtr_typeComplementExpression *) inOperandPtr ;
@@ -2539,7 +2564,7 @@ typeComparisonResult GALGAS_typeComplementExpression::objectCompare (const GALGA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -2625,7 +2650,7 @@ acPtr_class * cPtr_typeComplementExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeComplementExpression type
+//     @typeComplementExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2736,7 +2761,7 @@ GALGAS_typeComplementExpression GALGAS_typeComplementExpression_2D_weak::bang_ty
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeComplementExpression-weak type
+//     @typeComplementExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2781,6 +2806,16 @@ GALGAS_typeComplementExpression_2D_weak GALGAS_typeComplementExpression_2D_weak:
 // @typeAndExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAndExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeAndExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeAndExpression * p = (const cPtr_typeAndExpression *) inOperandPtr ;
@@ -2807,7 +2842,7 @@ typeComparisonResult GALGAS_typeAndExpression::objectCompare (const GALGAS_typeA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -2921,7 +2956,7 @@ acPtr_class * cPtr_typeAndExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAndExpression type
+//     @typeAndExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3032,7 +3067,7 @@ GALGAS_typeAndExpression GALGAS_typeAndExpression_2D_weak::bang_typeAndExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAndExpression-weak type
+//     @typeAndExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3077,6 +3112,16 @@ GALGAS_typeAndExpression_2D_weak GALGAS_typeAndExpression_2D_weak::extractObject
 // @typeOrExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeOrExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeOrExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeOrExpression * p = (const cPtr_typeOrExpression *) inOperandPtr ;
@@ -3103,7 +3148,7 @@ typeComparisonResult GALGAS_typeOrExpression::objectCompare (const GALGAS_typeOr
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -3217,7 +3262,7 @@ acPtr_class * cPtr_typeOrExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeOrExpression type
+//     @typeOrExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3328,7 +3373,7 @@ GALGAS_typeOrExpression GALGAS_typeOrExpression_2D_weak::bang_typeOrExpression_2
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeOrExpression-weak type
+//     @typeOrExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3439,7 +3484,7 @@ GALGAS_typeEqualExpression GALGAS_typeEqualExpression_2D_weak::bang_typeEqualExp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeEqualExpression-weak type
+//     @typeEqualExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3550,7 +3595,7 @@ GALGAS_typeNonEqualExpression GALGAS_typeNonEqualExpression_2D_weak::bang_typeNo
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeNonEqualExpression-weak type
+//     @typeNonEqualExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3661,7 +3706,7 @@ GALGAS_typeInfOrEqualExpression GALGAS_typeInfOrEqualExpression_2D_weak::bang_ty
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeInfOrEqualExpression-weak type
+//     @typeInfOrEqualExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3772,7 +3817,7 @@ GALGAS_typeSupOrEqualExpression GALGAS_typeSupOrEqualExpression_2D_weak::bang_ty
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeSupOrEqualExpression-weak type
+//     @typeSupOrEqualExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3883,7 +3928,7 @@ GALGAS_typeStrictInfExpression GALGAS_typeStrictInfExpression_2D_weak::bang_type
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeStrictInfExpression-weak type
+//     @typeStrictInfExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3994,7 +4039,7 @@ GALGAS_typeStrictSupExpression GALGAS_typeStrictSupExpression_2D_weak::bang_type
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeStrictSupExpression-weak type
+//     @typeStrictSupExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4039,6 +4084,14 @@ GALGAS_typeStrictSupExpression_2D_weak GALGAS_typeStrictSupExpression_2D_weak::e
 // @typePostcondition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePostcondition::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_typePostcondition::objectCompare (const GALGAS_typePostcondition & inOperand) const {
@@ -4051,7 +4104,7 @@ typeComparisonResult GALGAS_typePostcondition::objectCompare (const GALGAS_typeP
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4080,7 +4133,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostcondition type
+//     @typePostcondition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4191,7 +4244,7 @@ GALGAS_typePostcondition GALGAS_typePostcondition_2D_weak::bang_typePostconditio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostcondition-weak type
+//     @typePostcondition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4302,7 +4355,7 @@ GALGAS_typePostIncrement GALGAS_typePostIncrement_2D_weak::bang_typePostIncremen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostIncrement-weak type
+//     @typePostIncrement-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4413,7 +4466,7 @@ GALGAS_typePostDecrement GALGAS_typePostDecrement_2D_weak::bang_typePostDecremen
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostDecrement-weak type
+//     @typePostDecrement-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4524,7 +4577,7 @@ GALGAS_typeAddConstant GALGAS_typeAddConstant_2D_weak::bang_typeAddConstant_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAddConstant-weak type
+//     @typeAddConstant-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4635,7 +4688,7 @@ GALGAS_typeSubConstant GALGAS_typeSubConstant_2D_weak::bang_typeSubConstant_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeSubConstant-weak type
+//     @typeSubConstant-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4746,7 +4799,7 @@ GALGAS_typeAssignConstant GALGAS_typeAssignConstant_2D_weak::bang_typeAssignCons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAssignConstant-weak type
+//     @typeAssignConstant-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4857,7 +4910,7 @@ GALGAS_typeAssignInfinity GALGAS_typeAssignInfinity_2D_weak::bang_typeAssignInfi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAssignInfinity-weak type
+//     @typeAssignInfinity-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5274,7 +5327,7 @@ GALGAS_typePostcondition cEnumerator_typePostconditionList::current_mPostconditi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostconditionList type
+//     @typePostconditionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5951,7 +6004,7 @@ GALGAS_uint cEnumerator_typeTransitionList::current_mHighTemporalBound (LOCATION
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeTransitionList type
+//     @typeTransitionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6368,7 +6421,7 @@ GALGAS_typePostcondition cEnumerator_typeInitialMarkingList::current_mInitValue 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeInitialMarkingList type
+//     @typeInitialMarkingList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6850,7 +6903,7 @@ GALGAS_typePreconditionExpression cEnumerator_countList::current_mCondition (LOC
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@countList type
+//     @countList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6938,6 +6991,24 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_precondition_i0_parse 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_precondition_i0_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  nt_term_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_spec_5F_parser_0 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__7C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 60)) ;
+      nt_term_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_spec_5F_parser::rule_spec_5F_parser_term_i1_ (GALGAS_typeVarMap & ioArgument_inPlacesMap,
                                                            GALGAS_typeCstMap & ioArgument_ioConstantMap,
                                                            GALGAS_typePreconditionExpression & outArgument_outPreConditions,
@@ -6981,6 +7052,24 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_term_i1_parse (C_Lexique_spec_5
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_spec_5F_parser::rule_spec_5F_parser_term_i1_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  nt_factor_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_spec_5F_parser_1 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__26_ COMMA_SOURCE_FILE ("spec_parser.ggs", 75)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_spec_5F_parser::rule_spec_5F_parser_factor_i2_ (GALGAS_typeVarMap & ioArgument_inPlacesMap,
                                                              GALGAS_typeCstMap & ioArgument_ioConstantMap,
                                                              GALGAS_typePreconditionExpression & outArgument_outPreConditions,
@@ -7015,6 +7104,22 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_factor_i2_parse (C_Lexique_spec
     break ;
   }
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_spec_5F_parser::rule_spec_5F_parser_factor_i2_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  switch (select_spec_5F_parser_2 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__7E_ COMMA_SOURCE_FILE ("spec_parser.ggs", 88)) ;
+    nt_factor_indexing (inCompiler) ;
+  } break ;
+  case 2: {
+    nt_primary_indexing (inCompiler) ;
+  } break ;
+  default:
+    break ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7153,6 +7258,59 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_primary_i3_parse (C_Lexique_spe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_spec_5F_parser::rule_spec_5F_parser_primary_i3_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  switch (select_spec_5F_parser_3 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("spec_parser.ggs", 103)) ;
+    nt_parse_5F_precondition_indexing (inCompiler) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("spec_parser.ggs", 105)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_true COMMA_SOURCE_FILE ("spec_parser.ggs", 107)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_false COMMA_SOURCE_FILE ("spec_parser.ggs", 110)) ;
+  } break ;
+  case 4: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__7B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 113)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 114)) ;
+    switch (select_spec_5F_parser_4 (inCompiler)) {
+    case 1: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 117)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__21__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 121)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3C__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 125)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 129)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 5: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 133)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 6: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3E_ COMMA_SOURCE_FILE ("spec_parser.ggs", 137)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    default:
+      break ;
+    }
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__7D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 141)) ;
+  } break ;
+  default:
+    break ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_constant_i4_ (GALGAS_typeCstMap & ioArgument_ioConstantMap,
                                                                         GALGAS_bool & outArgument_outSign,
                                                                         GALGAS_luint & outArgument_outValue,
@@ -7199,6 +7357,25 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_constant_i4_parse (C_L
     break ;
   }
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_constant_i4_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  switch (select_spec_5F_parser_5 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 152)) ;
+  } break ;
+  case 2: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 155)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 157)) ;
+  } break ;
+  case 3: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 160)) ;
+  } break ;
+  default:
+    break ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7322,6 +7499,54 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_parse
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 172)) ;
+    switch (select_spec_5F_parser_7 (inCompiler)) {
+    case 1: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2D__2D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 176)) ;
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2B__2B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 179)) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2B__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 182)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2D__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 186)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 5: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 190)) ;
+      switch (select_spec_5F_parser_8 (inCompiler)) {
+      case 1: {
+        nt_parse_5F_constant_indexing (inCompiler) ;
+      } break ;
+      case 2: {
+        inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 195)) ;
+      } break ;
+      default:
+        break ;
+      }
+    } break ;
+    default:
+      break ;
+    }
+    switch (select_spec_5F_parser_6 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 201)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i6_ (GALGAS_uint & outArgument_lowTemporalBound,
                                                                      GALGAS_uint & outArgument_highTemporalBound,
                                                                      C_Lexique_spec_5F_scanner * /* inCompiler */) {
@@ -7335,6 +7560,11 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i6_ (GALGAS_uint
 
 void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i6_parse (C_Lexique_spec_5F_scanner * inCompiler) {
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i6_indexing (C_Lexique_spec_5F_scanner * /* inCompiler */) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7372,6 +7602,16 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i7_parse (C_Lexi
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 222)) ;
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__5D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 223)) ;
   inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i7_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__5B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 219)) ;
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 220)) ;
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 221)) ;
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 222)) ;
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__5D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 223)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7644,6 +7884,115 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_parse (C_Lexique_spec
   inCompiler->resetTemplateString () ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_indexing (C_Lexique_spec_5F_scanner * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+  switch (select_spec_5F_parser_9 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 255)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 256)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 257)) ;
+  } break ;
+  case 2: {
+  } break ;
+  default:
+    break ;
+  }
+  switch (select_spec_5F_parser_10 (inCompiler)) {
+  case 1: {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 263)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 264)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
+  } break ;
+  case 2: {
+  } break ;
+  default:
+    break ;
+  }
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_spec_5F_parser_11 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 277)) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 279)) ;
+      nt_parse_5F_constant_indexing (inCompiler) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 282)) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 285)) ;
+      bool repeatFlag_1 = true ;
+      while (repeatFlag_1) {
+        inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
+        switch (select_spec_5F_parser_12 (inCompiler)) {
+        case 2: {
+          inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
+        } break ;
+        default:
+          repeatFlag_1 = false ;
+          break ;
+        }
+      }
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 292)) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 295)) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 296)) ;
+      nt_parse_5F_precondition_indexing (inCompiler) ;
+      nt_parse_5F_bound_indexing (inCompiler) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
+      nt_parse_5F_postcondition_indexing (inCompiler) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 301)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 305)) ;
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 308)) ;
+    inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 310)) ;
+    switch (select_spec_5F_parser_14 (inCompiler)) {
+    case 1: {
+      nt_parse_5F_constant_indexing (inCompiler) ;
+    } break ;
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 316)) ;
+    } break ;
+    default:
+      break ;
+    }
+    switch (select_spec_5F_parser_13 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 321)) ;
+    } break ;
+    default:
+      repeatFlag_2 = false ;
+      break ;
+    }
+  }
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
+  bool repeatFlag_3 = true ;
+  while (repeatFlag_3) {
+    switch (select_spec_5F_parser_15 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 327)) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 328)) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 329)) ;
+      nt_parse_5F_precondition_indexing (inCompiler) ;
+      inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 331)) ;
+    } break ;
+    default:
+      repeatFlag_3 = false ;
+      break ;
+    }
+  }
+  inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 334)) ;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_typePostconditionList_2D_element::GALGAS_typePostconditionList_2D_element (void) :
@@ -7709,7 +8058,7 @@ void GALGAS_typePostconditionList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostconditionList-element type
+//     @typePostconditionList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7815,7 +8164,7 @@ void GALGAS_typeInitialMarkingList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeInitialMarkingList-element type
+//     @typeInitialMarkingList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7860,6 +8209,17 @@ GALGAS_typeInitialMarkingList_2D_element GALGAS_typeInitialMarkingList_2D_elemen
 // @typeEqualExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeEqualExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeEqualExpression * p = (const cPtr_typeEqualExpression *) inOperandPtr ;
@@ -7889,7 +8249,7 @@ typeComparisonResult GALGAS_typeEqualExpression::objectCompare (const GALGAS_typ
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8040,7 +8400,7 @@ acPtr_class * cPtr_typeEqualExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeEqualExpression type
+//     @typeEqualExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8085,6 +8445,17 @@ GALGAS_typeEqualExpression GALGAS_typeEqualExpression::extractObject (const GALG
 // @typeNonEqualExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeNonEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeNonEqualExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeNonEqualExpression * p = (const cPtr_typeNonEqualExpression *) inOperandPtr ;
@@ -8114,7 +8485,7 @@ typeComparisonResult GALGAS_typeNonEqualExpression::objectCompare (const GALGAS_
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8265,7 +8636,7 @@ acPtr_class * cPtr_typeNonEqualExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeNonEqualExpression type
+//     @typeNonEqualExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8310,6 +8681,17 @@ GALGAS_typeNonEqualExpression GALGAS_typeNonEqualExpression::extractObject (cons
 // @typeInfOrEqualExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeInfOrEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeInfOrEqualExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeInfOrEqualExpression * p = (const cPtr_typeInfOrEqualExpression *) inOperandPtr ;
@@ -8339,7 +8721,7 @@ typeComparisonResult GALGAS_typeInfOrEqualExpression::objectCompare (const GALGA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8490,7 +8872,7 @@ acPtr_class * cPtr_typeInfOrEqualExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeInfOrEqualExpression type
+//     @typeInfOrEqualExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8535,6 +8917,17 @@ GALGAS_typeInfOrEqualExpression GALGAS_typeInfOrEqualExpression::extractObject (
 // @typeSupOrEqualExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeSupOrEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeSupOrEqualExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeSupOrEqualExpression * p = (const cPtr_typeSupOrEqualExpression *) inOperandPtr ;
@@ -8564,7 +8957,7 @@ typeComparisonResult GALGAS_typeSupOrEqualExpression::objectCompare (const GALGA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8715,7 +9108,7 @@ acPtr_class * cPtr_typeSupOrEqualExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeSupOrEqualExpression type
+//     @typeSupOrEqualExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8760,6 +9153,17 @@ GALGAS_typeSupOrEqualExpression GALGAS_typeSupOrEqualExpression::extractObject (
 // @typeStrictInfExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeStrictInfExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeStrictInfExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeStrictInfExpression * p = (const cPtr_typeStrictInfExpression *) inOperandPtr ;
@@ -8789,7 +9193,7 @@ typeComparisonResult GALGAS_typeStrictInfExpression::objectCompare (const GALGAS
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8940,7 +9344,7 @@ acPtr_class * cPtr_typeStrictInfExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeStrictInfExpression type
+//     @typeStrictInfExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8985,6 +9389,17 @@ GALGAS_typeStrictInfExpression GALGAS_typeStrictInfExpression::extractObject (co
 // @typeStrictSupExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeStrictSupExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeStrictSupExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeStrictSupExpression * p = (const cPtr_typeStrictSupExpression *) inOperandPtr ;
@@ -9014,7 +9429,7 @@ typeComparisonResult GALGAS_typeStrictSupExpression::objectCompare (const GALGAS
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9165,7 +9580,7 @@ acPtr_class * cPtr_typeStrictSupExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeStrictSupExpression type
+//     @typeStrictSupExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9210,6 +9625,16 @@ GALGAS_typeStrictSupExpression GALGAS_typeStrictSupExpression::extractObject (co
 // @typePostDecrement reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePostDecrement::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typePostDecrement::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typePostDecrement * p = (const cPtr_typePostDecrement *) inOperandPtr ;
@@ -9236,7 +9661,7 @@ typeComparisonResult GALGAS_typePostDecrement::objectCompare (const GALGAS_typeP
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9358,7 +9783,7 @@ acPtr_class * cPtr_typePostDecrement::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostDecrement type
+//     @typePostDecrement generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9403,6 +9828,18 @@ GALGAS_typePostDecrement GALGAS_typePostDecrement::extractObject (const GALGAS_o
 // @typeAddConstant reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAddConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeAddConstant::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeAddConstant * p = (const cPtr_typeAddConstant *) inOperandPtr ;
@@ -9435,7 +9872,7 @@ typeComparisonResult GALGAS_typeAddConstant::objectCompare (const GALGAS_typeAdd
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9615,7 +10052,7 @@ acPtr_class * cPtr_typeAddConstant::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAddConstant type
+//     @typeAddConstant generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9660,6 +10097,18 @@ GALGAS_typeAddConstant GALGAS_typeAddConstant::extractObject (const GALGAS_objec
 // @typeSubConstant reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeSubConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeSubConstant::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeSubConstant * p = (const cPtr_typeSubConstant *) inOperandPtr ;
@@ -9692,7 +10141,7 @@ typeComparisonResult GALGAS_typeSubConstant::objectCompare (const GALGAS_typeSub
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9872,7 +10321,7 @@ acPtr_class * cPtr_typeSubConstant::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeSubConstant type
+//     @typeSubConstant generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9917,6 +10366,18 @@ GALGAS_typeSubConstant GALGAS_typeSubConstant::extractObject (const GALGAS_objec
 // @typeAssignConstant reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAssignConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeAssignConstant::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeAssignConstant * p = (const cPtr_typeAssignConstant *) inOperandPtr ;
@@ -9949,7 +10410,7 @@ typeComparisonResult GALGAS_typeAssignConstant::objectCompare (const GALGAS_type
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -10129,7 +10590,7 @@ acPtr_class * cPtr_typeAssignConstant::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAssignConstant type
+//     @typeAssignConstant generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10174,6 +10635,16 @@ GALGAS_typeAssignConstant GALGAS_typeAssignConstant::extractObject (const GALGAS
 // @typeAssignInfinity reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAssignInfinity::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typeAssignInfinity::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typeAssignInfinity * p = (const cPtr_typeAssignInfinity *) inOperandPtr ;
@@ -10200,7 +10671,7 @@ typeComparisonResult GALGAS_typeAssignInfinity::objectCompare (const GALGAS_type
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -10322,7 +10793,7 @@ acPtr_class * cPtr_typeAssignInfinity::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeAssignInfinity type
+//     @typeAssignInfinity generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10922,6 +11393,10 @@ void cGrammar_spec_5F_grammar::nt_axiome_parse (C_Lexique_spec_5F_scanner * inLe
   rule_spec_5F_parser_axiome_i8_parse(inLexique) ;
 }
 
+void cGrammar_spec_5F_grammar::nt_axiome_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_axiome_i8_indexing(inLexique) ;
+}
+
 void cGrammar_spec_5F_grammar::nt_axiome_ (GALGAS_uint & parameter_1,
                                 GALGAS_uint & parameter_2,
                                 GALGAS_typeVarMap & parameter_3,
@@ -10932,8 +11407,21 @@ void cGrammar_spec_5F_grammar::nt_axiome_ (GALGAS_uint & parameter_1,
   rule_spec_5F_parser_axiome_i8_(parameter_1, parameter_2, parameter_3, parameter_4, parameter_5, parameter_6, inLexique) ;
 }
 
-void cGrammar_spec_5F_grammar::performIndexing (C_Compiler * /* inCompiler */,
-             const C_String & /* inSourceFilePath */) {
+void cGrammar_spec_5F_grammar::performIndexing (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_spec_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_spec_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
+  scanner->enableIndexing () ;
+  if (scanner->sourceText ().isValid ()) {
+    const bool ok = scanner->performTopDownParsing (gProductions_spec_grammar, gProductionNames_spec_grammar, gProductionIndexes_spec_grammar,
+                                                    gFirstProductionIndexes_spec_grammar, gDecision_spec_grammar, gDecisionIndexes_spec_grammar, 169) ;
+    if (ok) {
+      cGrammar_spec_5F_grammar grammar ;
+      grammar.nt_axiome_indexing (scanner) ;
+    }
+    scanner->generateIndexFile () ;
+  }
+  macroDetachSharedObject (scanner) ;
 }
 
 void cGrammar_spec_5F_grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
@@ -11041,6 +11529,10 @@ void cGrammar_spec_5F_grammar::nt_parse_5F_precondition_parse (C_Lexique_spec_5F
   rule_spec_5F_parser_parse_5F_precondition_i0_parse(inLexique) ;
 }
 
+void cGrammar_spec_5F_grammar::nt_parse_5F_precondition_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_parse_5F_precondition_i0_indexing(inLexique) ;
+}
+
 void cGrammar_spec_5F_grammar::nt_parse_5F_precondition_ (GALGAS_typeVarMap & parameter_1,
                                 GALGAS_typeCstMap & parameter_2,
                                 GALGAS_typePreconditionExpression & parameter_3,
@@ -11056,6 +11548,10 @@ void cGrammar_spec_5F_grammar::nt_parse_5F_precondition_ (GALGAS_typeVarMap & pa
 
 void cGrammar_spec_5F_grammar::nt_term_parse (C_Lexique_spec_5F_scanner * inLexique) {
   rule_spec_5F_parser_term_i1_parse(inLexique) ;
+}
+
+void cGrammar_spec_5F_grammar::nt_term_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_term_i1_indexing(inLexique) ;
 }
 
 void cGrammar_spec_5F_grammar::nt_term_ (GALGAS_typeVarMap & parameter_1,
@@ -11075,6 +11571,10 @@ void cGrammar_spec_5F_grammar::nt_factor_parse (C_Lexique_spec_5F_scanner * inLe
   rule_spec_5F_parser_factor_i2_parse(inLexique) ;
 }
 
+void cGrammar_spec_5F_grammar::nt_factor_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_factor_i2_indexing(inLexique) ;
+}
+
 void cGrammar_spec_5F_grammar::nt_factor_ (GALGAS_typeVarMap & parameter_1,
                                 GALGAS_typeCstMap & parameter_2,
                                 GALGAS_typePreconditionExpression & parameter_3,
@@ -11090,6 +11590,10 @@ void cGrammar_spec_5F_grammar::nt_factor_ (GALGAS_typeVarMap & parameter_1,
 
 void cGrammar_spec_5F_grammar::nt_primary_parse (C_Lexique_spec_5F_scanner * inLexique) {
   rule_spec_5F_parser_primary_i3_parse(inLexique) ;
+}
+
+void cGrammar_spec_5F_grammar::nt_primary_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_primary_i3_indexing(inLexique) ;
 }
 
 void cGrammar_spec_5F_grammar::nt_primary_ (GALGAS_typeVarMap & parameter_1,
@@ -11109,6 +11613,10 @@ void cGrammar_spec_5F_grammar::nt_parse_5F_postcondition_parse (C_Lexique_spec_5
   rule_spec_5F_parser_parse_5F_postcondition_i5_parse(inLexique) ;
 }
 
+void cGrammar_spec_5F_grammar::nt_parse_5F_postcondition_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_parse_5F_postcondition_i5_indexing(inLexique) ;
+}
+
 void cGrammar_spec_5F_grammar::nt_parse_5F_postcondition_ (GALGAS_typeVarMap & parameter_1,
                                 GALGAS_typeCstMap & parameter_2,
                                 GALGAS_typePostconditionList & parameter_3,
@@ -11124,6 +11632,10 @@ void cGrammar_spec_5F_grammar::nt_parse_5F_postcondition_ (GALGAS_typeVarMap & p
 
 void cGrammar_spec_5F_grammar::nt_parse_5F_constant_parse (C_Lexique_spec_5F_scanner * inLexique) {
   rule_spec_5F_parser_parse_5F_constant_i4_parse(inLexique) ;
+}
+
+void cGrammar_spec_5F_grammar::nt_parse_5F_constant_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  rule_spec_5F_parser_parse_5F_constant_i4_indexing(inLexique) ;
 }
 
 void cGrammar_spec_5F_grammar::nt_parse_5F_constant_ (GALGAS_typeCstMap & parameter_1,
@@ -11146,6 +11658,19 @@ void cGrammar_spec_5F_grammar::nt_parse_5F_bound_parse (C_Lexique_spec_5F_scanne
     break ;
   case 2 :
     rule_spec_5F_parser_parse_5F_bound_i7_parse(inLexique) ;
+    break ;
+  default :
+    break ;
+  }
+}
+
+void cGrammar_spec_5F_grammar::nt_parse_5F_bound_indexing (C_Lexique_spec_5F_scanner * inLexique) {
+  switch (inLexique->nextProductionIndex ()) {
+  case 1 :
+    rule_spec_5F_parser_parse_5F_bound_i6_indexing(inLexique) ;
+    break ;
+  case 2 :
+    rule_spec_5F_parser_parse_5F_bound_i7_indexing(inLexique) ;
     break ;
   default :
     break ;
@@ -11411,7 +11936,7 @@ void GALGAS_typeVarMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeVarMap-element type
+//     @typeVarMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11545,7 +12070,7 @@ void GALGAS_typeCstMap_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeCstMap-element type
+//     @typeCstMap-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11691,7 +12216,7 @@ void GALGAS_typeTransitionList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typeTransitionList-element type
+//     @typeTransitionList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11807,7 +12332,7 @@ void GALGAS_countList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@countList-element type
+//     @countList-element generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11852,6 +12377,16 @@ GALGAS_countList_2D_element GALGAS_countList_2D_element::extractObject (const GA
 // @typePostIncrement reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePostIncrement::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_typePostIncrement::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_typePostIncrement * p = (const cPtr_typePostIncrement *) inOperandPtr ;
@@ -11878,7 +12413,7 @@ typeComparisonResult GALGAS_typePostIncrement::objectCompare (const GALGAS_typeP
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12000,7 +12535,7 @@ acPtr_class * cPtr_typePostIncrement::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@typePostIncrement type
+//     @typePostIncrement generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 

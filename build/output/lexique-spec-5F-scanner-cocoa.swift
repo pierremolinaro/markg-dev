@@ -317,12 +317,6 @@ class SWIFT_Lexique_spec_scanner : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func indexingDirectory () -> String {
-    return ""
-  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func indexingTitles () -> [String] {
 
     return []
