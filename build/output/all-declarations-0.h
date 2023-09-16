@@ -187,6 +187,11 @@ class GALGAS_typeVarMap : public AC_GALGAS_map {
                                                      const class GALGAS_uint & inOperand1,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_typeVarMap add_operation (const GALGAS_typeVarMap & inOperand,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -409,6 +414,11 @@ class GALGAS_typeCstMap : public AC_GALGAS_map {
                                                      const class GALGAS_luint & inOperand2,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_typeCstMap add_operation (const GALGAS_typeCstMap & inOperand,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -4343,4 +4353,14 @@ void routine_generate_5F_code (const class GALGAS_uint constinArgument0,
                                const class GALGAS_countList constinArgument5,
                                class C_Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'print'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_print (const class GALGAS_string constinArgument0,
+                    class C_Compiler * inCompiler
+                    COMMA_LOCATION_ARGS) ;
 
