@@ -6985,9 +6985,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_precondition_i0_ (GALG
     switch (select_spec_5F_parser_0 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__7C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 60)) ;
-      GALGAS_typePreconditionExpression var_right_1822 ;
-      nt_term_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_1822, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeOrExpression::constructor_new (outArgument_outPreConditions, var_right_1822  COMMA_SOURCE_FILE ("spec_parser.ggs", 62)) ;
+      GALGAS_typePreconditionExpression var_right_1818 ;
+      nt_term_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_1818, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeOrExpression::constructor_new (outArgument_outPreConditions, var_right_1818  COMMA_SOURCE_FILE ("spec_parser.ggs", 62)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -7046,9 +7046,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_term_i1_ (GALGAS_typeVarMap & i
     switch (select_spec_5F_parser_1 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__26_ COMMA_SOURCE_FILE ("spec_parser.ggs", 75)) ;
-      GALGAS_typePreconditionExpression var_right_2255 ;
-      nt_factor_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_2255, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeAndExpression::constructor_new (outArgument_outPreConditions, var_right_2255  COMMA_SOURCE_FILE ("spec_parser.ggs", 77)) ;
+      GALGAS_typePreconditionExpression var_right_2251 ;
+      nt_factor_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_2251, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeAndExpression::constructor_new (outArgument_outPreConditions, var_right_2251  COMMA_SOURCE_FILE ("spec_parser.ggs", 77)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -7171,52 +7171,52 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_primary_i3_ (GALGAS_typeVarMap 
   } break ;
   case 4: {
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__7B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 113)) ;
-    GALGAS_lstring var_name_3257 = inCompiler->synthetizedAttribute_theString () ;
+    GALGAS_lstring var_name_3254 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 114)) ;
-    GALGAS_uint var_idx_3301 ;
-    ioArgument_inPlacesMap.method_searchKey (var_name_3257, var_idx_3301, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 115)) ;
+    GALGAS_uint var_idx_3299 ;
+    ioArgument_inPlacesMap.method_searchKey (var_name_3254, var_idx_3299, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 115)) ;
     switch (select_spec_5F_parser_4 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 117)) ;
-      GALGAS_bool var_sign_3375 ;
-      GALGAS_luint var_cst_3385 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3375, var_cst_3385, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeEqualExpression::constructor_new (var_idx_3301, var_sign_3375, var_cst_3385  COMMA_SOURCE_FILE ("spec_parser.ggs", 119)) ;
+      GALGAS_bool var_sign_3372 ;
+      GALGAS_luint var_cst_3383 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3372, var_cst_3383, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeEqualExpression::constructor_new (var_idx_3299, var_sign_3372, var_cst_3383  COMMA_SOURCE_FILE ("spec_parser.ggs", 119)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__21__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 121)) ;
-      GALGAS_bool var_sign_3527 ;
-      GALGAS_luint var_cst_3537 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3527, var_cst_3537, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeNonEqualExpression::constructor_new (var_idx_3301, var_sign_3527, var_cst_3537  COMMA_SOURCE_FILE ("spec_parser.ggs", 123)) ;
+      GALGAS_bool var_sign_3524 ;
+      GALGAS_luint var_cst_3535 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3524, var_cst_3535, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeNonEqualExpression::constructor_new (var_idx_3299, var_sign_3524, var_cst_3535  COMMA_SOURCE_FILE ("spec_parser.ggs", 123)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3C__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 125)) ;
-      GALGAS_bool var_sign_3682 ;
-      GALGAS_luint var_cst_3692 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3682, var_cst_3692, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeInfOrEqualExpression::constructor_new (var_idx_3301, var_sign_3682, var_cst_3692  COMMA_SOURCE_FILE ("spec_parser.ggs", 127)) ;
+      GALGAS_bool var_sign_3679 ;
+      GALGAS_luint var_cst_3690 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3679, var_cst_3690, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeInfOrEqualExpression::constructor_new (var_idx_3299, var_sign_3679, var_cst_3690  COMMA_SOURCE_FILE ("spec_parser.ggs", 127)) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 129)) ;
-      GALGAS_bool var_sign_3839 ;
-      GALGAS_luint var_cst_3849 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3839, var_cst_3849, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeSupOrEqualExpression::constructor_new (var_idx_3301, var_sign_3839, var_cst_3849  COMMA_SOURCE_FILE ("spec_parser.ggs", 131)) ;
+      GALGAS_bool var_sign_3836 ;
+      GALGAS_luint var_cst_3847 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3836, var_cst_3847, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeSupOrEqualExpression::constructor_new (var_idx_3299, var_sign_3836, var_cst_3847  COMMA_SOURCE_FILE ("spec_parser.ggs", 131)) ;
     } break ;
     case 5: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 133)) ;
-      GALGAS_bool var_sign_3995 ;
-      GALGAS_luint var_cst_4005 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3995, var_cst_4005, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeStrictInfExpression::constructor_new (var_idx_3301, var_sign_3995, var_cst_4005  COMMA_SOURCE_FILE ("spec_parser.ggs", 135)) ;
+      GALGAS_bool var_sign_3992 ;
+      GALGAS_luint var_cst_4003 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3992, var_cst_4003, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeStrictInfExpression::constructor_new (var_idx_3299, var_sign_3992, var_cst_4003  COMMA_SOURCE_FILE ("spec_parser.ggs", 135)) ;
     } break ;
     case 6: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3E_ COMMA_SOURCE_FILE ("spec_parser.ggs", 137)) ;
-      GALGAS_bool var_sign_4150 ;
-      GALGAS_luint var_cst_4160 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_4150, var_cst_4160, inCompiler) ;
-      outArgument_outPreConditions = GALGAS_typeStrictSupExpression::constructor_new (var_idx_3301, var_sign_4150, var_cst_4160  COMMA_SOURCE_FILE ("spec_parser.ggs", 139)) ;
+      GALGAS_bool var_sign_4147 ;
+      GALGAS_luint var_cst_4158 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_4147, var_cst_4158, inCompiler) ;
+      outArgument_outPreConditions = GALGAS_typeStrictSupExpression::constructor_new (var_idx_3299, var_sign_4147, var_cst_4158  COMMA_SOURCE_FILE ("spec_parser.ggs", 139)) ;
     } break ;
     default:
       break ;
@@ -7345,9 +7345,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_constant_i4_ (GALGAS_t
   outArgument_outValue.drop () ; // Release 'out' argument
   switch (select_spec_5F_parser_5 (inCompiler)) {
   case 1: {
-    GALGAS_lstring var_constantName_4480 = inCompiler->synthetizedAttribute_theString () ;
+    GALGAS_lstring var_constantName_4469 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 152)) ;
-    ioArgument_ioConstantMap.method_searchKey (var_constantName_4480, outArgument_outSign, outArgument_outValue, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 153)) ;
+    ioArgument_ioConstantMap.method_searchKey (var_constantName_4469, outArgument_outSign, outArgument_outValue, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 153)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 155)) ;
@@ -7414,46 +7414,46 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GAL
   outArgument_outPostConditionsList = GALGAS_typePostconditionList::constructor_emptyList (SOURCE_FILE ("spec_parser.ggs", 170)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GALGAS_lstring var_name_4998 = inCompiler->synthetizedAttribute_theString () ;
+    GALGAS_lstring var_name_4995 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 172)) ;
-    GALGAS_uint var_idx_5043 ;
-    ioArgument_outPlacesMap.method_searchKey (var_name_4998, var_idx_5043, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 173)) ;
+    GALGAS_uint var_idx_5041 ;
+    ioArgument_outPlacesMap.method_searchKey (var_name_4995, var_idx_5041, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 173)) ;
     GALGAS_typePostcondition var_p_5073 ;
     switch (select_spec_5F_parser_7 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2D__2D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 176)) ;
-      var_p_5073 = GALGAS_typePostDecrement::constructor_new (var_name_4998, var_idx_5043  COMMA_SOURCE_FILE ("spec_parser.ggs", 177)) ;
+      var_p_5073 = GALGAS_typePostDecrement::constructor_new (var_name_4995, var_idx_5041  COMMA_SOURCE_FILE ("spec_parser.ggs", 177)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2B__2B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 179)) ;
-      var_p_5073 = GALGAS_typePostIncrement::constructor_new (var_name_4998, var_idx_5043  COMMA_SOURCE_FILE ("spec_parser.ggs", 180)) ;
+      var_p_5073 = GALGAS_typePostIncrement::constructor_new (var_name_4995, var_idx_5041  COMMA_SOURCE_FILE ("spec_parser.ggs", 180)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2B__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 182)) ;
-      GALGAS_bool var_sign_5280 ;
-      GALGAS_luint var_cst_5290 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5280, var_cst_5290, inCompiler) ;
-      var_p_5073 = GALGAS_typeAddConstant::constructor_new (var_name_4998, var_idx_5043, var_sign_5280, var_cst_5290  COMMA_SOURCE_FILE ("spec_parser.ggs", 184)) ;
+      GALGAS_bool var_sign_5277 ;
+      GALGAS_luint var_cst_5288 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5277, var_cst_5288, inCompiler) ;
+      var_p_5073 = GALGAS_typeAddConstant::constructor_new (var_name_4995, var_idx_5041, var_sign_5277, var_cst_5288  COMMA_SOURCE_FILE ("spec_parser.ggs", 184)) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2D__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 186)) ;
-      GALGAS_bool var_sign_5420 ;
-      GALGAS_luint var_cst_5430 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5420, var_cst_5430, inCompiler) ;
-      var_p_5073 = GALGAS_typeSubConstant::constructor_new (var_name_4998, var_idx_5043, var_sign_5420, var_cst_5430  COMMA_SOURCE_FILE ("spec_parser.ggs", 188)) ;
+      GALGAS_bool var_sign_5417 ;
+      GALGAS_luint var_cst_5428 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5417, var_cst_5428, inCompiler) ;
+      var_p_5073 = GALGAS_typeSubConstant::constructor_new (var_name_4995, var_idx_5041, var_sign_5417, var_cst_5428  COMMA_SOURCE_FILE ("spec_parser.ggs", 188)) ;
     } break ;
     case 5: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 190)) ;
       switch (select_spec_5F_parser_8 (inCompiler)) {
       case 1: {
-        GALGAS_bool var_sign_5575 ;
-        GALGAS_luint var_cst_5585 ;
-        nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5575, var_cst_5585, inCompiler) ;
-        var_p_5073 = GALGAS_typeAssignConstant::constructor_new (var_name_4998, var_idx_5043, var_sign_5575, var_cst_5585  COMMA_SOURCE_FILE ("spec_parser.ggs", 193)) ;
+        GALGAS_bool var_sign_5572 ;
+        GALGAS_luint var_cst_5583 ;
+        nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5572, var_cst_5583, inCompiler) ;
+        var_p_5073 = GALGAS_typeAssignConstant::constructor_new (var_name_4995, var_idx_5041, var_sign_5572, var_cst_5583  COMMA_SOURCE_FILE ("spec_parser.ggs", 193)) ;
       } break ;
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 195)) ;
-        var_p_5073 = GALGAS_typeAssignInfinity::constructor_new (var_name_4998, var_idx_5043  COMMA_SOURCE_FILE ("spec_parser.ggs", 196)) ;
+        var_p_5073 = GALGAS_typeAssignInfinity::constructor_new (var_name_4995, var_idx_5041  COMMA_SOURCE_FILE ("spec_parser.ggs", 196)) ;
       } break ;
       default:
         break ;
@@ -7601,20 +7601,20 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i7_ (GALGAS_uint
   outArgument_lowTemporalBound.drop () ; // Release 'out' argument
   outArgument_highTemporalBound.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__5B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 219)) ;
-  GALGAS_luint var_low_6200 = inCompiler->synthetizedAttribute_ulongValue () ;
+  GALGAS_luint var_low_6198 = inCompiler->synthetizedAttribute_ulongValue () ;
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 220)) ;
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 221)) ;
-  GALGAS_luint var_high_6238 = inCompiler->synthetizedAttribute_ulongValue () ;
+  GALGAS_luint var_high_6235 = inCompiler->synthetizedAttribute_ulongValue () ;
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 222)) ;
   inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__5D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 223)) ;
-  outArgument_lowTemporalBound = var_low_6200.readProperty_uint () ;
-  outArgument_highTemporalBound = var_high_6238.readProperty_uint () ;
+  outArgument_lowTemporalBound = var_low_6198.readProperty_uint () ;
+  outArgument_highTemporalBound = var_high_6235.readProperty_uint () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsStrictSup, outArgument_lowTemporalBound.objectCompare (outArgument_highTemporalBound)).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_high_6238.readProperty_location (), GALGAS_string ("High bound must be greater than or equal to low bound"), fixItArray1  COMMA_SOURCE_FILE ("spec_parser.ggs", 227)) ;
+      inCompiler->emitSemanticError (var_high_6235.readProperty_location (), GALGAS_string ("High bound must be greater than or equal to low bound"), fixItArray1  COMMA_SOURCE_FILE ("spec_parser.ggs", 227)) ;
     }
   }
 }
@@ -7686,21 +7686,21 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
   }
   outArgument_outTransitionList = GALGAS_typeTransitionList::constructor_emptyList (SOURCE_FILE ("spec_parser.ggs", 270)) ;
   outArgument_outPlacesMap = GALGAS_typeVarMap::constructor_emptyMap (SOURCE_FILE ("spec_parser.ggs", 271)) ;
-  GALGAS_typeCstMap var_constantMap_7471 = GALGAS_typeCstMap::constructor_emptyMap (SOURCE_FILE ("spec_parser.ggs", 272)) ;
+  GALGAS_typeCstMap var_constantMap_7461 = GALGAS_typeCstMap::constructor_emptyMap (SOURCE_FILE ("spec_parser.ggs", 272)) ;
   outArgument_outCountList = GALGAS_countList::constructor_emptyList (SOURCE_FILE ("spec_parser.ggs", 273)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_spec_5F_parser_11 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 277)) ;
-      GALGAS_lstring var_constantName_7613 = inCompiler->synthetizedAttribute_theString () ;
+      GALGAS_lstring var_constantName_7602 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 279)) ;
-      GALGAS_bool var_sign_7669 ;
-      GALGAS_luint var_value_7681 ;
-      nt_parse_5F_constant_ (var_constantMap_7471, var_sign_7669, var_value_7681, inCompiler) ;
+      GALGAS_bool var_sign_7666 ;
+      GALGAS_luint var_value_7677 ;
+      nt_parse_5F_constant_ (var_constantMap_7461, var_sign_7666, var_value_7677, inCompiler) ;
       {
-      var_constantMap_7471.setter_insertKey (var_constantName_7613, var_sign_7669, var_value_7681, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 281)) ;
+      var_constantMap_7461.setter_insertKey (var_constantName_7602, var_sign_7666, var_value_7677, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 281)) ;
       }
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 282)) ;
     } break ;
@@ -7708,10 +7708,10 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 285)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        GALGAS_lstring var_placeName_7828 = inCompiler->synthetizedAttribute_theString () ;
+        GALGAS_lstring var_placeName_7820 = inCompiler->synthetizedAttribute_theString () ;
         inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
         {
-        outArgument_outPlacesMap.setter_insertKey (var_placeName_7828, outArgument_outPlacesMap.getter_count (SOURCE_FILE ("spec_parser.ggs", 288)), inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 288)) ;
+        outArgument_outPlacesMap.setter_insertKey (var_placeName_7820, outArgument_outPlacesMap.getter_count (SOURCE_FILE ("spec_parser.ggs", 288)), inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 288)) ;
         }
         switch (select_spec_5F_parser_12 (inCompiler)) {
         case 2: {
@@ -7726,18 +7726,18 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
     } break ;
     case 4: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 295)) ;
-      GALGAS_lstring var_transitionName_8004 = inCompiler->synthetizedAttribute_theString () ;
+      GALGAS_lstring var_transitionName_7991 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 296)) ;
-      GALGAS_typePreconditionExpression var_preConditions_8081 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7471, var_preConditions_8081, inCompiler) ;
-      GALGAS_uint var_lowTemporalBound_8123 ;
-      GALGAS_uint var_highTemporalBound_8147 ;
-      nt_parse_5F_bound_ (var_lowTemporalBound_8123, var_highTemporalBound_8147, inCompiler) ;
+      GALGAS_typePreconditionExpression var_preConditions_8069 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7461, var_preConditions_8069, inCompiler) ;
+      GALGAS_uint var_lowTemporalBound_8108 ;
+      GALGAS_uint var_highTemporalBound_8131 ;
+      nt_parse_5F_bound_ (var_lowTemporalBound_8108, var_highTemporalBound_8131, inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
-      GALGAS_typePostconditionList var_postConditions_8234 ;
-      nt_parse_5F_postcondition_ (outArgument_outPlacesMap, var_constantMap_7471, var_postConditions_8234, inCompiler) ;
+      GALGAS_typePostconditionList var_postConditions_8221 ;
+      nt_parse_5F_postcondition_ (outArgument_outPlacesMap, var_constantMap_7461, var_postConditions_8221, inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 301)) ;
-      outArgument_outTransitionList.addAssign_operation (var_transitionName_8004, var_preConditions_8081, var_postConditions_8234, var_lowTemporalBound_8123, var_highTemporalBound_8147  COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
+      outArgument_outTransitionList.addAssign_operation (var_transitionName_7991, var_preConditions_8069, var_postConditions_8221, var_lowTemporalBound_8108, var_highTemporalBound_8131  COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -7748,23 +7748,23 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
   outArgument_outInitialMarkingList = GALGAS_typeInitialMarkingList::constructor_emptyList (SOURCE_FILE ("spec_parser.ggs", 306)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    GALGAS_lstring var_placeName_8480 = inCompiler->synthetizedAttribute_theString () ;
+    GALGAS_lstring var_placeName_8472 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 308)) ;
-    GALGAS_uint var_placeID_8534 ;
-    outArgument_outPlacesMap.method_searchKey (var_placeName_8480, var_placeID_8534, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 309)) ;
+    GALGAS_uint var_placeID_8528 ;
+    outArgument_outPlacesMap.method_searchKey (var_placeName_8472, var_placeID_8528, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 309)) ;
     inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 310)) ;
     switch (select_spec_5F_parser_14 (inCompiler)) {
     case 1: {
-      GALGAS_bool var_sign_8604 ;
-      GALGAS_luint var_cst_8614 ;
-      nt_parse_5F_constant_ (var_constantMap_7471, var_sign_8604, var_cst_8614, inCompiler) ;
-      GALGAS_typePostcondition var_init_8649 = GALGAS_typeAssignConstant::constructor_new (var_placeName_8480, var_placeID_8534, var_sign_8604, var_cst_8614  COMMA_SOURCE_FILE ("spec_parser.ggs", 313)) ;
-      outArgument_outInitialMarkingList.addAssign_operation (var_init_8649  COMMA_SOURCE_FILE ("spec_parser.ggs", 314)) ;
+      GALGAS_bool var_sign_8601 ;
+      GALGAS_luint var_cst_8612 ;
+      nt_parse_5F_constant_ (var_constantMap_7461, var_sign_8601, var_cst_8612, inCompiler) ;
+      GALGAS_typePostcondition var_init_8646 = GALGAS_typeAssignConstant::constructor_new (var_placeName_8472, var_placeID_8528, var_sign_8601, var_cst_8612  COMMA_SOURCE_FILE ("spec_parser.ggs", 313)) ;
+      outArgument_outInitialMarkingList.addAssign_operation (var_init_8646  COMMA_SOURCE_FILE ("spec_parser.ggs", 314)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 316)) ;
-      GALGAS_typePostcondition var_init_8808 = GALGAS_typeAssignInfinity::constructor_new (var_placeName_8480, var_placeID_8534  COMMA_SOURCE_FILE ("spec_parser.ggs", 317)) ;
-      outArgument_outInitialMarkingList.addAssign_operation (var_init_8808  COMMA_SOURCE_FILE ("spec_parser.ggs", 318)) ;
+      GALGAS_typePostcondition var_init_8805 = GALGAS_typeAssignInfinity::constructor_new (var_placeName_8472, var_placeID_8528  COMMA_SOURCE_FILE ("spec_parser.ggs", 317)) ;
+      outArgument_outInitialMarkingList.addAssign_operation (var_init_8805  COMMA_SOURCE_FILE ("spec_parser.ggs", 318)) ;
     } break ;
     default:
       break ;
@@ -7784,13 +7784,13 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
     switch (select_spec_5F_parser_15 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 327)) ;
-      GALGAS_lstring var_name_9009 = inCompiler->synthetizedAttribute_theString () ;
+      GALGAS_lstring var_name_9006 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 328)) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 329)) ;
-      GALGAS_typePreconditionExpression var_conditions_9091 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7471, var_conditions_9091, inCompiler) ;
+      GALGAS_typePreconditionExpression var_conditions_9082 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7461, var_conditions_9082, inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 331)) ;
-      outArgument_outCountList.addAssign_operation (var_name_9009, var_conditions_9091  COMMA_SOURCE_FILE ("spec_parser.ggs", 332)) ;
+      outArgument_outCountList.addAssign_operation (var_name_9006, var_conditions_9082  COMMA_SOURCE_FILE ("spec_parser.ggs", 332)) ;
     } break ;
     default:
       repeatFlag_3 = false ;
@@ -12766,21 +12766,21 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint var_hashMapSize_539 ;
-  GALGAS_uint var_garbagePeriod_563 ;
-  GALGAS_typeVarMap var_placesMap_583 ;
-  GALGAS_typeTransitionList var_transitionList_608 ;
-  GALGAS_typeInitialMarkingList var_initialMarkingList_637 ;
-  GALGAS_countList var_countList_657 ;
-  var_hashMapSize_539.drop () ;
-  var_garbagePeriod_563.drop () ;
-  var_placesMap_583.drop () ;
-  var_transitionList_608.drop () ;
-  var_initialMarkingList_637.drop () ;
-  var_countList_657.drop () ;
-  cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_539, var_garbagePeriod_563, var_placesMap_583, var_transitionList_608, var_initialMarkingList_637, var_countList_657  COMMA_SOURCE_FILE ("spec_main.ggs", 11)) ;
+  GALGAS_uint var_hashMapSize_529 ;
+  GALGAS_uint var_garbagePeriod_551 ;
+  GALGAS_typeVarMap var_placesMap_575 ;
+  GALGAS_typeTransitionList var_transitionList_595 ;
+  GALGAS_typeInitialMarkingList var_initialMarkingList_620 ;
+  GALGAS_countList var_countList_649 ;
+  var_hashMapSize_529.drop () ;
+  var_garbagePeriod_551.drop () ;
+  var_placesMap_575.drop () ;
+  var_transitionList_595.drop () ;
+  var_initialMarkingList_620.drop () ;
+  var_countList_649.drop () ;
+  cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_529, var_garbagePeriod_551, var_placesMap_575, var_transitionList_595, var_initialMarkingList_620, var_countList_649  COMMA_SOURCE_FILE ("spec_main.ggs", 11)) ;
   {
-  routine_generate_5F_code (var_hashMapSize_539, var_garbagePeriod_563, var_placesMap_583, var_transitionList_608, var_initialMarkingList_637, var_countList_657, inCompiler  COMMA_SOURCE_FILE ("spec_main.ggs", 19)) ;
+  routine_generate_5F_code (var_hashMapSize_529, var_garbagePeriod_551, var_placesMap_575, var_transitionList_595, var_initialMarkingList_620, var_countList_649, inCompiler  COMMA_SOURCE_FILE ("spec_main.ggs", 19)) ;
   }
 }
 

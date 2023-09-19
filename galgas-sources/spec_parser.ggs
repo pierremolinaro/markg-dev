@@ -112,7 +112,7 @@ rule <primary>(
   or
     ${$
     $identifier$( ?let name)
-    [inPlacesMap searchKey !name, ?let idx]
+    inPlacesMap.searchKey (!name, ?let idx)
     select
       $==$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
@@ -150,7 +150,7 @@ rule <parse_constant>(
   !@luint outValue) {
   select
     $identifier$( ?let constantName)
-    [ioConstantMap searchKey !constantName, ?outSign, ?outValue]
+    ioConstantMap.searchKey (!constantName, ?outSign, ?outValue)
   or
     $-$
     outSign = true
@@ -170,7 +170,7 @@ rule <parse_postcondition>(
   outPostConditionsList = @typePostconditionList. emptyList
   repeat
     $identifier$( ?let name)
-    [outPlacesMap searchKey !name, ?let idx]
+    outPlacesMap.searchKey (!name, ?let idx)
     let @typePostcondition p
     select
       $--$
@@ -306,7 +306,7 @@ rule <axiome>(
   outInitialMarkingList = @typeInitialMarkingList. emptyList
   repeat
     $identifier$( ?let placeName)
-    [outPlacesMap searchKey !placeName, ?let placeID]
+    outPlacesMap.searchKey (!placeName, ?let placeID)
     $:=$
     select
       <parse_constant>( !?constantMap, ?let sign, ?let cst)
