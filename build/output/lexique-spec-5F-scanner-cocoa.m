@@ -95,20 +95,19 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) internalParseLexicalTokenForLexicalColoring {
-  BOOL loop = YES ;
   BOOL scanningOk = YES ;
   [mLexicalAttribute_theString setString:@""] ;
   mLexicalAttribute_ulongValue = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+    BOOL loop1091 = YES ;
     do {
       scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_theString, mPreviousChar) ;
       if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
       }else{
-        loop = NO ;
+        loop1091 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop1091 && scanningOk) ;
     if (mTokenCode == 0) {
       mTokenCode = search_into_spec_5F_scanner_galgasKeyWordList (mLexicalAttribute_theString) ;
     }
@@ -116,14 +115,14 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
       mTokenCode = spec_scanner_1_identifier ;
     }
   }else if (scanningOk && ([self testForInputChar:34])) {
+    BOOL loop1544 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:126])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_theString, mPreviousChar) ;
       }else{
-        loop = NO ;
+        loop1544 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop1544 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = spec_scanner_1_literal_5F_string ;
     }else{
@@ -181,24 +180,24 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
     mTokenCode = spec_scanner_1__26_ ;
   }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
     scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
+    BOOL loop2426 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
       }else if (scanningOk && ([self testForInputChar:95])) {
       }else{
-        loop = NO ;
+        loop2426 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop2426 && scanningOk) ;
     mTokenCode = spec_scanner_1_literal_5F_integer ;
   }else if (scanningOk && ([self testForInputChar:35])) {
+    BOOL loop2675 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
       }else{
-        loop = NO ;
+        loop2675 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop2675 && scanningOk) ;
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else   if ([self testForInputChar:'\0']) { // End of source text ?
     mTokenCode = spec_scanner_1_ ; // Empty string code
