@@ -257,3 +257,5 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+makefile-unix/markg
+makefile-unix/markg-debug
