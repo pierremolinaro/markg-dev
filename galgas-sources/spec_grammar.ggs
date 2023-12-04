@@ -7,11 +7,11 @@
 grammar spec_grammar "LL1" {
   syntax spec_parser
    <axiome>(
-    !@uint outHashMapSize
-    !@uint outGarbagePeriod
-    !@typeVarMap outPlacesMap
-    !@typeTransitionList outTransitionList
-    !@typeInitialMarkingList outInitialMarkingList
+    !@uint outHashMapSize,
+    !@uint outGarbagePeriod,
+    !@typeVarMap outPlacesMap,
+    !@typeTransitionList outTransitionList,
+    !@typeInitialMarkingList outInitialMarkingList,
     !@countList outCountList)
 }
 

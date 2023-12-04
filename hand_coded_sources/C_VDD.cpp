@@ -107,7 +107,7 @@ size_t C_VDD::getSizeOf_cVDDmaxInfos_objects (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "cache/TC_prime_cache2.h"
+#include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_VDD::cVDDnodeInfo *> cSetsUnionCacheClass ;
 static cSetsUnionCacheClass gSetUnionCache ;
 
@@ -117,7 +117,7 @@ static cSetsUnionCacheClass gSetUnionCache ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "cache/TC_prime_cache2.h"
+#include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_VDD::cVDDnodeInfo *> cGetFirableCacheClass ;
 static cGetFirableCacheClass gGetFirableCache ;
 
@@ -127,7 +127,7 @@ static cGetFirableCacheClass gGetFirableCache ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "cache/TC_prime_cache2.h"
+#include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_VDD::cVDDnodeInfo *> cAddVectorCacheClass ;
 static cAddVectorCacheClass gAddVectorCache ;
 

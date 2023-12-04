@@ -39,7 +39,7 @@
 
 
 //--- Cache is handled by an prime integer sized array 
-#include "cache/TC_prime_cache2.h"
+#include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_ZSV::cZSVinfo *> cCacheClass ;
 static cCacheClass gCache ;
 

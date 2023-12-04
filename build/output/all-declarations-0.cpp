@@ -4974,35 +4974,27 @@ void GALGAS_typePostconditionList::makeAttributesFromObjects (capCollectionEleme
 void GALGAS_typePostconditionList::addAssign_operation (const GALGAS_typePostcondition & inOperand0
                                                         COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typePostconditionList (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typePostconditionList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typePostconditionList::setter_append (GALGAS_typePostconditionList_2D_element inElement,
+void GALGAS_typePostconditionList::setter_append (const GALGAS_typePostcondition inOperand0,
                                                   C_Compiler * /* inCompiler */
                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typePostconditionList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typePostconditionList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -5431,35 +5423,31 @@ void GALGAS_typeTransitionList::addAssign_operation (const GALGAS_lstring & inOp
                                                      const GALGAS_uint & inOperand4
                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typeTransitionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typeTransitionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typeTransitionList::setter_append (GALGAS_typeTransitionList_2D_element inElement,
+void GALGAS_typeTransitionList::setter_append (const GALGAS_lstring inOperand0,
+                                               const GALGAS_typePreconditionExpression inOperand1,
+                                               const GALGAS_typePostconditionList inOperand2,
+                                               const GALGAS_uint inOperand3,
+                                               const GALGAS_uint inOperand4,
                                                C_Compiler * /* inCompiler */
                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typeTransitionList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typeTransitionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -6068,35 +6056,27 @@ void GALGAS_typeInitialMarkingList::makeAttributesFromObjects (capCollectionElem
 void GALGAS_typeInitialMarkingList::addAssign_operation (const GALGAS_typePostcondition & inOperand0
                                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typeInitialMarkingList (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typeInitialMarkingList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_typeInitialMarkingList::setter_append (GALGAS_typeInitialMarkingList_2D_element inElement,
+void GALGAS_typeInitialMarkingList::setter_append (const GALGAS_typePostcondition inOperand0,
                                                    C_Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_typeInitialMarkingList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typeInitialMarkingList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -6495,35 +6475,28 @@ void GALGAS_countList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                             const GALGAS_typePreconditionExpression & inOperand1
                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_countList (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_countList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_countList::setter_append (GALGAS_countList_2D_element inElement,
+void GALGAS_countList::setter_append (const GALGAS_lstring inOperand0,
+                                      const GALGAS_typePreconditionExpression inOperand1,
                                       C_Compiler * /* inCompiler */
                                       COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_countList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_countList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -12521,11 +12494,11 @@ C_UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ("spec_option
 #include "project_header.h"
 #include "command_line_interface/F_mainForLIBPM.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "utilities/F_DisplayException.h"
+#include "command_line_interface/C_builtin_CLI_Options.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/F_verbose_output.h"
 #include "galgas2/cLexiqueIntrospection.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
+#include "utilities/F_DisplayException.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 //

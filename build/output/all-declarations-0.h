@@ -2987,7 +2987,7 @@ class GALGAS_typePostconditionList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_typePostconditionList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_typePostcondition constinArgument0,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -3203,7 +3203,11 @@ class GALGAS_typeTransitionList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_typeTransitionList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
+                                               class GALGAS_typePreconditionExpression constinArgument1,
+                                               class GALGAS_typePostconditionList constinArgument2,
+                                               class GALGAS_uint constinArgument3,
+                                               class GALGAS_uint constinArgument4,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -3515,7 +3519,7 @@ class GALGAS_typeInitialMarkingList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_typeInitialMarkingList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_typePostcondition constinArgument0,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -3722,7 +3726,8 @@ class GALGAS_countList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_countList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
+                                               class GALGAS_typePreconditionExpression constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

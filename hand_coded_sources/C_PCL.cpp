@@ -44,7 +44,7 @@
 //---------------------------------------------------------------------------*
 
 //--- Cache is handled by an prime integer sized array 
-#include "cache/TC_prime_cache2.h"
+#include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_PCL::cVDLnodeInfo *> cCacheClass ;
 static cCacheClass gCache ;
 

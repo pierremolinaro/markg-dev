@@ -4,8 +4,8 @@
 
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
-#include "collections/TC_Array2.h"
-#include "collections/TC_UniqueArray.h"
+#include "TC_Array2.h"
+#include "generic-arraies/TC_UniqueArray.h"
 #include "streams/C_ConsoleOut.h"
 #include "files/C_TextFileWrite.h"
 #include "C_AEDD.h"
