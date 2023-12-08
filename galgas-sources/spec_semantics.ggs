@@ -9,16 +9,16 @@
 #--- Places map
 map @typeVarMap {
   public var @uint mIndex
-  insert insertKey error message "the '%K' place is already declared"
-  search searchKey error message "the '%K' place is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' place is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' place is not declared"
 }
 
 #--- Constants map
 map @typeCstMap {
   public var @bool mSign
   public var @luint mValue
-  insert insertKey error message "the '%K' constant is already declared"
-  search searchKey error message "there '%K' constant is not defined"
+  %insertSetter insertKey %errorMessage "the '%K' constant is already declared"
+  %searchMethod searchKey %errorMessage "there '%K' constant is not defined"
 }
 
 #--- Precondition description

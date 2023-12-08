@@ -18,9 +18,9 @@ style stringStyle  -> "String constants"
 # -------------------------- identifier or key word --------------------
 # keywords can be written in lower
 # for identifiers, case is significant
-$identifier$ ! theString  style identifier error message "an identifier"
+$identifier$ ! theString  style identifier %errorMessage "an identifier"
 
-list galgasKeyWordList style keyWords error message "the '%K' key word"{
+list galgasKeyWordList style keyWords %errorMessage "the '%K' key word"{
  "system", "var", "rule", "init", "end", "true", "false",
  "const", "count", "infinity", "hashmapsize", "garbageperiod" }
 
@@ -29,13 +29,13 @@ rule 'a'->'z' | 'A'->'Z' {
     enterCharacterIntoString ( !?theString !* )
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end
-  send search theString in galgasKeyWordList default $identifier$
+  send %codeFor theString in galgasKeyWordList default $identifier$
 }
 
 # -------------------- Characters string --------------------------------------
-$literal_string$ ! theString  style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
+$literal_string$ ! theString  style stringStyle %nonAtomicSelection %errorMessage "a character string constant \"...\""
 
-message incorrectStringEnd : "string does not end with '\"'"
+%errorMessage incorrectStringEnd : "string does not end with '\"'"
 
 rule '"' {
   repeat
@@ -51,17 +51,17 @@ rule '"' {
 }
 
 #------------------------------- Delimitors ------------------------------
-  list delimitorsList style delimitors error message "the '%K' delimitor"{
+  list delimitorsList style delimitors %errorMessage "the '%K' delimitor"{
     ">=", ">", "<", "<=", "==", "!=", "&", "|", "~", ",", ";", "(", ")",
     "++", "--", "+=", "-=", ":=", "{", "}", ":", "-", "=", "[", "]"  }
   rule list delimitorsList
 
 #------------------------------- Decimal positive number ------------------
-$literal_integer$ ! ulongValue  style integerStyle error message "a decimal number"
+$literal_integer$ ! ulongValue  style integerStyle %errorMessage "a decimal number"
 
-message decimalNumberTooLarge : "decimal number too large"
+%errorMessage decimalNumberTooLarge : "decimal number too large"
 
-message internalError : "internal error"
+%errorMessage internalError : "internal error"
 
 rule '0'->'9' {
   enterDigitIntoUInt ( !* !?ulongValue error decimalNumberTooLarge, internalError )

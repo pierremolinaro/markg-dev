@@ -196,7 +196,7 @@ rule <parse_postcondition>(
         p = @typeAssignInfinity. new ( !name, !idx)
       end
     end
-    outPostConditionsList += !p
+    !?outPostConditionsList.append (p)
   while
     $,$
   end
@@ -299,7 +299,13 @@ rule <axiome>(
     $:$
     <parse_postcondition>( !?outPlacesMap, !?constantMap, ?let postConditions)
     $;$
-    outTransitionList += !transitionName !preConditions !postConditions !lowTemporalBound !highTemporalBound
+    !?outTransitionList.append (
+      transitionName,
+      preConditions,
+      postConditions,
+      lowTemporalBound,
+      highTemporalBound
+    )
   end
 #--- Init
   $init$
@@ -311,11 +317,11 @@ rule <axiome>(
     select
       <parse_constant>( !?constantMap, ?let sign, ?let cst)
       let @typePostcondition init = @typeAssignConstant. new ( !placeName, !placeID, !sign, !cst)
-      outInitialMarkingList += !init
+      !?outInitialMarkingList.append (init)
     or
       $infinity$
       let @typePostcondition init = @typeAssignInfinity. new ( !placeName, !placeID)
-      outInitialMarkingList += !init
+      !?outInitialMarkingList.append (init)
     end
   while
     $,$
@@ -329,7 +335,7 @@ rule <axiome>(
     $:$
     <parse_precondition>( !?outPlacesMap, !?constantMap, ?let conditions)
     $;$
-    outCountList += !name !conditions
+    !?outCountList.append (name, conditions)
   end
   $end$
 }
