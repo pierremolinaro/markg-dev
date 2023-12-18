@@ -38,7 +38,7 @@
 //---------------------------------------------------------------------------*
 
 
-//--- Cache is handled by an prime integer sized array 
+//--- Cache is handled by an prime integer sized array
 #include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_ZSV::cZSVinfo *> cCacheClass ;
 static cCacheClass gCache ;
@@ -296,7 +296,7 @@ uint64_t C_ZSV::smTrivialAdd = 0 ;
 
 C_ZSV::cZSVinfo * C_ZSV::internalSum (cZSVinfo * const inPtr1,
                                       cZSVinfo * const inPtr2) {
-  cZSVinfo * result ;  
+  cZSVinfo * result ;
   if (inPtr1 == NULL) {
     result = inPtr2 ;
     smTrivialAdd ++ ;
@@ -488,11 +488,12 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
        if (firstPrint) {
          firstPrint = false ;
        }else{
-         inStream << " " ;
+         inStream.addString (" ") ;
        }
-       inStream << inPrefix << cStringWithSigned ((p->mIndex - inFirst) / inStep)
-                << ":"
-                << cStringWithSigned (p->mValue) ;
+       inStream.addString (inPrefix) ;
+       inStream.addSigned ((p->mIndex - inFirst) / inStep) ;
+       inStream.addString (":") ;
+       inStream.addSigned (p->mValue) ;
      }
      p = p->mPtrToNext ;
    }
@@ -501,7 +502,7 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
 //---------------------------------------------------------------------------*
 
  void C_ZSV::printVector (AC_OutputStream & inStream,
-                           const TC_UniqueArray <C_String> & inNames,
+                           const TC_UniqueArray <String> & inNames,
                            const int32_t inFirst,
                            const int32_t inStep) const {
    bool firstPrint = true ;
@@ -511,11 +512,11 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
        if (firstPrint) {
          firstPrint = false ;
        }else{
-         inStream << " " ;
+         inStream.addString (" ") ;
        }
-       inStream << (inNames ((p->mIndex - inFirst) / inStep COMMA_HERE))
-                << ":"
-                << cStringWithSigned (p->mValue) ;
+       inStream.addString (inNames ((p->mIndex - inFirst) / inStep COMMA_HERE)) ;
+       inStream.addString (":") ;
+       inStream.addSigned (p->mValue) ;
      }
      p = p->mPtrToNext ;
    }
@@ -664,26 +665,46 @@ void C_ZSV::collectUnusedNodes (void) {
 
 void C_ZSV::printVDLsummary (AC_OutputStream & inOutputStream) {
   const uint64_t n = getTrivialAddCount () + getCacheSuccessCount () + getCacheFailureCount () ;
-  inOutputStream << "Summary of VDL operations :\n"
-                    "  " << cStringWithUnsigned (getVDLnodeCount ())
-                 << " VDL used nodes (size " << cStringWithUnsigned (getNodeSize ()) << " bytes) ;\n"
-                    "  " << cStringWithUnsigned (C_ZSV_hashmap::getCreatedObjectCount ())
-                 << " VDL created nodes (total size "
-                 << cStringWithUnsigned (((uint32_t) C_ZSV_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL)
-                 << " kbytes) ;\n"
-                    "  " << cStringWithUnsigned (getNodeComparesCount ()) << " comparisons ;\n"
-                    "  " << cStringWithUnsigned (getTrivialAddCount ())
-                 << " trivial additions (" << cStringWithUnsigned ((100ULL * getTrivialAddCount ()) / n)
-                 << "%) ;\n"
-                    "  " << cStringWithUnsigned (getCacheSuccessCount ())
-                 << " cache successes (" << cStringWithUnsigned ((100ULL * getCacheSuccessCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getCacheFailureCount ()) << " cache failures ("
-                 << cStringWithUnsigned ((100ULL * getCacheFailureCount ()) / n) << "%), including "
-                 << cStringWithUnsigned (getCacheOverrideCount ()) << " cache overrides ("
-                 << cStringWithUnsigned ((100ULL * getCacheOverrideCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getUnusedCacheEntriesCount ()) << " unused cache entries ("
-                 << cStringWithUnsigned ((100ULL * getUnusedCacheEntriesCount ()) / getCacheEntriesCount ())
-                 << "%, total entries = " << cStringWithUnsigned (getCacheEntriesCount ()) << ").\n" ;
+  inOutputStream.addString ("Summary of VDL operations :\n") ;
+  inOutputStream.addString ("  ") ;
+  inOutputStream.addUnsigned (getVDLnodeCount ());
+  inOutputStream.addString (" VDL used nodes (size ") ;
+  inOutputStream.addUnsigned (getNodeSize ()) ;
+  inOutputStream.addString (" bytes) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (C_ZSV_hashmap::getCreatedObjectCount ()) ;
+  inOutputStream.addString (" VDL created nodes (total size ") ;
+  inOutputStream.addUnsigned (((uint32_t) C_ZSV_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL);
+  inOutputStream.addString (" kbytes) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getNodeComparesCount ()) ;
+  inOutputStream.addString (" comparisons ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getTrivialAddCount ());
+  inOutputStream.addString (" trivial additions (") ;
+  inOutputStream.addUnsigned ((100ULL * getTrivialAddCount ()) / n);
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getCacheSuccessCount ());
+  inOutputStream.addString (" cache successes (") ;
+  inOutputStream.addUnsigned ((100ULL * getCacheSuccessCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getCacheFailureCount ()) ;
+  inOutputStream.addString (" cache failures (") ;
+  inOutputStream.addUnsigned ((100ULL * getCacheFailureCount ()) / n) ;
+  inOutputStream.addString ("%), including ") ;
+  inOutputStream.addUnsigned (getCacheOverrideCount ()) ;
+  inOutputStream.addString (" cache overrides (") ;
+  inOutputStream.addUnsigned ((100ULL * getCacheOverrideCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getUnusedCacheEntriesCount ()) ;
+  inOutputStream.addString (" unused cache entries (") ;
+  inOutputStream.addUnsigned ((100ULL * getUnusedCacheEntriesCount ()) / getCacheEntriesCount ());
+  inOutputStream.addString ("%, total entries = ") ;
+  inOutputStream.addUnsigned (getCacheEntriesCount ()) ;
+  inOutputStream.addString (").\n") ;
 }
 
 //---------------------------------------------------------------------------*

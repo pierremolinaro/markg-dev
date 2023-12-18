@@ -30,7 +30,7 @@
 
 #include "C_vdd_types.h"
 #include "generic-arraies/TC_UniqueArray.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -55,7 +55,7 @@ class C_ZSV {
   protected : C_ZSV * mPtrToNextExisting ;
   protected : C_ZSV * mPtrToPreviousExisting ;
   private : void initLinks (void) ;
-  
+
 //--- Internal nodes
   public : class cZSVinfo {
     public : cZSVinfo * mPtrToNext ;
@@ -63,9 +63,9 @@ class C_ZSV {
     public : T_vdd_zsl_value mValue ;
     public : T_vdd_zsl_value mMaxVectorValue ;
     public : T_vdd_zsl_index mIndex ;
-    
+
     public : intptr_t compare (const cZSVinfo & inOperand) const ;
-    
+
     public : inline bool isMarked (void) const {
       return (mID & MARK_VDL_NODE) != 0 ;
     }
@@ -77,7 +77,7 @@ class C_ZSV {
     public : inline void unmark (void) {
       mID &= ~ MARK_VDL_NODE ;
     }
-    
+
     public : inline uintptr_t getHashCodeForMap (void) const {
       return (uintptr_t) ((mIndex << 11)
                               ^ mValue
@@ -116,7 +116,7 @@ class C_ZSV {
 
 //--- print a vector
   public : void printVector (AC_OutputStream & inStream,
-                             const TC_UniqueArray <C_String> & inNames,
+                             const TC_UniqueArray <String> & inNames,
                              const int32_t inFirst,
                              const int32_t inStep) const ;
 
@@ -186,7 +186,7 @@ class C_ZSV {
   public : static uint64_t getCacheOverrideCount (void) ;
   public : static uint64_t getUnusedCacheEntriesCount (void) ;
   public : static uint64_t getCacheEntriesCount (void) ;
-  
+
   friend class cZSVinfo ;
 } ;
 

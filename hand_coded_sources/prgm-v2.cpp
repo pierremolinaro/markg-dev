@@ -2,7 +2,7 @@
 
 /*--------------------------------------------------------------------------*/
 
-#include "galgas2/C_Compiler.h"
+#include "galgas2/Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "TC_Array2.h"
 #include "generic-arraies/TC_UniqueArray.h"
@@ -52,7 +52,7 @@ TC_Array2 <cPostCondition> (inRowCount, inColumnCount COMMA_THERE) {
 
 void cPtr_typeAssignConstant::
 buildPostCondition (const int32_t inTransition,
-                    C_Compiler * inCompiler,
+                    Compiler * inCompiler,
                     cPostConditionArray & ioPostCondition) const {
   const int32_t varIndex = (int32_t) mProperty_mVar.uintValue () ;
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost != UNDEFINED_POST) {
@@ -78,14 +78,14 @@ buildInitialMarking (C_VDD & ioInitialMarking) const {
   if (mProperty_mNegativeConstant.boolValue ()) {
     c = - c ;
   }
-  ioInitialMarking.addValueAtIndex ((T_vdd_zsl_value) c, varIndex) ; 
+  ioInitialMarking.addValueAtIndex ((T_vdd_zsl_value) c, varIndex) ;
 }
 
 /*--------------------------------------------------------------------------*/
 
 void cPtr_typeAssignInfinity::
 buildPostCondition (const int32_t inTransition,
-                    C_Compiler * inCompiler,
+                    Compiler * inCompiler,
                     cPostConditionArray & ioPostCondition) const {
   const int32_t varIndex = (int32_t) mProperty_mVar.uintValue () ;
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost != UNDEFINED_POST) {
@@ -102,14 +102,14 @@ buildPostCondition (const int32_t inTransition,
 void cPtr_typeAssignInfinity::
 buildInitialMarking (C_VDD & ioInitialMarking) const {
   const T_vdd_zsl_index varIndex = (T_vdd_zsl_index) mProperty_mVar.uintValue () ;
-  ioInitialMarking.addValueAtIndex (MAX_VDD_ZSL_VALUE, varIndex) ; 
+  ioInitialMarking.addValueAtIndex (MAX_VDD_ZSL_VALUE, varIndex) ;
 }
 
 /*--------------------------------------------------------------------------*/
 
 void cPtr_typeSubConstant::
 buildPostCondition (const int32_t inTransition,
-                    C_Compiler * inCompiler,
+                    Compiler * inCompiler,
                     cPostConditionArray & ioPostCondition) const {
   const int32_t varIndex = (int32_t) mProperty_mVar.uintValue () ;
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
@@ -136,7 +136,7 @@ buildInitialMarking (C_VDD & /* ioInitialMarking */) const {
 
 void cPtr_typeAddConstant::
 buildPostCondition (const int32_t inTransition,
-                    C_Compiler * inCompiler,
+                    Compiler * inCompiler,
                     cPostConditionArray & ioPostCondition) const {
   const int32_t varIndex = (int32_t) mProperty_mVar.uintValue () ;
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
@@ -163,7 +163,7 @@ buildInitialMarking (C_VDD & /* ioInitialMarking */) const {
 
 void cPtr_typePostIncrement::
 buildPostCondition (const int32_t inTransition,
-                    C_Compiler * inCompiler,
+                    Compiler * inCompiler,
                     cPostConditionArray & ioPostCondition) const {
   const int32_t varIndex = (int32_t) mProperty_mVar.uintValue () ;
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
@@ -186,7 +186,7 @@ buildInitialMarking (C_VDD & /* ioInitialMarking */) const {
 
 void cPtr_typePostDecrement::
 buildPostCondition (const int32_t inTransition,
-                    C_Compiler * inCompiler,
+                    Compiler * inCompiler,
                     cPostConditionArray & ioPostCondition) const {
   const int32_t varIndex = (int32_t) mProperty_mVar.uintValue () ;
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
@@ -311,13 +311,13 @@ vddComputation (uint32_t inGarbagePeriod,
                 const bool inPrintAllStates,
                 const bool inPrintIterationsStates,
                 const bool inPrintMinAndMax,
-                const C_String & /* inSourceFileName */,
+                const String & /* inSourceFileName */,
                 const int32_t inTransitionsCount,
                 const C_VDD & inInitialMarking,
                 const TC_UniqueArray <C_AEDD> & inPreConditions,
                 const TC_UniqueArray <C_PCL> & inIncidenceVectors,
-                const TC_UniqueArray <C_String> & inPlaceNames,
-                const TC_UniqueArray <C_String> & inTransitionNames,
+                const TC_UniqueArray <String> & inPlaceNames,
+                const TC_UniqueArray <String> & inTransitionNames,
                 const GALGAS_countList & inCountList,
                 const uint32_t inLastIteration) {
   uint64_t stateCount = 0 ;
@@ -329,7 +329,7 @@ vddComputation (uint32_t inGarbagePeriod,
     inGarbagePeriod = 1 ; // Garbage every iteration
   }
 //--------------- Computation with vector decision diagrams -----------------
-   co << "Computation with vector decision diagrams...\n" ;
+   gCout.addString ("Computation with vector decision diagrams...\n") ;
    fflush (stdout) ;
 //--- Vector of transition source set
   TC_UniqueArray <C_VDD> transitionSourceSet (inTransitionsCount, C_VDD () COMMA_HERE) ;
@@ -355,9 +355,15 @@ vddComputation (uint32_t inGarbagePeriod,
       ramSize /= 1 << 20 ;
       garbageTimer.stopTimer () ;
       if (! inDoNotPrintIterationsMessages) {
-        co << "Garbage (RAM " << cStringWithUnsigned (ramSize) << " Mb) : "
-           << cStringWithUnsigned (previousNodeCount) << " nodes -> " << cStringWithUnsigned (newNodeCount) << " ("
-           << garbageTimer << ")\n" ;
+        gCout.addString ("Garbage (RAM ") ;
+        gCout.addUnsigned (ramSize) ;
+        gCout.addString (" Mb) : ") ;
+        gCout.addUnsigned (previousNodeCount) ;
+        gCout.addString (" nodes -> ") ;
+        gCout.addUnsigned (newNodeCount) ;
+        gCout.addString (" (") ;
+        gCout.addString (garbageTimer.timeString ()) ;
+        gCout.addString (")\n") ;
         fflush (stdout) ;
       }
     }
@@ -373,11 +379,15 @@ vddComputation (uint32_t inGarbagePeriod,
         transitionTargetSet (i COMMA_HERE) = newTarget ;
         newAllStates |= newTarget ;
         if (inPrintIterationsStates) {
-          co << "** Firable for " << inTransitionNames (i COMMA_HERE) << " :\n" ;
-          newSource.printSet (co, inPlaceNames) ;
-          co << "** Target for " << inTransitionNames (i COMMA_HERE) << " :\n" ;
-          newTarget.printSet (co, inPlaceNames) ;
-          co.flush () ;
+          gCout.addString ("** Firable for ") ;
+          gCout.addString (inTransitionNames (i COMMA_HERE)) ;
+          gCout.addString (" :\n") ;
+          newSource.printSet (gCout, inPlaceNames) ;
+          gCout.addString ("** Target for ") ;
+          gCout.addString (inTransitionNames (i COMMA_HERE)) ;
+          gCout.addString (" :\n") ;
+          newTarget.printSet (gCout, inPlaceNames) ;
+          gCout.flush () ;
         }
       }
     }
@@ -387,11 +397,17 @@ vddComputation (uint32_t inGarbagePeriod,
     allStatesSet = newAllStates ;
   //--- Print iteration characteristics
     if (! inDoNotPrintIterationsMessages) {
-      co << "Iteration " << cStringWithUnsigned (iteration) << " : " << cStringWithUnsigned (allStatesSet.getSetCardinal ())
-         << " states, bound : " << cStringWithSigned (allStatesSet.getMaxValue ()) << ", max tokens "
-         << cStringWithSigned (allStatesSet.getMaxTokens ()) << " ("
-         << iterationTimer
-         << ")\n" ;
+      gCout.addString ("Iteration ") ;
+      gCout.addUnsigned (iteration) ;
+      gCout.addString (" : ") ;
+      gCout.addUnsigned (allStatesSet.getSetCardinal ());
+      gCout.addString (" states, bound : ") ;
+      gCout.addSigned (allStatesSet.getMaxValue ()) ;
+      gCout.addString (", max tokens ") ;
+      gCout.addSigned (allStatesSet.getMaxTokens ()) ;
+      gCout.addString (" (") ;
+      gCout.addString (iterationTimer.timeString ()) ;
+      gCout.addString (")\n") ;
       fflush (stdout) ;
      }
   }
@@ -403,46 +419,58 @@ vddComputation (uint32_t inGarbagePeriod,
     const C_AEDD aedd = p->buildAEDDexpression () ;
     const C_VDD s = allStatesSet.getFirableFromAEDD (aedd) ;
     const uint64_t c = s.getSetCardinal () ;
-    co << "'" << current.current_mName (HERE) << "' : " << cStringWithUnsigned (c) << " state" << ((c > 1) ? "s" : "") << "\n" ;
-//    s.printSet (co, inPlaceNames) ;
+    gCout.addString ("'") ;
+    gCout.addString (current.current_mName (HERE).mProperty_string.stringValue ()) ;
+    gCout.addString ("' : ") ;
+    gCout.addUnsigned (c) ;
+    gCout.addString (" state") ;
+    gCout.addString ((c > 1) ? "s" : "") ;
+    gCout.addString ("\n") ;
+//    s.printSet (gCout, inPlaceNames) ;
     current.gotoNextObject () ;
   }
 //--- Compute transition firing count
   if (inPrintTransitionsFiring) {
-    co << "Transitions firing :\n" ;
+    gCout.addString ("Transitions firing :\n") ;
 //    uint64_t VDDtransitionsCount = 0 ;
     for (int32_t i=0 ; i<inTransitionsCount ; i++) {
       VDDtransitionsFiringCount (i COMMA_HERE) = transitionSourceSet (i COMMA_HERE).getSetCardinal () ;
 //      VDDtransitionsCount += VDDtransitionsFiringCount (i COMMA_HERE) ;
-      co << "  " << inTransitionNames (i COMMA_HERE) << " : "
-         << cStringWithUnsigned (VDDtransitionsFiringCount (i COMMA_HERE))
-         << " states in " << cStringWithSigned (transitionSourceSet (i COMMA_HERE).getNodesCount ())
-         << " VDD nodes\n" ;
+      gCout.addString ("  ") ;
+      gCout.addString (inTransitionNames (i COMMA_HERE)) ;
+      gCout.addString (" : ") ;
+      gCout.addUnsigned (VDDtransitionsFiringCount (i COMMA_HERE));
+      gCout.addString (" states in ") ;
+      gCout.addSigned (transitionSourceSet (i COMMA_HERE).getNodesCount ());
+      gCout.addString (" VDD nodes\n") ;
     }
   }
 //--- Print min and max token for each place ?
   if (inPrintMinAndMax) {
-  co << "---------------- Print min and max for each variable\n" ;
+  gCout.addString ("---------------- Print min and max for each variable\n") ;
     TC_UniqueArray <int32_t> minToken (inPlaceNames.count (), 0 COMMA_HERE) ;
     TC_UniqueArray <int32_t> maxToken (inPlaceNames.count (), 0 COMMA_HERE) ;
     allStatesSet.computeMinAndMax (minToken, maxToken, inPlaceNames.count ()) ;
     for (int32_t i=0 ; i<inPlaceNames.count () ; i++) {
-      co << "  Variable " << inPlaceNames (i COMMA_HERE)
-         << " : min = " << cStringWithSigned (minToken (i COMMA_HERE))
-         << ", max = " << cStringWithSigned (maxToken (i COMMA_HERE))
-         << "\n" ;
+      gCout.addString ("  Variable ") ;
+      gCout.addString (inPlaceNames (i COMMA_HERE)) ;
+      gCout.addString (" : min = ") ;
+      gCout.addSigned (minToken (i COMMA_HERE));
+      gCout.addString (", max = ") ;
+      gCout.addSigned (maxToken (i COMMA_HERE));
+      gCout.addString ("\n") ;
      }
-     co << "\n" ;
+     gCout.addString ("\n") ;
   }
 //--- Print nodes ?
   if (inPrintAllNodes) {
-    co << "----------- Marking graph VDD nodes :\n" ;
-    allStatesSet.printSetNodes (co, inPlaceNames) ;
+    gCout.addString ("----------- Marking graph VDD nodes :\n") ;
+    allStatesSet.printSetNodes (gCout, inPlaceNames) ;
   }
 //--- Print states ?
   if (inPrintAllStates) {
-    co << "Marking graph states :\n" ;
-    allStatesSet.printSet (co, inPlaceNames) ;
+    gCout.addString ("Marking graph states :\n") ;
+    allStatesSet.printSet (gCout, inPlaceNames) ;
   }
 //--- Display  state count, transitions count, duration and used RAM size
   size_t ramSize = C_VDD::getCachesSizeInBytes () ;
@@ -454,10 +482,17 @@ vddComputation (uint32_t inGarbagePeriod,
   for (int32_t i=0 ; i<inTransitionsCount ; i++) {
     VDDtransitionsCount += transitionSourceSet (i COMMA_HERE).getSetCardinal () ;
   }
-  co << cStringWithUnsigned (stateCount) << " states (" << cStringWithSigned (allStatesSet.getNodesCount ())
-     << " nodes) reached in " << cStringWithUnsigned (iteration) << " iterations ;\n"
-     << cStringWithUnsigned (VDDtransitionsCount) << " transitions, used RAM : " << cStringWithUnsigned (ramSize) << " Mb.\n" ;
-//    C_VDD::printVDDsummary (co) ;
+  gCout.addUnsigned (stateCount) ;
+  gCout.addString (" states (") ;
+  gCout.addSigned (allStatesSet.getNodesCount ());
+  gCout.addString (" nodes) reached in ") ;
+  gCout.addUnsigned (iteration) ;
+  gCout.addString (" iterations ;\n") ;
+  gCout.addUnsigned (VDDtransitionsCount) ;
+  gCout.addString (" transitions, used RAM : ") ;
+  gCout.addUnsigned (ramSize) ;
+  gCout.addString (" Mb.\n") ;
+//    C_VDD::printVDDsummary (gCout) ;
   C_VDD::collectUnusedNodes () ;
 }
 
@@ -475,11 +510,11 @@ class cComputationNode {
   public : bool mCanBeFired ;
   public : cComputationNode * mPtrToNotFirable ;
   public : cComputationNode * mPtrToFirable ;
-  
+
   public : cComputationNode (void) ;
-  
+
   public : virtual ~cComputationNode (void) ;
-  
+
   private : cComputationNode (const cComputationNode &) ;
   private : cComputationNode & operator = (const cComputationNode &) ;
 } ;
@@ -538,7 +573,7 @@ computeWithDecisionTree (cComputationNode * & ioDecisionTree,
       //--- Add fired set to accessible set
         const C_VDD newTarget = newFirableSet.computeTargetVector (ioDecisionTree->mIncidenceVector) ;
         ioAccessibleStates |= newTarget ;
-      //--- 
+      //---
         ioFirableFlags (inTransitionIndex COMMA_HERE) = true ;
         computeWithDecisionTree (ioDecisionTree->mPtrToFirable, ioAccessibleStates, inTransitionIndex+1, newFirableSet, inPreConditions, inIncidenceVectors, ioFirableFlags) ;
       }
@@ -557,24 +592,27 @@ computeWithDecisionTree (cComputationNode * & ioDecisionTree,
 static void
 printFiringCount (const cComputationNode * inDecisionTree,
                   const int32_t inTransitionIndex,
-                  const TC_UniqueArray <C_String> & inPlaceNames,
-                  const TC_UniqueArray <C_String> & inTransitionNames,
+                  const TC_UniqueArray <String> & inPlaceNames,
+                  const TC_UniqueArray <String> & inTransitionNames,
                   TC_UniqueArray <bool> & ioFirableFlags) {
   if (inDecisionTree != NULL) {
     if (inDecisionTree->mCanBeFired) {
       const uint64_t firingCount = inDecisionTree->mFirableSet.getSetCardinal () ;
       if (firingCount > 0) {
-        co << "  " ;
+        gCout.addString ("  ") ;
         for (int32_t i=0 ; i<inTransitionIndex ; i++) {
           if (ioFirableFlags (i COMMA_HERE)) {
-            co << inTransitionNames (i COMMA_HERE) << "-" ;
+            gCout.addString (inTransitionNames (i COMMA_HERE)) ;
+            gCout.addString ("-") ;
           }
         }
-        co << inTransitionNames (inTransitionIndex COMMA_HERE) << ": "
-           << cStringWithUnsigned (firingCount)
-           << " states in " << cStringWithSigned (inDecisionTree->mFirableSet.getNodesCount ())
-           << " VDD nodes\n" ;
-      //--- 
+        gCout.addString (inTransitionNames (inTransitionIndex COMMA_HERE)) ;
+        gCout.addString (": ") ;
+        gCout.addUnsigned (firingCount);
+        gCout.addString (" states in ") ;
+        gCout.addSigned (inDecisionTree->mFirableSet.getNodesCount ());
+        gCout.addString (" VDD nodes\n") ;
+      //---
         ioFirableFlags (inTransitionIndex COMMA_HERE) = true ;
         printFiringCount (inDecisionTree->mPtrToFirable, inTransitionIndex+1, inPlaceNames, inTransitionNames, ioFirableFlags) ;
       }
@@ -594,7 +632,7 @@ transitionCount (const cComputationNode * inDecisionTree,
   if (inDecisionTree != NULL) {
     if (inDecisionTree->mCanBeFired) {
       count += inDecisionTree->mFirableSet.getSetCardinal () ;
-    //--- 
+    //---
       count += transitionCount (inDecisionTree->mPtrToFirable, inTransitionIndex+1) ;
     }
   //--- Is input set different from previous one ?
@@ -613,13 +651,13 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
                 const bool inPrintAllStates,
                 const bool /* inPrintIterationsStates */,
                 const bool inPrintMinAndMax,
-                const C_String & /* inSourceFileName */,
+                const String & /* inSourceFileName */,
                 const int32_t inTransitionsCount,
                 const C_VDD & inInitialMarking,
                 const TC_UniqueArray <C_AEDD> & inPreConditions,
                 const TC_UniqueArray <C_PCL> & inIncidenceVectors,
-                const TC_UniqueArray <C_String> & inPlaceNames,
-                const TC_UniqueArray <C_String> & inTransitionNames,
+                const TC_UniqueArray <String> & inPlaceNames,
+                const TC_UniqueArray <String> & inTransitionNames,
                 const GALGAS_countList & inCountList,
                 const uint32_t inLastIteration) {
   uint64_t stateCount = 0 ;
@@ -631,7 +669,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
     inGarbagePeriod = 1 ; // Garbage every iteration
   }
 //--------------- Computation with vector decision diagrams -----------------
-   co << "Computation (simultaneous firings) with vector decision diagrams...\n" ;
+   gCout.addString ("Computation (simultaneous firings) with vector decision diagrams...\n") ;
    fflush (stdout) ;
 //--- Decision tree
   cComputationNode * mDecisionTree = NULL ;
@@ -657,9 +695,15 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
       ramSize /= 1 << 20 ;
       garbageTimer.stopTimer () ;
       if (! inDoNotPrintIterationsMessages) {
-        co << "Garbage (RAM " << cStringWithUnsigned (ramSize) << " Mb) : "
-           << cStringWithUnsigned (previousNodeCount) << " nodes -> " << cStringWithUnsigned (newNodeCount) << " ("
-           << garbageTimer << ")\n" ;
+        gCout.addString ("Garbage (RAM ") ;
+        gCout.addUnsigned (ramSize) ;
+        gCout.addString (" Mb) : ") ;
+        gCout.addUnsigned (previousNodeCount) ;
+        gCout.addString (" nodes -> ") ;
+        gCout.addUnsigned (newNodeCount) ;
+        gCout.addString (" (") ;
+        gCout.addString (garbageTimer.timeString ()) ;
+        gCout.addString (")\n") ;
         fflush (stdout) ;
       }
     }
@@ -674,11 +718,17 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
     allStatesSet = newAllStates ;
   //--- Print iteration characteristics
     if (! inDoNotPrintIterationsMessages) {
-      co << "Iteration " << cStringWithUnsigned (iteration) << " : " << cStringWithUnsigned (allStatesSet.getSetCardinal ())
-         << " states, bound : " << cStringWithSigned (allStatesSet.getMaxValue ()) << ", max tokens "
-         << cStringWithSigned (allStatesSet.getMaxTokens ()) << " ("
-         << iterationTimer
-         << ")\n" ;
+      gCout.addString ("Iteration ") ;
+      gCout.addUnsigned (iteration) ;
+      gCout.addString (" : ") ;
+      gCout.addUnsigned (allStatesSet.getSetCardinal ());
+      gCout.addString (" states, bound : ") ;
+      gCout.addSigned (allStatesSet.getMaxValue ()) ;
+      gCout.addString (", max tokens ") ;
+      gCout.addSigned (allStatesSet.getMaxTokens ()) ;
+      gCout.addString (" (") ;
+      gCout.addString (iterationTimer.timeString ()) ;
+      gCout.addString (")\n") ;
       fflush (stdout) ;
      }
   }
@@ -690,38 +740,47 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
     const C_AEDD aedd = p->buildAEDDexpression () ;
     const C_VDD s = allStatesSet.getFirableFromAEDD (aedd) ;
     const uint64_t c = s.getSetCardinal () ;
-    co << "'" << current.current_mName (HERE) << "' : " << cStringWithUnsigned (c) << " state" << ((c > 1) ? "s" : "") << "\n" ;
-//    s.printSet (co, inPlaceNames) ;
+    gCout.addString ("'") ;
+    gCout.addString (current.current_mName (HERE).mProperty_string.stringValue()) ;
+    gCout.addString ("' : ") ;
+    gCout.addUnsigned (c) ;
+    gCout.addString (" state") ;
+    gCout.addString ((c > 1) ? "s" : "") ;
+    gCout.addString ("\n") ;
+//    s.printSet (gCout, inPlaceNames) ;
     current.gotoNextObject () ;
   }
 //--- Compute transition firing count
   if (inPrintTransitionsFiring) {
-    co << "Transitions firing :\n" ;
+    gCout.addString ("Transitions firing :\n") ;
     printFiringCount (mDecisionTree, 0, inPlaceNames, inTransitionNames, firableFlags) ;
   }
 //--- Print min and max token for each place ?
   if (inPrintMinAndMax) {
-  co << "---------------- Print min and max for each variable\n" ;
+  gCout.addString ("---------------- Print min and max for each variable\n") ;
     TC_UniqueArray <int32_t> minToken (inPlaceNames.count (), 0 COMMA_HERE) ;
     TC_UniqueArray <int32_t> maxToken (inPlaceNames.count (), 0 COMMA_HERE) ;
     allStatesSet.computeMinAndMax (minToken, maxToken, inPlaceNames.count ()) ;
     for (int32_t i=0 ; i<inPlaceNames.count () ; i++) {
-      co << "  Variable " << inPlaceNames (i COMMA_HERE)
-         << " : min = " << cStringWithSigned (minToken (i COMMA_HERE))
-         << ", max = " << cStringWithSigned (maxToken (i COMMA_HERE))
-         << "\n" ;
+      gCout.addString ("  Variable ") ;
+      gCout.addString (inPlaceNames (i COMMA_HERE)) ;
+      gCout.addString (" : min = ") ;
+      gCout.addSigned (minToken (i COMMA_HERE));
+      gCout.addString (", max = ") ;
+      gCout.addSigned (maxToken (i COMMA_HERE));
+      gCout.addString ("\n") ;
      }
-     co << "\n" ;
+     gCout.addString ("\n") ;
   }
 //--- Print nodes ?
   if (inPrintAllNodes) {
-    co << "----------- Marking graph VDD nodes :\n" ;
-    allStatesSet.printSetNodes (co, inPlaceNames) ;
+    gCout.addString ("----------- Marking graph VDD nodes :\n") ;
+    allStatesSet.printSetNodes (gCout, inPlaceNames) ;
   }
 //--- Print states ?
   if (inPrintAllStates) {
-    co << "Marking graph states :\n" ;
-    allStatesSet.printSet (co, inPlaceNames) ;
+    gCout.addString ("Marking graph states :\n") ;
+    allStatesSet.printSet (gCout, inPlaceNames) ;
   }
 //--- Display  state count, transitions count, duration and used RAM size
   size_t ramSize = C_VDD::getCachesSizeInBytes () ;
@@ -730,10 +789,17 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
   ramSize /= 1 << 20 ; // in Mb
   stateCount = allStatesSet.getSetCardinal () ;
   const uint64_t VDDtransitionsCount = transitionCount (mDecisionTree, 0) ;
-  co << cStringWithUnsigned (stateCount) << " states (" << cStringWithSigned (allStatesSet.getNodesCount ())
-     << " nodes) reached in " << cStringWithUnsigned (iteration) << " iterations ;\n"
-     << cStringWithUnsigned (VDDtransitionsCount) << " transitions, used RAM : " << cStringWithUnsigned (ramSize) << " Mb.\n" ;
-//    C_VDD::printVDDsummary (co) ;
+  gCout.addUnsigned (stateCount) ;
+  gCout.addString (" states (") ;
+  gCout.addSigned (allStatesSet.getNodesCount ());
+  gCout.addString (" nodes) reached in ") ;
+  gCout.addUnsigned (iteration) ;
+  gCout.addString (" iterations ;\n") ;
+  gCout.addUnsigned (VDDtransitionsCount) ;
+  gCout.addString (" transitions, used RAM : ") ;
+  gCout.addUnsigned (ramSize) ;
+  gCout.addString (" Mb.\n") ;
+//    C_VDD::printVDDsummary (gCout) ;
   delete mDecisionTree ;
   C_VDD::collectUnusedNodes () ;
 }
@@ -747,7 +813,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
                        const GALGAS_typeTransitionList inTransitionList,
                        const GALGAS_typeInitialMarkingList inInitialMarkingList,
                        const GALGAS_countList inCountList,
-                       C_Compiler * inCompiler
+                       Compiler * inCompiler
                        COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
 //   C_AEDD::changeHashMapSize (1000) ;
@@ -758,7 +824,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
 //--- Transitions count
   const int32_t transitionsCount = (int32_t) inTransitionList.count () ;
 //--- Build places names array
-  TC_UniqueArray <C_String> placeNames (placesCount COMMA_HERE) ;
+  TC_UniqueArray <String> placeNames (placesCount COMMA_HERE) ;
   cEnumerator_typeVarMap current (inPlacesMap, kENUMERATION_UP) ;
   while (current.hasCurrentObject ()) {
     placeNames.appendObject (current.current_lkey (HERE).mProperty_string.stringValue ()) ;
@@ -776,7 +842,7 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
   }
 //--- Build transition name array, precondition expression array, post condition array
 //  printf ("BUILD DATA FROM TRANSITIONS\n") ; fflush (stdout) ;
-  TC_UniqueArray <C_String> transitionsNames (transitionsCount COMMA_HERE) ;
+  TC_UniqueArray <String> transitionsNames (transitionsCount COMMA_HERE) ;
   TC_UniqueArray <C_AEDD> preconditionExp (transitionsCount, C_AEDD () COMMA_HERE) ;
   cPostConditionArray postcondition (transitionsCount, placesCount COMMA_HERE) ;
   TC_UniqueArray <uint32_t> lowBounds (transitionsCount COMMA_HERE) ;
@@ -792,7 +858,9 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
     preconditionExp (t COMMA_HERE) = ptr->buildAEDDexpression () ;
     const uintptr_t nodesCount = preconditionExp (t COMMA_HERE).getAEDDnodesCount () ;
     if (nodesCount == 0) {
-      co << "*** WARNING: NO AEDD NODES FOR '" << currentTrans.current_mTransitionName (HERE) << "' TRANSITION ***\n" ;
+      gCout.addString ("*** WARNING: NO AEDD NODES FOR '") ;
+      gCout.addString (currentTrans.current_mTransitionName (HERE).mProperty_string.stringValue()) ;
+      gCout.addString ("' TRANSITION ***\n") ;
       fflush (stdout) ;
     }
 //    printf ("post expression\n") ; fflush (stdout) ;
@@ -831,43 +899,72 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
 //--- Realloc VDD caches
   C_VDD::reallocCaches (1 << inHashMapSize.uintValue ()) ;
 //--- Print input values
-  co << "  " << cStringWithSigned (placesCount) << " variable" << ((placesCount > 1) ? "s" : "") << "\n" ;
-  co << "  " << cStringWithSigned (transitionsCount) << " transition" << ((transitionsCount > 1) ? "s" : "") << "\n" ;
+  gCout.addString ("  ") ;
+  gCout.addSigned (placesCount) ;
+  gCout.addString (" variable") ;
+  gCout.addString ((placesCount > 1) ? "s" : "") ;
+  gCout.addString ("\n") ;
+  gCout.addString ("  ") ;
+  gCout.addSigned (transitionsCount) ;
+  gCout.addString (" transition") ;
+  gCout.addString ((transitionsCount > 1) ? "s" : "") ;
+  gCout.addString ("\n") ;
 //--- Print Garbage period
-  co << "  Garbage period : " << cStringWithUnsigned (inGarbagePeriod.uintValue ()) << "\n" ;
+  gCout.addString ("  Garbage period : ") ;
+  gCout.addUnsigned (inGarbagePeriod.uintValue ()) ;
+  gCout.addString ("\n") ;
 //--- VDD map
-  co << "  VDD hash map parameter : " << cStringWithUnsigned (inHashMapSize.uintValue ()) << " -> " << cStringWithUnsigned (C_VDD::getHashMapEntriesCount ())
-     << " entries (" << cStringWithUnsigned ((uint32_t) (C_VDD::getMapSizeInBytes () / (1 << 20))) << " Mb).\n" ;
+  gCout.addString ("  VDD hash map parameter : ") ;
+  gCout.addUnsigned (inHashMapSize.uintValue ()) ;
+  gCout.addString (" -> ") ;
+  gCout.addUnsigned (C_VDD::getHashMapEntriesCount ()) ;
+  gCout.addString (" entries (") ;
+  gCout.addUnsigned ((uint32_t) (C_VDD::getMapSizeInBytes () / (1 << 20))) ;
+  gCout.addString (" Mb).\n") ;
 //--- VDD map
-  co << "  VDD operations cache hash maps parameter : " << cStringWithUnsigned (inHashMapSize.uintValue ()) << " -> " << cStringWithUnsigned (C_VDD::getCachesSizeEntriesCount ())
-     << " entries (" << cStringWithUnsigned ((uint32_t) (C_VDD::getCachesSizeInBytes () / (1UL << 20))) << " Mb).\n" ;
+  gCout.addString ("  VDD operations cache hash maps parameter : ") ;
+  gCout.addUnsigned (inHashMapSize.uintValue ()) ;
+  gCout.addString (" -> ") ;
+  gCout.addUnsigned (C_VDD::getCachesSizeEntriesCount ());
+  gCout.addString (" entries (") ;
+  gCout.addUnsigned ((uint32_t) (C_VDD::getCachesSizeInBytes () / (1UL << 20))) ;
+  gCout.addString (" Mb).\n") ;
   fflush (stdout) ;
 //--- Print preconditions
   if (printPreConditions) {
-    co << "--------------- Precondition expressions :\n" ;
+    gCout.addString ("--------------- Precondition expressions :\n") ;
     for (int32_t i=0 ; i<transitionsCount ; i++) {
       const uintptr_t nodesCount = preconditionExp (i COMMA_HERE).getAEDDnodesCount () ;
-      C_String s ;
-      s << "Transition \"" << transitionsNames (i COMMA_HERE) << "\" ("
-        << cStringWithUnsigned (nodesCount) << " node" << ((nodesCount > 1) ? "s" : "") << "): " ;
+      String s ;
+      s.addString ("Transition \"") ;
+      s.addString (transitionsNames (i COMMA_HERE)) ;
+      s.addString ("\" (") ;
+      s.addUnsigned (nodesCount) ;
+      s.addString (" node") ;
+      s.addString ((nodesCount > 1) ? "s" : "") ;
+      s.addString ("): ") ;
       preconditionExp (i COMMA_HERE).printAEDDnodes (s.cString (HERE)) ;
     }
     cEnumerator_countList currentCount (inCountList, kENUMERATION_UP) ;
     while (currentCount.hasCurrentObject ()) {
-      C_String s ;
-      s << "Count \"" << currentCount.current_mName (HERE) << "\" : " ;
+      String s ;
+      s.addString ("Count \"") ;
+      s.addString (currentCount.current_mName (HERE).mProperty_string.stringValue()) ;
+      s.addString ("\" : ") ;
       auto q = (const cPtr_typePreconditionExpression *) currentCount.current_mCondition (HERE).ptr () ;
       const C_AEDD expr = q->buildAEDDexpression () ;
       expr.printAEDDnodes (s.cString (HERE)) ;
       currentCount.gotoNextObject () ;
     }
-    co << "\n" ;
+    gCout.addString ("\n") ;
   }
 //--- Print post conditions
   if (printInference) {
-    co << "--------------- Postcondition expressions :\n" ;
+    gCout.addString ("--------------- Postcondition expressions :\n") ;
     for (int32_t tt=0 ; tt<transitionsCount ; tt++) {
-      co << "\nTransition \"" << transitionsNames (tt COMMA_HERE) << "\" : " ;
+      gCout.addString ("\nTransition \"") ;
+      gCout.addString (transitionsNames (tt COMMA_HERE)) ;
+      gCout.addString ("\" : ") ;
       bool first = true ;
       for (int32_t p=0 ; p<placesCount ; p++) {
         const int32_t v = postcondition (tt, p COMMA_HERE).mConstant ;
@@ -875,26 +972,34 @@ routine_generate_5F_code (const GALGAS_uint inHashMapSize,
         case UNDEFINED_POST :
           break ;
         case ASSIGN_POST :
-          if (first) { first = false ; } else { co << ", " ; }
-          co << placeNames (p COMMA_HERE) << " := " << cStringWithSigned (v) ;
+          if (first) { first = false ; } else { gCout.addString (", ") ; }
+          gCout.addString (placeNames (p COMMA_HERE)) ;
+          gCout.addString (" := ") ;
+          gCout.addSigned (v) ;
           break ;
         case INC_POST :
-          if (first) { first = false ; } else { co << ", " ; }
-          co << placeNames (p COMMA_HERE) << " += " << cStringWithSigned (v) ;
+          if (first) { first = false ; } else { gCout.addString (", ") ; }
+          gCout.addString (placeNames (p COMMA_HERE)) ;
+          gCout.addString (" += ") ;
+          gCout.addSigned (v) ;
           break ;
         }
       }
-      co << "\n" ;
+      gCout.addString ("\n") ;
     }
-    co << "\n" ;
+    gCout.addString ("\n") ;
   }
 //--- Print temporal bounds
   if (printTemporalBounds) {
-    co << "--------------- Temporal bounds :\n" ;
+    gCout.addString ("--------------- Temporal bounds :\n") ;
     for (int32_t tt=0 ; tt<transitionsCount ; tt++) {
-      co << "  \"" << transitionsNames (tt COMMA_HERE) << "\" : ["
-         << cStringWithUnsigned (lowBounds (tt COMMA_HERE)) << ", "
-         << cStringWithUnsigned (highBounds (tt COMMA_HERE)) << "]\n" ;
+      gCout.addString ("  \"") ;
+      gCout.addString (transitionsNames (tt COMMA_HERE)) ;
+      gCout.addString ("\" : [") ;
+      gCout.addUnsigned (lowBounds (tt COMMA_HERE))  ;
+      gCout.addString (", ") ;
+      gCout.addUnsigned (highBounds (tt COMMA_HERE))  ;
+      gCout.addString ("]\n") ;
     }
   }
 //--- Compute marking graph

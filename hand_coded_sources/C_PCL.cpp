@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-//--- Cache is handled by an prime integer sized array 
+//--- Cache is handled by an prime integer sized array
 #include "TC_prime_cache2.h"
 typedef TC_prime_cache2 <C_PCL::cVDLnodeInfo *> cCacheClass ;
 static cCacheClass gCache ;
@@ -394,7 +394,7 @@ internalMerge (C_PCL::cVDLnodeInfo * inRootPointer,
     p = inOtherRootPointer ;
   }else if (inOtherRootPointer == NULL) {
     p = inRootPointer ;
-  }else{  
+  }else{
     const T_vdd_zsl_index index = inRootPointer->mIndex ;
     const T_vdd_zsl_index otherIndex = inOtherRootPointer->mIndex ;
     if (index < otherIndex) {
@@ -495,11 +495,12 @@ find_or_add (const T_vdd_zsl_index inIndex,
        if (firstPrint) {
          firstPrint = false ;
        }else{
-         inStream << " " ;
+         inStream.addString (" ") ;
        }
-       inStream << inPrefix << cStringWithSigned ((p->mIndex - inFirst) / inStep)
-                << ":"
-                << cStringWithSigned (p->mValue) ;
+       inStream.addString (inPrefix) ;
+       inStream.addSigned ((p->mIndex - inFirst) / inStep) ;
+       inStream.addString (":") ;
+       inStream.addSigned (p->mValue) ;
      }
      p = p->mPtrToNext ;
    }
@@ -508,7 +509,7 @@ find_or_add (const T_vdd_zsl_index inIndex,
 //---------------------------------------------------------------------------*
 
  void C_PCL::printVector (AC_OutputStream & inStream,
-                           const TC_UniqueArray <C_String> & inNames,
+                           const TC_UniqueArray <String> & inNames,
                            const int32_t inFirst,
                            const int32_t inStep) const {
    bool firstPrint = true ;
@@ -518,11 +519,11 @@ find_or_add (const T_vdd_zsl_index inIndex,
        if (firstPrint) {
          firstPrint = false ;
        }else{
-         inStream << " " ;
+         inStream.addString (" ") ;
        }
-       inStream << (inNames ((p->mIndex - inFirst) / inStep COMMA_HERE))
-                << ":"
-                << cStringWithSigned (p->mValue) ;
+       inStream.addString (inNames ((p->mIndex - inFirst) / inStep COMMA_HERE)) ;
+       inStream.addString (":") ;
+       inStream.addSigned (p->mValue) ;
      }
      p = p->mPtrToNext ;
    }
@@ -559,23 +560,41 @@ void C_PCL::collectUnusedNodes (void) {
 
 void C_PCL::printVDLsummary (AC_OutputStream & inOutputStream) {
   const uint64_t n = getCacheSuccessCount () + getCacheFailureCount () ;
-  inOutputStream << "Summary of VDL operations :\n"
-                    "  " << cStringWithSigned (getVDLnodeCount ())
-                 << " VDL used nodes (size " << cStringWithUnsigned (getNodeSize ()) << " bytes) ;\n"
-                    "  " << cStringWithUnsigned (C_PCL_hashmap::getCreatedObjectCount ())
-                 << " VDL created nodes (total size "
-                 << cStringWithUnsigned (((uint32_t) C_PCL_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL)
-                 << " kbytes) ;\n"
-                    "  " << cStringWithSigned (getNodeComparesCount ()) << " comparisons ;\n"
-                    "  " << cStringWithUnsigned (getCacheSuccessCount ())
-                 << " cache successes (" << cStringWithUnsigned ((100ULL * getCacheSuccessCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getCacheFailureCount ()) << " cache failures ("
-                 << cStringWithUnsigned ((100ULL * getCacheFailureCount ()) / n) << "%), including "
-                 << cStringWithUnsigned (getCacheOverrideCount ()) << " cache overrides ("
-                 << cStringWithUnsigned ((100ULL * getCacheOverrideCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getUnusedCacheEntriesCount ()) << " unused cache entries ("
-                 << cStringWithUnsigned ((100ULL * getUnusedCacheEntriesCount ()) / getCacheEntriesCount ())
-                 << "%, total entries = " << cStringWithUnsigned (getCacheEntriesCount ()) << ").\n" ;
+  inOutputStream.addString ("Summary of VDL operations :\n"
+                    "  ") ;
+  inOutputStream.addSigned (getVDLnodeCount ());
+  inOutputStream.addString (" VDL used nodes (size ") ;
+  inOutputStream.addUnsigned (getNodeSize ()) ;
+  inOutputStream.addString (" bytes) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (C_PCL_hashmap::getCreatedObjectCount ());
+  inOutputStream.addString (" VDL created nodes (total size ") ;
+  inOutputStream.addUnsigned (((uint32_t) C_PCL_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL);
+  inOutputStream.addString (" kbytes) ;\n"
+                    "  ") ;
+  inOutputStream.addSigned (getNodeComparesCount ()) ;
+  inOutputStream.addString (" comparisons ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getCacheSuccessCount ());
+  inOutputStream.addString (" cache successes (") ;
+  inOutputStream.addUnsigned ((100ULL * getCacheSuccessCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getCacheFailureCount ()) ;
+  inOutputStream.addString (" cache failures (") ;
+  inOutputStream.addUnsigned ((100ULL * getCacheFailureCount ()) / n) ;
+  inOutputStream.addString ("%), including ") ;
+  inOutputStream.addUnsigned (getCacheOverrideCount ()) ;
+  inOutputStream.addString (" cache overrides (") ;
+  inOutputStream.addUnsigned ((100ULL * getCacheOverrideCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getUnusedCacheEntriesCount ()) ;
+  inOutputStream.addString (" unused cache entries (") ;
+  inOutputStream.addUnsigned ((100ULL * getUnusedCacheEntriesCount ()) / getCacheEntriesCount ());
+  inOutputStream.addString ("%, total entries = ") ;
+  inOutputStream.addUnsigned (getCacheEntriesCount ()) ;
+  inOutputStream.addString (").\n") ;
 }
 
 //---------------------------------------------------------------------------*

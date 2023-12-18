@@ -28,7 +28,7 @@
 #include "utilities/F_GetPrime.h"
 #include "C_AEDDPrimeCache2.h"
 #include "streams/C_ConsoleOut.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -205,11 +205,11 @@ int32_t C_AEDD::getAEDDnodeSize (void) {
 //---------------------------------------------------------------------------*
 
 static inline void rotateLeftBDDnode (C_AEDD::C_AEDDnode * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   C_AEDD::C_AEDDnode * ptr = ioPtr->mPtrToSup ;
   ioPtr->mPtrToSup = ptr->mPtrToInf ;
   ptr->mPtrToInf = ioPtr ;
-//--- Update balance 
+//--- Update balance
   if (ptr->mBalance < 0) {
     ioPtr->mBalance = (int8_t) (ioPtr->mBalance - ptr->mBalance) ;
   }
@@ -224,11 +224,11 @@ static inline void rotateLeftBDDnode (C_AEDD::C_AEDDnode * & ioPtr) {
 //---------------------------------------------------------------------------*
 
 static inline void rotateRightBDDnode (C_AEDD::C_AEDDnode * & ioPtr) {
-//--- Rotate 
+//--- Rotate
   C_AEDD::C_AEDDnode * ptr = ioPtr->mPtrToInf ;
   ioPtr->mPtrToInf = ptr->mPtrToSup ;
   ptr->mPtrToSup = ioPtr ;
-//--- Update balance 
+//--- Update balance
   if (ptr->mBalance > 0) {
     ioPtr->mBalance = (int8_t) (ioPtr->mBalance - ptr->mBalance) ;
   }
@@ -239,7 +239,7 @@ static inline void rotateRightBDDnode (C_AEDD::C_AEDDnode * & ioPtr) {
   ptr->mBalance -- ;
   ioPtr = ptr ;
 }
- 
+
 //---------------------------------------------------------------------------*
 
 static C_AEDD::C_AEDDnode *
@@ -875,15 +875,15 @@ bool C_AEDD::infPtr (const C_AEDD & inOperand) const {
 static void
 internalRef (const intptr_t inAEDDvalue) {
   if (inAEDDvalue == 0) {
-    co << "false" ;
+    gCout.addString ("false") ;
   }else if (inAEDDvalue == 1) {
-    co << "true" ;
+    gCout.addString ("true") ;
   }else if ((inAEDDvalue & 1) == 0) {
-    co << "node " ;
-    co.appendUnsignedHex ((uint64_t) inAEDDvalue) ;
+    gCout.addString ("node ") ;
+    gCout.addUnsignedHex ((uint64_t) inAEDDvalue) ;
   }else{
-    co << "complement of node " ;
-    co.appendUnsignedHex (((uintptr_t) (inAEDDvalue & ~1))) ;
+    gCout.addString ("complement of node ") ;
+    gCout.addUnsignedHex (((uintptr_t) (inAEDDvalue & ~1))) ;
   }
 }
 
@@ -895,14 +895,18 @@ internalPrintAEDDnodes (const intptr_t inAEDDvalue,
   C_AEDD::C_AEDDnode * ptr = getAEDDnodePointer (inAEDDvalue) ;
   if ((ptr != NULL) && ! ptr->isMarked ()) {
     ptr->mark () ;
-    co.appendSpaces ((int32_t) inIndentation) ;
-    co << "at " ;
-    co.appendUnsignedHex ((uintptr_t) ptr) ;
-    co << ": if var" << cStringWithSigned (ptr->mVar) << " >= " << cStringWithSigned (ptr->mConstant) << " then " ;
+    gCout.addSpaces ((int32_t) inIndentation) ;
+    gCout.addString ("at ") ;
+    gCout.addUnsignedHex ((uintptr_t) ptr) ;
+    gCout.addString (": if var") ;
+    gCout.addSigned (ptr->mVar) ;
+    gCout.addString (" >= ") ;
+    gCout.addSigned (ptr->mConstant) ;
+    gCout.addString (" then ") ;
     internalRef (ptr->mTrueBranch) ;
-    co << " else " ;
+    gCout.addString (" else ") ;
     internalRef (ptr->mFalseBranch) ;
-    co << "\n" ;
+    gCout.addString ("\n") ;
     internalPrintAEDDnodes (ptr->mTrueBranch, inIndentation + 1) ;
     internalPrintAEDDnodes (ptr->mFalseBranch, inIndentation + 1) ;
   }
@@ -912,9 +916,9 @@ internalPrintAEDDnodes (const intptr_t inAEDDvalue,
 
 void C_AEDD::printAEDDnodes (const char * inMessage) const {
   unmarkAllExistingAEDDnodes () ;
-  co << inMessage ;
+  gCout.addString (inMessage) ;
   internalRef (mAEDDvalue) ;
-  co << "\n" ;
+  gCout.addString ("\n") ;
   internalPrintAEDDnodes (mAEDDvalue, 0) ;
 }
 
@@ -964,11 +968,19 @@ uintptr_t C_AEDD::getAEDDnodesCount (void) const {
 
 void C_AEDD::
 printAEDDpackageOperationsSummary (AC_OutputStream & inStream) {
-  inStream << "\n"
-              "Bilan du AEDD (" << cStringWithSigned (getAEDDnodeSize ()) << " octets par element AEDD)\n"
-              "  Nombre courant de AEDD  : " << cStringWithUnsigned (getAEDDinstancesCount ()) << "\n"
-              "  Nombre d'elements crees : " << cStringWithUnsigned (getCreatedNodesCount ()) << "\n"
-              "  Nombre de comparaisons pour recherches/insertions des elements : " << cStringWithUnsigned (C_AEDDnode::smComparisonsCount) << "\n" ;
+  inStream.addString ("\n"
+              "Bilan du AEDD (") ;
+  inStream.addSigned (getAEDDnodeSize ()) ;
+  inStream.addString (" octets par element AEDD)\n"
+              "  Nombre courant de AEDD  : ") ;
+  inStream.addUnsigned (getAEDDinstancesCount ()) ;
+  inStream.addString ("\n"
+              "  Nombre d'elements crees : ") ;
+  inStream.addUnsigned (getCreatedNodesCount ()) ;
+  inStream.addString ("\n"
+              "  Nombre de comparaisons pour recherches/insertions des elements : ") ;
+  inStream.addUnsigned (C_AEDDnode::smComparisonsCount) ;
+  inStream.addString ("\n") ;
   gAndOperationCache.printStatistics (inStream, "AND") ;
 }
 

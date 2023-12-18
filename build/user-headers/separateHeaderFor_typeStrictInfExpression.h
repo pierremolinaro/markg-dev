@@ -2,11 +2,11 @@
 
 
 //--- END OF USER ZONE 1
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 2: pointer class for @typeStrictInfExpression class
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cPtr_typeStrictInfExpression : public cPtr_typePreconditionExpression {
 
@@ -34,7 +34,7 @@ class cPtr_typeStrictInfExpression : public cPtr_typePreconditionExpression {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;

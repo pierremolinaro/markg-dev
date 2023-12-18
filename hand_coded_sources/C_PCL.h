@@ -30,7 +30,7 @@
 
 #include "C_vdd_types.h"
 #include "generic-arraies/TC_UniqueArray.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -56,7 +56,7 @@ class C_PCL {
   protected : C_PCL * mPtrToNextExisting ;
   protected : C_PCL * mPtrToPreviousExisting ;
   private : void initLinks (void) ;
-  
+
 //--- Internal nodes
   public : class cVDLnodeInfo {
     public : cVDLnodeInfo * mPtrToNext ;
@@ -64,9 +64,9 @@ class C_PCL {
     public : T_vdd_zsl_value mValue ;
     public : T_vdd_zsl_index mIndex ;
     public : bool mAssignment ;
-    
+
     public : intptr_t compare (const cVDLnodeInfo & inOperand) const ;
-    
+
     public : inline bool isMarked (void) const {
       return (mID & MARK_PCL_NODE) != 0 ;
     }
@@ -78,7 +78,7 @@ class C_PCL {
     public : inline void unmark (void) {
       mID &= ~ MARK_PCL_NODE ;
     }
-    
+
     public : inline uint32_t getHashCodeForMap (void) const {
       return (uint32_t) ((mIndex << 11)
                               ^ mValue
@@ -119,7 +119,7 @@ class C_PCL {
 
 //--- print a vector
   public : void printVector (AC_OutputStream & inStream,
-                             const TC_UniqueArray <C_String> & inNames,
+                             const TC_UniqueArray <String> & inNames,
                              const int32_t inFirst,
                              const int32_t inStep) const ;
 
@@ -169,7 +169,7 @@ class C_PCL {
   public : static uint64_t getCacheOverrideCount (void) ;
   public : static uint64_t getUnusedCacheEntriesCount (void) ;
   public : static uint64_t getCacheEntriesCount (void) ;
-  
+
   friend class cVDLnodeInfo ;
 } ;
 

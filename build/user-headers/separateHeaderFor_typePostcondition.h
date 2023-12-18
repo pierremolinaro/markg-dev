@@ -2,11 +2,11 @@
 
 
 //--- END OF USER ZONE 1
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 2: pointer class for @typePostcondition class
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cPtr_typePostcondition : public acStrongPtr_class {
 
@@ -16,7 +16,7 @@ class cPtr_typePostcondition : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,
-                                            C_Compiler * inLexique,
+                                            Compiler * inLexique,
                                             class cPostConditionArray & ioPostCondition) const = 0 ;
   public : virtual void buildInitialMarking (class C_VDD & ioInitialMarking) const = 0 ;
 
@@ -28,7 +28,7 @@ class cPtr_typePostcondition : public acStrongPtr_class {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;

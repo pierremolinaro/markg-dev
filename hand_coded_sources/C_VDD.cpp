@@ -581,23 +581,25 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
  void C_VDD::
  internalPrintSet (AC_OutputStream & inStream,
                    cVDDnodeInfo * const inPtr,
-                   const TC_UniqueArray <C_String> & inNames,
+                   const TC_UniqueArray <String> & inNames,
                    int32_t inArray [],
                    const T_vdd_zsl_index inIndex) {
   if (inPtr == kNULL_SET) {
-    inStream << "  <" ;
+    inStream.addString ("  <") ;
     bool firstPrint = true ;
     for (int32_t i=0 ; i<inIndex ; i++) {
       if (inArray [i] != 0) {
         if (firstPrint) {
           firstPrint = false ;
         }else{
-          inStream << " " ;
+          inStream.addString (" ") ;
         }
-        inStream << inNames (i COMMA_HERE) << ":" << cStringWithSigned (inArray [i]) ;
+        inStream.addString (inNames (i COMMA_HERE)) ;
+        inStream.addString (":") ;
+        inStream.addSigned (inArray [i]) ;
       }
     }
-    inStream << ">\n" ;
+    inStream.addString (">\n") ;
   }else if (inPtr != kEMPTY_SET){
     const T_vdd_zsl_index index = inPtr->mIndex ;
     for (T_vdd_zsl_index i=inIndex ; i<index ; i++) {
@@ -613,11 +615,11 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
 
 void C_VDD
 ::printSet (AC_OutputStream & inStream,
-            const TC_UniqueArray <C_String> & inNames) const {
+            const TC_UniqueArray <String> & inNames) const {
   if (mRootPointer == kEMPTY_SET) {
-    inStream << "  (empty set)\n" ;
+    inStream.addString ("  (empty set)\n") ;
   }else if (mRootPointer == kNULL_SET) {
-    inStream << "  <>\n" ;
+    inStream.addString ("  <>\n") ;
   }else{
     int32_t * array = (int32_t *) NULL ;
     macroMyNewArray (array, int32_t, size_t (inNames.count ())) ;
@@ -641,24 +643,28 @@ void C_VDD
  void C_VDD
  ::internalPrintSetNodes (AC_OutputStream & inStream,
                           cVDDnodeInfo * const inPtr,
-                          const TC_UniqueArray <C_String> & inNames) {
+                          const TC_UniqueArray <String> & inNames) {
   if ((inPtr != kEMPTY_SET) && (inPtr != kNULL_SET) && (! inPtr->isMarked ())) {
     inPtr->mark () ;
-    inStream << "  " << cStringWithPointer (inPtr) << ":" << inNames (inPtr->mIndex COMMA_HERE)
-             << ":" << cStringWithSigned (inPtr->mValue)
-             << ", next index : " ;
+    inStream.addString ("  ") ;
+    inStream.addPointer (inPtr) ;
+    inStream.addString (":") ;
+    inStream.addString (inNames (inPtr->mIndex COMMA_HERE)) ;
+    inStream.addString (":") ;
+    inStream.addSigned (inPtr->mValue);
+    inStream.addString (", next index : ") ;
     if (inPtr->mPtrToNextIndex == kNULL_SET) {
-      inStream << "NULL" ;
+      inStream.addString ("NULL") ;
     }else{
-      inStream << cStringWithPointer (inPtr->mPtrToNextIndex) ;
+      inStream.addPointer (inPtr->mPtrToNextIndex) ;
     }
-    inStream << ", same index : " ;
+    inStream.addString (", same index : ") ;
     if (inPtr->mPtrToSameIndex == kEMPTY_SET) {
-      inStream << "EMPTY" ;
+      inStream.addString ("EMPTY") ;
     }else{
-      inStream << cStringWithPointer (inPtr->mPtrToSameIndex) ;
+      inStream.addPointer (inPtr->mPtrToSameIndex) ;
     }
-    inStream << "\n" ;
+    inStream.addString ("\n") ;
     internalPrintSetNodes (inStream, inPtr->mPtrToNextIndex, inNames) ;
     internalPrintSetNodes (inStream, inPtr->mPtrToSameIndex, inNames) ;
   }
@@ -668,7 +674,7 @@ void C_VDD
 
 void C_VDD
 ::printSetNodes (AC_OutputStream & inStream,
-                 const TC_UniqueArray <C_String> & inNames) const {
+                 const TC_UniqueArray <String> & inNames) const {
 //--- Count nodes (for being able to display the elements count)
   getSetCardinal () ;
   gMap.unmarkAllObjects () ;
@@ -951,7 +957,7 @@ C_VDD::cVDDnodeInfo * C_VDD
   }else if (inTestPtr == kNULL_SET) {
     result = inPtr ; // All vectors are greater or equal
   }else if (inPtr == kEMPTY_SET) {
-    result = kEMPTY_SET ; 
+    result = kEMPTY_SET ;
   }else if (inPtr == kNULL_SET) {
     result = internalGetIntersectionWithNull (inPtr) ; // Only null vector, if it exists
   }else{
@@ -969,7 +975,7 @@ C_VDD::cVDDnodeInfo * C_VDD
       }
     }else if (index == testIndex) {
       if (value < testValue) {
-        result = internalGetGreaterOrEqual (inPtr->mPtrToSameIndex, inTestPtr) ;      
+        result = internalGetGreaterOrEqual (inPtr->mPtrToSameIndex, inTestPtr) ;
       }else if (value == testValue) {
         result = find_or_add (index, value,
                               internalGetGreaterOrEqual (inPtr->mPtrToNextIndex, inTestPtr->mPtrToNextIndex),
@@ -1058,7 +1064,7 @@ C_VDD::cVDDnodeInfo * C_VDD
       }
     }else if (index == testIndex) {
       if (value < testValue) {
-        result = internalGetGreater (inPtr->mPtrToSameIndex, inTestPtr) ;      
+        result = internalGetGreater (inPtr->mPtrToSameIndex, inTestPtr) ;
       }else if (value == testValue) {
         result = find_or_add (index, value,
                               internalGetGreater (inPtr->mPtrToNextIndex, inTestPtr->mPtrToNextIndex),
@@ -1183,7 +1189,7 @@ C_VDD::cVDDnodeInfo * C_VDD
         C_ZSV::explore_vdl (v, vectorIndex, vectorValue) ;
         result = find_or_add (vectorIndex, vectorValue,
                               internalAddVector (kNULL_SET, v),
-                              kEMPTY_SET) ; 
+                              kEMPTY_SET) ;
       }else{
         C_ZSV v = inVector ;
         T_vdd_zsl_index vectorIndex ; T_vdd_zsl_value vectorValue ;
@@ -1258,7 +1264,7 @@ C_VDD::cVDDnodeInfo * C_VDD
       if (inPtr == kNULL_SET) {
         result = find_or_add (vectorIndex, vectorValue,
                               internalComputeTargetVector (kNULL_SET, v),
-                              kEMPTY_SET) ; 
+                              kEMPTY_SET) ;
       }else if (inPtr->mIndex < vectorIndex) {
         result = find_or_add (inPtr->mIndex, inPtr->mValue,
                               internalComputeTargetVector (inPtr->mPtrToNextIndex, inVector),
@@ -1285,7 +1291,7 @@ C_VDD::cVDDnodeInfo * C_VDD
           result = find_or_add (vectorIndex, MAX_VDD_ZSL_VALUE,
                                 internalComputeTargetVector (result, v),
                                 kEMPTY_SET) ;
-        }else if ((((int64_t) inPtr->mValue) + ((int64_t) vectorValue)) > ((int64_t) MAX_VDD_ZSL_VALUE)) {   
+        }else if ((((int64_t) inPtr->mValue) + ((int64_t) vectorValue)) > ((int64_t) MAX_VDD_ZSL_VALUE)) {
           //printf ("******** B ******* %ld %ld \n", inPtr->mValue, vectorValue) ;
           result = inPtr->mPtrToNextIndex ;
           cVDDnodeInfo * p = inPtr->mPtrToSameIndex ;
@@ -1296,7 +1302,7 @@ C_VDD::cVDDnodeInfo * C_VDD
           result = find_or_add (vectorIndex, MAX_VDD_ZSL_VALUE,
                                 internalComputeTargetVector (result, v),
                                 kEMPTY_SET) ;
-        }else{   
+        }else{
            //printf ("******** C ******* %ld %ld \n", inPtr->mValue, vectorValue) ;
            result = find_or_add (vectorIndex, (T_vdd_zsl_value) (inPtr->mValue + vectorValue),
                                  internalComputeTargetVector (inPtr->mPtrToNextIndex, v),
@@ -1398,7 +1404,7 @@ C_VDD::cVDDnodeInfo * C_VDD
                                     internalGetUnion (s1->mPtrToSameIndex, s2)) ;
             }else if (s1Value == 0) {
               result = find_or_add (s1Index, 0,
-                                    internalGetUnion (s1->mPtrToNextIndex, s2), 
+                                    internalGetUnion (s1->mPtrToNextIndex, s2),
                                     s1->mPtrToSameIndex) ;
             }else{ // s1Value > 0
               result = find_or_add (s1Index, 0, s2, s1) ;
@@ -1406,15 +1412,15 @@ C_VDD::cVDDnodeInfo * C_VDD
           }else{ // s1Index == s2Index
             if (s1Value < s2Value) {
               result = find_or_add (s1Index, s1Value,
-                                    s1->mPtrToNextIndex, 
+                                    s1->mPtrToNextIndex,
                                     internalGetUnion (s1->mPtrToSameIndex, s2)) ;
             }else if (s1Value == s2Value) {
               result = find_or_add (s1Index, s1Value,
-                                    internalGetUnion (s1->mPtrToNextIndex, s2->mPtrToNextIndex), 
+                                    internalGetUnion (s1->mPtrToNextIndex, s2->mPtrToNextIndex),
                                     internalGetUnion (s1->mPtrToSameIndex, s2->mPtrToSameIndex)) ;
             }else{ // s1Value > s2Value
               result = find_or_add (s1Index, s2Value,
-                                    s2->mPtrToNextIndex, 
+                                    s2->mPtrToNextIndex,
                                     internalGetUnion (s2->mPtrToSameIndex, s1)) ;
             }
           }
@@ -1516,10 +1522,16 @@ internalSaveNode (cVDDnodeInfo * const inPtr,
     inPtr->mark () ;
     internalSaveNode (inPtr->mPtrToNextIndex, inOutputStream) ;
     internalSaveNode (inPtr->mPtrToSameIndex, inOutputStream) ;
-    inOutputStream << cStringWithPointer (inPtr) << " "
-                   << cStringWithSigned (inPtr->mIndex) << " " << cStringWithSigned (inPtr->mValue) << " "
-                   << cStringWithPointer (inPtr->mPtrToSameIndex) << " "
-                   << cStringWithPointer (inPtr->mPtrToNextIndex) << "\n" ;
+    inOutputStream.addPointer (inPtr) ;
+    inOutputStream.addString (" ") ;
+    inOutputStream.addSigned (inPtr->mIndex) ;
+    inOutputStream.addString (" ") ;
+    inOutputStream.addSigned (inPtr->mValue) ;
+    inOutputStream.addString (" ") ;
+    inOutputStream.addPointer (inPtr->mPtrToSameIndex) ;
+    inOutputStream.addString (" ") ;
+    inOutputStream.addPointer (inPtr->mPtrToNextIndex) ;
+    inOutputStream.addString ("\n") ;
   }
 }
 
@@ -1533,10 +1545,11 @@ saveArrayOnFile (const TC_UniqueArray <C_VDD> & inArray,
     internalSaveNode (inArray (i COMMA_HERE).mRootPointer, inOutputStream) ;
   }
 //--- Signal end of nodes list by zeros
-  inOutputStream << "0 0 0 0 0\n" ;
+  inOutputStream.addString ("0 0 0 0 0\n") ;
 //--- Save root node for each object
   for (int32_t i=0 ; i<inArray.count () ; i++) {
-    inOutputStream << cStringWithPointer (inArray (i COMMA_HERE).mRootPointer) << "\n" ;
+    inOutputStream.addPointer (inArray (i COMMA_HERE).mRootPointer) ;
+    inOutputStream.addString ("\n") ;
   }
 //--- Unmark all nodes
   for (int32_t i=0 ; i<inArray.count () ; i++) {
@@ -1760,66 +1773,122 @@ size_t C_VDD::getMapSizeInBytes (void) {
 //---------------------------------------------------------------------------*
 
 void C_VDD::printVDDsummary (AC_OutputStream & inOutputStream) {
-  inOutputStream << "Summary of VDD operations :\n"
-                    "  " <<  cStringWithUnsigned (getCurrentVDDnodeCount ())
-                 << " VDD currently used nodes ;\n"
-                    "  " <<  cStringWithUnsigned (C_VDD_hashmap::getCreatedObjectCount ()) << " created nodes ("
-                    "each node : " << cStringWithUnsigned (getNodeSize ()) << " bytes, total : "
-                 << cStringWithUnsigned ((uint32_t) (C_VDD_hashmap::getAllocatedSizeInBytes () / 1048576)) << " Mb)\n"
-                    "  VDD unique table : " << cStringWithUnsigned (gMap.getHashMapEntryCount ()) << " entries ("
-                 << cStringWithUnsigned ((uint32_t) (gMap.getMapSizeInBytes () / 1048576)) << " Mb).\n"
-                    "  " << cStringWithUnsigned (getNodeComparesCount ()) << " VDD comparisons ;\n"
+  inOutputStream.addString ("Summary of VDD operations :\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getCurrentVDDnodeCount ());
+  inOutputStream.addString (" VDD currently used nodes ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (C_VDD_hashmap::getCreatedObjectCount ()) ;
+  inOutputStream.addString (" created nodes ("
+                    "each node : ") ;
+  inOutputStream.addUnsigned (getNodeSize ()) ;
+  inOutputStream.addString (" bytes, total : ") ;
+  inOutputStream.addUnsigned ((uint32_t) (C_VDD_hashmap::getAllocatedSizeInBytes () / 1048576)) ;
+  inOutputStream.addString (" Mb)\n"
+                    "  VDD unique table : ") ;
+  inOutputStream.addUnsigned (gMap.getHashMapEntryCount ()) ;
+  inOutputStream.addString (" entries (") ;
+  inOutputStream.addUnsigned ((uint32_t) (gMap.getMapSizeInBytes () / 1048576)) ;
+  inOutputStream.addString (" Mb).\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getNodeComparesCount ()) ;
+  inOutputStream.addString (" VDD comparisons ;\n") ;
 //--- Set union statistics
-                    "Statistics about 'SetUnion' operations :\n"
-                    "  " << cStringWithUnsigned (getSetUnionCacheEntriesCount ())
-                 << " entries , size : " << cStringWithSigned (gSetUnionCache.getCacheSizeInKBytes () / 1024)
-                 << " Mb.\n" ;
+  inOutputStream.addString ("Statistics about 'SetUnion' operations :\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getSetUnionCacheEntriesCount ());
+  inOutputStream.addString (" entries , size : ") ;
+  inOutputStream.addSigned (gSetUnionCache.getCacheSizeInKBytes () / 1024);
+  inOutputStream.addString (" Mb.\n") ;
   #ifdef COMPUTE_OPERATIONS_DURATION
-  inOutputStream << "    Total duration : " << cStringWithSigned (gSetUnionDuration) << " microseconds\n" ;
+    inOutputStream.addString ("    Total duration : ") ;
+    inOutputStream.addSigned (gSetUnionDuration) ;
+    inOutputStream.addString (" microseconds\n") ;
   #endif
   uint64_t n = getTrivialUnionCount () + getSetUnionCacheSuccessCount () + getSetUnionCacheFailureCount () ;
-  inOutputStream << "  " << cStringWithUnsigned (getTrivialUnionCount ()) << " trivial union ("
-                 << cStringWithUnsigned ((100ULL * getTrivialUnionCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getSetUnionCacheSuccessCount ()) << " cache successes ("
-                 << cStringWithUnsigned ((100ULL * getSetUnionCacheSuccessCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getSetUnionCacheFailureCount ()) << " cache failures ("
-                 << cStringWithUnsigned ((100ULL * getSetUnionCacheFailureCount ()) / n) << "%), including "
-                 << cStringWithUnsigned (getSetUnionCacheOverrideCount ()) << " cache overrides ("
-                 << cStringWithUnsigned ((100ULL * getSetUnionCacheOverrideCount ()) / n) << "%) ;\n"
+  inOutputStream.addString ("  ") ;
+  inOutputStream.addUnsigned (getTrivialUnionCount ()) ;
+  inOutputStream.addString (" trivial union (") ;
+  inOutputStream.addUnsigned ((100ULL * getTrivialUnionCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getSetUnionCacheSuccessCount ()) ;
+  inOutputStream.addString (" cache successes (") ;
+  inOutputStream.addUnsigned ((100ULL * getSetUnionCacheSuccessCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getSetUnionCacheFailureCount ()) ;
+  inOutputStream.addString (" cache failures (") ;
+  inOutputStream.addUnsigned ((100ULL * getSetUnionCacheFailureCount ()) / n) ;
+  inOutputStream.addString ("%), including ") ;
+  inOutputStream.addUnsigned (getSetUnionCacheOverrideCount ()) ;
+  inOutputStream.addString (" cache overrides (") ;
+  inOutputStream.addUnsigned ((100ULL * getSetUnionCacheOverrideCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n") ;
 //--- Get Firable statistics
-                    "Statistics about 'Get firable' operations :\n"
-                    "  " << cStringWithUnsigned (getGetFirableCacheEntriesCount ())
-                 << " entries , size : " << cStringWithSigned (gGetFirableCache.getCacheSizeInKBytes () / 1024)
-                 << " Mb.\n" ;
+  inOutputStream.addString ("Statistics about 'Get firable' operations :\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getGetFirableCacheEntriesCount ());
+  inOutputStream.addString (" entries , size : ") ;
+  inOutputStream.addSigned (gGetFirableCache.getCacheSizeInKBytes () / 1024);
+  inOutputStream.addString (" Mb.\n") ;
   #ifdef COMPUTE_OPERATIONS_DURATION
-    inOutputStream << "  Total duration : " << cStringWithUnsigned (gGetFirableDuration) << " microseconds\n" ;
+    inOutputStream.addString ("  Total duration : ") ;
+    inOutputStream.addUnsigned (gGetFirableDuration) ;
+    inOutputStream.addString (" microseconds\n") ;
   #endif
   n = getTrivialGetFirableCount () + getGetFirableCacheSuccessCount () + getGetFirableCacheFailureCount () ;
-  inOutputStream << "  " << cStringWithUnsigned (getTrivialGetFirableCount ()) << " trivial get firable ("
-                 << cStringWithUnsigned ((100ULL * getTrivialGetFirableCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getGetFirableCacheSuccessCount ()) << " cache successes ("
-                 << cStringWithUnsigned ((100ULL * getGetFirableCacheSuccessCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getGetFirableCacheFailureCount ()) << " cache failures ("
-                 << cStringWithUnsigned ((100ULL * getGetFirableCacheFailureCount ()) / n) << "%), including "
-                 << cStringWithUnsigned (getGetFirableCacheOverrideCount ()) << " cache overrides ("
-                 << cStringWithUnsigned ((100ULL * getGetFirableCacheOverrideCount ()) / n) << "%) ;\n"
+  inOutputStream.addString ("  ") ;
+  inOutputStream.addUnsigned (getTrivialGetFirableCount ()) ;
+  inOutputStream.addString (" trivial get firable (") ;
+  inOutputStream.addUnsigned ((100ULL * getTrivialGetFirableCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getGetFirableCacheSuccessCount ()) ;
+  inOutputStream.addString (" cache successes (") ;
+  inOutputStream.addUnsigned ((100ULL * getGetFirableCacheSuccessCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getGetFirableCacheFailureCount ()) ;
+  inOutputStream.addString (" cache failures (") ;
+  inOutputStream.addUnsigned ((100ULL * getGetFirableCacheFailureCount ()) / n) ;
+  inOutputStream.addString ("%), including ") ;
+  inOutputStream.addUnsigned (getGetFirableCacheOverrideCount ()) ;
+  inOutputStream.addString (" cache overrides (") ;
+  inOutputStream.addUnsigned ((100ULL * getGetFirableCacheOverrideCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n") ;
 //--- AddVector statistics
-                    "Statistics about 'AddVector' operations :\n"
-                    "  " << cStringWithUnsigned (getAddVectorCacheEntriesCount ())
-                 << " entries, size : "
-                 << cStringWithSigned (gAddVectorCache.getCacheSizeInKBytes () / 1024) << " Mb.\n" ;
+  inOutputStream.addString ("Statistics about 'AddVector' operations :\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getAddVectorCacheEntriesCount ());
+  inOutputStream.addString (" entries, size : ") ;
+  inOutputStream.addSigned (gAddVectorCache.getCacheSizeInKBytes () / 1024) ;
+  inOutputStream.addString (" Mb.\n") ;
   #ifdef COMPUTE_OPERATIONS_DURATION
-    inOutputStream << "  Total duration : " << cStringWithUnsigned (gAddVectorDuration) << " microseconds\n" ;
+    inOutputStream.addString ("  Total duration : ") ;
+    inOutputStream.addUnsigned (gAddVectorDuration) ;
+    inOutputStream.addString (" microseconds\n") ;
   #endif
   n = getTrivialAddVectorCount () + getAddVectorCacheSuccessCount () + getAddVectorCacheFailureCount () ;
-  inOutputStream << "  " << cStringWithUnsigned (getTrivialAddVectorCount ()) << " trivial add vector ("
-                 << cStringWithUnsigned ((100ULL * getTrivialAddVectorCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getAddVectorCacheSuccessCount ()) << " cache successes ("
-                 << cStringWithUnsigned ((100ULL * getAddVectorCacheSuccessCount ()) / n) << "%) ;\n"
-                    "  " << cStringWithUnsigned (getAddVectorCacheFailureCount ()) << " cache failures ("
-                 << cStringWithUnsigned ((100ULL * getAddVectorCacheFailureCount ()) / n) << "%), including "
-                 << cStringWithUnsigned (getAddVectorCacheOverrideCount ()) << " cache overrides ("
-                 << cStringWithUnsigned ((100ULL * getAddVectorCacheOverrideCount ()) / n) << "%) ;\n" ;
+  inOutputStream.addString ("  ") ;
+  inOutputStream.addUnsigned (getTrivialAddVectorCount ()) ;
+  inOutputStream.addString (" trivial add vector (") ;
+  inOutputStream.addUnsigned ((100ULL * getTrivialAddVectorCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getAddVectorCacheSuccessCount ()) ;
+  inOutputStream.addString (" cache successes (") ;
+  inOutputStream.addUnsigned ((100ULL * getAddVectorCacheSuccessCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n"
+                    "  ") ;
+  inOutputStream.addUnsigned (getAddVectorCacheFailureCount ()) ;
+  inOutputStream.addString (" cache failures (") ;
+  inOutputStream.addUnsigned ((100ULL * getAddVectorCacheFailureCount ()) / n) ;
+  inOutputStream.addString ("%), including ") ;
+  inOutputStream.addUnsigned (getAddVectorCacheOverrideCount ()) ;
+  inOutputStream.addString (" cache overrides (") ;
+  inOutputStream.addUnsigned ((100ULL * getAddVectorCacheOverrideCount ()) / n) ;
+  inOutputStream.addString ("%) ;\n") ;
 }
 
 //---------------------------------------------------------------------------*

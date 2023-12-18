@@ -26,7 +26,7 @@
 #include "utilities/F_GetPrime.h"
 #include "streams/AC_OutputStream.h"
 #include "utilities/MF_MemoryControl.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -136,32 +136,52 @@ printStatistics (AC_OutputStream & inStream,
                      + mCacheSuccessCount
                      + mCacheMissCount ;
   const size_t used = mCacheSize - getUnusedCacheEntriesCount () ;
-  inStream << "Statistics about " << inTitle << " operations :\n"
+  inStream.addString ("Statistics about ") ;
+  inStream.addString (inTitle) ;
+  inStream.addString (" operations :\n") ;
 //--- Cache properties
-              "  cache entries: " << cStringWithUnsigned (mCacheSize)
-           << ", used: " << cStringWithUnsigned (used)
-           << " (" << cStringWithSigned ((int32_t) ((used * 100) / mCacheSize)) << "%)"
-           << ", size " << cStringWithSigned (mCacheSize * ((int32_t) sizeof (cCacheEntry)) / 1024) << " kbytes\n"
+  inStream.addString ( "  cache entries: ") ;
+  inStream.addUnsigned (mCacheSize);
+  inStream.addString (", used: ") ;
+  inStream.addUnsigned (used);
+  inStream.addString (" (") ;
+  inStream.addSigned ((int32_t) ((used * 100) / mCacheSize)) ;
+  inStream.addString ("%)") ;
+  inStream.addString (", size ") ;
+  inStream.addSigned (mCacheSize * ((int32_t) sizeof (cCacheEntry)) / 1024) ;
+  inStream.addString (" kbytes\n") ;
 //--- Trivial
-           << "  trivial: " << cStringWithSigned (mTrivialOperationsCount) ;
+  inStream.addString ("  trivial: ") ;
+  inStream.addSigned (mTrivialOperationsCount) ;
   if (total != 0) {
-    inStream << " (" << cStringWithSigned ((int32_t) (mTrivialOperationsCount * 100 / total)) << "%)" ;
+    inStream.addString (" (") ;
+    inStream.addSigned ((int32_t) (mTrivialOperationsCount * 100 / total)) ;
+    inStream.addString ("%)") ;
   }
-  inStream << "\n" ;
+  inStream.addString ("\n") ;
 //--- Cached
-  inStream << "  cached: " << cStringWithSigned (mCacheSuccessCount) ;
+  inStream.addString ("  cached: ") ;
+  inStream.addSigned (mCacheSuccessCount) ;
   if (total != 0) {
-    inStream << " (" << cStringWithSigned ((int32_t) (mCacheSuccessCount * 100 / total)) << "%)" ;
+    inStream.addString (" (") ;
+    inStream.addSigned ((int32_t) (mCacheSuccessCount * 100 / total)) ;
+    inStream.addString ("%)") ;
   }
-  inStream << "\n" ;
+  inStream.addString ("\n") ;
 //--- Computed
-  inStream << "  computed: " << cStringWithSigned (mCacheMissCount) ;
+  inStream.addString ("  computed: ") ;
+  inStream.addSigned (mCacheMissCount) ;
   if (total != 0) {
-    inStream << " (" << cStringWithSigned ((int32_t) (mCacheMissCount * 100 / total)) << "%)"
-                ", overridden: " << cStringWithSigned (mCacheOverridesCount)
-             << " (" << cStringWithSigned ((int32_t) (mCacheOverridesCount * 100 / total)) << "%)" ;
+    inStream.addString (" (") ;
+    inStream.addSigned ((int32_t) (mCacheMissCount * 100 / total)) ;
+    inStream.addString ("%)"
+                  ", overridden: ") ;
+    inStream.addSigned (mCacheOverridesCount);
+    inStream.addString (" (") ;
+    inStream.addSigned ((int32_t) (mCacheOverridesCount * 100 / total)) ;
+    inStream.addString ("%)") ;
   }
-  inStream << "\n" ;
+  inStream.addString ("\n") ;
 }
 
 //---------------------------------------------------------------------------*

@@ -30,7 +30,7 @@
 
 #include "C_vdd_types.h"
 #include "generic-arraies/TC_UniqueArray.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -57,7 +57,7 @@ class C_VDD {
   protected : C_VDD * mPtrToNextExisting ;
   protected : C_VDD * mPtrToPreviousExisting ;
   private : void initLinks (void) ;
-  
+
 //--- Internal class for storing info for a node
   protected : class cVDDmaxInfos {
     public : union { uint64_t mElementsCount ;
@@ -66,7 +66,7 @@ class C_VDD {
     public : T_vdd_zsl_value mMaxValue ;
     public : T_vdd_zsl_value mMaxTokens ;
   } ;
-  
+
 //--- Internal nodes
   public : class cVDDnodeInfo {
     public : cVDDnodeInfo * mPtrToSameIndex ;
@@ -74,7 +74,7 @@ class C_VDD {
     public : intptr_t mMaxInfosPtr ; // CAUTION !! Bit 0 is used for handling the mark bit
     public : T_vdd_zsl_index mIndex ;
     public : T_vdd_zsl_value mValue ;
-    
+
     public : cVDDnodeInfo (void) :
     mPtrToSameIndex (NULL),
     mPtrToNextIndex (NULL),
@@ -84,7 +84,7 @@ class C_VDD {
     }
 
     public : ~cVDDnodeInfo (void) ;
-    
+
     public : cVDDnodeInfo (const cVDDnodeInfo & inSource) :
     mPtrToSameIndex (inSource.mPtrToSameIndex),
     mPtrToNextIndex (inSource.mPtrToNextIndex),
@@ -92,9 +92,9 @@ class C_VDD {
     mIndex (inSource.mIndex),
     mValue (inSource.mValue) {
     }
-    
+
     private : cVDDnodeInfo & operator = (const cVDDnodeInfo &) ;
-    
+
     public : intptr_t compare (const cVDDnodeInfo & inOperand) const ;
 
     public : inline bool isMarked (void) const {
@@ -108,7 +108,7 @@ class C_VDD {
     public : inline void unmark (void) {
       mMaxInfosPtr &= -2 ;
     }
-    
+
     public : inline uintptr_t getHashCodeForMap (void) const {
       return (uintptr_t) ((((uintptr_t) mIndex) << 11)
                        ^ ((uintptr_t) mValue)
@@ -161,7 +161,7 @@ class C_VDD {
 //--- Get set max tokens
   public : T_vdd_zsl_value getMaxTokens (void) const ;
 
-//--- Get the vector subset that has one (or more) index equal to the bound 
+//--- Get the vector subset that has one (or more) index equal to the bound
   public : C_VDD getBoundSet (void) const ;
 
 //---  Compute min and max value for each index
@@ -205,11 +205,11 @@ class C_VDD {
 
 //--- Print a set
   public : void printSet (AC_OutputStream & inStream,
-                          const TC_UniqueArray <C_String> & inNames) const ;
+                          const TC_UniqueArray <String> & inNames) const ;
 
 //--- Print the nodes of a set
   public : void printSetNodes (AC_OutputStream & inStream,
-                          const TC_UniqueArray <C_String> & inNames) const ;
+                          const TC_UniqueArray <String> & inNames) const ;
 
 //--- Get node count
   public : int32_t getNodesCount (void) const ;
@@ -261,7 +261,7 @@ class C_VDD {
 
   private : static void internalPrintSet (AC_OutputStream & inStream,
                              cVDDnodeInfo * const inPtr,
-                             const TC_UniqueArray <C_String> & inNames,
+                             const TC_UniqueArray <String> & inNames,
                              int32_t inArray [],
                              const T_vdd_zsl_index inIndex) ;
 
@@ -315,7 +315,7 @@ class C_VDD {
 
   private : static void internalPrintSetNodes (AC_OutputStream & inStream,
                                                cVDDnodeInfo * const inPtr,
-                                               const TC_UniqueArray <C_String> & inNames) ;
+                                               const TC_UniqueArray <String> & inNames) ;
 
   private : static void internalSaveNode (cVDDnodeInfo * const inPtr,
                                           AC_OutputStream & inOutputStream) ;
@@ -336,7 +336,7 @@ class C_VDD {
 
 //--- VDD max info free list
   protected : static cVDDmaxInfos * gNodeInfoFreeList ;
-  
+
   friend class cVDDnodeInfo ;
 } ;
 

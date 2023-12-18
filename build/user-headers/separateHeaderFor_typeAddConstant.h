@@ -2,11 +2,11 @@
 
 
 //--- END OF USER ZONE 1
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 2: pointer class for @typeAddConstant class
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cPtr_typeAddConstant : public cPtr_typePostcondition {
 
@@ -16,7 +16,7 @@ class cPtr_typeAddConstant : public cPtr_typePostcondition {
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,
-                                            C_Compiler * inLexique,
+                                            Compiler * inLexique,
                                             cPostConditionArray & ioPostCondition) const override ;
   public : virtual void buildInitialMarking (C_VDD & ioInitialMarking) const override ;
 
@@ -39,7 +39,7 @@ class cPtr_typeAddConstant : public cPtr_typePostcondition {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
