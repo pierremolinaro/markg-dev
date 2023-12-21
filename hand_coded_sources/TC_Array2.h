@@ -27,6 +27,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_MemoryControl.h"
+#include "utilities/macroAssert.h"
 #include "utilities/TF_Swap.h"
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -69,10 +70,10 @@ template <typename TYPE> class TC_Array2 {
     public: TYPE & operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) ;
     public: const TYPE operator () (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) const ;
     protected: size_t long2size_t (const int32_t inRowIndex, const int32_t inColumnIndex COMMA_LOCATION_ARGS) const {
-      MF_AssertThere (inRowIndex >= 0, "indice ligne (%ld) < 0", inRowIndex, 0) ;
-      MF_AssertThere (inRowIndex < mCurrentRowCount, "indice ligne (%ld) >= nombre de lignes (%ld)", inRowIndex, mCurrentRowCount) ;
-      MF_AssertThere (inColumnIndex >= 0, "indice colonne (%ld) < 0", inColumnIndex, 0) ;
-      MF_AssertThere (inColumnIndex < mCurrentColumnCount, "indice ligne (%ld) >= nombre de colonnes (%ld)", inColumnIndex, mCurrentColumnCount) ;
+      macroAssertThere (inRowIndex >= 0, "indice ligne (%ld) < 0", inRowIndex, 0) ;
+      macroAssertThere (inRowIndex < mCurrentRowCount, "indice ligne (%ld) >= nombre de lignes (%ld)", inRowIndex, mCurrentRowCount) ;
+      macroAssertThere (inColumnIndex >= 0, "indice colonne (%ld) < 0", inColumnIndex, 0) ;
+      macroAssertThere (inColumnIndex < mCurrentColumnCount, "indice ligne (%ld) >= nombre de colonnes (%ld)", inColumnIndex, mCurrentColumnCount) ;
       return (size_t) (inRowIndex * mCurrentColumnCount + inColumnIndex) ;
     }
     public: void setObjectAtIndexes (const TYPE & inObject,
@@ -189,8 +190,8 @@ template <typename TYPE> void TC_Array2<TYPE>::removeAll (void) {
 template <typename TYPE> void TC_Array2<TYPE>::reallocArray (const int32_t inRowCount,
                                                              const int32_t inColumnCount COMMA_LOCATION_ARGS) {
   if ((inRowCount != mCurrentRowCount) || (inColumnCount != mCurrentColumnCount)) {
-    MF_AssertThere (inRowCount >= 0, "inRowCount (%ld) < 0", inRowCount, 0) ;
-    MF_AssertThere (inColumnCount >= 0, "inColumnCount (%ld) < 0", inColumnCount, 0) ;
+    macroAssertThere (inRowCount >= 0, "inRowCount (%ld) < 0", inRowCount, 0) ;
+    macroAssertThere (inColumnCount >= 0, "inColumnCount (%ld) < 0", inColumnCount, 0) ;
     const int32_t newNeededSize = inRowCount * inColumnCount ;
     int32_t newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
     while (newCapacity < newNeededSize) {

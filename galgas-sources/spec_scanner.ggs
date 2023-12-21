@@ -29,7 +29,7 @@ rule 'a'->'z' | 'A'->'Z' {
     enterCharacterIntoString ( !?theString !* )
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end
-  send %codeFor theString in galgasKeyWordList default $identifier$
+  send %searchString theString in galgasKeyWordList default $identifier$
 }
 
 # -------------------- Characters string --------------------------------------

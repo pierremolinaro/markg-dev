@@ -115,14 +115,14 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
       mTokenCode = spec_scanner_1_identifier ;
     }
   }else if (scanningOk && ([self testForInputChar:34])) {
-    BOOL loop1552 = YES ;
+    BOOL loop1557 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:126])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_theString, mPreviousChar) ;
       }else{
-        loop1552 = NO ;
+        loop1557 = NO ;
       }
-    }while (loop1552 && scanningOk) ;
+    }while (loop1557 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = spec_scanner_1_literal_5F_string ;
     }else{
@@ -180,24 +180,24 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
     mTokenCode = spec_scanner_1__26_ ;
   }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
     scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
-    BOOL loop2446 = YES ;
+    BOOL loop2451 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
       }else if (scanningOk && ([self testForInputChar:95])) {
       }else{
-        loop2446 = NO ;
+        loop2451 = NO ;
       }
-    }while (loop2446 && scanningOk) ;
+    }while (loop2451 && scanningOk) ;
     mTokenCode = spec_scanner_1_literal_5F_integer ;
   }else if (scanningOk && ([self testForInputChar:35])) {
-    BOOL loop2695 = YES ;
+    BOOL loop2700 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
       }else{
-        loop2695 = NO ;
+        loop2700 = NO ;
       }
-    }while (loop2695 && scanningOk) ;
+    }while (loop2700 && scanningOk) ;
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else   if ([self testForInputChar:'\0']) { // End of source text ?
     mTokenCode = spec_scanner_1_ ; // Empty string code
