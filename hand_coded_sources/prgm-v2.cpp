@@ -806,8 +806,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 
 /*--------------------------------------------------------------------------*/
 
-void
-routine_generate_5F_code (const GALGAS_uint inHashMapSize,
+void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashMapSize,
                        const GALGAS_uint inGarbagePeriod,
                        const GALGAS_typeVarMap inPlacesMap,
                        const GALGAS_typeTransitionList inTransitionList,

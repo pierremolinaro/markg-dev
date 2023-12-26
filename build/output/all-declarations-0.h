@@ -4434,23 +4434,23 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 //--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'println'
+//Routine 'println?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_println (const class GALGAS_string constinArgument0,
-                      class Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) ;
+void routine_println_3F_ (const class GALGAS_string constinArgument0,
+                          class Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'print'
+//Routine 'print?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_print (const class GALGAS_string constinArgument0,
-                    class Compiler * inCompiler
-                    COMMA_LOCATION_ARGS) ;
+void routine_print_3F_ (const class GALGAS_string constinArgument0,
+                        class Compiler * inCompiler
+                        COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------------------------------------------------------------------------
@@ -4503,16 +4503,16 @@ extern C_UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generate_code'
+//Routine 'generate_code??????'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generate_5F_code (const class GALGAS_uint constinArgument0,
-                               const class GALGAS_uint constinArgument1,
-                               const class GALGAS_typeVarMap constinArgument2,
-                               const class GALGAS_typeTransitionList constinArgument3,
-                               const class GALGAS_typeInitialMarkingList constinArgument4,
-                               const class GALGAS_countList constinArgument5,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const class GALGAS_uint constinArgument0,
+                                                       const class GALGAS_uint constinArgument1,
+                                                       const class GALGAS_typeVarMap constinArgument2,
+                                                       const class GALGAS_typeTransitionList constinArgument3,
+                                                       const class GALGAS_typeInitialMarkingList constinArgument4,
+                                                       const class GALGAS_countList constinArgument5,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 

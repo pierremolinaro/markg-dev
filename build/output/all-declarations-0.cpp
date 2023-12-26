@@ -1186,7 +1186,7 @@ String C_Lexique_spec_5F_scanner::getCurrentTokenString (const cToken * inTokenP
 
 void C_Lexique_spec_5F_scanner::internalParseLexicalToken (cTokenFor_spec_5F_scanner & token) {
   bool loop = true ;
-  token.mLexicalAttribute_theString.setLengthToZero () ;
+  token.mLexicalAttribute_theString.removeAllKeepingCapacity () ;
   token.mLexicalAttribute_ulongValue = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   try{
@@ -1356,7 +1356,6 @@ void C_Lexique_spec_5F_scanner::enterToken (cTokenFor_spec_5F_scanner & ioToken)
   cTokenFor_spec_5F_scanner * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_spec_5F_scanner ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
-  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
@@ -8044,16 +8043,16 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
       GALGAS_bool var_sign_8651 ;
       GALGAS_luint var_cst_8662 ;
       nt_parse_5F_constant_ (var_constantMap_7468, var_sign_8651, var_cst_8662, inCompiler) ;
-      GALGAS_typePostcondition var_init_8696 = GALGAS_typeAssignConstant::constructor_new (var_placeName_8522, var_placeID_8578, var_sign_8651, var_cst_8662  COMMA_SOURCE_FILE ("spec_parser.ggs", 319)) ;
+      GALGAS_typePostcondition var_initValue_8696 = GALGAS_typeAssignConstant::constructor_new (var_placeName_8522, var_placeID_8578, var_sign_8651, var_cst_8662  COMMA_SOURCE_FILE ("spec_parser.ggs", 319)) ;
       {
-      outArgument_outInitialMarkingList.setter_append (var_init_8696, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 320)) ;
+      outArgument_outInitialMarkingList.setter_append (var_initValue_8696, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 320)) ;
       }
     } break ;
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
-      GALGAS_typePostcondition var_init_8862 = GALGAS_typeAssignInfinity::constructor_new (var_placeName_8522, var_placeID_8578  COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
+      GALGAS_typePostcondition var_initValue_8872 = GALGAS_typeAssignInfinity::constructor_new (var_placeName_8522, var_placeID_8578  COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
       {
-      outArgument_outInitialMarkingList.setter_append (var_init_8862, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 324)) ;
+      outArgument_outInitialMarkingList.setter_append (var_initValue_8872, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 324)) ;
       }
     } break ;
     default:
@@ -8070,14 +8069,14 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
   while (repeatFlag_3) {
     if (select_spec_5F_parser_15 (inCompiler) == 2) {
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 333)) ;
-      GALGAS_lstring var_name_9070 = inCompiler->synthetizedAttribute_theString () ;
+      GALGAS_lstring var_name_9090 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 334)) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 335)) ;
-      GALGAS_typePreconditionExpression var_conditions_9146 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7468, var_conditions_9146, inCompiler) ;
+      GALGAS_typePreconditionExpression var_conditions_9166 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7468, var_conditions_9166, inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 337)) ;
       {
-      outArgument_outCountList.setter_append (var_name_9070, var_conditions_9146, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 338)) ;
+      outArgument_outCountList.setter_append (var_name_9090, var_conditions_9166, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 338)) ;
       }
     }else{
       repeatFlag_3 = false ;
@@ -11230,7 +11229,7 @@ GALGAS_typeAssignInfinity GALGAS_typeAssignInfinity::extractObject (const GALGAS
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11800,7 +11799,7 @@ void cGrammar_spec_5F_grammar::nt_axiome_ (GALGAS_uint & parameter_1,
 
 void cGrammar_spec_5F_grammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_spec_5F_scanner * scanner = NULL ;
+  C_Lexique_spec_5F_scanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_spec_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
@@ -11817,7 +11816,7 @@ void cGrammar_spec_5F_grammar::performIndexing (Compiler * inCompiler,
 
 void cGrammar_spec_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_spec_5F_scanner * scanner = NULL ;
+  C_Lexique_spec_5F_scanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_spec_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
@@ -11827,7 +11826,7 @@ void cGrammar_spec_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler
 
 void cGrammar_spec_5F_grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_spec_5F_scanner * scanner = NULL ;
+  C_Lexique_spec_5F_scanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_spec_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_spec_grammar, gProductionNames_spec_grammar, gProductionIndexes_spec_grammar,
@@ -11854,11 +11853,11 @@ void cGrammar_spec_5F_grammar::_performSourceFileParsing_ (Compiler * inCompiler
   if (inFilePath.isValid ()) {
     const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
     String filePath = filePathAsString.stringValue () ;
-    if (! C_FileManager::isAbsolutePath (filePath)) {
+    if (! FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
-    if (C_FileManager::fileExistsAtPath (filePath)) {
-    C_Lexique_spec_5F_scanner * scanner = NULL ;
+    if (FileManager::fileExistsAtPath (filePath)) {
+    C_Lexique_spec_5F_scanner * scanner = nullptr ;
     macroMyNew (scanner, C_Lexique_spec_5F_scanner (inCompiler, filePath COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_spec_grammar, gProductionNames_spec_grammar, gProductionIndexes_spec_grammar,
@@ -13052,7 +13051,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   var_countList_659.drop () ;
   cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_539, var_garbagePeriod_561, var_placesMap_585, var_transitionList_605, var_initialMarkingList_630, var_countList_659  COMMA_SOURCE_FILE ("spec_main.ggs", 11)) ;
   {
-  routine_generate_5F_code (var_hashMapSize_539, var_garbagePeriod_561, var_placesMap_585, var_transitionList_605, var_initialMarkingList_630, var_countList_659, inCompiler  COMMA_SOURCE_FILE ("spec_main.ggs", 19)) ;
+  routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (var_hashMapSize_539, var_garbagePeriod_561, var_placesMap_585, var_transitionList_605, var_initialMarkingList_630, var_countList_659, inCompiler  COMMA_SOURCE_FILE ("spec_main.ggs", 19)) ;
   }
 }
 

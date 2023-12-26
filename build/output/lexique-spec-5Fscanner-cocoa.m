@@ -3,7 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#import "lexique-spec-5F-scanner-cocoa.h"
+#import "lexique-spec-5Fscanner-cocoa.h"
 #import "PMDebug.h"
 
 //--------------------------------------------------------------------------------------------------

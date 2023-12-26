@@ -316,12 +316,12 @@ rule <axiome>(
     $:=$
     select
       <parse_constant>( !?constantMap, ?let sign, ?let cst)
-      let @typePostcondition init = @typeAssignConstant. new ( !placeName, !placeID, !sign, !cst)
-      !?outInitialMarkingList.append (init)
+      let @typePostcondition initValue = @typeAssignConstant. new ( !placeName, !placeID, !sign, !cst)
+      !?outInitialMarkingList.append (initValue)
     or
       $infinity$
-      let @typePostcondition init = @typeAssignInfinity. new ( !placeName, !placeID)
-      !?outInitialMarkingList.append (init)
+      let @typePostcondition initValue = @typeAssignInfinity. new ( !placeName, !placeID)
+      !?outInitialMarkingList.append (initValue)
     end
   while
     $,$
