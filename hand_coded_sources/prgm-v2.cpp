@@ -11,8 +11,8 @@
 #include "C_AEDD.h"
 #include "C_PCL.h"
 #include "C_VDD.h"
-#include "time/C_Timer.h"
 #include "spec_options.h"
+#include "time/Timer.h"
 
 /*--------------------------------------------------------------------------*/
 
@@ -336,7 +336,7 @@ vddComputation (uint32_t inGarbagePeriod,
 //--- Vector of transition target set
   TC_UniqueArray <C_VDD> transitionTargetSet (inTransitionsCount, C_VDD () COMMA_HERE) ;
 //--- Loop ------------------------------
-  C_Timer timer ;
+  Timer timer ;
   timer.startTimer () ;
   bool loop = true ;
   uint32_t iteration = 0 ;
@@ -344,7 +344,7 @@ vddComputation (uint32_t inGarbagePeriod,
     iteration ++ ;
   //--- Garbage ?
     if ((iteration % inGarbagePeriod) == 0) {
-      C_Timer garbageTimer ;
+      Timer garbageTimer ;
       garbageTimer.startTimer () ;
       const size_t previousNodeCount = C_VDD::getCurrentVDDnodeCount () ;
       C_VDD::collectUnusedNodes () ;
@@ -368,7 +368,7 @@ vddComputation (uint32_t inGarbagePeriod,
       }
     }
   //--- Fire transitions
-    C_Timer iterationTimer ;
+    Timer iterationTimer ;
     iterationTimer.startTimer () ;
     C_VDD newAllStates = allStatesSet ;
     for (int32_t i=0 ; i<inTransitionsCount ; i++) {
@@ -676,7 +676,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 //--- Vector for maintaining firable transition set during tree traversing
   TC_UniqueArray <bool> firableFlags (inTransitionsCount, false COMMA_HERE) ;
 //--- Loop ------------------------------
-  C_Timer timer ;
+  Timer timer ;
   timer.startTimer () ;
   bool loop = true ;
   uint32_t iteration = 0 ;
@@ -684,7 +684,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
     iteration ++ ;
   //--- Garbage ?
     if ((iteration % inGarbagePeriod) == 0) {
-      C_Timer garbageTimer ;
+      Timer garbageTimer ;
       garbageTimer.startTimer () ;
       const size_t previousNodeCount = C_VDD::getCurrentVDDnodeCount () ;
       C_VDD::collectUnusedNodes () ;
@@ -708,7 +708,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
       }
     }
   //--- Fire transitions
-    C_Timer iterationTimer ;
+    Timer iterationTimer ;
     iterationTimer.startTimer () ;
     C_VDD newAllStates = allStatesSet ;
     computeWithDecisionTree (mDecisionTree, newAllStates, 0, allStatesSet, inPreConditions, inIncidenceVectors, firableFlags) ;
@@ -1021,7 +1021,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashM
                     inCountList,
                     lastIteration) ;
   }else{
-    //C_Timer timer ;
+    //Timer timer ;
     vddComputation (inGarbagePeriod.uintValue (),
                     doNotPrintIterationsMessages,
                     printTransitionsFiring,
