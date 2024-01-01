@@ -23,10 +23,10 @@
 //---------------------------------------------------------------------------*
 
 #include "C_AEDDPrimeCache2.h"
-#include "utilities/F_GetPrime.h"
-#include "streams/AC_OutputStream.h"
-#include "utilities/MF_MemoryControl.h"
-#include "strings/String-class.h"
+#include "F_GetPrime.h"
+#include "AbstractOutputStream.h"
+#include "MF_MemoryControl.h"
+#include "String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -130,7 +130,7 @@ size_t C_AEDDPrimeCache2::getUnusedCacheEntriesCount (void) const {
 //---------------------------------------------------------------------------*
 
 void C_AEDDPrimeCache2::
-printStatistics (AC_OutputStream & inStream,
+printStatistics (AbstractOutputStream & inStream,
                  const char * inTitle) const {
   const int32_t total = mTrivialOperationsCount
                      + mCacheSuccessCount

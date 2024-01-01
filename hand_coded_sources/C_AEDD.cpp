@@ -25,10 +25,10 @@
 //---------------------------------------------------------------------------*
 
 #include "C_AEDD.h"
-#include "utilities/F_GetPrime.h"
+#include "F_GetPrime.h"
 #include "C_AEDDPrimeCache2.h"
-#include "streams/C_ConsoleOut.h"
-#include "strings/String-class.h"
+#include "C_ConsoleOut.h"
+#include "String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -967,7 +967,7 @@ uintptr_t C_AEDD::getAEDDnodesCount (void) const {
 //---------------------------------------------------------------------*
 
 void C_AEDD::
-printAEDDpackageOperationsSummary (AC_OutputStream & inStream) {
+printAEDDpackageOperationsSummary (AbstractOutputStream & inStream) {
   inStream.addString ("\n"
               "Bilan du AEDD (") ;
   inStream.addSigned (getAEDDnodeSize ()) ;

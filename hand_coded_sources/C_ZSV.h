@@ -29,8 +29,8 @@
 //---------------------------------------------------------------------------*
 
 #include "C_vdd_types.h"
-#include "generic-arraies/TC_UniqueArray.h"
-#include "strings/String-class.h"
+#include "TC_UniqueArray.h"
+#include "String-class.h"
 
 //---------------------------------------------------------------------------*
 
@@ -115,18 +115,18 @@ class C_ZSV {
                                     T_vdd_zsl_value & outValue) ;
 
 //--- print a vector
-  public : void printVector (AC_OutputStream & inStream,
+  public : void printVector (AbstractOutputStream & inStream,
                              const TC_UniqueArray <String> & inNames,
                              const int32_t inFirst,
                              const int32_t inStep) const ;
 
-  public : void printVector (AC_OutputStream & inStream,
+  public : void printVector (AbstractOutputStream & inStream,
                              const char * inPrefix,
                              const int32_t inFirst,
                              const int32_t inStep) const ;
 
 //--- Print VDL summary
-  public : static void printVDLsummary (AC_OutputStream & inOutputStream) ;
+  public : static void printVDLsummary (AbstractOutputStream & inOutputStream) ;
 
 //--- Get value ID (as int32_t integer)
   public : inline int32_t getLongID (void) const {

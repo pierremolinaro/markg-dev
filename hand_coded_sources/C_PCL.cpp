@@ -484,7 +484,7 @@ find_or_add (const T_vdd_zsl_index inIndex,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
- void C_PCL::printVector (AC_OutputStream & inStream,
+ void C_PCL::printVector (AbstractOutputStream & inStream,
                           const char * inPrefix,
                           const int32_t inFirst,
                           const int32_t inStep) const {
@@ -508,7 +508,7 @@ find_or_add (const T_vdd_zsl_index inIndex,
 
 //---------------------------------------------------------------------------*
 
- void C_PCL::printVector (AC_OutputStream & inStream,
+ void C_PCL::printVector (AbstractOutputStream & inStream,
                            const TC_UniqueArray <String> & inNames,
                            const int32_t inFirst,
                            const int32_t inStep) const {
@@ -558,7 +558,7 @@ void C_PCL::collectUnusedNodes (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_PCL::printVDLsummary (AC_OutputStream & inOutputStream) {
+void C_PCL::printVDLsummary (AbstractOutputStream & inOutputStream) {
   const uint64_t n = getCacheSuccessCount () + getCacheFailureCount () ;
   inOutputStream.addString ("Summary of VDL operations :\n"
                     "  ") ;

@@ -26,9 +26,9 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "utilities/MF_MemoryControl.h"
-#include "utilities/macroAssert.h"
-#include "utilities/TF_Swap.h"
+#include "MF_MemoryControl.h"
+#include "macroAssert.h"
+#include "TF_Swap.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 

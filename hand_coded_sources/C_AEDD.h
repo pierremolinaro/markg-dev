@@ -29,7 +29,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "utilities/M_machine.h"
+#include "M_machine.h"
 
 //---------------------------------------------------------------------------*
 
@@ -37,7 +37,7 @@
 
 //---------------------------------------------------------------------------*
 
-class AC_OutputStream ;
+class AbstractOutputStream ;
 
 //---------------------------------------------------------------------------*
 
@@ -63,13 +63,13 @@ class C_AEDD {
 //--- Logical operations on a AEDD
   public : void operator &= (const C_AEDD & inOperand) ; // And
   public : void operator |= (const C_AEDD & inOperand) ; // Or
-  public : void negate (void) ; 
+  public : void negate (void) ;
 
 //--- Logical operations between BDDs
   public : C_AEDD operator & (const C_AEDD & inOperand) const ; // And
   public : C_AEDD operator | (const C_AEDD & inOperand) const ; // Or
   public : C_AEDD operator ^ (const C_AEDD & inOperand) const ; // Exclusive or
-  public : C_AEDD implies (const C_AEDD & inOperand) const ; 
+  public : C_AEDD implies (const C_AEDD & inOperand) const ;
   public : static C_AEDD ite (const C_AEDD & f, const C_AEDD & g, const C_AEDD & h) ; // ite (f, g, h)
   public : C_AEDD operator ~ (void) const ; // get complement
 
@@ -116,11 +116,11 @@ class C_AEDD {
 //---- Suppress unused nodes
   public : static void markAndSweepUnusedNodes (void) ;
 
-//--- Size of a node 
+//--- Size of a node
   public : static int32_t getAEDDnodeSize (void) ;
 
-//--- Imprimer un bilan des operations 
-  public : static void printAEDDpackageOperationsSummary (AC_OutputStream & inStream) ;
+//--- Imprimer un bilan des operations
+  public : static void printAEDDpackageOperationsSummary (AbstractOutputStream & inStream) ;
 
 //------------------- Internals ---------------------
   public : class C_AEDDnode {

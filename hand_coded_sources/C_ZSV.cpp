@@ -477,7 +477,7 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
- void C_ZSV::printVector (AC_OutputStream & inStream,
+ void C_ZSV::printVector (AbstractOutputStream & inStream,
                            const char * inPrefix,
                            const int32_t inFirst,
                            const int32_t inStep) const {
@@ -501,7 +501,7 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
 
 //---------------------------------------------------------------------------*
 
- void C_ZSV::printVector (AC_OutputStream & inStream,
+ void C_ZSV::printVector (AbstractOutputStream & inStream,
                            const TC_UniqueArray <String> & inNames,
                            const int32_t inFirst,
                            const int32_t inStep) const {
@@ -663,7 +663,7 @@ void C_ZSV::collectUnusedNodes (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_ZSV::printVDLsummary (AC_OutputStream & inOutputStream) {
+void C_ZSV::printVDLsummary (AbstractOutputStream & inOutputStream) {
   const uint64_t n = getTrivialAddCount () + getCacheSuccessCount () + getCacheFailureCount () ;
   inOutputStream.addString ("Summary of VDL operations :\n") ;
   inOutputStream.addString ("  ") ;

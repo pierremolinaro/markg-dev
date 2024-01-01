@@ -27,7 +27,7 @@
 #include "C_ZSV.h"
 #include "C_PCL.h"
 #include "C_AEDD.h"
-#include "utilities/MF_MemoryControl.h"
+#include "MF_MemoryControl.h"
 #include "cVDDnodeInfo.h"
 
 //---------------------------------------------------------------------------*
@@ -579,7 +579,7 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
 //---------------------------------------------------------------------------*
 
  void C_VDD::
- internalPrintSet (AC_OutputStream & inStream,
+ internalPrintSet (AbstractOutputStream & inStream,
                    cVDDnodeInfo * const inPtr,
                    const TC_UniqueArray <String> & inNames,
                    int32_t inArray [],
@@ -614,7 +614,7 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
 //---------------------------------------------------------------------------*
 
 void C_VDD
-::printSet (AC_OutputStream & inStream,
+::printSet (AbstractOutputStream & inStream,
             const TC_UniqueArray <String> & inNames) const {
   if (mRootPointer == kEMPTY_SET) {
     inStream.addString ("  (empty set)\n") ;
@@ -641,7 +641,7 @@ void C_VDD
 //---------------------------------------------------------------------------*
 
  void C_VDD
- ::internalPrintSetNodes (AC_OutputStream & inStream,
+ ::internalPrintSetNodes (AbstractOutputStream & inStream,
                           cVDDnodeInfo * const inPtr,
                           const TC_UniqueArray <String> & inNames) {
   if ((inPtr != kEMPTY_SET) && (inPtr != kNULL_SET) && (! inPtr->isMarked ())) {
@@ -673,7 +673,7 @@ void C_VDD
 //---------------------------------------------------------------------------*
 
 void C_VDD
-::printSetNodes (AC_OutputStream & inStream,
+::printSetNodes (AbstractOutputStream & inStream,
                  const TC_UniqueArray <String> & inNames) const {
 //--- Count nodes (for being able to display the elements count)
   getSetCardinal () ;
@@ -1517,7 +1517,7 @@ int32_t C_VDD::getNodesCount (void) const {
 
 void C_VDD::
 internalSaveNode (cVDDnodeInfo * const inPtr,
-                  AC_OutputStream & inOutputStream) {
+                  AbstractOutputStream & inOutputStream) {
   if ((inPtr != kEMPTY_SET) && (inPtr != kNULL_SET) && (! inPtr->isMarked ())) {
     inPtr->mark () ;
     internalSaveNode (inPtr->mPtrToNextIndex, inOutputStream) ;
@@ -1539,7 +1539,7 @@ internalSaveNode (cVDDnodeInfo * const inPtr,
 
 void C_VDD::
 saveArrayOnFile (const TC_UniqueArray <C_VDD> & inArray,
-                 AC_OutputStream & inOutputStream) {
+                 AbstractOutputStream & inOutputStream) {
 //--- Save nodes
   for (int32_t i=0 ; i<inArray.count () ; i++) {
     internalSaveNode (inArray (i COMMA_HERE).mRootPointer, inOutputStream) ;
@@ -1772,7 +1772,7 @@ size_t C_VDD::getMapSizeInBytes (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_VDD::printVDDsummary (AC_OutputStream & inOutputStream) {
+void C_VDD::printVDDsummary (AbstractOutputStream & inOutputStream) {
   inOutputStream.addString ("Summary of VDD operations :\n"
                     "  ") ;
   inOutputStream.addUnsigned (getCurrentVDDnodeCount ());

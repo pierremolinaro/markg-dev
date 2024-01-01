@@ -27,11 +27,11 @@
 
 //---------------------------------------------------------------------------*
 
-#include "utilities/MF_MemoryControl.h"
+#include "MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 
-class AC_OutputStream ;
+class AbstractOutputStream ;
 
 //---------------------------------------------------------------------------*
 
@@ -134,7 +134,7 @@ class C_AEDDPrimeCache2 {
   public : size_t getUnusedCacheEntriesCount (void) const ;
 
 //--- Print statistics
-  public : void printStatistics (AC_OutputStream & inStream,
+  public : void printStatistics (AbstractOutputStream & inStream,
                                  const char * inTitle) const ;
 
 //--- Is cache clear ?
