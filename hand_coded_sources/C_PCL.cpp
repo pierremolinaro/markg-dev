@@ -495,12 +495,12 @@ find_or_add (const T_vdd_zsl_index inIndex,
        if (firstPrint) {
          firstPrint = false ;
        }else{
-         inStream.addString (" ") ;
+         inStream.appendString (" ") ;
        }
-       inStream.addString (inPrefix) ;
-       inStream.addSigned ((p->mIndex - inFirst) / inStep) ;
-       inStream.addString (":") ;
-       inStream.addSigned (p->mValue) ;
+       inStream.appendString (inPrefix) ;
+       inStream.appendSigned ((p->mIndex - inFirst) / inStep) ;
+       inStream.appendString (":") ;
+       inStream.appendSigned (p->mValue) ;
      }
      p = p->mPtrToNext ;
    }
@@ -519,11 +519,11 @@ find_or_add (const T_vdd_zsl_index inIndex,
        if (firstPrint) {
          firstPrint = false ;
        }else{
-         inStream.addString (" ") ;
+         inStream.appendString (" ") ;
        }
-       inStream.addString (inNames ((p->mIndex - inFirst) / inStep COMMA_HERE)) ;
-       inStream.addString (":") ;
-       inStream.addSigned (p->mValue) ;
+       inStream.appendString (inNames ((p->mIndex - inFirst) / inStep COMMA_HERE)) ;
+       inStream.appendString (":") ;
+       inStream.appendSigned (p->mValue) ;
      }
      p = p->mPtrToNext ;
    }
@@ -560,41 +560,41 @@ void C_PCL::collectUnusedNodes (void) {
 
 void C_PCL::printVDLsummary (AbstractOutputStream & inOutputStream) {
   const uint64_t n = getCacheSuccessCount () + getCacheFailureCount () ;
-  inOutputStream.addString ("Summary of VDL operations :\n"
+  inOutputStream.appendString ("Summary of VDL operations :\n"
                     "  ") ;
-  inOutputStream.addSigned (getVDLnodeCount ());
-  inOutputStream.addString (" VDL used nodes (size ") ;
-  inOutputStream.addUnsigned (getNodeSize ()) ;
-  inOutputStream.addString (" bytes) ;\n"
+  inOutputStream.appendSigned (getVDLnodeCount ());
+  inOutputStream.appendString (" VDL used nodes (size ") ;
+  inOutputStream.appendUnsigned (getNodeSize ()) ;
+  inOutputStream.appendString (" bytes) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (C_PCL_hashmap::getCreatedObjectCount ());
-  inOutputStream.addString (" VDL created nodes (total size ") ;
-  inOutputStream.addUnsigned (((uint32_t) C_PCL_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL);
-  inOutputStream.addString (" kbytes) ;\n"
+  inOutputStream.appendUnsigned (C_PCL_hashmap::getCreatedObjectCount ());
+  inOutputStream.appendString (" VDL created nodes (total size ") ;
+  inOutputStream.appendUnsigned (((uint32_t) C_PCL_hashmap::getCreatedObjectCount () * getNodeSize ()) / 1024UL);
+  inOutputStream.appendString (" kbytes) ;\n"
                     "  ") ;
-  inOutputStream.addSigned (getNodeComparesCount ()) ;
-  inOutputStream.addString (" comparisons ;\n"
+  inOutputStream.appendSigned (getNodeComparesCount ()) ;
+  inOutputStream.appendString (" comparisons ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getCacheSuccessCount ());
-  inOutputStream.addString (" cache successes (") ;
-  inOutputStream.addUnsigned ((100ULL * getCacheSuccessCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendUnsigned (getCacheSuccessCount ());
+  inOutputStream.appendString (" cache successes (") ;
+  inOutputStream.appendUnsigned ((100ULL * getCacheSuccessCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getCacheFailureCount ()) ;
-  inOutputStream.addString (" cache failures (") ;
-  inOutputStream.addUnsigned ((100ULL * getCacheFailureCount ()) / n) ;
-  inOutputStream.addString ("%), including ") ;
-  inOutputStream.addUnsigned (getCacheOverrideCount ()) ;
-  inOutputStream.addString (" cache overrides (") ;
-  inOutputStream.addUnsigned ((100ULL * getCacheOverrideCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendUnsigned (getCacheFailureCount ()) ;
+  inOutputStream.appendString (" cache failures (") ;
+  inOutputStream.appendUnsigned ((100ULL * getCacheFailureCount ()) / n) ;
+  inOutputStream.appendString ("%), including ") ;
+  inOutputStream.appendUnsigned (getCacheOverrideCount ()) ;
+  inOutputStream.appendString (" cache overrides (") ;
+  inOutputStream.appendUnsigned ((100ULL * getCacheOverrideCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getUnusedCacheEntriesCount ()) ;
-  inOutputStream.addString (" unused cache entries (") ;
-  inOutputStream.addUnsigned ((100ULL * getUnusedCacheEntriesCount ()) / getCacheEntriesCount ());
-  inOutputStream.addString ("%, total entries = ") ;
-  inOutputStream.addUnsigned (getCacheEntriesCount ()) ;
-  inOutputStream.addString (").\n") ;
+  inOutputStream.appendUnsigned (getUnusedCacheEntriesCount ()) ;
+  inOutputStream.appendString (" unused cache entries (") ;
+  inOutputStream.appendUnsigned ((100ULL * getUnusedCacheEntriesCount ()) / getCacheEntriesCount ());
+  inOutputStream.appendString ("%, total entries = ") ;
+  inOutputStream.appendUnsigned (getCacheEntriesCount ()) ;
+  inOutputStream.appendString (").\n") ;
 }
 
 //---------------------------------------------------------------------------*

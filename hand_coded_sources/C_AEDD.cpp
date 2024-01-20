@@ -875,15 +875,15 @@ bool C_AEDD::infPtr (const C_AEDD & inOperand) const {
 static void
 internalRef (const intptr_t inAEDDvalue) {
   if (inAEDDvalue == 0) {
-    gCout.addString ("false") ;
+    gCout.appendString ("false") ;
   }else if (inAEDDvalue == 1) {
-    gCout.addString ("true") ;
+    gCout.appendString ("true") ;
   }else if ((inAEDDvalue & 1) == 0) {
-    gCout.addString ("node ") ;
-    gCout.addUnsignedHex ((uint64_t) inAEDDvalue) ;
+    gCout.appendString ("node ") ;
+    gCout.appendUnsignedHex ((uint64_t) inAEDDvalue) ;
   }else{
-    gCout.addString ("complement of node ") ;
-    gCout.addUnsignedHex (((uintptr_t) (inAEDDvalue & ~1))) ;
+    gCout.appendString ("complement of node ") ;
+    gCout.appendUnsignedHex (((uintptr_t) (inAEDDvalue & ~1))) ;
   }
 }
 
@@ -895,18 +895,18 @@ internalPrintAEDDnodes (const intptr_t inAEDDvalue,
   C_AEDD::C_AEDDnode * ptr = getAEDDnodePointer (inAEDDvalue) ;
   if ((ptr != NULL) && ! ptr->isMarked ()) {
     ptr->mark () ;
-    gCout.addSpaces ((int32_t) inIndentation) ;
-    gCout.addString ("at ") ;
-    gCout.addUnsignedHex ((uintptr_t) ptr) ;
-    gCout.addString (": if var") ;
-    gCout.addSigned (ptr->mVar) ;
-    gCout.addString (" >= ") ;
-    gCout.addSigned (ptr->mConstant) ;
-    gCout.addString (" then ") ;
+    gCout.appendSpaces ((int32_t) inIndentation) ;
+    gCout.appendString ("at ") ;
+    gCout.appendUnsignedHex ((uintptr_t) ptr) ;
+    gCout.appendString (": if var") ;
+    gCout.appendSigned (ptr->mVar) ;
+    gCout.appendString (" >= ") ;
+    gCout.appendSigned (ptr->mConstant) ;
+    gCout.appendString (" then ") ;
     internalRef (ptr->mTrueBranch) ;
-    gCout.addString (" else ") ;
+    gCout.appendString (" else ") ;
     internalRef (ptr->mFalseBranch) ;
-    gCout.addString ("\n") ;
+    gCout.appendString ("\n") ;
     internalPrintAEDDnodes (ptr->mTrueBranch, inIndentation + 1) ;
     internalPrintAEDDnodes (ptr->mFalseBranch, inIndentation + 1) ;
   }
@@ -916,9 +916,9 @@ internalPrintAEDDnodes (const intptr_t inAEDDvalue,
 
 void C_AEDD::printAEDDnodes (const char * inMessage) const {
   unmarkAllExistingAEDDnodes () ;
-  gCout.addString (inMessage) ;
+  gCout.appendString (inMessage) ;
   internalRef (mAEDDvalue) ;
-  gCout.addString ("\n") ;
+  gCout.appendString ("\n") ;
   internalPrintAEDDnodes (mAEDDvalue, 0) ;
 }
 
@@ -968,19 +968,19 @@ uintptr_t C_AEDD::getAEDDnodesCount (void) const {
 
 void C_AEDD::
 printAEDDpackageOperationsSummary (AbstractOutputStream & inStream) {
-  inStream.addString ("\n"
+  inStream.appendString ("\n"
               "Bilan du AEDD (") ;
-  inStream.addSigned (getAEDDnodeSize ()) ;
-  inStream.addString (" octets par element AEDD)\n"
+  inStream.appendSigned (getAEDDnodeSize ()) ;
+  inStream.appendString (" octets par element AEDD)\n"
               "  Nombre courant de AEDD  : ") ;
-  inStream.addUnsigned (getAEDDinstancesCount ()) ;
-  inStream.addString ("\n"
+  inStream.appendUnsigned (getAEDDinstancesCount ()) ;
+  inStream.appendString ("\n"
               "  Nombre d'elements crees : ") ;
-  inStream.addUnsigned (getCreatedNodesCount ()) ;
-  inStream.addString ("\n"
+  inStream.appendUnsigned (getCreatedNodesCount ()) ;
+  inStream.appendString ("\n"
               "  Nombre de comparaisons pour recherches/insertions des elements : ") ;
-  inStream.addUnsigned (C_AEDDnode::smComparisonsCount) ;
-  inStream.addString ("\n") ;
+  inStream.appendUnsigned (C_AEDDnode::smComparisonsCount) ;
+  inStream.appendString ("\n") ;
   gAndOperationCache.printStatistics (inStream, "AND") ;
 }
 

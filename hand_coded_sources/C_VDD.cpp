@@ -585,21 +585,21 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
                    int32_t inArray [],
                    const T_vdd_zsl_index inIndex) {
   if (inPtr == kNULL_SET) {
-    inStream.addString ("  <") ;
+    inStream.appendString ("  <") ;
     bool firstPrint = true ;
     for (int32_t i=0 ; i<inIndex ; i++) {
       if (inArray [i] != 0) {
         if (firstPrint) {
           firstPrint = false ;
         }else{
-          inStream.addString (" ") ;
+          inStream.appendString (" ") ;
         }
-        inStream.addString (inNames (i COMMA_HERE)) ;
-        inStream.addString (":") ;
-        inStream.addSigned (inArray [i]) ;
+        inStream.appendString (inNames (i COMMA_HERE)) ;
+        inStream.appendString (":") ;
+        inStream.appendSigned (inArray [i]) ;
       }
     }
-    inStream.addString (">\n") ;
+    inStream.appendString (">\n") ;
   }else if (inPtr != kEMPTY_SET){
     const T_vdd_zsl_index index = inPtr->mIndex ;
     for (T_vdd_zsl_index i=inIndex ; i<index ; i++) {
@@ -617,9 +617,9 @@ void C_VDD
 ::printSet (AbstractOutputStream & inStream,
             const TC_UniqueArray <String> & inNames) const {
   if (mRootPointer == kEMPTY_SET) {
-    inStream.addString ("  (empty set)\n") ;
+    inStream.appendString ("  (empty set)\n") ;
   }else if (mRootPointer == kNULL_SET) {
-    inStream.addString ("  <>\n") ;
+    inStream.appendString ("  <>\n") ;
   }else{
     int32_t * array = (int32_t *) NULL ;
     macroMyNewArray (array, int32_t, size_t (inNames.count ())) ;
@@ -646,25 +646,25 @@ void C_VDD
                           const TC_UniqueArray <String> & inNames) {
   if ((inPtr != kEMPTY_SET) && (inPtr != kNULL_SET) && (! inPtr->isMarked ())) {
     inPtr->mark () ;
-    inStream.addString ("  ") ;
-    inStream.addPointer (inPtr) ;
-    inStream.addString (":") ;
-    inStream.addString (inNames (inPtr->mIndex COMMA_HERE)) ;
-    inStream.addString (":") ;
-    inStream.addSigned (inPtr->mValue);
-    inStream.addString (", next index : ") ;
+    inStream.appendString ("  ") ;
+    inStream.appendPointer (inPtr) ;
+    inStream.appendString (":") ;
+    inStream.appendString (inNames (inPtr->mIndex COMMA_HERE)) ;
+    inStream.appendString (":") ;
+    inStream.appendSigned (inPtr->mValue);
+    inStream.appendString (", next index : ") ;
     if (inPtr->mPtrToNextIndex == kNULL_SET) {
-      inStream.addString ("NULL") ;
+      inStream.appendString ("NULL") ;
     }else{
-      inStream.addPointer (inPtr->mPtrToNextIndex) ;
+      inStream.appendPointer (inPtr->mPtrToNextIndex) ;
     }
-    inStream.addString (", same index : ") ;
+    inStream.appendString (", same index : ") ;
     if (inPtr->mPtrToSameIndex == kEMPTY_SET) {
-      inStream.addString ("EMPTY") ;
+      inStream.appendString ("EMPTY") ;
     }else{
-      inStream.addPointer (inPtr->mPtrToSameIndex) ;
+      inStream.appendPointer (inPtr->mPtrToSameIndex) ;
     }
-    inStream.addString ("\n") ;
+    inStream.appendString ("\n") ;
     internalPrintSetNodes (inStream, inPtr->mPtrToNextIndex, inNames) ;
     internalPrintSetNodes (inStream, inPtr->mPtrToSameIndex, inNames) ;
   }
@@ -1522,16 +1522,16 @@ internalSaveNode (cVDDnodeInfo * const inPtr,
     inPtr->mark () ;
     internalSaveNode (inPtr->mPtrToNextIndex, inOutputStream) ;
     internalSaveNode (inPtr->mPtrToSameIndex, inOutputStream) ;
-    inOutputStream.addPointer (inPtr) ;
-    inOutputStream.addString (" ") ;
-    inOutputStream.addSigned (inPtr->mIndex) ;
-    inOutputStream.addString (" ") ;
-    inOutputStream.addSigned (inPtr->mValue) ;
-    inOutputStream.addString (" ") ;
-    inOutputStream.addPointer (inPtr->mPtrToSameIndex) ;
-    inOutputStream.addString (" ") ;
-    inOutputStream.addPointer (inPtr->mPtrToNextIndex) ;
-    inOutputStream.addString ("\n") ;
+    inOutputStream.appendPointer (inPtr) ;
+    inOutputStream.appendString (" ") ;
+    inOutputStream.appendSigned (inPtr->mIndex) ;
+    inOutputStream.appendString (" ") ;
+    inOutputStream.appendSigned (inPtr->mValue) ;
+    inOutputStream.appendString (" ") ;
+    inOutputStream.appendPointer (inPtr->mPtrToSameIndex) ;
+    inOutputStream.appendString (" ") ;
+    inOutputStream.appendPointer (inPtr->mPtrToNextIndex) ;
+    inOutputStream.appendString ("\n") ;
   }
 }
 
@@ -1545,11 +1545,11 @@ saveArrayOnFile (const TC_UniqueArray <C_VDD> & inArray,
     internalSaveNode (inArray (i COMMA_HERE).mRootPointer, inOutputStream) ;
   }
 //--- Signal end of nodes list by zeros
-  inOutputStream.addString ("0 0 0 0 0\n") ;
+  inOutputStream.appendString ("0 0 0 0 0\n") ;
 //--- Save root node for each object
   for (int32_t i=0 ; i<inArray.count () ; i++) {
-    inOutputStream.addPointer (inArray (i COMMA_HERE).mRootPointer) ;
-    inOutputStream.addString ("\n") ;
+    inOutputStream.appendPointer (inArray (i COMMA_HERE).mRootPointer) ;
+    inOutputStream.appendString ("\n") ;
   }
 //--- Unmark all nodes
   for (int32_t i=0 ; i<inArray.count () ; i++) {
@@ -1773,122 +1773,122 @@ size_t C_VDD::getMapSizeInBytes (void) {
 //---------------------------------------------------------------------------*
 
 void C_VDD::printVDDsummary (AbstractOutputStream & inOutputStream) {
-  inOutputStream.addString ("Summary of VDD operations :\n"
+  inOutputStream.appendString ("Summary of VDD operations :\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getCurrentVDDnodeCount ());
-  inOutputStream.addString (" VDD currently used nodes ;\n"
+  inOutputStream.appendUnsigned (getCurrentVDDnodeCount ());
+  inOutputStream.appendString (" VDD currently used nodes ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (C_VDD_hashmap::getCreatedObjectCount ()) ;
-  inOutputStream.addString (" created nodes ("
+  inOutputStream.appendUnsigned (C_VDD_hashmap::getCreatedObjectCount ()) ;
+  inOutputStream.appendString (" created nodes ("
                     "each node : ") ;
-  inOutputStream.addUnsigned (getNodeSize ()) ;
-  inOutputStream.addString (" bytes, total : ") ;
-  inOutputStream.addUnsigned ((uint32_t) (C_VDD_hashmap::getAllocatedSizeInBytes () / 1048576)) ;
-  inOutputStream.addString (" Mb)\n"
+  inOutputStream.appendUnsigned (getNodeSize ()) ;
+  inOutputStream.appendString (" bytes, total : ") ;
+  inOutputStream.appendUnsigned ((uint32_t) (C_VDD_hashmap::getAllocatedSizeInBytes () / 1048576)) ;
+  inOutputStream.appendString (" Mb)\n"
                     "  VDD unique table : ") ;
-  inOutputStream.addUnsigned (gMap.getHashMapEntryCount ()) ;
-  inOutputStream.addString (" entries (") ;
-  inOutputStream.addUnsigned ((uint32_t) (gMap.getMapSizeInBytes () / 1048576)) ;
-  inOutputStream.addString (" Mb).\n"
+  inOutputStream.appendUnsigned (gMap.getHashMapEntryCount ()) ;
+  inOutputStream.appendString (" entries (") ;
+  inOutputStream.appendUnsigned ((uint32_t) (gMap.getMapSizeInBytes () / 1048576)) ;
+  inOutputStream.appendString (" Mb).\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getNodeComparesCount ()) ;
-  inOutputStream.addString (" VDD comparisons ;\n") ;
+  inOutputStream.appendUnsigned (getNodeComparesCount ()) ;
+  inOutputStream.appendString (" VDD comparisons ;\n") ;
 //--- Set union statistics
-  inOutputStream.addString ("Statistics about 'SetUnion' operations :\n"
+  inOutputStream.appendString ("Statistics about 'SetUnion' operations :\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getSetUnionCacheEntriesCount ());
-  inOutputStream.addString (" entries , size : ") ;
-  inOutputStream.addSigned (gSetUnionCache.getCacheSizeInKBytes () / 1024);
-  inOutputStream.addString (" Mb.\n") ;
+  inOutputStream.appendUnsigned (getSetUnionCacheEntriesCount ());
+  inOutputStream.appendString (" entries , size : ") ;
+  inOutputStream.appendSigned (gSetUnionCache.getCacheSizeInKBytes () / 1024);
+  inOutputStream.appendString (" Mb.\n") ;
   #ifdef COMPUTE_OPERATIONS_DURATION
-    inOutputStream.addString ("    Total duration : ") ;
-    inOutputStream.addSigned (gSetUnionDuration) ;
-    inOutputStream.addString (" microseconds\n") ;
+    inOutputStream.appendString ("    Total duration : ") ;
+    inOutputStream.appendSigned (gSetUnionDuration) ;
+    inOutputStream.appendString (" microseconds\n") ;
   #endif
   uint64_t n = getTrivialUnionCount () + getSetUnionCacheSuccessCount () + getSetUnionCacheFailureCount () ;
-  inOutputStream.addString ("  ") ;
-  inOutputStream.addUnsigned (getTrivialUnionCount ()) ;
-  inOutputStream.addString (" trivial union (") ;
-  inOutputStream.addUnsigned ((100ULL * getTrivialUnionCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendString ("  ") ;
+  inOutputStream.appendUnsigned (getTrivialUnionCount ()) ;
+  inOutputStream.appendString (" trivial union (") ;
+  inOutputStream.appendUnsigned ((100ULL * getTrivialUnionCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getSetUnionCacheSuccessCount ()) ;
-  inOutputStream.addString (" cache successes (") ;
-  inOutputStream.addUnsigned ((100ULL * getSetUnionCacheSuccessCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendUnsigned (getSetUnionCacheSuccessCount ()) ;
+  inOutputStream.appendString (" cache successes (") ;
+  inOutputStream.appendUnsigned ((100ULL * getSetUnionCacheSuccessCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getSetUnionCacheFailureCount ()) ;
-  inOutputStream.addString (" cache failures (") ;
-  inOutputStream.addUnsigned ((100ULL * getSetUnionCacheFailureCount ()) / n) ;
-  inOutputStream.addString ("%), including ") ;
-  inOutputStream.addUnsigned (getSetUnionCacheOverrideCount ()) ;
-  inOutputStream.addString (" cache overrides (") ;
-  inOutputStream.addUnsigned ((100ULL * getSetUnionCacheOverrideCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n") ;
+  inOutputStream.appendUnsigned (getSetUnionCacheFailureCount ()) ;
+  inOutputStream.appendString (" cache failures (") ;
+  inOutputStream.appendUnsigned ((100ULL * getSetUnionCacheFailureCount ()) / n) ;
+  inOutputStream.appendString ("%), including ") ;
+  inOutputStream.appendUnsigned (getSetUnionCacheOverrideCount ()) ;
+  inOutputStream.appendString (" cache overrides (") ;
+  inOutputStream.appendUnsigned ((100ULL * getSetUnionCacheOverrideCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n") ;
 //--- Get Firable statistics
-  inOutputStream.addString ("Statistics about 'Get firable' operations :\n"
+  inOutputStream.appendString ("Statistics about 'Get firable' operations :\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getGetFirableCacheEntriesCount ());
-  inOutputStream.addString (" entries , size : ") ;
-  inOutputStream.addSigned (gGetFirableCache.getCacheSizeInKBytes () / 1024);
-  inOutputStream.addString (" Mb.\n") ;
+  inOutputStream.appendUnsigned (getGetFirableCacheEntriesCount ());
+  inOutputStream.appendString (" entries , size : ") ;
+  inOutputStream.appendSigned (gGetFirableCache.getCacheSizeInKBytes () / 1024);
+  inOutputStream.appendString (" Mb.\n") ;
   #ifdef COMPUTE_OPERATIONS_DURATION
-    inOutputStream.addString ("  Total duration : ") ;
-    inOutputStream.addUnsigned (gGetFirableDuration) ;
-    inOutputStream.addString (" microseconds\n") ;
+    inOutputStream.appendString ("  Total duration : ") ;
+    inOutputStream.appendUnsigned (gGetFirableDuration) ;
+    inOutputStream.appendString (" microseconds\n") ;
   #endif
   n = getTrivialGetFirableCount () + getGetFirableCacheSuccessCount () + getGetFirableCacheFailureCount () ;
-  inOutputStream.addString ("  ") ;
-  inOutputStream.addUnsigned (getTrivialGetFirableCount ()) ;
-  inOutputStream.addString (" trivial get firable (") ;
-  inOutputStream.addUnsigned ((100ULL * getTrivialGetFirableCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendString ("  ") ;
+  inOutputStream.appendUnsigned (getTrivialGetFirableCount ()) ;
+  inOutputStream.appendString (" trivial get firable (") ;
+  inOutputStream.appendUnsigned ((100ULL * getTrivialGetFirableCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getGetFirableCacheSuccessCount ()) ;
-  inOutputStream.addString (" cache successes (") ;
-  inOutputStream.addUnsigned ((100ULL * getGetFirableCacheSuccessCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendUnsigned (getGetFirableCacheSuccessCount ()) ;
+  inOutputStream.appendString (" cache successes (") ;
+  inOutputStream.appendUnsigned ((100ULL * getGetFirableCacheSuccessCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getGetFirableCacheFailureCount ()) ;
-  inOutputStream.addString (" cache failures (") ;
-  inOutputStream.addUnsigned ((100ULL * getGetFirableCacheFailureCount ()) / n) ;
-  inOutputStream.addString ("%), including ") ;
-  inOutputStream.addUnsigned (getGetFirableCacheOverrideCount ()) ;
-  inOutputStream.addString (" cache overrides (") ;
-  inOutputStream.addUnsigned ((100ULL * getGetFirableCacheOverrideCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n") ;
+  inOutputStream.appendUnsigned (getGetFirableCacheFailureCount ()) ;
+  inOutputStream.appendString (" cache failures (") ;
+  inOutputStream.appendUnsigned ((100ULL * getGetFirableCacheFailureCount ()) / n) ;
+  inOutputStream.appendString ("%), including ") ;
+  inOutputStream.appendUnsigned (getGetFirableCacheOverrideCount ()) ;
+  inOutputStream.appendString (" cache overrides (") ;
+  inOutputStream.appendUnsigned ((100ULL * getGetFirableCacheOverrideCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n") ;
 //--- AddVector statistics
-  inOutputStream.addString ("Statistics about 'AddVector' operations :\n"
+  inOutputStream.appendString ("Statistics about 'AddVector' operations :\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getAddVectorCacheEntriesCount ());
-  inOutputStream.addString (" entries, size : ") ;
-  inOutputStream.addSigned (gAddVectorCache.getCacheSizeInKBytes () / 1024) ;
-  inOutputStream.addString (" Mb.\n") ;
+  inOutputStream.appendUnsigned (getAddVectorCacheEntriesCount ());
+  inOutputStream.appendString (" entries, size : ") ;
+  inOutputStream.appendSigned (gAddVectorCache.getCacheSizeInKBytes () / 1024) ;
+  inOutputStream.appendString (" Mb.\n") ;
   #ifdef COMPUTE_OPERATIONS_DURATION
-    inOutputStream.addString ("  Total duration : ") ;
-    inOutputStream.addUnsigned (gAddVectorDuration) ;
-    inOutputStream.addString (" microseconds\n") ;
+    inOutputStream.appendString ("  Total duration : ") ;
+    inOutputStream.appendUnsigned (gAddVectorDuration) ;
+    inOutputStream.appendString (" microseconds\n") ;
   #endif
   n = getTrivialAddVectorCount () + getAddVectorCacheSuccessCount () + getAddVectorCacheFailureCount () ;
-  inOutputStream.addString ("  ") ;
-  inOutputStream.addUnsigned (getTrivialAddVectorCount ()) ;
-  inOutputStream.addString (" trivial add vector (") ;
-  inOutputStream.addUnsigned ((100ULL * getTrivialAddVectorCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendString ("  ") ;
+  inOutputStream.appendUnsigned (getTrivialAddVectorCount ()) ;
+  inOutputStream.appendString (" trivial add vector (") ;
+  inOutputStream.appendUnsigned ((100ULL * getTrivialAddVectorCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getAddVectorCacheSuccessCount ()) ;
-  inOutputStream.addString (" cache successes (") ;
-  inOutputStream.addUnsigned ((100ULL * getAddVectorCacheSuccessCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n"
+  inOutputStream.appendUnsigned (getAddVectorCacheSuccessCount ()) ;
+  inOutputStream.appendString (" cache successes (") ;
+  inOutputStream.appendUnsigned ((100ULL * getAddVectorCacheSuccessCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n"
                     "  ") ;
-  inOutputStream.addUnsigned (getAddVectorCacheFailureCount ()) ;
-  inOutputStream.addString (" cache failures (") ;
-  inOutputStream.addUnsigned ((100ULL * getAddVectorCacheFailureCount ()) / n) ;
-  inOutputStream.addString ("%), including ") ;
-  inOutputStream.addUnsigned (getAddVectorCacheOverrideCount ()) ;
-  inOutputStream.addString (" cache overrides (") ;
-  inOutputStream.addUnsigned ((100ULL * getAddVectorCacheOverrideCount ()) / n) ;
-  inOutputStream.addString ("%) ;\n") ;
+  inOutputStream.appendUnsigned (getAddVectorCacheFailureCount ()) ;
+  inOutputStream.appendString (" cache failures (") ;
+  inOutputStream.appendUnsigned ((100ULL * getAddVectorCacheFailureCount ()) / n) ;
+  inOutputStream.appendString ("%), including ") ;
+  inOutputStream.appendUnsigned (getAddVectorCacheOverrideCount ()) ;
+  inOutputStream.appendString (" cache overrides (") ;
+  inOutputStream.appendUnsigned ((100ULL * getAddVectorCacheOverrideCount ()) / n) ;
+  inOutputStream.appendString ("%) ;\n") ;
 }
 
 //---------------------------------------------------------------------------*
