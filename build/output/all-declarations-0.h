@@ -299,46 +299,46 @@ class Lexique_spec_5F_scanner : public Lexique {
 
 //--- Terminal symbols enumeration
   public: enum {kToken_,
-   kToken_identifier,
-   kToken_literal_5F_string,
-   kToken_literal_5F_integer,
-   kToken_system,
-   kToken_var,
-   kToken_rule,
-   kToken_init,
-   kToken_end,
-   kToken_true,
-   kToken_false,
-   kToken_const,
-   kToken_count,
-   kToken_infinity,
-   kToken_hashmapsize,
-   kToken_garbageperiod,
-   kToken__3E__3D_,
-   kToken__3E_,
-   kToken__3C_,
-   kToken__3C__3D_,
-   kToken__3D__3D_,
-   kToken__21__3D_,
-   kToken__26_,
-   kToken__7C_,
-   kToken__7E_,
-   kToken__2C_,
-   kToken__3B_,
-   kToken__28_,
-   kToken__29_,
-   kToken__2B__2B_,
-   kToken__2D__2D_,
-   kToken__2B__3D_,
-   kToken__2D__3D_,
-   kToken__3A__3D_,
-   kToken__7B_,
-   kToken__7D_,
-   kToken__3A_,
-   kToken__2D_,
-   kToken__3D_,
-   kToken__5B_,
-   kToken__5D_} ;
+   kToken_identifier /* 1 */ ,
+   kToken_literal_5F_string /* 2 */ ,
+   kToken_literal_5F_integer /* 3 */ ,
+   kToken_system /* 4 */ ,
+   kToken_var /* 5 */ ,
+   kToken_rule /* 6 */ ,
+   kToken_init /* 7 */ ,
+   kToken_end /* 8 */ ,
+   kToken_true /* 9 */ ,
+   kToken_false /* 10 */ ,
+   kToken_const /* 11 */ ,
+   kToken_count /* 12 */ ,
+   kToken_infinity /* 13 */ ,
+   kToken_hashmapsize /* 14 */ ,
+   kToken_garbageperiod /* 15 */ ,
+   kToken__3E__3D_ /* 16 */ ,
+   kToken__3E_ /* 17 */ ,
+   kToken__3C_ /* 18 */ ,
+   kToken__3C__3D_ /* 19 */ ,
+   kToken__3D__3D_ /* 20 */ ,
+   kToken__21__3D_ /* 21 */ ,
+   kToken__26_ /* 22 */ ,
+   kToken__7C_ /* 23 */ ,
+   kToken__7E_ /* 24 */ ,
+   kToken__2C_ /* 25 */ ,
+   kToken__3B_ /* 26 */ ,
+   kToken__28_ /* 27 */ ,
+   kToken__29_ /* 28 */ ,
+   kToken__2B__2B_ /* 29 */ ,
+   kToken__2D__2D_ /* 30 */ ,
+   kToken__2B__3D_ /* 31 */ ,
+   kToken__2D__3D_ /* 32 */ ,
+   kToken__3A__3D_ /* 33 */ ,
+   kToken__7B_ /* 34 */ ,
+   kToken__7D_ /* 35 */ ,
+   kToken__3A_ /* 36 */ ,
+   kToken__2D_ /* 37 */ ,
+   kToken__3D_ /* 38 */ ,
+   kToken__5B_ /* 39 */ ,
+   kToken__5D_ /* 40 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -4459,25 +4459,25 @@ void routine_print_3F_ (const class GALGAS_string constinArgument0,
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ;
-
 extern C_BoolCommandLineOption gOption_spec_5F_options_doNotPrintIteration ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printFiring ;
-
-extern C_BoolCommandLineOption gOption_spec_5F_options_printInference ;
-
-extern C_BoolCommandLineOption gOption_spec_5F_options_printIterationStates ;
-
-extern C_BoolCommandLineOption gOption_spec_5F_options_printMinMax ;
+extern C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ;
 
 extern C_BoolCommandLineOption gOption_spec_5F_options_printNodes ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printPreConditions ;
-
 extern C_BoolCommandLineOption gOption_spec_5F_options_printStates ;
 
+extern C_BoolCommandLineOption gOption_spec_5F_options_printInference ;
+
+extern C_BoolCommandLineOption gOption_spec_5F_options_printMinMax ;
+
+extern C_BoolCommandLineOption gOption_spec_5F_options_printPreConditions ;
+
+extern C_BoolCommandLineOption gOption_spec_5F_options_printIterationStates ;
+
 extern C_BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ;
+
+extern C_BoolCommandLineOption gOption_spec_5F_options_printFiring ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -11,14 +11,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
                    _ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
-    identifier: "computeSimultaneousFiring",
-    commandChar: "",
-    commandString: "simultaneous-firing",
-    comment: "perform simultaneous firing",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "spec_options",
     identifier: "doNotPrintIteration",
     commandChar: "D",
     commandString: "do-not-print-iterations-message",
@@ -27,34 +19,10 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
-    identifier: "printFiring",
-    commandChar: "f",
-    commandString: "print-transitions-firing-count",
-    comment: "print transitions firing count",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "spec_options",
-    identifier: "printInference",
+    identifier: "computeSimultaneousFiring",
     commandChar: "",
-    commandString: "print-inference",
-    comment: "print inference expression for each transition",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "spec_options",
-    identifier: "printIterationStates",
-    commandChar: "i",
-    commandString: "print-iterations-states",
-    comment: "print source and target states for each transition of every iteration",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "spec_options",
-    identifier: "printMinMax",
-    commandChar: "p",
-    commandString: "print-min-maxs",
-    comment: "print min and max value for each variable",
+    commandString: "simultaneous-firing",
+    comment: "perform simultaneous firing",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -67,14 +35,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
-    identifier: "printPreConditions",
-    commandChar: "P",
-    commandString: "print-preconditions",
-    comment: "print precondition expression for each transition",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "spec_options",
     identifier: "printStates",
     commandChar: "S",
     commandString: "print-states",
@@ -83,10 +43,50 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
+    identifier: "printInference",
+    commandChar: "",
+    commandString: "print-inference",
+    comment: "print inference expression for each transition",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "spec_options",
+    identifier: "printMinMax",
+    commandChar: "p",
+    commandString: "print-min-maxs",
+    comment: "print min and max value for each variable",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "spec_options",
+    identifier: "printPreConditions",
+    commandChar: "P",
+    commandString: "print-preconditions",
+    comment: "print precondition expression for each transition",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "spec_options",
+    identifier: "printIterationStates",
+    commandChar: "i",
+    commandString: "print-iterations-states",
+    comment: "print source and target states for each transition of every iteration",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "spec_options",
     identifier: "printTemporalBounds",
     commandChar: "t",
     commandString: "print-temporal-bounds",
     comment: "print temporal bounds for each transition",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "spec_options",
+    identifier: "printFiring",
+    commandChar: "f",
+    commandString: "print-transitions-firing-count",
+    comment: "print transitions firing count",
     defaultValue: ""
   ))
   ioUIntOptionArray.append (SWIFT_CommandLineOption (

@@ -12823,41 +12823,17 @@ GALGAS_countList_2D_element GALGAS_countList_2D_element::extractObject (const GA
 //
 //--------------------------------------------------------------------------------------------------
 
-C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ("spec_options",
-                                         "computeSimultaneousFiring",
-                                         0,
-                                         "simultaneous-firing",
-                                         "perform simultaneous firing") ;
-
 C_BoolCommandLineOption gOption_spec_5F_options_doNotPrintIteration ("spec_options",
                                          "doNotPrintIteration",
                                          68,
                                          "do-not-print-iterations-message",
                                          "do not print a message for every iteration") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printFiring ("spec_options",
-                                         "printFiring",
-                                         102,
-                                         "print-transitions-firing-count",
-                                         "print transitions firing count") ;
-
-C_BoolCommandLineOption gOption_spec_5F_options_printInference ("spec_options",
-                                         "printInference",
+C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ("spec_options",
+                                         "computeSimultaneousFiring",
                                          0,
-                                         "print-inference",
-                                         "print inference expression for each transition") ;
-
-C_BoolCommandLineOption gOption_spec_5F_options_printIterationStates ("spec_options",
-                                         "printIterationStates",
-                                         105,
-                                         "print-iterations-states",
-                                         "print source and target states for each transition of every iteration") ;
-
-C_BoolCommandLineOption gOption_spec_5F_options_printMinMax ("spec_options",
-                                         "printMinMax",
-                                         112,
-                                         "print-min-maxs",
-                                         "print min and max value for each variable") ;
+                                         "simultaneous-firing",
+                                         "perform simultaneous firing") ;
 
 C_BoolCommandLineOption gOption_spec_5F_options_printNodes ("spec_options",
                                          "printNodes",
@@ -12865,23 +12841,47 @@ C_BoolCommandLineOption gOption_spec_5F_options_printNodes ("spec_options",
                                          "print-nodes",
                                          "print accessibility set nodes") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printPreConditions ("spec_options",
-                                         "printPreConditions",
-                                         80,
-                                         "print-preconditions",
-                                         "print precondition expression for each transition") ;
-
 C_BoolCommandLineOption gOption_spec_5F_options_printStates ("spec_options",
                                          "printStates",
                                          83,
                                          "print-states",
                                          "print accessibility states") ;
 
+C_BoolCommandLineOption gOption_spec_5F_options_printInference ("spec_options",
+                                         "printInference",
+                                         0,
+                                         "print-inference",
+                                         "print inference expression for each transition") ;
+
+C_BoolCommandLineOption gOption_spec_5F_options_printMinMax ("spec_options",
+                                         "printMinMax",
+                                         112,
+                                         "print-min-maxs",
+                                         "print min and max value for each variable") ;
+
+C_BoolCommandLineOption gOption_spec_5F_options_printPreConditions ("spec_options",
+                                         "printPreConditions",
+                                         80,
+                                         "print-preconditions",
+                                         "print precondition expression for each transition") ;
+
+C_BoolCommandLineOption gOption_spec_5F_options_printIterationStates ("spec_options",
+                                         "printIterationStates",
+                                         105,
+                                         "print-iterations-states",
+                                         "print source and target states for each transition of every iteration") ;
+
 C_BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ("spec_options",
                                          "printTemporalBounds",
                                          116,
                                          "print-temporal-bounds",
                                          "print temporal bounds for each transition") ;
+
+C_BoolCommandLineOption gOption_spec_5F_options_printFiring ("spec_options",
+                                         "printFiring",
+                                         102,
+                                         "print-transitions-firing-count",
+                                         "print transitions firing count") ;
 
 //--------------------------------------------------------------------------------------------------
 //
