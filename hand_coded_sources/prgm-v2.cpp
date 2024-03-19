@@ -6,7 +6,6 @@
 #include "C_galgas_io.h"
 #include "TC_Array2.h"
 #include "TC_UniqueArray.h"
-#include "C_ConsoleOut.h"
 #include "C_AEDD.h"
 #include "C_PCL.h"
 #include "C_VDD.h"

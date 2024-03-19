@@ -12786,61 +12786,61 @@ GALGAS_countList_2D_element GALGAS_countList_2D_element::extractObject (const GA
 //
 //--------------------------------------------------------------------------------------------------
 
-C_BoolCommandLineOption gOption_spec_5F_options_doNotPrintIteration ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_doNotPrintIteration ("spec_options",
                                          "doNotPrintIteration",
                                          68,
                                          "do-not-print-iterations-message",
                                          "do not print a message for every iteration") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ("spec_options",
                                          "computeSimultaneousFiring",
                                          0,
                                          "simultaneous-firing",
                                          "perform simultaneous firing") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printNodes ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printNodes ("spec_options",
                                          "printNodes",
                                          78,
                                          "print-nodes",
                                          "print accessibility set nodes") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printStates ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printStates ("spec_options",
                                          "printStates",
                                          83,
                                          "print-states",
                                          "print accessibility states") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printInference ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printInference ("spec_options",
                                          "printInference",
                                          0,
                                          "print-inference",
                                          "print inference expression for each transition") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printMinMax ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printMinMax ("spec_options",
                                          "printMinMax",
                                          112,
                                          "print-min-maxs",
                                          "print min and max value for each variable") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printPreConditions ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printPreConditions ("spec_options",
                                          "printPreConditions",
                                          80,
                                          "print-preconditions",
                                          "print precondition expression for each transition") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printIterationStates ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printIterationStates ("spec_options",
                                          "printIterationStates",
                                          105,
                                          "print-iterations-states",
                                          "print source and target states for each transition of every iteration") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ("spec_options",
                                          "printTemporalBounds",
                                          116,
                                          "print-temporal-bounds",
                                          "print temporal bounds for each transition") ;
 
-C_BoolCommandLineOption gOption_spec_5F_options_printFiring ("spec_options",
+BoolCommandLineOption gOption_spec_5F_options_printFiring ("spec_options",
                                          "printFiring",
                                          102,
                                          "print-transitions-firing-count",
@@ -12852,7 +12852,7 @@ C_BoolCommandLineOption gOption_spec_5F_options_printFiring ("spec_options",
 //
 //--------------------------------------------------------------------------------------------------
 
-C_UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ("spec_options",
+UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ("spec_options",
                                          "stopAfterIteration",
                                          115,
                                          "stop-after-iteration",
@@ -12876,17 +12876,15 @@ C_UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ("spec_option
 
 #include "project_header.h"
 #include "F_mainForLIBPM.h"
-#include "F_Analyze_CLI_Options.h"
-#include "C_builtin_CLI_Options.h"
+#include "analyzeCommandLineOptions.h"
+#include "builtin-command-line-options.h"
 #include "C_galgas_CLI_Options.h"
 #include "F_verbose_output.h"
 #include "cLexiqueIntrospection.h"
 #include "F_DisplayException.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //                      print_tool_help_message                                                  
-//
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
@@ -12972,11 +12970,11 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
   TC_UniqueArray <String> sourceFilesArray ;
-  F_Analyze_CLI_Options (inArgc, inArgv,
-                         sourceFilesArray,
-                         kSourceFileExtensions,
-                         kSourceFileHelpMessages,
-                         print_tool_help_message) ;
+  analyzeCommandLineOptions (inArgc, inArgv,
+                             sourceFilesArray,
+                             kSourceFileExtensions,
+                             kSourceFileHelpMessages,
+                             print_tool_help_message) ;
 //---
   int returnCode = 0 ; // No error
 //--- Set Execution mode

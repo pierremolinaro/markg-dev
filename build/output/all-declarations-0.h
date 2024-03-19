@@ -4459,25 +4459,25 @@ void routine_print_3F_ (const class GALGAS_string constinArgument0,
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_doNotPrintIteration ;
+extern BoolCommandLineOption gOption_spec_5F_options_doNotPrintIteration ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ;
+extern BoolCommandLineOption gOption_spec_5F_options_computeSimultaneousFiring ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printNodes ;
+extern BoolCommandLineOption gOption_spec_5F_options_printNodes ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printStates ;
+extern BoolCommandLineOption gOption_spec_5F_options_printStates ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printInference ;
+extern BoolCommandLineOption gOption_spec_5F_options_printInference ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printMinMax ;
+extern BoolCommandLineOption gOption_spec_5F_options_printMinMax ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printPreConditions ;
+extern BoolCommandLineOption gOption_spec_5F_options_printPreConditions ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printIterationStates ;
+extern BoolCommandLineOption gOption_spec_5F_options_printIterationStates ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ;
+extern BoolCommandLineOption gOption_spec_5F_options_printTemporalBounds ;
 
-extern C_BoolCommandLineOption gOption_spec_5F_options_printFiring ;
+extern BoolCommandLineOption gOption_spec_5F_options_printFiring ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4485,7 +4485,7 @@ extern C_BoolCommandLineOption gOption_spec_5F_options_printFiring ;
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ;
+extern UIntCommandLineOption gOption_spec_5F_options_stopAfterIteration ;
 
 //--------------------------------------------------------------------------------------------------
 //
