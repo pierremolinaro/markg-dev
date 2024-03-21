@@ -3,7 +3,6 @@
 /*--------------------------------------------------------------------------*/
 
 #include "Compiler.h"
-#include "C_galgas_io.h"
 #include "TC_Array2.h"
 #include "TC_UniqueArray.h"
 #include "C_AEDD.h"
@@ -56,7 +55,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost != UNDEFINED_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be assigned (has been already assigned or incremented)",
-         TC_Array <C_FixItDescription> ()
+         TC_Array <FixItDescription> ()
           COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = ASSIGN_POST ;
@@ -89,7 +88,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost != UNDEFINED_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be assigned (has been already assigned or incremented)",
-         TC_Array <C_FixItDescription> ()
+         TC_Array <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mConstant = MAX_VDD_ZSL_VALUE ;
@@ -113,7 +112,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be decremented (has been already assigned)",
-         TC_Array <C_FixItDescription> ()
+         TC_Array <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -140,7 +139,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be incremented (has been already assigned)",
-         TC_Array <C_FixItDescription> ()
+         TC_Array <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -167,7 +166,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be incremented (has been already assigned)",
-         TC_Array <C_FixItDescription> ()
+         TC_Array <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -190,7 +189,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be decremented (has been already assigned)",
-         TC_Array <C_FixItDescription> ()
+         TC_Array <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -411,7 +410,7 @@ vddComputation (uint32_t inGarbagePeriod,
   }
   timer.stopTimer () ;
 //--- Compute count list
-  cEnumerator_countList current (inCountList, kENUMERATION_UP) ;
+  cEnumerator_countList current (inCountList, EnumerationOrder::up) ;
   while (current.hasCurrentObject ()) {
     auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).ptr () ;
     const C_AEDD aedd = p->buildAEDDexpression () ;
@@ -732,7 +731,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
   }
   timer.stopTimer () ;
 //--- Compute count list
-  cEnumerator_countList current (inCountList, kENUMERATION_UP) ;
+  cEnumerator_countList current (inCountList, EnumerationOrder::up) ;
   while (current.hasCurrentObject ()) {
     auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).ptr () ;
     const C_AEDD aedd = p->buildAEDDexpression () ;
@@ -822,7 +821,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashM
   const int32_t transitionsCount = (int32_t) inTransitionList.count () ;
 //--- Build places names array
   TC_UniqueArray <String> placeNames (placesCount COMMA_HERE) ;
-  cEnumerator_typeVarMap current (inPlacesMap, kENUMERATION_UP) ;
+  cEnumerator_typeVarMap current (inPlacesMap, EnumerationOrder::up) ;
   while (current.hasCurrentObject ()) {
     placeNames.appendObject (current.current_lkey (HERE).mProperty_string.stringValue ()) ;
     current.gotoNextObject () ;
@@ -831,7 +830,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashM
 //  printf ("BUILD INITIAL MARKING ARRAY\n") ; fflush (stdout) ;
   C_VDD initialMarking ;
   initialMarking.setToNullSet () ;
-  cEnumerator_typeInitialMarkingList currentPlace (inInitialMarkingList, kENUMERATION_UP) ;
+  cEnumerator_typeInitialMarkingList currentPlace (inInitialMarkingList, EnumerationOrder::up) ;
   while (currentPlace.hasCurrentObject ()) {
     auto q = (const cPtr_typePostcondition *) currentPlace.current_mInitValue (HERE).ptr () ;
     q->buildInitialMarking (initialMarking) ;
@@ -844,7 +843,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashM
   cPostConditionArray postcondition (transitionsCount, placesCount COMMA_HERE) ;
   TC_UniqueArray <uint32_t> lowBounds (transitionsCount COMMA_HERE) ;
   TC_UniqueArray <uint32_t> highBounds (transitionsCount COMMA_HERE) ;
-  cEnumerator_typeTransitionList currentTrans (inTransitionList, kENUMERATION_UP) ;
+  cEnumerator_typeTransitionList currentTrans (inTransitionList, EnumerationOrder::up) ;
   int32_t t = 0 ;
   while (currentTrans.hasCurrentObject ()) {
     lowBounds.appendObject (currentTrans.current_mLowTemporalBound (HERE).uintValue ()) ;
@@ -861,7 +860,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashM
       fflush (stdout) ;
     }
 //    printf ("post expression\n") ; fflush (stdout) ;
-    cEnumerator_typePostconditionList p (currentTrans.current_mPostconditionList (HERE), kENUMERATION_UP) ;
+    cEnumerator_typePostconditionList p (currentTrans.current_mPostconditionList (HERE), EnumerationOrder::up) ;
     while (p.hasCurrentObject ()) {
       auto q = (const cPtr_typePostcondition *) p.current_mPostcondition (HERE).ptr () ;
       q->buildPostCondition (t, inCompiler, postcondition) ;
@@ -942,7 +941,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashM
       s.appendString ("): ") ;
       preconditionExp (i COMMA_HERE).printAEDDnodes (s.cString ()) ;
     }
-    cEnumerator_countList currentCount (inCountList, kENUMERATION_UP) ;
+    cEnumerator_countList currentCount (inCountList, EnumerationOrder::up) ;
     while (currentCount.hasCurrentObject ()) {
       String s ;
       s.appendString ("Count \"") ;

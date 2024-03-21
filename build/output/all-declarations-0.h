@@ -148,7 +148,7 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 class cEnumerator__32_lstringlist : public cGenericAbstractEnumerator {
   public: cEnumerator__32_lstringlist (const GALGAS__32_lstringlist & inEnumeratedObject,
-                                       const typeEnumerationOrder inOrder) ;
+                                       const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mValue_30_ (LOCATION_ARGS) const ;
@@ -222,7 +222,7 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS__32_lstringlist_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS__32_lstringlist_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -481,7 +481,7 @@ class GALGAS_typeVarMap : public AC_GALGAS_map {
 
 class cEnumerator_typeVarMap : public cGenericAbstractEnumerator {
   public: cEnumerator_typeVarMap (const GALGAS_typeVarMap & inEnumeratedObject,
-                                  const typeEnumerationOrder inOrder) ;
+                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -510,7 +510,7 @@ class cMapElement_typeVarMap : public cMapElement {
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -583,7 +583,7 @@ class GALGAS_typeVarMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeVarMap_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeVarMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -718,7 +718,7 @@ class GALGAS_typeCstMap : public AC_GALGAS_map {
 
 class cEnumerator_typeCstMap : public cGenericAbstractEnumerator {
   public: cEnumerator_typeCstMap (const GALGAS_typeCstMap & inEnumeratedObject,
-                                  const typeEnumerationOrder inOrder) ;
+                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -750,7 +750,7 @@ class cMapElement_typeCstMap : public cMapElement {
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -834,7 +834,7 @@ class GALGAS_typeCstMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeCstMap_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeCstMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -880,7 +880,7 @@ class GALGAS_typePreconditionExpression : public AC_GALGAS_reference_class {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePreconditionExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePreconditionExpression & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -935,7 +935,7 @@ class GALGAS_typePreconditionExpression_2D_weak : public AC_GALGAS_weak_referenc
   public: static class GALGAS_typePreconditionExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePreconditionExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePreconditionExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -984,7 +984,7 @@ class GALGAS_typeTrueExpression : public GALGAS_typePreconditionExpression {
   public: static class GALGAS_typeTrueExpression class_func_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeTrueExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeTrueExpression & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1039,7 +1039,7 @@ class GALGAS_typeTrueExpression_2D_weak : public GALGAS_typePreconditionExpressi
   public: static class GALGAS_typeTrueExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeTrueExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeTrueExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1088,7 +1088,7 @@ class GALGAS_typeFalseExpression : public GALGAS_typePreconditionExpression {
   public: static class GALGAS_typeFalseExpression class_func_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeFalseExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeFalseExpression & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1143,7 +1143,7 @@ class GALGAS_typeFalseExpression_2D_weak : public GALGAS_typePreconditionExpress
   public: static class GALGAS_typeFalseExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeFalseExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeFalseExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1195,7 +1195,7 @@ class GALGAS_typeComplementExpression : public GALGAS_typePreconditionExpression
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeComplementExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeComplementExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_typePreconditionExpression inArgument0
@@ -1253,7 +1253,7 @@ class GALGAS_typeComplementExpression_2D_weak : public GALGAS_typePreconditionEx
   public: static class GALGAS_typeComplementExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeComplementExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeComplementExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1308,7 +1308,7 @@ class GALGAS_typeAndExpression : public GALGAS_typePreconditionExpression {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAndExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAndExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_typePreconditionExpression inArgument0
@@ -1369,7 +1369,7 @@ class GALGAS_typeAndExpression_2D_weak : public GALGAS_typePreconditionExpressio
   public: static class GALGAS_typeAndExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAndExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAndExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1424,7 +1424,7 @@ class GALGAS_typeOrExpression : public GALGAS_typePreconditionExpression {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeOrExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeOrExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_typePreconditionExpression inArgument0
@@ -1485,7 +1485,7 @@ class GALGAS_typeOrExpression_2D_weak : public GALGAS_typePreconditionExpression
   public: static class GALGAS_typeOrExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeOrExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeOrExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1543,7 +1543,7 @@ class GALGAS_typeEqualExpression : public GALGAS_typePreconditionExpression {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeEqualExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeEqualExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -1607,7 +1607,7 @@ class GALGAS_typeEqualExpression_2D_weak : public GALGAS_typePreconditionExpress
   public: static class GALGAS_typeEqualExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeEqualExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeEqualExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1665,7 +1665,7 @@ class GALGAS_typeNonEqualExpression : public GALGAS_typePreconditionExpression {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeNonEqualExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeNonEqualExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -1729,7 +1729,7 @@ class GALGAS_typeNonEqualExpression_2D_weak : public GALGAS_typePreconditionExpr
   public: static class GALGAS_typeNonEqualExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeNonEqualExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeNonEqualExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1787,7 +1787,7 @@ class GALGAS_typeInfOrEqualExpression : public GALGAS_typePreconditionExpression
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeInfOrEqualExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeInfOrEqualExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -1851,7 +1851,7 @@ class GALGAS_typeInfOrEqualExpression_2D_weak : public GALGAS_typePreconditionEx
   public: static class GALGAS_typeInfOrEqualExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeInfOrEqualExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeInfOrEqualExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1909,7 +1909,7 @@ class GALGAS_typeSupOrEqualExpression : public GALGAS_typePreconditionExpression
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeSupOrEqualExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeSupOrEqualExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -1973,7 +1973,7 @@ class GALGAS_typeSupOrEqualExpression_2D_weak : public GALGAS_typePreconditionEx
   public: static class GALGAS_typeSupOrEqualExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeSupOrEqualExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeSupOrEqualExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2031,7 +2031,7 @@ class GALGAS_typeStrictInfExpression : public GALGAS_typePreconditionExpression 
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeStrictInfExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeStrictInfExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -2095,7 +2095,7 @@ class GALGAS_typeStrictInfExpression_2D_weak : public GALGAS_typePreconditionExp
   public: static class GALGAS_typeStrictInfExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeStrictInfExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeStrictInfExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2153,7 +2153,7 @@ class GALGAS_typeStrictSupExpression : public GALGAS_typePreconditionExpression 
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeStrictSupExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeStrictSupExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -2217,7 +2217,7 @@ class GALGAS_typeStrictSupExpression_2D_weak : public GALGAS_typePreconditionExp
   public: static class GALGAS_typeStrictSupExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeStrictSupExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeStrictSupExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2263,7 +2263,7 @@ class GALGAS_typePostcondition : public AC_GALGAS_reference_class {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostcondition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostcondition & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2318,7 +2318,7 @@ class GALGAS_typePostcondition_2D_weak : public AC_GALGAS_weak_reference {
   public: static class GALGAS_typePostcondition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostcondition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostcondition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2373,7 +2373,7 @@ class GALGAS_typePostIncrement : public GALGAS_typePostcondition {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostIncrement & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostIncrement & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMVar (class GALGAS_uint inArgument0
@@ -2434,7 +2434,7 @@ class GALGAS_typePostIncrement_2D_weak : public GALGAS_typePostcondition_2D_weak
   public: static class GALGAS_typePostIncrement_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostIncrement_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostIncrement_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2489,7 +2489,7 @@ class GALGAS_typePostDecrement : public GALGAS_typePostcondition {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostDecrement & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostDecrement & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMVar (class GALGAS_uint inArgument0
@@ -2550,7 +2550,7 @@ class GALGAS_typePostDecrement_2D_weak : public GALGAS_typePostcondition_2D_weak
   public: static class GALGAS_typePostDecrement_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostDecrement_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostDecrement_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2611,7 +2611,7 @@ class GALGAS_typeAddConstant : public GALGAS_typePostcondition {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAddConstant & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAddConstant & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -2678,7 +2678,7 @@ class GALGAS_typeAddConstant_2D_weak : public GALGAS_typePostcondition_2D_weak {
   public: static class GALGAS_typeAddConstant_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAddConstant_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAddConstant_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2739,7 +2739,7 @@ class GALGAS_typeSubConstant : public GALGAS_typePostcondition {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeSubConstant & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeSubConstant & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -2806,7 +2806,7 @@ class GALGAS_typeSubConstant_2D_weak : public GALGAS_typePostcondition_2D_weak {
   public: static class GALGAS_typeSubConstant_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeSubConstant_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeSubConstant_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2867,7 +2867,7 @@ class GALGAS_typeAssignConstant : public GALGAS_typePostcondition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAssignConstant & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAssignConstant & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMConstant (class GALGAS_luint inArgument0
@@ -2934,7 +2934,7 @@ class GALGAS_typeAssignConstant_2D_weak : public GALGAS_typePostcondition_2D_wea
   public: static class GALGAS_typeAssignConstant_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAssignConstant_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAssignConstant_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2989,7 +2989,7 @@ class GALGAS_typeAssignInfinity : public GALGAS_typePostcondition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAssignInfinity & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAssignInfinity & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMVar (class GALGAS_uint inArgument0
@@ -3050,7 +3050,7 @@ class GALGAS_typeAssignInfinity_2D_weak : public GALGAS_typePostcondition_2D_wea
   public: static class GALGAS_typeAssignInfinity_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeAssignInfinity_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeAssignInfinity_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3193,7 +3193,7 @@ class GALGAS_typePostconditionList : public AC_GALGAS_list {
 
 class cEnumerator_typePostconditionList : public cGenericAbstractEnumerator {
   public: cEnumerator_typePostconditionList (const GALGAS_typePostconditionList & inEnumeratedObject,
-                                             const typeEnumerationOrder inOrder) ;
+                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_typePostcondition current_mPostcondition (LOCATION_ARGS) const ;
@@ -3255,7 +3255,7 @@ class GALGAS_typePostconditionList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typePostconditionList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typePostconditionList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3474,7 +3474,7 @@ class GALGAS_typeTransitionList : public AC_GALGAS_list {
 
 class cEnumerator_typeTransitionList : public cGenericAbstractEnumerator {
   public: cEnumerator_typeTransitionList (const GALGAS_typeTransitionList & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) ;
+                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mTransitionName (LOCATION_ARGS) const ;
@@ -3584,7 +3584,7 @@ class GALGAS_typeTransitionList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeTransitionList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeTransitionList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3727,7 +3727,7 @@ class GALGAS_typeInitialMarkingList : public AC_GALGAS_list {
 
 class cEnumerator_typeInitialMarkingList : public cGenericAbstractEnumerator {
   public: cEnumerator_typeInitialMarkingList (const GALGAS_typeInitialMarkingList & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) ;
+                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_typePostcondition current_mInitValue (LOCATION_ARGS) const ;
@@ -3789,7 +3789,7 @@ class GALGAS_typeInitialMarkingList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeInitialMarkingList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeInitialMarkingList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3951,7 +3951,7 @@ class GALGAS_countList : public AC_GALGAS_list {
 
 class cEnumerator_countList : public cGenericAbstractEnumerator {
   public: cEnumerator_countList (const GALGAS_countList & inEnumeratedObject,
-                                 const typeEnumerationOrder inOrder) ;
+                                 const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -4025,7 +4025,7 @@ class GALGAS_countList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_countList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_countList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
