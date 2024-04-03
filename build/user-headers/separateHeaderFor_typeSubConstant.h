@@ -27,6 +27,10 @@ class cPtr_typeSubConstant : public cPtr_typePostcondition {
   public: GALGAS_bool mProperty_mNegativeConstant ;
   public: GALGAS_luint mProperty_mConstant ;
 
+
+//--- Default constructor
+  public: cPtr_typeSubConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeSubConstant (const GALGAS_lstring & in_mVarName,
                                 const GALGAS_uint & in_mVar,

@@ -22,6 +22,10 @@ class cPtr_typeAndExpression : public cPtr_typePreconditionExpression {
   public: GALGAS_typePreconditionExpression mProperty_mLeftExpression ;
   public: GALGAS_typePreconditionExpression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_typeAndExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeAndExpression (const GALGAS_typePreconditionExpression & in_mLeftExpression,
                                   const GALGAS_typePreconditionExpression & in_mRightExpression

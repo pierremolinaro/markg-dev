@@ -20,6 +20,10 @@ class cPtr_typePreconditionExpression : public acStrongPtr_class {
 //--- END OF USER ZONE 2
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_typePreconditionExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typePreconditionExpression (LOCATION_ARGS) ;
 

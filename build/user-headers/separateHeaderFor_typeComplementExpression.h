@@ -21,6 +21,10 @@ class cPtr_typeComplementExpression : public cPtr_typePreconditionExpression {
 //--- Properties
   public: GALGAS_typePreconditionExpression mProperty_mExpression ;
 
+
+//--- Default constructor
+  public: cPtr_typeComplementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeComplementExpression (const GALGAS_typePreconditionExpression & in_mExpression
                                          COMMA_LOCATION_ARGS) ;

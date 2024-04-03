@@ -2177,6 +2177,12 @@ GALGAS_typeCstMap GALGAS_typeCstMap::extractObject (const GALGAS_object & inObje
 // @typePreconditionExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typePreconditionExpression::cPtr_typePreconditionExpression (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typePreconditionExpression::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -2208,6 +2214,17 @@ ComparisonResult GALGAS_typePreconditionExpression::objectCompare (const GALGAS_
 GALGAS_typePreconditionExpression::GALGAS_typePreconditionExpression (void) :
 AC_GALGAS_reference_class () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typePreconditionExpression GALGAS_typePreconditionExpression::init_28__29_ (Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  cPtr_typePreconditionExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typePreconditionExpression (inCompiler COMMA_THERE)) ;
+  const GALGAS_typePreconditionExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2380,6 +2397,12 @@ GALGAS_typePreconditionExpression_2D_weak GALGAS_typePreconditionExpression_2D_w
 // @typeTrueExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeTrueExpression::cPtr_typeTrueExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeTrueExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -2416,6 +2439,17 @@ ComparisonResult GALGAS_typeTrueExpression::objectCompare (const GALGAS_typeTrue
 GALGAS_typeTrueExpression::GALGAS_typeTrueExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeTrueExpression GALGAS_typeTrueExpression::init_28__29_ (Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  cPtr_typeTrueExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeTrueExpression (inCompiler COMMA_THERE)) ;
+  const GALGAS_typeTrueExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2615,6 +2649,12 @@ GALGAS_typeTrueExpression_2D_weak GALGAS_typeTrueExpression_2D_weak::extractObje
 // @typeFalseExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeFalseExpression::cPtr_typeFalseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeFalseExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -2651,6 +2691,17 @@ ComparisonResult GALGAS_typeFalseExpression::objectCompare (const GALGAS_typeFal
 GALGAS_typeFalseExpression::GALGAS_typeFalseExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeFalseExpression GALGAS_typeFalseExpression::init_28__29_ (Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_typeFalseExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeFalseExpression (inCompiler COMMA_THERE)) ;
+  const GALGAS_typeFalseExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2850,6 +2901,13 @@ GALGAS_typeFalseExpression_2D_weak GALGAS_typeFalseExpression_2D_weak::extractOb
 // @typeComplementExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeComplementExpression::cPtr_typeComplementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeComplementExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -2893,6 +2951,19 @@ ComparisonResult GALGAS_typeComplementExpression::objectCompare (const GALGAS_ty
 GALGAS_typeComplementExpression::GALGAS_typeComplementExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeComplementExpression GALGAS_typeComplementExpression::init_28__29_ (const GALGAS_typePreconditionExpression & in_mExpression,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  cPtr_typeComplementExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeComplementExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mExpression = in_mExpression ;
+  const GALGAS_typeComplementExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3122,6 +3193,14 @@ GALGAS_typeComplementExpression_2D_weak GALGAS_typeComplementExpression_2D_weak:
 // @typeAndExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAndExpression::cPtr_typeAndExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeAndExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -3169,6 +3248,21 @@ ComparisonResult GALGAS_typeAndExpression::objectCompare (const GALGAS_typeAndEx
 GALGAS_typeAndExpression::GALGAS_typeAndExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeAndExpression GALGAS_typeAndExpression::init_28__2C__29_ (const GALGAS_typePreconditionExpression & in_mLeftExpression,
+                                                                        const GALGAS_typePreconditionExpression & in_mRightExpression,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_typeAndExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeAndExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_typeAndExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3426,6 +3520,14 @@ GALGAS_typeAndExpression_2D_weak GALGAS_typeAndExpression_2D_weak::extractObject
 // @typeOrExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeOrExpression::cPtr_typeOrExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeOrExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -3473,6 +3575,21 @@ ComparisonResult GALGAS_typeOrExpression::objectCompare (const GALGAS_typeOrExpr
 GALGAS_typeOrExpression::GALGAS_typeOrExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeOrExpression GALGAS_typeOrExpression::init_28__2C__29_ (const GALGAS_typePreconditionExpression & in_mLeftExpression,
+                                                                      const GALGAS_typePreconditionExpression & in_mRightExpression,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  cPtr_typeOrExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeOrExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mLeftExpression = in_mLeftExpression ;
+  object->mProperty_mRightExpression = in_mRightExpression ;
+  const GALGAS_typeOrExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4390,6 +4507,12 @@ GALGAS_typeStrictSupExpression_2D_weak GALGAS_typeStrictSupExpression_2D_weak::e
 // @typePostcondition reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typePostcondition::cPtr_typePostcondition (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typePostcondition::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -4421,6 +4544,17 @@ ComparisonResult GALGAS_typePostcondition::objectCompare (const GALGAS_typePostc
 GALGAS_typePostcondition::GALGAS_typePostcondition (void) :
 AC_GALGAS_reference_class () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typePostcondition GALGAS_typePostcondition::init_28__29_ (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cPtr_typePostcondition * object = nullptr ;
+  macroMyNew (object, cPtr_typePostcondition (inCompiler COMMA_THERE)) ;
+  const GALGAS_typePostcondition result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8227,6 +8361,22 @@ mProperty_mPostcondition () {
 GALGAS_typePostconditionList_2D_element::~ GALGAS_typePostconditionList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_typePostconditionList_2D_element GALGAS_typePostconditionList_2D_element::init_28__29_ (const GALGAS_typePostcondition & in_mPostcondition,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typePostconditionList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mPostcondition = in_mPostcondition ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typePostconditionList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typePostconditionList_2D_element::GALGAS_typePostconditionList_2D_element (const GALGAS_typePostcondition & inOperand0) :
@@ -8236,12 +8386,11 @@ mProperty_mPostcondition (inOperand0) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typePostconditionList_2D_element GALGAS_typePostconditionList_2D_element::class_func_new (const GALGAS_typePostcondition & in_mPostcondition,
-                                                                                                 Compiler * /* inCompiler */
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typePostconditionList_2D_element result ;
-  if (in_mPostcondition.isValid ()) {
-    result = GALGAS_typePostconditionList_2D_element (in_mPostcondition) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mPostcondition = in_mPostcondition ;
   return result ;
 }
 
@@ -8333,6 +8482,22 @@ mProperty_mInitValue () {
 GALGAS_typeInitialMarkingList_2D_element::~ GALGAS_typeInitialMarkingList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_typeInitialMarkingList_2D_element GALGAS_typeInitialMarkingList_2D_element::init_28__29_ (const GALGAS_typePostcondition & in_mInitValue,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typeInitialMarkingList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mInitValue = in_mInitValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeInitialMarkingList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeInitialMarkingList_2D_element::GALGAS_typeInitialMarkingList_2D_element (const GALGAS_typePostcondition & inOperand0) :
@@ -8342,12 +8507,11 @@ mProperty_mInitValue (inOperand0) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeInitialMarkingList_2D_element GALGAS_typeInitialMarkingList_2D_element::class_func_new (const GALGAS_typePostcondition & in_mInitValue,
-                                                                                                   Compiler * /* inCompiler */
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeInitialMarkingList_2D_element result ;
-  if (in_mInitValue.isValid ()) {
-    result = GALGAS_typeInitialMarkingList_2D_element (in_mInitValue) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mInitValue = in_mInitValue ;
   return result ;
 }
 
@@ -8432,6 +8596,15 @@ GALGAS_typeInitialMarkingList_2D_element GALGAS_typeInitialMarkingList_2D_elemen
 // @typeEqualExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeEqualExpression::cPtr_typeEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeEqualExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -8483,6 +8656,23 @@ ComparisonResult GALGAS_typeEqualExpression::objectCompare (const GALGAS_typeEqu
 GALGAS_typeEqualExpression::GALGAS_typeEqualExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeEqualExpression GALGAS_typeEqualExpression::init_28__2C__2C__29_ (const GALGAS_uint & in_mVar,
+                                                                                const GALGAS_bool & in_mNegativeConstant,
+                                                                                const GALGAS_luint & in_mConstant,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  cPtr_typeEqualExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeEqualExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeEqualExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8658,6 +8848,15 @@ GALGAS_typeEqualExpression GALGAS_typeEqualExpression::extractObject (const GALG
 // @typeNonEqualExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeNonEqualExpression::cPtr_typeNonEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeNonEqualExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -8709,6 +8908,23 @@ ComparisonResult GALGAS_typeNonEqualExpression::objectCompare (const GALGAS_type
 GALGAS_typeNonEqualExpression::GALGAS_typeNonEqualExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeNonEqualExpression GALGAS_typeNonEqualExpression::init_28__2C__2C__29_ (const GALGAS_uint & in_mVar,
+                                                                                      const GALGAS_bool & in_mNegativeConstant,
+                                                                                      const GALGAS_luint & in_mConstant,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  cPtr_typeNonEqualExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeNonEqualExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeNonEqualExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8884,6 +9100,15 @@ GALGAS_typeNonEqualExpression GALGAS_typeNonEqualExpression::extractObject (cons
 // @typeInfOrEqualExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeInfOrEqualExpression::cPtr_typeInfOrEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeInfOrEqualExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -8935,6 +9160,23 @@ ComparisonResult GALGAS_typeInfOrEqualExpression::objectCompare (const GALGAS_ty
 GALGAS_typeInfOrEqualExpression::GALGAS_typeInfOrEqualExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeInfOrEqualExpression GALGAS_typeInfOrEqualExpression::init_28__2C__2C__29_ (const GALGAS_uint & in_mVar,
+                                                                                          const GALGAS_bool & in_mNegativeConstant,
+                                                                                          const GALGAS_luint & in_mConstant,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_typeInfOrEqualExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeInfOrEqualExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeInfOrEqualExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9110,6 +9352,15 @@ GALGAS_typeInfOrEqualExpression GALGAS_typeInfOrEqualExpression::extractObject (
 // @typeSupOrEqualExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeSupOrEqualExpression::cPtr_typeSupOrEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeSupOrEqualExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -9161,6 +9412,23 @@ ComparisonResult GALGAS_typeSupOrEqualExpression::objectCompare (const GALGAS_ty
 GALGAS_typeSupOrEqualExpression::GALGAS_typeSupOrEqualExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeSupOrEqualExpression GALGAS_typeSupOrEqualExpression::init_28__2C__2C__29_ (const GALGAS_uint & in_mVar,
+                                                                                          const GALGAS_bool & in_mNegativeConstant,
+                                                                                          const GALGAS_luint & in_mConstant,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_typeSupOrEqualExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeSupOrEqualExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeSupOrEqualExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9336,6 +9604,15 @@ GALGAS_typeSupOrEqualExpression GALGAS_typeSupOrEqualExpression::extractObject (
 // @typeStrictInfExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeStrictInfExpression::cPtr_typeStrictInfExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeStrictInfExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -9387,6 +9664,23 @@ ComparisonResult GALGAS_typeStrictInfExpression::objectCompare (const GALGAS_typ
 GALGAS_typeStrictInfExpression::GALGAS_typeStrictInfExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeStrictInfExpression GALGAS_typeStrictInfExpression::init_28__2C__2C__29_ (const GALGAS_uint & in_mVar,
+                                                                                        const GALGAS_bool & in_mNegativeConstant,
+                                                                                        const GALGAS_luint & in_mConstant,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_typeStrictInfExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeStrictInfExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeStrictInfExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9562,6 +9856,15 @@ GALGAS_typeStrictInfExpression GALGAS_typeStrictInfExpression::extractObject (co
 // @typeStrictSupExpression reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeStrictSupExpression::cPtr_typeStrictSupExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeStrictSupExpression::printNonNullClassInstanceProperties (void) const {
     cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
@@ -9613,6 +9916,23 @@ ComparisonResult GALGAS_typeStrictSupExpression::objectCompare (const GALGAS_typ
 GALGAS_typeStrictSupExpression::GALGAS_typeStrictSupExpression (void) :
 GALGAS_typePreconditionExpression () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeStrictSupExpression GALGAS_typeStrictSupExpression::init_28__2C__2C__29_ (const GALGAS_uint & in_mVar,
+                                                                                        const GALGAS_bool & in_mNegativeConstant,
+                                                                                        const GALGAS_luint & in_mConstant,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_typeStrictSupExpression * object = nullptr ;
+  macroMyNew (object, cPtr_typeStrictSupExpression (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeStrictSupExpression result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9788,6 +10108,14 @@ GALGAS_typeStrictSupExpression GALGAS_typeStrictSupExpression::extractObject (co
 // @typePostIncrement reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typePostIncrement::cPtr_typePostIncrement (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typePostIncrement::printNonNullClassInstanceProperties (void) const {
     cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
@@ -9835,6 +10163,21 @@ ComparisonResult GALGAS_typePostIncrement::objectCompare (const GALGAS_typePostI
 GALGAS_typePostIncrement::GALGAS_typePostIncrement (void) :
 GALGAS_typePostcondition () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typePostIncrement GALGAS_typePostIncrement::init_28__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                        const GALGAS_uint & in_mVar,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_typePostIncrement * object = nullptr ;
+  macroMyNew (object, cPtr_typePostIncrement (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVar = in_mVar ;
+  const GALGAS_typePostIncrement result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9982,6 +10325,14 @@ GALGAS_typePostIncrement GALGAS_typePostIncrement::extractObject (const GALGAS_o
 // @typePostDecrement reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typePostDecrement::cPtr_typePostDecrement (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typePostDecrement::printNonNullClassInstanceProperties (void) const {
     cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
@@ -10029,6 +10380,21 @@ ComparisonResult GALGAS_typePostDecrement::objectCompare (const GALGAS_typePostD
 GALGAS_typePostDecrement::GALGAS_typePostDecrement (void) :
 GALGAS_typePostcondition () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typePostDecrement GALGAS_typePostDecrement::init_28__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                        const GALGAS_uint & in_mVar,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cPtr_typePostDecrement * object = nullptr ;
+  macroMyNew (object, cPtr_typePostDecrement (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVar = in_mVar ;
+  const GALGAS_typePostDecrement result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10176,6 +10542,16 @@ GALGAS_typePostDecrement GALGAS_typePostDecrement::extractObject (const GALGAS_o
 // @typeAddConstant reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAddConstant::cPtr_typeAddConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeAddConstant::printNonNullClassInstanceProperties (void) const {
     cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
@@ -10231,6 +10607,25 @@ ComparisonResult GALGAS_typeAddConstant::objectCompare (const GALGAS_typeAddCons
 GALGAS_typeAddConstant::GALGAS_typeAddConstant (void) :
 GALGAS_typePostcondition () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeAddConstant GALGAS_typeAddConstant::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                            const GALGAS_uint & in_mVar,
+                                                                            const GALGAS_bool & in_mNegativeConstant,
+                                                                            const GALGAS_luint & in_mConstant,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  cPtr_typeAddConstant * object = nullptr ;
+  macroMyNew (object, cPtr_typeAddConstant (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeAddConstant result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10434,6 +10829,16 @@ GALGAS_typeAddConstant GALGAS_typeAddConstant::extractObject (const GALGAS_objec
 // @typeSubConstant reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeSubConstant::cPtr_typeSubConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeSubConstant::printNonNullClassInstanceProperties (void) const {
     cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
@@ -10489,6 +10894,25 @@ ComparisonResult GALGAS_typeSubConstant::objectCompare (const GALGAS_typeSubCons
 GALGAS_typeSubConstant::GALGAS_typeSubConstant (void) :
 GALGAS_typePostcondition () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeSubConstant GALGAS_typeSubConstant::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                            const GALGAS_uint & in_mVar,
+                                                                            const GALGAS_bool & in_mNegativeConstant,
+                                                                            const GALGAS_luint & in_mConstant,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  cPtr_typeSubConstant * object = nullptr ;
+  macroMyNew (object, cPtr_typeSubConstant (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeSubConstant result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10692,6 +11116,16 @@ GALGAS_typeSubConstant GALGAS_typeSubConstant::extractObject (const GALGAS_objec
 // @typeAssignConstant reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAssignConstant::cPtr_typeAssignConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeAssignConstant::printNonNullClassInstanceProperties (void) const {
     cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
@@ -10747,6 +11181,25 @@ ComparisonResult GALGAS_typeAssignConstant::objectCompare (const GALGAS_typeAssi
 GALGAS_typeAssignConstant::GALGAS_typeAssignConstant (void) :
 GALGAS_typePostcondition () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeAssignConstant GALGAS_typeAssignConstant::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                                  const GALGAS_uint & in_mVar,
+                                                                                  const GALGAS_bool & in_mNegativeConstant,
+                                                                                  const GALGAS_luint & in_mConstant,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  cPtr_typeAssignConstant * object = nullptr ;
+  macroMyNew (object, cPtr_typeAssignConstant (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVar = in_mVar ;
+  object->mProperty_mNegativeConstant = in_mNegativeConstant ;
+  object->mProperty_mConstant = in_mConstant ;
+  const GALGAS_typeAssignConstant result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10950,6 +11403,14 @@ GALGAS_typeAssignConstant GALGAS_typeAssignConstant::extractObject (const GALGAS
 // @typeAssignInfinity reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAssignInfinity::cPtr_typeAssignInfinity (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_typeAssignInfinity::printNonNullClassInstanceProperties (void) const {
     cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
@@ -10997,6 +11458,21 @@ ComparisonResult GALGAS_typeAssignInfinity::objectCompare (const GALGAS_typeAssi
 GALGAS_typeAssignInfinity::GALGAS_typeAssignInfinity (void) :
 GALGAS_typePostcondition () {
 }
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_typeAssignInfinity GALGAS_typeAssignInfinity::init_28__2C__29_ (const GALGAS_lstring & in_mVarName,
+                                                                          const GALGAS_uint & in_mVar,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cPtr_typeAssignInfinity * object = nullptr ;
+  macroMyNew (object, cPtr_typeAssignInfinity (inCompiler COMMA_THERE)) ;
+  object->mProperty_mVarName = in_mVarName ;
+  object->mProperty_mVar = in_mVar ;
+  const GALGAS_typeAssignInfinity result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12172,6 +12648,24 @@ mProperty_mValue_31_ () {
 GALGAS__32_lstringlist_2D_element::~ GALGAS__32_lstringlist_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_mValue_30_,
+                                                                                       const GALGAS_lstring & in_mValue_31_,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS__32_lstringlist_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mValue_30_ = in_mValue_30_ ;
+  result.mProperty_mValue_31_ = in_mValue_31_ ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS__32_lstringlist_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_lstringlist_2D_element::GALGAS__32_lstringlist_2D_element (const GALGAS_lstring & inOperand0,
@@ -12184,12 +12678,12 @@ mProperty_mValue_31_ (inOperand1) {
 
 GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::class_func_new (const GALGAS_lstring & in_mValue0,
                                                                                      const GALGAS_lstring & in_mValue1,
-                                                                                     Compiler * /* inCompiler */
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_lstringlist_2D_element result ;
-  if (in_mValue0.isValid () && in_mValue1.isValid ()) {
-    result = GALGAS__32_lstringlist_2D_element (in_mValue0, in_mValue1) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mValue_30_ = in_mValue0 ;
+  result.mProperty_mValue_31_ = in_mValue1 ;
   return result ;
 }
 
@@ -12288,6 +12782,24 @@ mProperty_mIndex () {
 GALGAS_typeVarMap_2D_element::~ GALGAS_typeVarMap_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_typeVarMap_2D_element GALGAS_typeVarMap_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_lkey,
+                                                                             const GALGAS_uint & in_mIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typeVarMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeVarMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeVarMap_2D_element::GALGAS_typeVarMap_2D_element (const GALGAS_lstring & inOperand0,
@@ -12300,12 +12812,12 @@ mProperty_mIndex (inOperand1) {
 
 GALGAS_typeVarMap_2D_element GALGAS_typeVarMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
                                                                            const GALGAS_uint & in_mIndex,
-                                                                           Compiler * /* inCompiler */
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeVarMap_2D_element result ;
-  if (in_lkey.isValid () && in_mIndex.isValid ()) {
-    result = GALGAS_typeVarMap_2D_element (in_lkey, in_mIndex) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIndex = in_mIndex ;
   return result ;
 }
 
@@ -12405,6 +12917,26 @@ mProperty_mValue () {
 GALGAS_typeCstMap_2D_element::~ GALGAS_typeCstMap_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_typeCstMap_2D_element GALGAS_typeCstMap_2D_element::init_28__2C__2C__29_ (const GALGAS_lstring & in_lkey,
+                                                                                 const GALGAS_bool & in_mSign,
+                                                                                 const GALGAS_luint & in_mValue,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typeCstMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mSign = in_mSign ;
+  result.mProperty_mValue = in_mValue ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeCstMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeCstMap_2D_element::GALGAS_typeCstMap_2D_element (const GALGAS_lstring & inOperand0,
@@ -12420,12 +12952,13 @@ mProperty_mValue (inOperand2) {
 GALGAS_typeCstMap_2D_element GALGAS_typeCstMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
                                                                            const GALGAS_bool & in_mSign,
                                                                            const GALGAS_luint & in_mValue,
-                                                                           Compiler * /* inCompiler */
+                                                                           Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeCstMap_2D_element result ;
-  if (in_lkey.isValid () && in_mSign.isValid () && in_mValue.isValid ()) {
-    result = GALGAS_typeCstMap_2D_element (in_lkey, in_mSign, in_mValue) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mSign = in_mSign ;
+  result.mProperty_mValue = in_mValue ;
   return result ;
 }
 
@@ -12533,6 +13066,30 @@ mProperty_mHighTemporalBound () {
 GALGAS_typeTransitionList_2D_element::~ GALGAS_typeTransitionList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_typeTransitionList_2D_element GALGAS_typeTransitionList_2D_element::init_28__2C__2C__2C__2C__29_ (const GALGAS_lstring & in_mTransitionName,
+                                                                                                         const GALGAS_typePreconditionExpression & in_mPreconditionExpression,
+                                                                                                         const GALGAS_typePostconditionList & in_mPostconditionList,
+                                                                                                         const GALGAS_uint & in_mLowTemporalBound,
+                                                                                                         const GALGAS_uint & in_mHighTemporalBound,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typeTransitionList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mTransitionName = in_mTransitionName ;
+  result.mProperty_mPreconditionExpression = in_mPreconditionExpression ;
+  result.mProperty_mPostconditionList = in_mPostconditionList ;
+  result.mProperty_mLowTemporalBound = in_mLowTemporalBound ;
+  result.mProperty_mHighTemporalBound = in_mHighTemporalBound ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeTransitionList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeTransitionList_2D_element::GALGAS_typeTransitionList_2D_element (const GALGAS_lstring & inOperand0,
@@ -12554,12 +13111,15 @@ GALGAS_typeTransitionList_2D_element GALGAS_typeTransitionList_2D_element::class
                                                                                            const GALGAS_typePostconditionList & in_mPostconditionList,
                                                                                            const GALGAS_uint & in_mLowTemporalBound,
                                                                                            const GALGAS_uint & in_mHighTemporalBound,
-                                                                                           Compiler * /* inCompiler */
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeTransitionList_2D_element result ;
-  if (in_mTransitionName.isValid () && in_mPreconditionExpression.isValid () && in_mPostconditionList.isValid () && in_mLowTemporalBound.isValid () && in_mHighTemporalBound.isValid ()) {
-    result = GALGAS_typeTransitionList_2D_element (in_mTransitionName, in_mPreconditionExpression, in_mPostconditionList, in_mLowTemporalBound, in_mHighTemporalBound) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mTransitionName = in_mTransitionName ;
+  result.mProperty_mPreconditionExpression = in_mPreconditionExpression ;
+  result.mProperty_mPostconditionList = in_mPostconditionList ;
+  result.mProperty_mLowTemporalBound = in_mLowTemporalBound ;
+  result.mProperty_mHighTemporalBound = in_mHighTemporalBound ;
   return result ;
 }
 
@@ -12676,6 +13236,24 @@ mProperty_mCondition () {
 GALGAS_countList_2D_element::~ GALGAS_countList_2D_element (void) {
 }
 
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_countList_2D_element GALGAS_countList_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_mName,
+                                                                           const GALGAS_typePreconditionExpression & in_mCondition,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_countList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mName = in_mName ;
+  result.mProperty_mCondition = in_mCondition ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_countList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_countList_2D_element::GALGAS_countList_2D_element (const GALGAS_lstring & inOperand0,
@@ -12688,12 +13266,12 @@ mProperty_mCondition (inOperand1) {
 
 GALGAS_countList_2D_element GALGAS_countList_2D_element::class_func_new (const GALGAS_lstring & in_mName,
                                                                          const GALGAS_typePreconditionExpression & in_mCondition,
-                                                                         Compiler * /* inCompiler */
+                                                                         Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_countList_2D_element result ;
-  if (in_mName.isValid () && in_mCondition.isValid ()) {
-    result = GALGAS_countList_2D_element (in_mName, in_mCondition) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mName = in_mName ;
+  result.mProperty_mCondition = in_mCondition ;
   return result ;
 }
 

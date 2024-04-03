@@ -23,6 +23,10 @@ class cPtr_typeEqualExpression : public cPtr_typePreconditionExpression {
   public: GALGAS_bool mProperty_mNegativeConstant ;
   public: GALGAS_luint mProperty_mConstant ;
 
+
+//--- Default constructor
+  public: cPtr_typeEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeEqualExpression (const GALGAS_uint & in_mVar,
                                     const GALGAS_bool & in_mNegativeConstant,

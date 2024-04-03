@@ -23,6 +23,10 @@ class cPtr_typePostcondition : public acStrongPtr_class {
 //--- END OF USER ZONE 2
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_typePostcondition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typePostcondition (LOCATION_ARGS) ;
 

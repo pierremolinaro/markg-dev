@@ -20,6 +20,10 @@ class cPtr_typeFalseExpression : public cPtr_typePreconditionExpression {
 //--- END OF USER ZONE 2
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_typeFalseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeFalseExpression (LOCATION_ARGS) ;
 

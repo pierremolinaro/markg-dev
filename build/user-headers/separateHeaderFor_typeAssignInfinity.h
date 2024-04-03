@@ -25,6 +25,10 @@ class cPtr_typeAssignInfinity : public cPtr_typePostcondition {
   public: GALGAS_lstring mProperty_mVarName ;
   public: GALGAS_uint mProperty_mVar ;
 
+
+//--- Default constructor
+  public: cPtr_typeAssignInfinity (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeAssignInfinity (const GALGAS_lstring & in_mVarName,
                                    const GALGAS_uint & in_mVar

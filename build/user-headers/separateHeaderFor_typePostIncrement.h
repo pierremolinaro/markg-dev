@@ -25,6 +25,10 @@ class cPtr_typePostIncrement : public cPtr_typePostcondition {
   public: GALGAS_lstring mProperty_mVarName ;
   public: GALGAS_uint mProperty_mVar ;
 
+
+//--- Default constructor
+  public: cPtr_typePostIncrement (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typePostIncrement (const GALGAS_lstring & in_mVarName,
                                   const GALGAS_uint & in_mVar
