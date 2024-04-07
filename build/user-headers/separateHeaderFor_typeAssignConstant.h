@@ -13,6 +13,15 @@ class cPtr_typeAssignConstant : public cPtr_typePostcondition {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void typeAssignConstant_init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                        const class GALGAS_uint & inOperand1,
+                                                        const class GALGAS_bool & inOperand2,
+                                                        const class GALGAS_luint & inOperand3,
+                                                        Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,

@@ -59,7 +59,7 @@ rule <parse_precondition>(
   while
     $|$
     <term>( !?inPlacesMap, !?ioConstantMap, ?let right)
-    outPreConditions = @typeOrExpression. new ( !outPreConditions, !right)
+    outPreConditions = @typeOrExpression.init ( !outPreConditions, !right)
   end
 }
 
@@ -74,7 +74,7 @@ rule <term>(
   while
     $&$
     <factor>( !?inPlacesMap, !?ioConstantMap, ?let right)
-    outPreConditions = @typeAndExpression. new ( !outPreConditions, !right)
+    outPreConditions = @typeAndExpression.init ( !outPreConditions, !right)
   end
 }
 
@@ -87,7 +87,7 @@ rule <factor>(
  select
    $~$
    <factor>( !?inPlacesMap, !?ioConstantMap, ?outPreConditions)
-   outPreConditions = @typeComplementExpression. new ( !outPreConditions)
+   outPreConditions = @typeComplementExpression.init ( !outPreConditions)
   or
    <primary>( !?inPlacesMap, !?ioConstantMap, ?outPreConditions)
   end
@@ -105,10 +105,10 @@ rule <primary>(
     $)$
   or
     $true$
-    outPreConditions = @typeTrueExpression. new
+    outPreConditions = @typeTrueExpression.init
   or
     $false$
-    outPreConditions = @typeFalseExpression. new
+    outPreConditions = @typeFalseExpression.init
   or
     ${$
     $identifier$( ?let name)
@@ -116,27 +116,27 @@ rule <primary>(
     select
       $==$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeEqualExpression. new ( !idx, !sign, !cst)
+      outPreConditions = @typeEqualExpression.init ( !idx, !sign, !cst)
     or
       $!=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeNonEqualExpression. new ( !idx, !sign, !cst)
+      outPreConditions = @typeNonEqualExpression.init ( !idx, !sign, !cst)
     or
       $<=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeInfOrEqualExpression. new ( !idx, !sign, !cst)
+      outPreConditions = @typeInfOrEqualExpression.init ( !idx, !sign, !cst)
     or
       $>=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeSupOrEqualExpression. new ( !idx, !sign, !cst)
+      outPreConditions = @typeSupOrEqualExpression.init ( !idx, !sign, !cst)
     or
       $<$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeStrictInfExpression. new ( !idx, !sign, !cst)
+      outPreConditions = @typeStrictInfExpression.init ( !idx, !sign, !cst)
     or
       $>$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeStrictSupExpression. new ( !idx, !sign, !cst)
+      outPreConditions = @typeStrictSupExpression.init ( !idx, !sign, !cst)
     end
     $}$
   end
@@ -167,33 +167,33 @@ rule <parse_postcondition>(
   ?!@typeVarMap outPlacesMap,
   ?!@typeCstMap ioConstantMap,
   !@typePostconditionList outPostConditionsList) {
-  outPostConditionsList = @typePostconditionList. emptyList
+  outPostConditionsList = @typePostconditionList []
   repeat
     $identifier$( ?let name)
     outPlacesMap.searchKey (!name, ?let idx)
     let @typePostcondition p
     select
       $--$
-      p = @typePostDecrement. new ( !name, !idx)
+      p = @typePostDecrement.init ( !name, !idx)
     or
       $++$
-      p = @typePostIncrement. new ( !name, !idx)
+      p = @typePostIncrement.init ( !name, !idx)
     or
       $+=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      p = @typeAddConstant. new ( !name, !idx, !sign, !cst)
+      p = @typeAddConstant.init ( !name, !idx, !sign, !cst)
     or
       $-=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      p = @typeSubConstant. new ( !name, !idx, !sign, !cst)
+      p = @typeSubConstant.init ( !name, !idx, !sign, !cst)
     or
       $:=$
       select
         <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-        p = @typeAssignConstant. new ( !name, !idx, !sign, !cst)
+        p = @typeAssignConstant.init ( !name, !idx, !sign, !cst)
       or
         $infinity$
-        p = @typeAssignInfinity. new ( !name, !idx)
+        p = @typeAssignInfinity.init ( !name, !idx)
       end
     end
     !?outPostConditionsList.append (p)
@@ -267,10 +267,10 @@ rule <axiome>(
   or
     outGarbagePeriod = 16
   end
-  outTransitionList = @typeTransitionList. emptyList
-  outPlacesMap = @typeVarMap. emptyMap
-  var constantMap =@typeCstMap.emptyMap()
-  outCountList = @countList. emptyList
+  outTransitionList = @typeTransitionList []
+  outPlacesMap = @typeVarMap []
+  var constantMap =@typeCstMap []
+  outCountList = @countList []
   repeat
 #--- constant
   while
@@ -309,18 +309,18 @@ rule <axiome>(
   end
 #--- Init
   $init$
-  outInitialMarkingList = @typeInitialMarkingList. emptyList
+  outInitialMarkingList = @typeInitialMarkingList []
   repeat
     $identifier$( ?let placeName)
     outPlacesMap.searchKey (!placeName, ?let placeID)
     $:=$
     select
       <parse_constant>( !?constantMap, ?let sign, ?let cst)
-      let @typePostcondition initValue = @typeAssignConstant. new ( !placeName, !placeID, !sign, !cst)
+      let @typePostcondition initValue = @typeAssignConstant.init ( !placeName, !placeID, !sign, !cst)
       !?outInitialMarkingList.append (initValue)
     or
       $infinity$
-      let @typePostcondition initValue = @typeAssignInfinity. new ( !placeName, !placeID)
+      let @typePostcondition initValue = @typeAssignInfinity.init ( !placeName, !placeID)
       !?outInitialMarkingList.append (initValue)
     end
   while

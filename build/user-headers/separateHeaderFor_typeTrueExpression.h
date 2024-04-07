@@ -13,6 +13,11 @@ class cPtr_typeTrueExpression : public cPtr_typePreconditionExpression {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void typeTrueExpression_init (Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual C_AEDD buildAEDDexpression (void) const override ;

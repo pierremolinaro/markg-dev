@@ -13,6 +13,14 @@ class cPtr_typeStrictInfExpression : public cPtr_typePreconditionExpression {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void typeStrictInfExpression_init_21__21__21_ (const class GALGAS_uint & inOperand0,
+                                                         const class GALGAS_bool & inOperand1,
+                                                         const class GALGAS_luint & inOperand2,
+                                                         Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual C_AEDD buildAEDDexpression (void) const override ;

@@ -13,6 +13,11 @@ class cPtr_typePreconditionExpression : public acStrongPtr_class {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void typePreconditionExpression_init (Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual class C_AEDD buildAEDDexpression (void) const = 0 ;

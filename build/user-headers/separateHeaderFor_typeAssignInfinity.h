@@ -13,6 +13,13 @@ class cPtr_typeAssignInfinity : public cPtr_typePostcondition {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void typeAssignInfinity_init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                const class GALGAS_uint & inOperand1,
+                                                Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void buildPostCondition (const int32_t inTransition,
