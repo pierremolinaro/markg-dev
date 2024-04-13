@@ -106,6 +106,25 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_emptyList (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS__32_lstringlist GALGAS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS__32_lstringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS__32_lstringlist::enterElement (const GALGAS__32_lstringlist_2D_element & inValue,
+                                           Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                          const GALGAS_lstring & inOperand1
                                                                          COMMA_LOCATION_ARGS) {
@@ -1553,6 +1572,14 @@ String Lexique_spec_5F_scanner::styleNameForIndex (const uint32_t inStyleIndex) 
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_typeVarMap::cMapElement_typeVarMap (const GALGAS_typeVarMap_2D_element & inValue
+                                                COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mIndex (inValue.mProperty_mIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_typeVarMap::cMapElement_typeVarMap (const GALGAS_lstring & inKey,
                                                 const GALGAS_uint & in_mIndex
                                                 COMMA_LOCATION_ARGS) :
@@ -1615,6 +1642,14 @@ GALGAS_typeVarMap & GALGAS_typeVarMap::operator = (const GALGAS_typeVarMap & inS
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typeVarMap GALGAS_typeVarMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_typeVarMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_typeVarMap GALGAS_typeVarMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_typeVarMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -1637,6 +1672,21 @@ GALGAS_typeVarMap GALGAS_typeVarMap::getter_overriddenMap (Compiler * inCompiler
   GALGAS_typeVarMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeVarMap::enterElement (const GALGAS_typeVarMap_2D_element & inValue,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  cMapElement_typeVarMap * p = nullptr ;
+  macroMyNew (p, cMapElement_typeVarMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@typeVarMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1837,6 +1887,15 @@ GALGAS_typeVarMap GALGAS_typeVarMap::extractObject (const GALGAS_object & inObje
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_typeCstMap::cMapElement_typeCstMap (const GALGAS_typeCstMap_2D_element & inValue
+                                                COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mSign (inValue.mProperty_mSign),
+mProperty_mValue (inValue.mProperty_mValue) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_typeCstMap::cMapElement_typeCstMap (const GALGAS_lstring & inKey,
                                                 const GALGAS_bool & in_mSign,
                                                 const GALGAS_luint & in_mValue
@@ -1908,6 +1967,14 @@ GALGAS_typeCstMap & GALGAS_typeCstMap::operator = (const GALGAS_typeCstMap & inS
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typeCstMap GALGAS_typeCstMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_typeCstMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_typeCstMap GALGAS_typeCstMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_typeCstMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -1930,6 +1997,21 @@ GALGAS_typeCstMap GALGAS_typeCstMap::getter_overriddenMap (Compiler * inCompiler
   GALGAS_typeCstMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeCstMap::enterElement (const GALGAS_typeCstMap_2D_element & inValue,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+  cMapElement_typeCstMap * p = nullptr ;
+  macroMyNew (p, cMapElement_typeCstMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@typeCstMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5493,6 +5575,25 @@ GALGAS_typePostconditionList GALGAS_typePostconditionList::class_func_emptyList 
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typePostconditionList GALGAS_typePostconditionList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_typePostconditionList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typePostconditionList::enterElement (const GALGAS_typePostconditionList_2D_element & inValue,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_typePostconditionList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_typePostconditionList GALGAS_typePostconditionList::class_func_listWithValue (const GALGAS_typePostcondition & inOperand0
                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_typePostconditionList result ;
@@ -5921,6 +6022,25 @@ AC_GALGAS_list (inSharedArray) {
 
 GALGAS_typeTransitionList GALGAS_typeTransitionList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeTransitionList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeTransitionList GALGAS_typeTransitionList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_typeTransitionList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeTransitionList::enterElement (const GALGAS_typeTransitionList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_typeTransitionList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6573,6 +6693,25 @@ GALGAS_typeInitialMarkingList GALGAS_typeInitialMarkingList::class_func_emptyLis
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typeInitialMarkingList GALGAS_typeInitialMarkingList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_typeInitialMarkingList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeInitialMarkingList::enterElement (const GALGAS_typeInitialMarkingList_2D_element & inValue,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_typeInitialMarkingList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_typeInitialMarkingList GALGAS_typeInitialMarkingList::class_func_listWithValue (const GALGAS_typePostcondition & inOperand0
                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_typeInitialMarkingList result ;
@@ -6983,6 +7122,25 @@ AC_GALGAS_list (inSharedArray) {
 
 GALGAS_countList GALGAS_countList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_countList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_countList GALGAS_countList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_countList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_countList::enterElement (const GALGAS_countList_2D_element & inValue,
+                                     Compiler * /* inCompiler */
+                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_countList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7785,9 +7943,10 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GAL
                                                                              GALGAS_typePostconditionList & outArgument_outPostConditionsList,
                                                                              Lexique_spec_5F_scanner * inCompiler) {
   outArgument_outPostConditionsList.drop () ; // Release 'out' argument
-  outArgument_outPostConditionsList = GALGAS_typePostconditionList::class_func_emptyList (SOURCE_FILE ("spec_parser.ggs", 170)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  GALGAS_typePostconditionList temp_0 = GALGAS_typePostconditionList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 170)) ;
+  outArgument_outPostConditionsList = temp_0 ;
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     GALGAS_lstring var_name_4987 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 172)) ;
     GALGAS_uint var_idx_5033 ;
@@ -7842,7 +8001,7 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GAL
     if (select_spec_5F_parser_6 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 201)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_1 = false ;
     }
   }
 }
@@ -8051,12 +8210,16 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
   default:
     break ;
   }
-  outArgument_outTransitionList = GALGAS_typeTransitionList::class_func_emptyList (SOURCE_FILE ("spec_parser.ggs", 270)) ;
-  outArgument_outPlacesMap = GALGAS_typeVarMap::class_func_emptyMap (SOURCE_FILE ("spec_parser.ggs", 271)) ;
-  GALGAS_typeCstMap var_constantMap_7445 = GALGAS_typeCstMap::class_func_emptyMap (SOURCE_FILE ("spec_parser.ggs", 272)) ;
-  outArgument_outCountList = GALGAS_countList::class_func_emptyList (SOURCE_FILE ("spec_parser.ggs", 273)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  GALGAS_typeTransitionList temp_0 = GALGAS_typeTransitionList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 270)) ;
+  outArgument_outTransitionList = temp_0 ;
+  GALGAS_typeVarMap temp_1 = GALGAS_typeVarMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 271)) ;
+  outArgument_outPlacesMap = temp_1 ;
+  GALGAS_typeCstMap temp_2 = GALGAS_typeCstMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 272)) ;
+  GALGAS_typeCstMap var_constantMap_7445 = temp_2 ;
+  GALGAS_countList temp_3 = GALGAS_countList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 273)) ;
+  outArgument_outCountList = temp_3 ;
+  bool repeatFlag_4 = true ;
+  while (repeatFlag_4) {
     switch (select_spec_5F_parser_11 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 277)) ;
@@ -8073,8 +8236,8 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 285)) ;
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
+      bool repeatFlag_5 = true ;
+      while (repeatFlag_5) {
         GALGAS_lstring var_placeName_7788 = inCompiler->synthetizedAttribute_theString () ;
         inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
         {
@@ -8083,7 +8246,7 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
         if (select_spec_5F_parser_12 (inCompiler) == 2) {
           inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
         }else{
-          repeatFlag_1 = false ;
+          repeatFlag_5 = false ;
         }
       }
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 292)) ;
@@ -8106,14 +8269,15 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
       }
     } break ;
     default:
-      repeatFlag_0 = false ;
+      repeatFlag_4 = false ;
       break ;
     }
   }
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 311)) ;
-  outArgument_outInitialMarkingList = GALGAS_typeInitialMarkingList::class_func_emptyList (SOURCE_FILE ("spec_parser.ggs", 312)) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
+  GALGAS_typeInitialMarkingList temp_6 = GALGAS_typeInitialMarkingList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 312)) ;
+  outArgument_outInitialMarkingList = temp_6 ;
+  bool repeatFlag_7 = true ;
+  while (repeatFlag_7) {
     GALGAS_lstring var_placeName_8475 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 314)) ;
     GALGAS_uint var_placeID_8531 ;
@@ -8142,12 +8306,12 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
     if (select_spec_5F_parser_13 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 327)) ;
     }else{
-      repeatFlag_2 = false ;
+      repeatFlag_7 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 329)) ;
-  bool repeatFlag_3 = true ;
-  while (repeatFlag_3) {
+  bool repeatFlag_8 = true ;
+  while (repeatFlag_8) {
     if (select_spec_5F_parser_15 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 333)) ;
       GALGAS_lstring var_name_9043 = inCompiler->synthetizedAttribute_theString () ;
@@ -8160,7 +8324,7 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GALGAS_uint & outAr
       outArgument_outCountList.setter_append (var_name_9043, var_conditions_9119, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 338)) ;
       }
     }else{
-      repeatFlag_3 = false ;
+      repeatFlag_8 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 340)) ;
