@@ -6,7 +6,7 @@
 
 case . "mg"
 %errorMessage "an '.mg' source file"
-%useGrammar spec_grammar
+grammar spec_grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar spec_grammar (
     ?let hashMapSize,
