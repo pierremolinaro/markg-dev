@@ -315,7 +315,7 @@ vddComputation (uint32_t inGarbagePeriod,
                 const TC_UniqueArray <C_PCL> & inIncidenceVectors,
                 const TC_UniqueArray <String> & inPlaceNames,
                 const TC_UniqueArray <String> & inTransitionNames,
-                const GALGAS_countList & inCountList,
+                const GGS_countList & inCountList,
                 const uint32_t inLastIteration) {
   uint64_t stateCount = 0 ;
   TC_UniqueArray <uint64_t> VDDtransitionsFiringCount (inTransitionsCount, 0 COMMA_HERE) ;
@@ -655,7 +655,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
                 const TC_UniqueArray <C_PCL> & inIncidenceVectors,
                 const TC_UniqueArray <String> & inPlaceNames,
                 const TC_UniqueArray <String> & inTransitionNames,
-                const GALGAS_countList & inCountList,
+                const GGS_countList & inCountList,
                 const uint32_t inLastIteration) {
   uint64_t stateCount = 0 ;
   TC_UniqueArray <uint64_t> VDDtransitionsFiringCount (inTransitionsCount, 0 COMMA_HERE) ;
@@ -803,12 +803,12 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 
 /*--------------------------------------------------------------------------*/
 
-void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GALGAS_uint inHashMapSize,
-                       const GALGAS_uint inGarbagePeriod,
-                       const GALGAS_typeVarMap inPlacesMap,
-                       const GALGAS_typeTransitionList inTransitionList,
-                       const GALGAS_typeInitialMarkingList inInitialMarkingList,
-                       const GALGAS_countList inCountList,
+void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapSize,
+                       const GGS_uint inGarbagePeriod,
+                       const GGS_typeVarMap inPlacesMap,
+                       const GGS_typeTransitionList inTransitionList,
+                       const GGS_typeInitialMarkingList inInitialMarkingList,
+                       const GGS_countList inCountList,
                        Compiler * inCompiler
                        COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {

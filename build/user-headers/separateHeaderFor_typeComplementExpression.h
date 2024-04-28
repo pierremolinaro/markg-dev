@@ -15,7 +15,7 @@ class cPtr_typeComplementExpression : public cPtr_typePreconditionExpression {
   #endif
 
 //--------------------------------- Initializers
-  public: void typeComplementExpression_init_21_ (const class GALGAS_typePreconditionExpression & inOperand0,
+  public: void typeComplementExpression_init_21_ (const class GGS_typePreconditionExpression & inOperand0,
                                                   Compiler * inCompiler) ;
 
 
@@ -25,14 +25,14 @@ class cPtr_typeComplementExpression : public cPtr_typePreconditionExpression {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_typePreconditionExpression mProperty_mExpression ;
+  public: GGS_typePreconditionExpression mProperty_mExpression ;
 
 
 //--- Default constructor
   public: cPtr_typeComplementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typeComplementExpression (const GALGAS_typePreconditionExpression & in_mExpression
+  public: cPtr_typeComplementExpression (const GGS_typePreconditionExpression & in_mExpression
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

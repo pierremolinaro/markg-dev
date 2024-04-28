@@ -15,8 +15,8 @@ class cPtr_typeOrExpression : public cPtr_typePreconditionExpression {
   #endif
 
 //--------------------------------- Initializers
-  public: void typeOrExpression_init_21__21_ (const class GALGAS_typePreconditionExpression & inOperand0,
-                                              const class GALGAS_typePreconditionExpression & inOperand1,
+  public: void typeOrExpression_init_21__21_ (const class GGS_typePreconditionExpression & inOperand0,
+                                              const class GGS_typePreconditionExpression & inOperand1,
                                               Compiler * inCompiler) ;
 
 
@@ -26,16 +26,16 @@ class cPtr_typeOrExpression : public cPtr_typePreconditionExpression {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_typePreconditionExpression mProperty_mLeftExpression ;
-  public: GALGAS_typePreconditionExpression mProperty_mRightExpression ;
+  public: GGS_typePreconditionExpression mProperty_mLeftExpression ;
+  public: GGS_typePreconditionExpression mProperty_mRightExpression ;
 
 
 //--- Default constructor
   public: cPtr_typeOrExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typeOrExpression (const GALGAS_typePreconditionExpression & in_mLeftExpression,
-                                 const GALGAS_typePreconditionExpression & in_mRightExpression
+  public: cPtr_typeOrExpression (const GGS_typePreconditionExpression & in_mLeftExpression,
+                                 const GGS_typePreconditionExpression & in_mRightExpression
                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

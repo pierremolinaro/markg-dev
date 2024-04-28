@@ -15,10 +15,10 @@ class cPtr_typeAddConstant : public cPtr_typePostcondition {
   #endif
 
 //--------------------------------- Initializers
-  public: void typeAddConstant_init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_uint & inOperand1,
-                                                     const class GALGAS_bool & inOperand2,
-                                                     const class GALGAS_luint & inOperand3,
+  public: void typeAddConstant_init_21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                     const class GGS_uint & inOperand1,
+                                                     const class GGS_bool & inOperand2,
+                                                     const class GGS_luint & inOperand3,
                                                      Compiler * inCompiler) ;
 
 
@@ -31,20 +31,20 @@ class cPtr_typeAddConstant : public cPtr_typePostcondition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_lstring mProperty_mVarName ;
-  public: GALGAS_uint mProperty_mVar ;
-  public: GALGAS_bool mProperty_mNegativeConstant ;
-  public: GALGAS_luint mProperty_mConstant ;
+  public: GGS_lstring mProperty_mVarName ;
+  public: GGS_uint mProperty_mVar ;
+  public: GGS_bool mProperty_mNegativeConstant ;
+  public: GGS_luint mProperty_mConstant ;
 
 
 //--- Default constructor
   public: cPtr_typeAddConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typeAddConstant (const GALGAS_lstring & in_mVarName,
-                                const GALGAS_uint & in_mVar,
-                                const GALGAS_bool & in_mNegativeConstant,
-                                const GALGAS_luint & in_mConstant
+  public: cPtr_typeAddConstant (const GGS_lstring & in_mVarName,
+                                const GGS_uint & in_mVar,
+                                const GGS_bool & in_mNegativeConstant,
+                                const GGS_luint & in_mConstant
                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

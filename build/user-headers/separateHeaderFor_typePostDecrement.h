@@ -15,8 +15,8 @@ class cPtr_typePostDecrement : public cPtr_typePostcondition {
   #endif
 
 //--------------------------------- Initializers
-  public: void typePostDecrement_init_21__21_ (const class GALGAS_lstring & inOperand0,
-                                               const class GALGAS_uint & inOperand1,
+  public: void typePostDecrement_init_21__21_ (const class GGS_lstring & inOperand0,
+                                               const class GGS_uint & inOperand1,
                                                Compiler * inCompiler) ;
 
 
@@ -29,16 +29,16 @@ class cPtr_typePostDecrement : public cPtr_typePostcondition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_lstring mProperty_mVarName ;
-  public: GALGAS_uint mProperty_mVar ;
+  public: GGS_lstring mProperty_mVarName ;
+  public: GGS_uint mProperty_mVar ;
 
 
 //--- Default constructor
   public: cPtr_typePostDecrement (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typePostDecrement (const GALGAS_lstring & in_mVarName,
-                                  const GALGAS_uint & in_mVar
+  public: cPtr_typePostDecrement (const GGS_lstring & in_mVarName,
+                                  const GGS_uint & in_mVar
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

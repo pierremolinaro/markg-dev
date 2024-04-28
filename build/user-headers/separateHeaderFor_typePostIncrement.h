@@ -15,8 +15,8 @@ class cPtr_typePostIncrement : public cPtr_typePostcondition {
   #endif
 
 //--------------------------------- Initializers
-  public: void typePostIncrement_init_21__21_ (const class GALGAS_lstring & inOperand0,
-                                               const class GALGAS_uint & inOperand1,
+  public: void typePostIncrement_init_21__21_ (const class GGS_lstring & inOperand0,
+                                               const class GGS_uint & inOperand1,
                                                Compiler * inCompiler) ;
 
 
@@ -29,16 +29,16 @@ class cPtr_typePostIncrement : public cPtr_typePostcondition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_lstring mProperty_mVarName ;
-  public: GALGAS_uint mProperty_mVar ;
+  public: GGS_lstring mProperty_mVarName ;
+  public: GGS_uint mProperty_mVar ;
 
 
 //--- Default constructor
   public: cPtr_typePostIncrement (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typePostIncrement (const GALGAS_lstring & in_mVarName,
-                                  const GALGAS_uint & in_mVar
+  public: cPtr_typePostIncrement (const GGS_lstring & in_mVarName,
+                                  const GGS_uint & in_mVar
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
