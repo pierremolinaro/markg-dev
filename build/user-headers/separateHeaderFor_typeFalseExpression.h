@@ -26,14 +26,13 @@ class cPtr_typeFalseExpression : public cPtr_typePreconditionExpression {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_typeFalseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typeFalseExpression (LOCATION_ARGS) ;
+  public: cPtr_typeFalseExpression (Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

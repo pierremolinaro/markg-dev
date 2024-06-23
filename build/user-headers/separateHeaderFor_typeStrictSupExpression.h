@@ -38,11 +38,12 @@ class cPtr_typeStrictSupExpression : public cPtr_typePreconditionExpression {
 //--- Constructor
   public: cPtr_typeStrictSupExpression (const GGS_uint & in_mVar,
                                         const GGS_bool & in_mNegativeConstant,
-                                        const GGS_luint & in_mConstant
+                                        const GGS_luint & in_mConstant,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

@@ -2224,20 +2224,6 @@ GGS_typeCstMap GGS_typeCstMap::extractObject (const GGS_object & inObject,
 // @typePreconditionExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typePreconditionExpression::cPtr_typePreconditionExpression (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typePreconditionExpression::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typePreconditionExpression::objectCompare (const GGS_typePreconditionExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2270,10 +2256,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @typePreconditionExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typePreconditionExpression::cPtr_typePreconditionExpression (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_typePreconditionExpression::cPtr_typePreconditionExpression (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePreconditionExpression::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2432,20 +2430,6 @@ GGS_typePreconditionExpression_2E_weak GGS_typePreconditionExpression_2E_weak::e
 // @typeTrueExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeTrueExpression::cPtr_typeTrueExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeTrueExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typeTrueExpression::objectCompare (const GGS_typeTrueExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2495,9 +2479,9 @@ GGS_typePreconditionExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeTrueExpression GGS_typeTrueExpression::class_func_new (LOCATION_ARGS) {
+GGS_typeTrueExpression GGS_typeTrueExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   GGS_typeTrueExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeTrueExpression (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeTrueExpression (inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -2505,8 +2489,12 @@ GGS_typeTrueExpression GGS_typeTrueExpression::class_func_new (LOCATION_ARGS) {
 //Pointer class for @typeTrueExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeTrueExpression::cPtr_typeTrueExpression (LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_typeTrueExpression::cPtr_typeTrueExpression (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2522,12 +2510,20 @@ void cPtr_typeTrueExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeTrueExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeTrueExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeTrueExpression (THERE)) ;
+  macroMyNew (ptr, cPtr_typeTrueExpression (inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeTrueExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2686,20 +2682,6 @@ GGS_typeTrueExpression_2E_weak GGS_typeTrueExpression_2E_weak::extractObject (co
 // @typeFalseExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeFalseExpression::cPtr_typeFalseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeFalseExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typeFalseExpression::objectCompare (const GGS_typeFalseExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2749,9 +2731,9 @@ GGS_typePreconditionExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFalseExpression GGS_typeFalseExpression::class_func_new (LOCATION_ARGS) {
+GGS_typeFalseExpression GGS_typeFalseExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   GGS_typeFalseExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeFalseExpression (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeFalseExpression (inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -2759,8 +2741,12 @@ GGS_typeFalseExpression GGS_typeFalseExpression::class_func_new (LOCATION_ARGS) 
 //Pointer class for @typeFalseExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeFalseExpression::cPtr_typeFalseExpression (LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_typeFalseExpression::cPtr_typeFalseExpression (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2776,12 +2762,20 @@ void cPtr_typeFalseExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeFalseExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeFalseExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeFalseExpression (THERE)) ;
+  macroMyNew (ptr, cPtr_typeFalseExpression (inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeFalseExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2940,22 +2934,6 @@ GGS_typeFalseExpression_2E_weak GGS_typeFalseExpression_2E_weak::extractObject (
 // @typeComplementExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeComplementExpression::cPtr_typeComplementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeComplementExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typeComplementExpression::objectCompare (const GGS_typeComplementExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3008,10 +2986,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeComplementExpression GGS_typeComplementExpression::class_func_new (const GGS_typePreconditionExpression & in_mExpression
+GGS_typeComplementExpression GGS_typeComplementExpression::class_func_new (const GGS_typePreconditionExpression & in_mExpression,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_typeComplementExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeComplementExpression (in_mExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeComplementExpression (in_mExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3041,9 +3020,17 @@ void GGS_typeComplementExpression::setProperty_mExpression (const GGS_typePrecon
 //Pointer class for @typeComplementExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeComplementExpression::cPtr_typeComplementExpression (const GGS_typePreconditionExpression & in_mExpression
+cPtr_typeComplementExpression::cPtr_typeComplementExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_typeComplementExpression::cPtr_typeComplementExpression (const GGS_typePreconditionExpression & in_mExpression,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mExpression () {
   mProperty_mExpression = in_mExpression ;
 }
@@ -3063,12 +3050,21 @@ void cPtr_typeComplementExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeComplementExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeComplementExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeComplementExpression (mProperty_mExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeComplementExpression (mProperty_mExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeComplementExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3227,24 +3223,6 @@ GGS_typeComplementExpression_2E_weak GGS_typeComplementExpression_2E_weak::extra
 // @typeAndExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeAndExpression::cPtr_typeAndExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeAndExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typeAndExpression::objectCompare (const GGS_typeAndExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3301,10 +3279,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeAndExpression GGS_typeAndExpression::class_func_new (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                                             const GGS_typePreconditionExpression & in_mRightExpression
+                                                             const GGS_typePreconditionExpression & in_mRightExpression,
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GGS_typeAndExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAndExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeAndExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3356,10 +3335,19 @@ void GGS_typeAndExpression::setProperty_mRightExpression (const GGS_typePrecondi
 //Pointer class for @typeAndExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAndExpression::cPtr_typeAndExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeAndExpression::cPtr_typeAndExpression (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                                const GGS_typePreconditionExpression & in_mRightExpression
+                                                const GGS_typePreconditionExpression & in_mRightExpression,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -3383,12 +3371,22 @@ void cPtr_typeAndExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeAndExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeAndExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeAndExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeAndExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAndExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3547,24 +3545,6 @@ GGS_typeAndExpression_2E_weak GGS_typeAndExpression_2E_weak::extractObject (cons
 // @typeOrExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeOrExpression::cPtr_typeOrExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeOrExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typeOrExpression::objectCompare (const GGS_typeOrExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3621,10 +3601,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeOrExpression GGS_typeOrExpression::class_func_new (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                                           const GGS_typePreconditionExpression & in_mRightExpression
+                                                           const GGS_typePreconditionExpression & in_mRightExpression,
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   GGS_typeOrExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeOrExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeOrExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3676,10 +3657,19 @@ void GGS_typeOrExpression::setProperty_mRightExpression (const GGS_typePrecondit
 //Pointer class for @typeOrExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeOrExpression::cPtr_typeOrExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeOrExpression::cPtr_typeOrExpression (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                              const GGS_typePreconditionExpression & in_mRightExpression
+                                              const GGS_typePreconditionExpression & in_mRightExpression,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -3703,12 +3693,22 @@ void cPtr_typeOrExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeOrExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeOrExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeOrExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeOrExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeOrExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4533,20 +4533,6 @@ GGS_typeStrictSupExpression_2E_weak GGS_typeStrictSupExpression_2E_weak::extract
 // @typePostcondition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typePostcondition::cPtr_typePostcondition (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typePostcondition::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typePostcondition::objectCompare (const GGS_typePostcondition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4579,10 +4565,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @typePostcondition class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typePostcondition::cPtr_typePostcondition (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_typePostcondition::cPtr_typePostcondition (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePostcondition::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8596,26 +8594,6 @@ GGS_typeInitialMarkingList_2E_element GGS_typeInitialMarkingList_2E_element::ext
 // @typeEqualExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_typeEqualExpression::cPtr_typeEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeEqualExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_typeEqualExpression::objectCompare (const GGS_typeEqualExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8676,10 +8654,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 
 GGS_typeEqualExpression GGS_typeEqualExpression::class_func_new (const GGS_uint & in_mVar,
                                                                  const GGS_bool & in_mNegativeConstant,
-                                                                 const GGS_luint & in_mConstant
+                                                                 const GGS_luint & in_mConstant,
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   GGS_typeEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8753,11 +8732,21 @@ void GGS_typeEqualExpression::setProperty_mConstant (const GGS_luint & inValue) 
 //Pointer class for @typeEqualExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeEqualExpression::cPtr_typeEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeEqualExpression::cPtr_typeEqualExpression (const GGS_uint & in_mVar,
                                                     const GGS_bool & in_mNegativeConstant,
-                                                    const GGS_luint & in_mConstant
+                                                    const GGS_luint & in_mConstant,
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
 mProperty_mConstant () {
@@ -8785,12 +8774,23 @@ void cPtr_typeEqualExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeEqualExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeEqualExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8836,26 +8836,6 @@ GGS_typeEqualExpression GGS_typeEqualExpression::extractObject (const GGS_object
 
 //--------------------------------------------------------------------------------------------------
 // @typeNonEqualExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeNonEqualExpression::cPtr_typeNonEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeNonEqualExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeNonEqualExpression::objectCompare (const GGS_typeNonEqualExpression & inOperand) const {
@@ -8918,10 +8898,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 
 GGS_typeNonEqualExpression GGS_typeNonEqualExpression::class_func_new (const GGS_uint & in_mVar,
                                                                        const GGS_bool & in_mNegativeConstant,
-                                                                       const GGS_luint & in_mConstant
+                                                                       const GGS_luint & in_mConstant,
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   GGS_typeNonEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeNonEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeNonEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8995,11 +8976,21 @@ void GGS_typeNonEqualExpression::setProperty_mConstant (const GGS_luint & inValu
 //Pointer class for @typeNonEqualExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeNonEqualExpression::cPtr_typeNonEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeNonEqualExpression::cPtr_typeNonEqualExpression (const GGS_uint & in_mVar,
                                                           const GGS_bool & in_mNegativeConstant,
-                                                          const GGS_luint & in_mConstant
+                                                          const GGS_luint & in_mConstant,
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
 mProperty_mConstant () {
@@ -9027,12 +9018,23 @@ void cPtr_typeNonEqualExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeNonEqualExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeNonEqualExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeNonEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeNonEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeNonEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9078,26 +9080,6 @@ GGS_typeNonEqualExpression GGS_typeNonEqualExpression::extractObject (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 // @typeInfOrEqualExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeInfOrEqualExpression::cPtr_typeInfOrEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeInfOrEqualExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeInfOrEqualExpression::objectCompare (const GGS_typeInfOrEqualExpression & inOperand) const {
@@ -9160,10 +9142,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 
 GGS_typeInfOrEqualExpression GGS_typeInfOrEqualExpression::class_func_new (const GGS_uint & in_mVar,
                                                                            const GGS_bool & in_mNegativeConstant,
-                                                                           const GGS_luint & in_mConstant
+                                                                           const GGS_luint & in_mConstant,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_typeInfOrEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeInfOrEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeInfOrEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9237,11 +9220,21 @@ void GGS_typeInfOrEqualExpression::setProperty_mConstant (const GGS_luint & inVa
 //Pointer class for @typeInfOrEqualExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeInfOrEqualExpression::cPtr_typeInfOrEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeInfOrEqualExpression::cPtr_typeInfOrEqualExpression (const GGS_uint & in_mVar,
                                                               const GGS_bool & in_mNegativeConstant,
-                                                              const GGS_luint & in_mConstant
+                                                              const GGS_luint & in_mConstant,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
 mProperty_mConstant () {
@@ -9269,12 +9262,23 @@ void cPtr_typeInfOrEqualExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeInfOrEqualExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeInfOrEqualExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeInfOrEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeInfOrEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeInfOrEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9320,26 +9324,6 @@ GGS_typeInfOrEqualExpression GGS_typeInfOrEqualExpression::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 // @typeSupOrEqualExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeSupOrEqualExpression::cPtr_typeSupOrEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeSupOrEqualExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeSupOrEqualExpression::objectCompare (const GGS_typeSupOrEqualExpression & inOperand) const {
@@ -9402,10 +9386,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 
 GGS_typeSupOrEqualExpression GGS_typeSupOrEqualExpression::class_func_new (const GGS_uint & in_mVar,
                                                                            const GGS_bool & in_mNegativeConstant,
-                                                                           const GGS_luint & in_mConstant
+                                                                           const GGS_luint & in_mConstant,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_typeSupOrEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeSupOrEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeSupOrEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9479,11 +9464,21 @@ void GGS_typeSupOrEqualExpression::setProperty_mConstant (const GGS_luint & inVa
 //Pointer class for @typeSupOrEqualExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeSupOrEqualExpression::cPtr_typeSupOrEqualExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeSupOrEqualExpression::cPtr_typeSupOrEqualExpression (const GGS_uint & in_mVar,
                                                               const GGS_bool & in_mNegativeConstant,
-                                                              const GGS_luint & in_mConstant
+                                                              const GGS_luint & in_mConstant,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
 mProperty_mConstant () {
@@ -9511,12 +9506,23 @@ void cPtr_typeSupOrEqualExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeSupOrEqualExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeSupOrEqualExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeSupOrEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeSupOrEqualExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeSupOrEqualExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9562,26 +9568,6 @@ GGS_typeSupOrEqualExpression GGS_typeSupOrEqualExpression::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 // @typeStrictInfExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeStrictInfExpression::cPtr_typeStrictInfExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeStrictInfExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeStrictInfExpression::objectCompare (const GGS_typeStrictInfExpression & inOperand) const {
@@ -9644,10 +9630,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 
 GGS_typeStrictInfExpression GGS_typeStrictInfExpression::class_func_new (const GGS_uint & in_mVar,
                                                                          const GGS_bool & in_mNegativeConstant,
-                                                                         const GGS_luint & in_mConstant
+                                                                         const GGS_luint & in_mConstant,
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GGS_typeStrictInfExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeStrictInfExpression (in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeStrictInfExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9721,11 +9708,21 @@ void GGS_typeStrictInfExpression::setProperty_mConstant (const GGS_luint & inVal
 //Pointer class for @typeStrictInfExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeStrictInfExpression::cPtr_typeStrictInfExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeStrictInfExpression::cPtr_typeStrictInfExpression (const GGS_uint & in_mVar,
                                                             const GGS_bool & in_mNegativeConstant,
-                                                            const GGS_luint & in_mConstant
+                                                            const GGS_luint & in_mConstant,
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
 mProperty_mConstant () {
@@ -9753,12 +9750,23 @@ void cPtr_typeStrictInfExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeStrictInfExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeStrictInfExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeStrictInfExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeStrictInfExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeStrictInfExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9804,26 +9812,6 @@ GGS_typeStrictInfExpression GGS_typeStrictInfExpression::extractObject (const GG
 
 //--------------------------------------------------------------------------------------------------
 // @typeStrictSupExpression reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeStrictSupExpression::cPtr_typeStrictSupExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeStrictSupExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeStrictSupExpression::objectCompare (const GGS_typeStrictSupExpression & inOperand) const {
@@ -9886,10 +9874,11 @@ GGS_typePreconditionExpression (inSourcePtr) {
 
 GGS_typeStrictSupExpression GGS_typeStrictSupExpression::class_func_new (const GGS_uint & in_mVar,
                                                                          const GGS_bool & in_mNegativeConstant,
-                                                                         const GGS_luint & in_mConstant
+                                                                         const GGS_luint & in_mConstant,
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GGS_typeStrictSupExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeStrictSupExpression (in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeStrictSupExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9963,11 +9952,21 @@ void GGS_typeStrictSupExpression::setProperty_mConstant (const GGS_luint & inVal
 //Pointer class for @typeStrictSupExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeStrictSupExpression::cPtr_typeStrictSupExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeStrictSupExpression::cPtr_typeStrictSupExpression (const GGS_uint & in_mVar,
                                                             const GGS_bool & in_mNegativeConstant,
-                                                            const GGS_luint & in_mConstant
+                                                            const GGS_luint & in_mConstant,
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) :
-cPtr_typePreconditionExpression (THERE),
+cPtr_typePreconditionExpression (inCompiler COMMA_THERE),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
 mProperty_mConstant () {
@@ -9995,12 +9994,23 @@ void cPtr_typeStrictSupExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeStrictSupExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeStrictSupExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeStrictSupExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeStrictSupExpression (mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeStrictSupExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePreconditionExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10046,24 +10056,6 @@ GGS_typeStrictSupExpression GGS_typeStrictSupExpression::extractObject (const GG
 
 //--------------------------------------------------------------------------------------------------
 // @typePostIncrement reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typePostIncrement::cPtr_typePostIncrement (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVar () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typePostIncrement::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typePostIncrement::objectCompare (const GGS_typePostIncrement & inOperand) const {
@@ -10122,10 +10114,11 @@ GGS_typePostcondition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typePostIncrement GGS_typePostIncrement::class_func_new (const GGS_lstring & in_mVarName,
-                                                             const GGS_uint & in_mVar
+                                                             const GGS_uint & in_mVar,
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GGS_typePostIncrement result ;
-  macroMyNew (result.mObjectPtr, cPtr_typePostIncrement (in_mVarName, in_mVar COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typePostIncrement (in_mVarName, in_mVar,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10177,10 +10170,19 @@ void GGS_typePostIncrement::setProperty_mVar (const GGS_uint & inValue) {
 //Pointer class for @typePostIncrement class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typePostIncrement::cPtr_typePostIncrement (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typePostIncrement::cPtr_typePostIncrement (const GGS_lstring & in_mVarName,
-                                                const GGS_uint & in_mVar
+                                                const GGS_uint & in_mVar,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (THERE),
+cPtr_typePostcondition (inCompiler COMMA_THERE),
 mProperty_mVarName (),
 mProperty_mVar () {
   mProperty_mVarName = in_mVarName ;
@@ -10204,12 +10206,22 @@ void cPtr_typePostIncrement::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typePostIncrement::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typePostIncrement::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typePostIncrement (mProperty_mVarName, mProperty_mVar COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typePostIncrement (mProperty_mVarName, mProperty_mVar, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePostIncrement::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10255,24 +10267,6 @@ GGS_typePostIncrement GGS_typePostIncrement::extractObject (const GGS_object & i
 
 //--------------------------------------------------------------------------------------------------
 // @typePostDecrement reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typePostDecrement::cPtr_typePostDecrement (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVar () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typePostDecrement::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typePostDecrement::objectCompare (const GGS_typePostDecrement & inOperand) const {
@@ -10331,10 +10325,11 @@ GGS_typePostcondition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typePostDecrement GGS_typePostDecrement::class_func_new (const GGS_lstring & in_mVarName,
-                                                             const GGS_uint & in_mVar
+                                                             const GGS_uint & in_mVar,
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GGS_typePostDecrement result ;
-  macroMyNew (result.mObjectPtr, cPtr_typePostDecrement (in_mVarName, in_mVar COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typePostDecrement (in_mVarName, in_mVar,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10386,10 +10381,19 @@ void GGS_typePostDecrement::setProperty_mVar (const GGS_uint & inValue) {
 //Pointer class for @typePostDecrement class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typePostDecrement::cPtr_typePostDecrement (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typePostDecrement::cPtr_typePostDecrement (const GGS_lstring & in_mVarName,
-                                                const GGS_uint & in_mVar
+                                                const GGS_uint & in_mVar,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (THERE),
+cPtr_typePostcondition (inCompiler COMMA_THERE),
 mProperty_mVarName (),
 mProperty_mVar () {
   mProperty_mVarName = in_mVarName ;
@@ -10413,12 +10417,22 @@ void cPtr_typePostDecrement::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typePostDecrement::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typePostDecrement::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typePostDecrement (mProperty_mVarName, mProperty_mVar COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typePostDecrement (mProperty_mVarName, mProperty_mVar, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typePostDecrement::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10464,28 +10478,6 @@ GGS_typePostDecrement GGS_typePostDecrement::extractObject (const GGS_object & i
 
 //--------------------------------------------------------------------------------------------------
 // @typeAddConstant reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeAddConstant::cPtr_typeAddConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeAddConstant::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeAddConstant::objectCompare (const GGS_typeAddConstant & inOperand) const {
@@ -10552,10 +10544,11 @@ GGS_typePostcondition (inSourcePtr) {
 GGS_typeAddConstant GGS_typeAddConstant::class_func_new (const GGS_lstring & in_mVarName,
                                                          const GGS_uint & in_mVar,
                                                          const GGS_bool & in_mNegativeConstant,
-                                                         const GGS_luint & in_mConstant
+                                                         const GGS_luint & in_mConstant,
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   GGS_typeAddConstant result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAddConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeAddConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10651,12 +10644,23 @@ void GGS_typeAddConstant::setProperty_mConstant (const GGS_luint & inValue) {
 //Pointer class for @typeAddConstant class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAddConstant::cPtr_typeAddConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeAddConstant::cPtr_typeAddConstant (const GGS_lstring & in_mVarName,
                                             const GGS_uint & in_mVar,
                                             const GGS_bool & in_mNegativeConstant,
-                                            const GGS_luint & in_mConstant
+                                            const GGS_luint & in_mConstant,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (THERE),
+cPtr_typePostcondition (inCompiler COMMA_THERE),
 mProperty_mVarName (),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
@@ -10688,12 +10692,24 @@ void cPtr_typeAddConstant::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeAddConstant::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeAddConstant::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeAddConstant (mProperty_mVarName, mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeAddConstant (mProperty_mVarName, mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAddConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10739,28 +10755,6 @@ GGS_typeAddConstant GGS_typeAddConstant::extractObject (const GGS_object & inObj
 
 //--------------------------------------------------------------------------------------------------
 // @typeSubConstant reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeSubConstant::cPtr_typeSubConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeSubConstant::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeSubConstant::objectCompare (const GGS_typeSubConstant & inOperand) const {
@@ -10827,10 +10821,11 @@ GGS_typePostcondition (inSourcePtr) {
 GGS_typeSubConstant GGS_typeSubConstant::class_func_new (const GGS_lstring & in_mVarName,
                                                          const GGS_uint & in_mVar,
                                                          const GGS_bool & in_mNegativeConstant,
-                                                         const GGS_luint & in_mConstant
+                                                         const GGS_luint & in_mConstant,
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   GGS_typeSubConstant result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeSubConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeSubConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10926,12 +10921,23 @@ void GGS_typeSubConstant::setProperty_mConstant (const GGS_luint & inValue) {
 //Pointer class for @typeSubConstant class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeSubConstant::cPtr_typeSubConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeSubConstant::cPtr_typeSubConstant (const GGS_lstring & in_mVarName,
                                             const GGS_uint & in_mVar,
                                             const GGS_bool & in_mNegativeConstant,
-                                            const GGS_luint & in_mConstant
+                                            const GGS_luint & in_mConstant,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (THERE),
+cPtr_typePostcondition (inCompiler COMMA_THERE),
 mProperty_mVarName (),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
@@ -10963,12 +10969,24 @@ void cPtr_typeSubConstant::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeSubConstant::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeSubConstant::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeSubConstant (mProperty_mVarName, mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeSubConstant (mProperty_mVarName, mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeSubConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11014,28 +11032,6 @@ GGS_typeSubConstant GGS_typeSubConstant::extractObject (const GGS_object & inObj
 
 //--------------------------------------------------------------------------------------------------
 // @typeAssignConstant reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeAssignConstant::cPtr_typeAssignConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVar (),
-mProperty_mNegativeConstant (),
-mProperty_mConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeAssignConstant::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
-    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeAssignConstant::objectCompare (const GGS_typeAssignConstant & inOperand) const {
@@ -11102,10 +11098,11 @@ GGS_typePostcondition (inSourcePtr) {
 GGS_typeAssignConstant GGS_typeAssignConstant::class_func_new (const GGS_lstring & in_mVarName,
                                                                const GGS_uint & in_mVar,
                                                                const GGS_bool & in_mNegativeConstant,
-                                                               const GGS_luint & in_mConstant
+                                                               const GGS_luint & in_mConstant,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_typeAssignConstant result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAssignConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeAssignConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11201,12 +11198,23 @@ void GGS_typeAssignConstant::setProperty_mConstant (const GGS_luint & inValue) {
 //Pointer class for @typeAssignConstant class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAssignConstant::cPtr_typeAssignConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar (),
+mProperty_mNegativeConstant (),
+mProperty_mConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeAssignConstant::cPtr_typeAssignConstant (const GGS_lstring & in_mVarName,
                                                   const GGS_uint & in_mVar,
                                                   const GGS_bool & in_mNegativeConstant,
-                                                  const GGS_luint & in_mConstant
+                                                  const GGS_luint & in_mConstant,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (THERE),
+cPtr_typePostcondition (inCompiler COMMA_THERE),
 mProperty_mVarName (),
 mProperty_mVar (),
 mProperty_mNegativeConstant (),
@@ -11238,12 +11246,24 @@ void cPtr_typeAssignConstant::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeAssignConstant::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeAssignConstant::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeAssignConstant (mProperty_mVarName, mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeAssignConstant (mProperty_mVarName, mProperty_mVar, mProperty_mNegativeConstant, mProperty_mConstant, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAssignConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+    mProperty_mNegativeConstant.printNonNullClassInstanceProperties ("mNegativeConstant") ;
+    mProperty_mConstant.printNonNullClassInstanceProperties ("mConstant") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11289,24 +11309,6 @@ GGS_typeAssignConstant GGS_typeAssignConstant::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @typeAssignInfinity reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_typeAssignInfinity::cPtr_typeAssignInfinity (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (inCompiler COMMA_THERE),
-mProperty_mVarName (),
-mProperty_mVar () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_typeAssignInfinity::printNonNullClassInstanceProperties (void) const {
-    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
-    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
-    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_typeAssignInfinity::objectCompare (const GGS_typeAssignInfinity & inOperand) const {
@@ -11365,10 +11367,11 @@ GGS_typePostcondition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeAssignInfinity GGS_typeAssignInfinity::class_func_new (const GGS_lstring & in_mVarName,
-                                                               const GGS_uint & in_mVar
+                                                               const GGS_uint & in_mVar,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_typeAssignInfinity result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAssignInfinity (in_mVarName, in_mVar COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_typeAssignInfinity (in_mVarName, in_mVar,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11420,10 +11423,19 @@ void GGS_typeAssignInfinity::setProperty_mVar (const GGS_uint & inValue) {
 //Pointer class for @typeAssignInfinity class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_typeAssignInfinity::cPtr_typeAssignInfinity (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_typePostcondition (inCompiler COMMA_THERE),
+mProperty_mVarName (),
+mProperty_mVar () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_typeAssignInfinity::cPtr_typeAssignInfinity (const GGS_lstring & in_mVarName,
-                                                  const GGS_uint & in_mVar
+                                                  const GGS_uint & in_mVar,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_typePostcondition (THERE),
+cPtr_typePostcondition (inCompiler COMMA_THERE),
 mProperty_mVarName (),
 mProperty_mVar () {
   mProperty_mVarName = in_mVarName ;
@@ -11447,12 +11459,22 @@ void cPtr_typeAssignInfinity::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeAssignInfinity::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_typeAssignInfinity::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_typeAssignInfinity (mProperty_mVarName, mProperty_mVar COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typeAssignInfinity (mProperty_mVarName, mProperty_mVar, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_typeAssignInfinity::printNonNullClassInstanceProperties (void) const {
+    cPtr_typePostcondition::printNonNullClassInstanceProperties () ;
+    mProperty_mVarName.printNonNullClassInstanceProperties ("mVarName") ;
+    mProperty_mVar.printNonNullClassInstanceProperties ("mVar") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //

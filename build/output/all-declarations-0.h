@@ -1238,7 +1238,8 @@ class GGS_typeTrueExpression : public GGS_typePreconditionExpression {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_typeTrueExpression class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_typeTrueExpression class_func_new (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_typeTrueExpression & inOperand) const ;
@@ -1383,7 +1384,8 @@ class GGS_typeFalseExpression : public GGS_typePreconditionExpression {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_typeFalseExpression class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_typeFalseExpression class_func_new (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_typeFalseExpression & inOperand) const ;
@@ -1532,7 +1534,8 @@ class GGS_typeComplementExpression : public GGS_typePreconditionExpression {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_typeComplementExpression class_func_new (const class GGS_typePreconditionExpression & inOperand0
+  public: static class GGS_typeComplementExpression class_func_new (const class GGS_typePreconditionExpression & inOperand0,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1687,7 +1690,8 @@ class GGS_typeAndExpression : public GGS_typePreconditionExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeAndExpression class_func_new (const class GGS_typePreconditionExpression & inOperand0,
-                                                             const class GGS_typePreconditionExpression & inOperand1
+                                                             const class GGS_typePreconditionExpression & inOperand1,
+                                                             class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1842,7 +1846,8 @@ class GGS_typeOrExpression : public GGS_typePreconditionExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeOrExpression class_func_new (const class GGS_typePreconditionExpression & inOperand0,
-                                                            const class GGS_typePreconditionExpression & inOperand1
+                                                            const class GGS_typePreconditionExpression & inOperand1,
+                                                            class Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2002,7 +2007,8 @@ class GGS_typeEqualExpression : public GGS_typePreconditionExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeEqualExpression class_func_new (const class GGS_uint & inOperand0,
                                                                const class GGS_bool & inOperand1,
-                                                               const class GGS_luint & inOperand2
+                                                               const class GGS_luint & inOperand2,
+                                                               class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2162,7 +2168,8 @@ class GGS_typeNonEqualExpression : public GGS_typePreconditionExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeNonEqualExpression class_func_new (const class GGS_uint & inOperand0,
                                                                   const class GGS_bool & inOperand1,
-                                                                  const class GGS_luint & inOperand2
+                                                                  const class GGS_luint & inOperand2,
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2322,7 +2329,8 @@ class GGS_typeInfOrEqualExpression : public GGS_typePreconditionExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeInfOrEqualExpression class_func_new (const class GGS_uint & inOperand0,
                                                                     const class GGS_bool & inOperand1,
-                                                                    const class GGS_luint & inOperand2
+                                                                    const class GGS_luint & inOperand2,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2482,7 +2490,8 @@ class GGS_typeSupOrEqualExpression : public GGS_typePreconditionExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeSupOrEqualExpression class_func_new (const class GGS_uint & inOperand0,
                                                                     const class GGS_bool & inOperand1,
-                                                                    const class GGS_luint & inOperand2
+                                                                    const class GGS_luint & inOperand2,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2642,7 +2651,8 @@ class GGS_typeStrictInfExpression : public GGS_typePreconditionExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeStrictInfExpression class_func_new (const class GGS_uint & inOperand0,
                                                                    const class GGS_bool & inOperand1,
-                                                                   const class GGS_luint & inOperand2
+                                                                   const class GGS_luint & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2802,7 +2812,8 @@ class GGS_typeStrictSupExpression : public GGS_typePreconditionExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeStrictSupExpression class_func_new (const class GGS_uint & inOperand0,
                                                                    const class GGS_bool & inOperand1,
-                                                                   const class GGS_luint & inOperand2
+                                                                   const class GGS_luint & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3099,7 +3110,8 @@ class GGS_typePostIncrement : public GGS_typePostcondition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_typePostIncrement class_func_new (const class GGS_lstring & inOperand0,
-                                                             const class GGS_uint & inOperand1
+                                                             const class GGS_uint & inOperand1,
+                                                             class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3254,7 +3266,8 @@ class GGS_typePostDecrement : public GGS_typePostcondition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_typePostDecrement class_func_new (const class GGS_lstring & inOperand0,
-                                                             const class GGS_uint & inOperand1
+                                                             const class GGS_uint & inOperand1,
+                                                             class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3419,7 +3432,8 @@ class GGS_typeAddConstant : public GGS_typePostcondition {
   public: static class GGS_typeAddConstant class_func_new (const class GGS_lstring & inOperand0,
                                                            const class GGS_uint & inOperand1,
                                                            const class GGS_bool & inOperand2,
-                                                           const class GGS_luint & inOperand3
+                                                           const class GGS_luint & inOperand3,
+                                                           class Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3584,7 +3598,8 @@ class GGS_typeSubConstant : public GGS_typePostcondition {
   public: static class GGS_typeSubConstant class_func_new (const class GGS_lstring & inOperand0,
                                                            const class GGS_uint & inOperand1,
                                                            const class GGS_bool & inOperand2,
-                                                           const class GGS_luint & inOperand3
+                                                           const class GGS_luint & inOperand3,
+                                                           class Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3749,7 +3764,8 @@ class GGS_typeAssignConstant : public GGS_typePostcondition {
   public: static class GGS_typeAssignConstant class_func_new (const class GGS_lstring & inOperand0,
                                                               const class GGS_uint & inOperand1,
                                                               const class GGS_bool & inOperand2,
-                                                              const class GGS_luint & inOperand3
+                                                              const class GGS_luint & inOperand3,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3904,7 +3920,8 @@ class GGS_typeAssignInfinity : public GGS_typePostcondition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_typeAssignInfinity class_func_new (const class GGS_lstring & inOperand0,
-                                                              const class GGS_uint & inOperand1
+                                                              const class GGS_uint & inOperand1,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison

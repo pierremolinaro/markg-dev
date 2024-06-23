@@ -38,11 +38,12 @@ class cPtr_typeAssignInfinity : public cPtr_typePostcondition {
 
 //--- Constructor
   public: cPtr_typeAssignInfinity (const GGS_lstring & in_mVarName,
-                                   const GGS_uint & in_mVar
+                                   const GGS_uint & in_mVar,
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

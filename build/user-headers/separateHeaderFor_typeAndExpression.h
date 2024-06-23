@@ -35,11 +35,12 @@ class cPtr_typeAndExpression : public cPtr_typePreconditionExpression {
 
 //--- Constructor
   public: cPtr_typeAndExpression (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                  const GGS_typePreconditionExpression & in_mRightExpression
+                                  const GGS_typePreconditionExpression & in_mRightExpression,
+                                  Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

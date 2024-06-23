@@ -29,11 +29,10 @@ class cPtr_typePostcondition : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_typePostcondition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_typePostcondition (LOCATION_ARGS) ;
+  public: cPtr_typePostcondition (Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description
