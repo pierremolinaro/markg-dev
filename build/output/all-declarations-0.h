@@ -314,47 +314,47 @@ class Lexique_spec_5F_scanner : public Lexique {
 
 
 //--- Terminal symbols enumeration
-  public: enum {kToken_,
-   kToken_identifier /* 1 */ ,
-   kToken_literal_5F_string /* 2 */ ,
-   kToken_literal_5F_integer /* 3 */ ,
-   kToken_system /* 4 */ ,
-   kToken_var /* 5 */ ,
-   kToken_rule /* 6 */ ,
-   kToken_init /* 7 */ ,
-   kToken_end /* 8 */ ,
-   kToken_true /* 9 */ ,
-   kToken_false /* 10 */ ,
-   kToken_const /* 11 */ ,
-   kToken_count /* 12 */ ,
-   kToken_infinity /* 13 */ ,
-   kToken_hashmapsize /* 14 */ ,
-   kToken_garbageperiod /* 15 */ ,
-   kToken__3E__3D_ /* 16 */ ,
-   kToken__3E_ /* 17 */ ,
-   kToken__3C_ /* 18 */ ,
-   kToken__3C__3D_ /* 19 */ ,
-   kToken__3D__3D_ /* 20 */ ,
-   kToken__21__3D_ /* 21 */ ,
-   kToken__26_ /* 22 */ ,
-   kToken__7C_ /* 23 */ ,
-   kToken__7E_ /* 24 */ ,
-   kToken__2C_ /* 25 */ ,
-   kToken__3B_ /* 26 */ ,
-   kToken__28_ /* 27 */ ,
-   kToken__29_ /* 28 */ ,
-   kToken__2B__2B_ /* 29 */ ,
-   kToken__2D__2D_ /* 30 */ ,
-   kToken__2B__3D_ /* 31 */ ,
-   kToken__2D__3D_ /* 32 */ ,
-   kToken__3A__3D_ /* 33 */ ,
-   kToken__7B_ /* 34 */ ,
-   kToken__7D_ /* 35 */ ,
-   kToken__3A_ /* 36 */ ,
-   kToken__2D_ /* 37 */ ,
-   kToken__3D_ /* 38 */ ,
-   kToken__5B_ /* 39 */ ,
-   kToken__5D_ /* 40 */ } ;
+  public: const static int32_t kToken_ = 0 ;
+  public: static const int32_t kToken_identifier = 1 ;
+  public: static const int32_t kToken_literal_5F_string = 2 ;
+  public: static const int32_t kToken_literal_5F_integer = 3 ;
+  public: static const int32_t kToken_system = 4 ;
+  public: static const int32_t kToken_var = 5 ;
+  public: static const int32_t kToken_rule = 6 ;
+  public: static const int32_t kToken_init = 7 ;
+  public: static const int32_t kToken_end = 8 ;
+  public: static const int32_t kToken_true = 9 ;
+  public: static const int32_t kToken_false = 10 ;
+  public: static const int32_t kToken_const = 11 ;
+  public: static const int32_t kToken_count = 12 ;
+  public: static const int32_t kToken_infinity = 13 ;
+  public: static const int32_t kToken_hashmapsize = 14 ;
+  public: static const int32_t kToken_garbageperiod = 15 ;
+  public: static const int32_t kToken__3E__3D_ = 16 ;
+  public: static const int32_t kToken__3E_ = 17 ;
+  public: static const int32_t kToken__3C_ = 18 ;
+  public: static const int32_t kToken__3C__3D_ = 19 ;
+  public: static const int32_t kToken__3D__3D_ = 20 ;
+  public: static const int32_t kToken__21__3D_ = 21 ;
+  public: static const int32_t kToken__26_ = 22 ;
+  public: static const int32_t kToken__7C_ = 23 ;
+  public: static const int32_t kToken__7E_ = 24 ;
+  public: static const int32_t kToken__2C_ = 25 ;
+  public: static const int32_t kToken__3B_ = 26 ;
+  public: static const int32_t kToken__28_ = 27 ;
+  public: static const int32_t kToken__29_ = 28 ;
+  public: static const int32_t kToken__2B__2B_ = 29 ;
+  public: static const int32_t kToken__2D__2D_ = 30 ;
+  public: static const int32_t kToken__2B__3D_ = 31 ;
+  public: static const int32_t kToken__2D__3D_ = 32 ;
+  public: static const int32_t kToken__3A__3D_ = 33 ;
+  public: static const int32_t kToken__7B_ = 34 ;
+  public: static const int32_t kToken__7D_ = 35 ;
+  public: static const int32_t kToken__3A_ = 36 ;
+  public: static const int32_t kToken__2D_ = 37 ;
+  public: static const int32_t kToken__3D_ = 38 ;
+  public: static const int32_t kToken__5B_ = 39 ;
+  public: static const int32_t kToken__5D_ = 40 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
