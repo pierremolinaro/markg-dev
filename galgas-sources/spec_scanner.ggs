@@ -1,8 +1,8 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   L E X I Q U E                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
+//                                        
+//   L E X I Q U E                         
+//                                        
+//------------------------------------------------------------------------------------------------
 
 lexique spec_scanner {
 
@@ -15,9 +15,9 @@ style delimitors   -> "Delimitors"
 style integerStyle -> "Integer constants"
 style stringStyle  -> "String constants"
 
-# -------------------------- identifier or key word --------------------
-# keywords can be written in lower
-# for identifiers, case is significant
+// -------------------------- identifier or key word --------------------
+// keywords can be written in lower
+// for identifiers, case is significant
 $identifier$ ! theString  style identifier %errorMessage "an identifier"
 
 list galgasKeyWordList style keyWords %errorMessage "the '%K' key word"{
@@ -32,7 +32,7 @@ rule 'a'->'z' | 'A'->'Z' {
   send %searchString theString in galgasKeyWordList default $identifier$
 }
 
-# -------------------- Characters string --------------------------------------
+// -------------------- Characters string --------------------------------------
 $literal_string$ ! theString  style stringStyle %nonAtomicSelection %errorMessage "a character string constant \"...\""
 
 %errorMessage incorrectStringEnd : "string does not end with '\"'"
@@ -50,13 +50,13 @@ rule '"' {
   end
 }
 
-#------------------------------- Delimitors ------------------------------
+//------------------------------- Delimitors ------------------------------
   list delimitorsList style delimitors %errorMessage "the '%K' delimitor"{
     ">=", ">", "<", "<=", "==", "!=", "&", "|", "~", ",", ";", "(", ")",
     "++", "--", "+=", "-=", ":=", "{", "}", ":", "-", "=", "[", "]"  }
   rule list delimitorsList
 
-#------------------------------- Decimal positive number ------------------
+//------------------------------- Decimal positive number ------------------
 $literal_integer$ ! ulongValue  style integerStyle %errorMessage "a decimal number"
 
 %errorMessage decimalNumberTooLarge : "decimal number too large"
@@ -73,17 +73,17 @@ rule '0'->'9' {
   send $literal_integer$
 }
 
-# ------------------------------------ Comment ----------------------------
+// ------------------------------------ Comment ----------------------------
 rule '#' {
   repeat
   while '\u0001' ->'\u0009' | '\u000B' | '\u000C' | '\u000E'-> '\uFFFD' :
   end
 }
 
-# ------------------------------------ Separators ----------------------------
+// ------------------------------------ Separators ----------------------------
 rule '\u0001' -> ' ' {
 }
 
 }
 
-#--------------------------------------------------------------------------------*
+//--------------------------------------------------------------------------------*

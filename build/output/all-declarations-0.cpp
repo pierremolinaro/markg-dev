@@ -7371,9 +7371,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_precondition_i0_ (GGS_
   while (repeatFlag_0) {
     if (select_spec_5F_parser_0 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__7C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 60)) ;
-      GGS_typePreconditionExpression var_right_1818 ;
-      nt_term_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_1818, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeOrExpression::init_21__21_ (outArgument_outPreConditions, var_right_1818, inCompiler COMMA_HERE) ;
+      GGS_typePreconditionExpression var_right_1770 ;
+      nt_term_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_1770, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeOrExpression::init_21__21_ (outArgument_outPreConditions, var_right_1770, inCompiler COMMA_HERE) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -7423,9 +7423,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_term_i1_ (GGS_typeVarMap & ioAr
   while (repeatFlag_0) {
     if (select_spec_5F_parser_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__26_ COMMA_SOURCE_FILE ("spec_parser.ggs", 75)) ;
-      GGS_typePreconditionExpression var_right_2251 ;
-      nt_factor_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_2251, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeAndExpression::init_21__21_ (outArgument_outPreConditions, var_right_2251, inCompiler COMMA_HERE) ;
+      GGS_typePreconditionExpression var_right_2219 ;
+      nt_factor_ (ioArgument_inPlacesMap, ioArgument_ioConstantMap, var_right_2219, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeAndExpression::init_21__21_ (outArgument_outPreConditions, var_right_2219, inCompiler COMMA_HERE) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -7540,52 +7540,52 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_primary_i3_ (GGS_typeVarMap & i
   } break ;
   case 4: {
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__7B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 113)) ;
-    GGS_lstring var_name_3254 = inCompiler->synthetizedAttribute_theString () ;
+    GGS_lstring var_name_3250 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 114)) ;
-    GGS_uint var_idx_3299 ;
-    ioArgument_inPlacesMap.method_searchKey (var_name_3254, var_idx_3299, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 115)) ;
+    GGS_uint var_idx_3295 ;
+    ioArgument_inPlacesMap.method_searchKey (var_name_3250, var_idx_3295, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 115)) ;
     switch (select_spec_5F_parser_4 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 117)) ;
-      GGS_bool var_sign_3372 ;
-      GGS_luint var_cst_3383 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3372, var_cst_3383, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeEqualExpression::init_21__21__21_ (var_idx_3299, var_sign_3372, var_cst_3383, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_3368 ;
+      GGS_luint var_cst_3379 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3368, var_cst_3379, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeEqualExpression::init_21__21__21_ (var_idx_3295, var_sign_3368, var_cst_3379, inCompiler COMMA_HERE) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__21__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 121)) ;
-      GGS_bool var_sign_3524 ;
-      GGS_luint var_cst_3535 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3524, var_cst_3535, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeNonEqualExpression::init_21__21__21_ (var_idx_3299, var_sign_3524, var_cst_3535, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_3515 ;
+      GGS_luint var_cst_3526 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3515, var_cst_3526, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeNonEqualExpression::init_21__21__21_ (var_idx_3295, var_sign_3515, var_cst_3526, inCompiler COMMA_HERE) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3C__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 125)) ;
-      GGS_bool var_sign_3679 ;
-      GGS_luint var_cst_3690 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3679, var_cst_3690, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeInfOrEqualExpression::init_21__21__21_ (var_idx_3299, var_sign_3679, var_cst_3690, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_3665 ;
+      GGS_luint var_cst_3676 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3665, var_cst_3676, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeInfOrEqualExpression::init_21__21__21_ (var_idx_3295, var_sign_3665, var_cst_3676, inCompiler COMMA_HERE) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 129)) ;
-      GGS_bool var_sign_3836 ;
-      GGS_luint var_cst_3847 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3836, var_cst_3847, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeSupOrEqualExpression::init_21__21__21_ (var_idx_3299, var_sign_3836, var_cst_3847, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_3817 ;
+      GGS_luint var_cst_3828 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3817, var_cst_3828, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeSupOrEqualExpression::init_21__21__21_ (var_idx_3295, var_sign_3817, var_cst_3828, inCompiler COMMA_HERE) ;
     } break ;
     case 5: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 133)) ;
-      GGS_bool var_sign_3992 ;
-      GGS_luint var_cst_4003 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3992, var_cst_4003, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeStrictInfExpression::init_21__21__21_ (var_idx_3299, var_sign_3992, var_cst_4003, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_3968 ;
+      GGS_luint var_cst_3979 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_3968, var_cst_3979, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeStrictInfExpression::init_21__21__21_ (var_idx_3295, var_sign_3968, var_cst_3979, inCompiler COMMA_HERE) ;
     } break ;
     case 6: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3E_ COMMA_SOURCE_FILE ("spec_parser.ggs", 137)) ;
-      GGS_bool var_sign_4147 ;
-      GGS_luint var_cst_4158 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_4147, var_cst_4158, inCompiler) ;
-      outArgument_outPreConditions = GGS_typeStrictSupExpression::init_21__21__21_ (var_idx_3299, var_sign_4147, var_cst_4158, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_4118 ;
+      GGS_luint var_cst_4129 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_4118, var_cst_4129, inCompiler) ;
+      outArgument_outPreConditions = GGS_typeStrictSupExpression::init_21__21__21_ (var_idx_3295, var_sign_4118, var_cst_4129, inCompiler COMMA_HERE) ;
     } break ;
     default:
       break ;
@@ -7714,9 +7714,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_constant_i4_ (GGS_type
   outArgument_outValue.drop () ; // Release 'out' argument
   switch (select_spec_5F_parser_5 (inCompiler)) {
   case 1: {
-    GGS_lstring var_constantName_4469 = inCompiler->synthetizedAttribute_theString () ;
+    GGS_lstring var_constantName_4456 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 152)) ;
-    ioArgument_ioConstantMap.method_searchKey (var_constantName_4469, outArgument_outSign, outArgument_outValue, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 153)) ;
+    ioArgument_ioConstantMap.method_searchKey (var_constantName_4456, outArgument_outSign, outArgument_outValue, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 153)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 155)) ;
@@ -7784,46 +7784,46 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GGS
   outArgument_outPostConditionsList = temp_0 ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    GGS_lstring var_name_4987 = inCompiler->synthetizedAttribute_theString () ;
+    GGS_lstring var_name_4995 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 172)) ;
-    GGS_uint var_idx_5033 ;
-    ioArgument_outPlacesMap.method_searchKey (var_name_4987, var_idx_5033, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 173)) ;
-    GGS_typePostcondition var_p_5065 ;
+    GGS_uint var_idx_5041 ;
+    ioArgument_outPlacesMap.method_searchKey (var_name_4995, var_idx_5041, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 173)) ;
+    GGS_typePostcondition var_p_5073 ;
     switch (select_spec_5F_parser_7 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2D__2D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 176)) ;
-      var_p_5065 = GGS_typePostDecrement::init_21__21_ (var_name_4987, var_idx_5033, inCompiler COMMA_HERE) ;
+      var_p_5073 = GGS_typePostDecrement::init_21__21_ (var_name_4995, var_idx_5041, inCompiler COMMA_HERE) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2B__2B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 179)) ;
-      var_p_5065 = GGS_typePostIncrement::init_21__21_ (var_name_4987, var_idx_5033, inCompiler COMMA_HERE) ;
+      var_p_5073 = GGS_typePostIncrement::init_21__21_ (var_name_4995, var_idx_5041, inCompiler COMMA_HERE) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2B__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 182)) ;
-      GGS_bool var_sign_5269 ;
-      GGS_luint var_cst_5280 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5269, var_cst_5280, inCompiler) ;
-      var_p_5065 = GGS_typeAddConstant::init_21__21__21__21_ (var_name_4987, var_idx_5033, var_sign_5269, var_cst_5280, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_5267 ;
+      GGS_luint var_cst_5278 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5267, var_cst_5278, inCompiler) ;
+      var_p_5073 = GGS_typeAddConstant::init_21__21__21__21_ (var_name_4995, var_idx_5041, var_sign_5267, var_cst_5278, inCompiler COMMA_HERE) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2D__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 186)) ;
-      GGS_bool var_sign_5409 ;
-      GGS_luint var_cst_5420 ;
-      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5409, var_cst_5420, inCompiler) ;
-      var_p_5065 = GGS_typeSubConstant::init_21__21__21__21_ (var_name_4987, var_idx_5033, var_sign_5409, var_cst_5420, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_5402 ;
+      GGS_luint var_cst_5413 ;
+      nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5402, var_cst_5413, inCompiler) ;
+      var_p_5073 = GGS_typeSubConstant::init_21__21__21__21_ (var_name_4995, var_idx_5041, var_sign_5402, var_cst_5413, inCompiler COMMA_HERE) ;
     } break ;
     case 5: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 190)) ;
       switch (select_spec_5F_parser_8 (inCompiler)) {
       case 1: {
-        GGS_bool var_sign_5564 ;
-        GGS_luint var_cst_5575 ;
-        nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5564, var_cst_5575, inCompiler) ;
-        var_p_5065 = GGS_typeAssignConstant::init_21__21__21__21_ (var_name_4987, var_idx_5033, var_sign_5564, var_cst_5575, inCompiler COMMA_HERE) ;
+        GGS_bool var_sign_5552 ;
+        GGS_luint var_cst_5563 ;
+        nt_parse_5F_constant_ (ioArgument_ioConstantMap, var_sign_5552, var_cst_5563, inCompiler) ;
+        var_p_5073 = GGS_typeAssignConstant::init_21__21__21__21_ (var_name_4995, var_idx_5041, var_sign_5552, var_cst_5563, inCompiler COMMA_HERE) ;
       } break ;
       case 2: {
         inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 195)) ;
-        var_p_5065 = GGS_typeAssignInfinity::init_21__21_ (var_name_4987, var_idx_5033, inCompiler COMMA_HERE) ;
+        var_p_5073 = GGS_typeAssignInfinity::init_21__21_ (var_name_4995, var_idx_5041, inCompiler COMMA_HERE) ;
       } break ;
       default:
         break ;
@@ -7833,7 +7833,7 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GGS
       break ;
     }
     {
-    outArgument_outPostConditionsList.setter_append (var_p_5065, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 199)) ;
+    outArgument_outPostConditionsList.setter_append (var_p_5073, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 199)) ;
     }
     if (select_spec_5F_parser_6 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 201)) ;
@@ -7964,20 +7964,20 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_bound_i7_ (GGS_uint & 
   outArgument_lowTemporalBound.drop () ; // Release 'out' argument
   outArgument_highTemporalBound.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__5B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 219)) ;
-  GGS_luint var_low_6197 = inCompiler->synthetizedAttribute_ulongValue () ;
+  GGS_luint var_low_6217 = inCompiler->synthetizedAttribute_ulongValue () ;
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 220)) ;
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 221)) ;
-  GGS_luint var_high_6234 = inCompiler->synthetizedAttribute_ulongValue () ;
+  GGS_luint var_high_6254 = inCompiler->synthetizedAttribute_ulongValue () ;
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 222)) ;
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__5D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 223)) ;
-  outArgument_lowTemporalBound = var_low_6197.readProperty_uint () ;
-  outArgument_highTemporalBound = var_high_6234.readProperty_uint () ;
+  outArgument_lowTemporalBound = var_low_6217.readProperty_uint () ;
+  outArgument_highTemporalBound = var_high_6254.readProperty_uint () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GGS_bool (ComparisonKind::greaterThan, outArgument_lowTemporalBound.objectCompare (outArgument_highTemporalBound)).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_high_6234.readProperty_location (), GGS_string ("High bound must be greater than or equal to low bound"), fixItArray1  COMMA_SOURCE_FILE ("spec_parser.ggs", 227)) ;
+      inCompiler->emitSemanticError (var_high_6254.readProperty_location (), GGS_string ("High bound must be greater than or equal to low bound"), fixItArray1  COMMA_SOURCE_FILE ("spec_parser.ggs", 227)) ;
     }
   }
 }
@@ -8018,14 +8018,14 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GGS_uint & outArgum
   outArgument_outTransitionList.drop () ; // Release 'out' argument
   outArgument_outInitialMarkingList.drop () ; // Release 'out' argument
   outArgument_outCountList.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 240)) ;
   switch (select_spec_5F_parser_9 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 255)) ;
-    GGS_luint var_n_7153 = inCompiler->synthetizedAttribute_ulongValue () ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 256)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 257)) ;
-    outArgument_outHashMapSize = var_n_7153.readProperty_uint () ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 243)) ;
+    GGS_luint var_n_6856 = inCompiler->synthetizedAttribute_ulongValue () ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 244)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 245)) ;
+    outArgument_outHashMapSize = var_n_6856.readProperty_uint () ;
   } break ;
   case 2: {
     outArgument_outHashMapSize = GGS_uint (uint32_t (16U)) ;
@@ -8035,11 +8035,11 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GGS_uint & outArgum
   }
   switch (select_spec_5F_parser_10 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 263)) ;
-    GGS_luint var_n_7284 = inCompiler->synthetizedAttribute_ulongValue () ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 264)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
-    outArgument_outGarbagePeriod = var_n_7284.readProperty_uint () ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 251)) ;
+    GGS_luint var_n_6987 = inCompiler->synthetizedAttribute_ulongValue () ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 253)) ;
+    outArgument_outGarbagePeriod = var_n_6987.readProperty_uint () ;
   } break ;
   case 2: {
     outArgument_outGarbagePeriod = GGS_uint (uint32_t (16U)) ;
@@ -8047,62 +8047,62 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GGS_uint & outArgum
   default:
     break ;
   }
-  GGS_typeTransitionList temp_0 = GGS_typeTransitionList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 270)) ;
+  GGS_typeTransitionList temp_0 = GGS_typeTransitionList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 258)) ;
   outArgument_outTransitionList = temp_0 ;
-  GGS_typeVarMap temp_1 = GGS_typeVarMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 271)) ;
+  GGS_typeVarMap temp_1 = GGS_typeVarMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 259)) ;
   outArgument_outPlacesMap = temp_1 ;
-  GGS_typeCstMap temp_2 = GGS_typeCstMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 272)) ;
-  GGS_typeCstMap var_constantMap_7445 = temp_2 ;
-  GGS_countList temp_3 = GGS_countList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 273)) ;
+  GGS_typeCstMap temp_2 = GGS_typeCstMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 260)) ;
+  GGS_typeCstMap var_constantMap_7148 = temp_2 ;
+  GGS_countList temp_3 = GGS_countList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 261)) ;
   outArgument_outCountList = temp_3 ;
   bool repeatFlag_4 = true ;
   while (repeatFlag_4) {
     switch (select_spec_5F_parser_11 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 277)) ;
-      GGS_lstring var_constantName_7570 = inCompiler->synthetizedAttribute_theString () ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 279)) ;
-      GGS_bool var_sign_7634 ;
-      GGS_luint var_value_7645 ;
-      nt_parse_5F_constant_ (var_constantMap_7445, var_sign_7634, var_value_7645, inCompiler) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
+      GGS_lstring var_constantName_7274 = inCompiler->synthetizedAttribute_theString () ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 266)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 267)) ;
+      GGS_bool var_sign_7338 ;
+      GGS_luint var_value_7349 ;
+      nt_parse_5F_constant_ (var_constantMap_7148, var_sign_7338, var_value_7349, inCompiler) ;
       {
-      var_constantMap_7445.setter_insertKey (var_constantName_7570, var_sign_7634, var_value_7645, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 281)) ;
+      var_constantMap_7148.setter_insertKey (var_constantName_7274, var_sign_7338, var_value_7349, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 269)) ;
       }
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 282)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 270)) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 285)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 273)) ;
       bool repeatFlag_5 = true ;
       while (repeatFlag_5) {
-        GGS_lstring var_placeName_7788 = inCompiler->synthetizedAttribute_theString () ;
-        inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
+        GGS_lstring var_placeName_7493 = inCompiler->synthetizedAttribute_theString () ;
+        inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 275)) ;
         {
-        outArgument_outPlacesMap.setter_insertKey (var_placeName_7788, outArgument_outPlacesMap.getter_count (SOURCE_FILE ("spec_parser.ggs", 288)), inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 288)) ;
+        outArgument_outPlacesMap.setter_insertKey (var_placeName_7493, outArgument_outPlacesMap.getter_count (SOURCE_FILE ("spec_parser.ggs", 276)), inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 276)) ;
         }
         if (select_spec_5F_parser_12 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
+          inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
         }else{
           repeatFlag_5 = false ;
         }
       }
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 292)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 280)) ;
     } break ;
     case 4: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 295)) ;
-      GGS_lstring var_transitionName_7959 = inCompiler->synthetizedAttribute_theString () ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 296)) ;
-      GGS_typePreconditionExpression var_preConditions_8037 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7445, var_preConditions_8037, inCompiler) ;
-      GGS_uint var_lowTemporalBound_8076 ;
-      GGS_uint var_highTemporalBound_8099 ;
-      nt_parse_5F_bound_ (var_lowTemporalBound_8076, var_highTemporalBound_8099, inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
-      GGS_typePostconditionList var_postConditions_8189 ;
-      nt_parse_5F_postcondition_ (outArgument_outPlacesMap, var_constantMap_7445, var_postConditions_8189, inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 301)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 283)) ;
+      GGS_lstring var_transitionName_7665 = inCompiler->synthetizedAttribute_theString () ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 284)) ;
+      GGS_typePreconditionExpression var_preConditions_7743 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_preConditions_7743, inCompiler) ;
+      GGS_uint var_lowTemporalBound_7782 ;
+      GGS_uint var_highTemporalBound_7805 ;
+      nt_parse_5F_bound_ (var_lowTemporalBound_7782, var_highTemporalBound_7805, inCompiler) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
+      GGS_typePostconditionList var_postConditions_7895 ;
+      nt_parse_5F_postcondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_postConditions_7895, inCompiler) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 289)) ;
       {
-      outArgument_outTransitionList.setter_append (var_transitionName_7959, var_preConditions_8037, var_postConditions_8189, var_lowTemporalBound_8076, var_highTemporalBound_8099, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
+      outArgument_outTransitionList.setter_append (var_transitionName_7665, var_preConditions_7743, var_postConditions_7895, var_lowTemporalBound_7782, var_highTemporalBound_7805, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
       }
     } break ;
     default:
@@ -8110,72 +8110,72 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GGS_uint & outArgum
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 311)) ;
-  GGS_typeInitialMarkingList temp_6 = GGS_typeInitialMarkingList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 312)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
+  GGS_typeInitialMarkingList temp_6 = GGS_typeInitialMarkingList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 300)) ;
   outArgument_outInitialMarkingList = temp_6 ;
   bool repeatFlag_7 = true ;
   while (repeatFlag_7) {
-    GGS_lstring var_placeName_8475 = inCompiler->synthetizedAttribute_theString () ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 314)) ;
-    GGS_uint var_placeID_8531 ;
-    outArgument_outPlacesMap.method_searchKey (var_placeName_8475, var_placeID_8531, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 315)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 316)) ;
+    GGS_lstring var_placeName_8182 = inCompiler->synthetizedAttribute_theString () ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
+    GGS_uint var_placeID_8238 ;
+    outArgument_outPlacesMap.method_searchKey (var_placeName_8182, var_placeID_8238, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 303)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 304)) ;
     switch (select_spec_5F_parser_14 (inCompiler)) {
     case 1: {
-      GGS_bool var_sign_8604 ;
-      GGS_luint var_cst_8615 ;
-      nt_parse_5F_constant_ (var_constantMap_7445, var_sign_8604, var_cst_8615, inCompiler) ;
-      GGS_typePostcondition var_initValue_8649 = GGS_typeAssignConstant::init_21__21__21__21_ (var_placeName_8475, var_placeID_8531, var_sign_8604, var_cst_8615, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_8311 ;
+      GGS_luint var_cst_8322 ;
+      nt_parse_5F_constant_ (var_constantMap_7148, var_sign_8311, var_cst_8322, inCompiler) ;
+      GGS_typePostcondition var_initValue_8356 = GGS_typeAssignConstant::init_21__21__21__21_ (var_placeName_8182, var_placeID_8238, var_sign_8311, var_cst_8322, inCompiler COMMA_HERE) ;
       {
-      outArgument_outInitialMarkingList.setter_append (var_initValue_8649, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 320)) ;
+      outArgument_outInitialMarkingList.setter_append (var_initValue_8356, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 308)) ;
       }
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
-      GGS_typePostcondition var_initValue_8825 = GGS_typeAssignInfinity::init_21__21_ (var_placeName_8475, var_placeID_8531, inCompiler COMMA_HERE) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 310)) ;
+      GGS_typePostcondition var_initValue_8527 = GGS_typeAssignInfinity::init_21__21_ (var_placeName_8182, var_placeID_8238, inCompiler COMMA_HERE) ;
       {
-      outArgument_outInitialMarkingList.setter_append (var_initValue_8825, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 324)) ;
+      outArgument_outInitialMarkingList.setter_append (var_initValue_8527, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 312)) ;
       }
     } break ;
     default:
       break ;
     }
     if (select_spec_5F_parser_13 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 327)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 315)) ;
     }else{
       repeatFlag_7 = false ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 329)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 317)) ;
   bool repeatFlag_8 = true ;
   while (repeatFlag_8) {
     if (select_spec_5F_parser_15 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 333)) ;
-      GGS_lstring var_name_9043 = inCompiler->synthetizedAttribute_theString () ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 334)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 335)) ;
-      GGS_typePreconditionExpression var_conditions_9119 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7445, var_conditions_9119, inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 337)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 321)) ;
+      GGS_lstring var_name_8741 = inCompiler->synthetizedAttribute_theString () ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
+      GGS_typePreconditionExpression var_conditions_8817 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_conditions_8817, inCompiler) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 325)) ;
       {
-      outArgument_outCountList.setter_append (var_name_9043, var_conditions_9119, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 338)) ;
+      outArgument_outCountList.setter_append (var_name_8741, var_conditions_8817, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 326)) ;
       }
     }else{
       repeatFlag_8 = false ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 340)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 328)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_parse (Lexique_spec_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 240)) ;
   switch (select_spec_5F_parser_9 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 255)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 256)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 257)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 243)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 244)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 245)) ;
   } break ;
   case 2: {
   } break ;
@@ -8184,9 +8184,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_parse (Lexique_spec_5
   }
   switch (select_spec_5F_parser_10 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 263)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 264)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 251)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 253)) ;
   } break ;
   case 2: {
   } break ;
@@ -8197,86 +8197,86 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_parse (Lexique_spec_5
   while (repeatFlag_0) {
     switch (select_spec_5F_parser_11 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 277)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 279)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 266)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 267)) ;
       nt_parse_5F_constant_parse (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 282)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 270)) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 285)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 273)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
+        inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 275)) ;
         if (select_spec_5F_parser_12 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
+          inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
         }else{
           repeatFlag_1 = false ;
         }
       }
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 292)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 280)) ;
     } break ;
     case 4: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 295)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 296)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 283)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 284)) ;
       nt_parse_5F_precondition_parse (inCompiler) ;
       nt_parse_5F_bound_parse (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
       nt_parse_5F_postcondition_parse (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 301)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 289)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 311)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 314)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 316)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 304)) ;
     switch (select_spec_5F_parser_14 (inCompiler)) {
     case 1: {
       nt_parse_5F_constant_parse (inCompiler) ;
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 310)) ;
     } break ;
     default:
       break ;
     }
     if (select_spec_5F_parser_13 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 327)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 315)) ;
     }else{
       repeatFlag_2 = false ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 329)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 317)) ;
   bool repeatFlag_3 = true ;
   while (repeatFlag_3) {
     if (select_spec_5F_parser_15 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 333)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 334)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 335)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 321)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
       nt_parse_5F_precondition_parse (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 337)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 325)) ;
     }else{
       repeatFlag_3 = false ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 340)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 328)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_indexing (Lexique_spec_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_system COMMA_SOURCE_FILE ("spec_parser.ggs", 240)) ;
   switch (select_spec_5F_parser_9 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 255)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 256)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 257)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_hashmapsize COMMA_SOURCE_FILE ("spec_parser.ggs", 243)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 244)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 245)) ;
   } break ;
   case 2: {
   } break ;
@@ -8285,9 +8285,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_indexing (Lexique_spe
   }
   switch (select_spec_5F_parser_10 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 263)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 264)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_garbageperiod COMMA_SOURCE_FILE ("spec_parser.ggs", 251)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("spec_parser.ggs", 252)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 253)) ;
   } break ;
   case 2: {
   } break ;
@@ -8298,74 +8298,74 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_indexing (Lexique_spe
   while (repeatFlag_0) {
     switch (select_spec_5F_parser_11 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 277)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 279)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 266)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 267)) ;
       nt_parse_5F_constant_indexing (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 282)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 270)) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 285)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 273)) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
+        inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 275)) ;
         if (select_spec_5F_parser_12 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
+          inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
         }else{
           repeatFlag_1 = false ;
         }
       }
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 292)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 280)) ;
     } break ;
     case 4: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 295)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 296)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 283)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 284)) ;
       nt_parse_5F_precondition_indexing (inCompiler) ;
       nt_parse_5F_bound_indexing (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
       nt_parse_5F_postcondition_indexing (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 301)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 289)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 311)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 314)) ;
-    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 316)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
+    inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 304)) ;
     switch (select_spec_5F_parser_14 (inCompiler)) {
     case 1: {
       nt_parse_5F_constant_indexing (inCompiler) ;
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 310)) ;
     } break ;
     default:
       break ;
     }
     if (select_spec_5F_parser_13 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 327)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 315)) ;
     }else{
       repeatFlag_2 = false ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 329)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 317)) ;
   bool repeatFlag_3 = true ;
   while (repeatFlag_3) {
     if (select_spec_5F_parser_15 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 333)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 334)) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 335)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 321)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
       nt_parse_5F_precondition_indexing (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 337)) ;
+      inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 325)) ;
     }else{
       repeatFlag_3 = false ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 340)) ;
+  inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 328)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11535,7 +11535,7 @@ GGS_typeAssignInfinity GGS_typeAssignInfinity::extractObject (const GGS_object &
 //--------------------------------------------------------------------------------------------------
 
 static const int32_t gProductions_spec_grammar [] = {
-// At index 0 : <axiome>, in file 'spec_parser.ggs', line 245
+// At index 0 : <axiome>, in file 'spec_parser.ggs', line 233
   TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_system) // $system$
 , TOP_DOWN_NONTERMINAL (17) // <select_spec_5F_parser_9>
 , TOP_DOWN_NONTERMINAL (18) // <select_spec_5F_parser_10>
@@ -11685,23 +11685,23 @@ static const int32_t gProductions_spec_grammar [] = {
 // At index 110 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_infinity) // $infinity$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 112 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 254
+// At index 112 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_hashmapsize) // $hashmapsize$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 116 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 254
+// At index 116 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
 , TOP_DOWN_END_PRODUCTION ()
-// At index 117 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 262
+// At index 117 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_garbageperiod) // $garbageperiod$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 121 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 262
+// At index 121 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
 , TOP_DOWN_END_PRODUCTION ()
-// At index 122 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
+// At index 122 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
 , TOP_DOWN_END_PRODUCTION ()
-// At index 123 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
+// At index 123 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_const) // $const$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3D_) // $=$
@@ -11709,14 +11709,14 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (19) // <select_spec_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 130 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
+// At index 130 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_var) // $var$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (20) // <select_spec_5F_parser_12>
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (19) // <select_spec_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 136 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
+// At index 136 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_rule) // $rule$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TOP_DOWN_NONTERMINAL (1) // <parse_precondition>
@@ -11726,31 +11726,31 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (19) // <select_spec_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 145 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 286
+// At index 145 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
 , TOP_DOWN_END_PRODUCTION ()
-// At index 146 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 286
+// At index 146 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (20) // <select_spec_5F_parser_12>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 150 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 313
+// At index 150 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
 , TOP_DOWN_END_PRODUCTION ()
-// At index 151 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 313
+// At index 151 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3A__3D_) // $:=$
 , TOP_DOWN_NONTERMINAL (22) // <select_spec_5F_parser_14>
 , TOP_DOWN_NONTERMINAL (21) // <select_spec_5F_parser_13>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 157 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 317
+// At index 157 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 159 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 317
+// At index 159 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_infinity) // $infinity$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 161 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 331
+// At index 161 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
 , TOP_DOWN_END_PRODUCTION ()
-// At index 162 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 331
+// At index 162 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_count) // $count$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3A_) // $:$
@@ -11833,7 +11833,7 @@ static const ProductionNameDescriptor gProductionNames_spec_grammar [54] = {
 //--------------------------------------------------------------------------------------------------
 
 static const int32_t gProductionIndexes_spec_grammar [54] = {
-0, // index 0 : <axiome>, in file 'spec_parser.ggs', line 245
+0, // index 0 : <axiome>, in file 'spec_parser.ggs', line 233
 13, // index 1 : <parse_precondition>, in file 'spec_parser.ggs', line 53
 16, // index 2 : <term>, in file 'spec_parser.ggs', line 68
 19, // index 3 : <factor>, in file 'spec_parser.ggs', line 83
@@ -11870,22 +11870,22 @@ static const int32_t gProductionIndexes_spec_grammar [54] = {
 105, // index 34 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
 108, // index 35 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
 110, // index 36 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
-112, // index 37 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 254
-116, // index 38 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 254
-117, // index 39 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 262
-121, // index 40 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 262
-122, // index 41 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
-123, // index 42 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
-130, // index 43 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
-136, // index 44 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 274
-145, // index 45 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 286
-146, // index 46 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 286
-150, // index 47 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 313
-151, // index 48 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 313
-157, // index 49 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 317
-159, // index 50 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 317
-161, // index 51 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 331
-162, // index 52 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 331
+112, // index 37 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
+116, // index 38 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
+117, // index 39 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
+121, // index 40 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
+122, // index 41 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+123, // index 42 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+130, // index 43 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+136, // index 44 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+145, // index 45 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
+146, // index 46 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
+150, // index 47 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
+151, // index 48 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
+157, // index 49 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
+159, // index 50 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
+161, // index 51 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
+162, // index 52 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
 169 // index 53 : <>, in file '.ggs', line 0
 } ;
 
@@ -13589,21 +13589,21 @@ static void routine_after (Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSourceFile,
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uint var_hashMapSize_535 ;
-  GGS_uint var_garbagePeriod_557 ;
-  GGS_typeVarMap var_placesMap_581 ;
-  GGS_typeTransitionList var_transitionList_601 ;
-  GGS_typeInitialMarkingList var_initialMarkingList_626 ;
-  GGS_countList var_countList_655 ;
-  var_hashMapSize_535.drop () ;
-  var_garbagePeriod_557.drop () ;
-  var_placesMap_581.drop () ;
-  var_transitionList_601.drop () ;
-  var_initialMarkingList_626.drop () ;
-  var_countList_655.drop () ;
-  cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_535, var_garbagePeriod_557, var_placesMap_581, var_transitionList_601, var_initialMarkingList_626, var_countList_655  COMMA_SOURCE_FILE ("spec_main.ggs", 11)) ;
+  GGS_uint var_hashMapSize_454 ;
+  GGS_uint var_garbagePeriod_476 ;
+  GGS_typeVarMap var_placesMap_500 ;
+  GGS_typeTransitionList var_transitionList_520 ;
+  GGS_typeInitialMarkingList var_initialMarkingList_545 ;
+  GGS_countList var_countList_574 ;
+  var_hashMapSize_454.drop () ;
+  var_garbagePeriod_476.drop () ;
+  var_placesMap_500.drop () ;
+  var_transitionList_520.drop () ;
+  var_initialMarkingList_545.drop () ;
+  var_countList_574.drop () ;
+  cGrammar_spec_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, var_hashMapSize_454, var_garbagePeriod_476, var_placesMap_500, var_transitionList_520, var_initialMarkingList_545, var_countList_574  COMMA_SOURCE_FILE ("spec_main.ggs", 11)) ;
   {
-  routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (var_hashMapSize_535, var_garbagePeriod_557, var_placesMap_581, var_transitionList_601, var_initialMarkingList_626, var_countList_655, inCompiler  COMMA_SOURCE_FILE ("spec_main.ggs", 19)) ;
+  routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (var_hashMapSize_454, var_garbagePeriod_476, var_placesMap_500, var_transitionList_520, var_initialMarkingList_545, var_countList_574, inCompiler  COMMA_SOURCE_FILE ("spec_main.ggs", 19)) ;
   }
 }
 

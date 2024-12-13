@@ -1,19 +1,19 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   S E M A N T I C S                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
+//                                                              
+//   S E M A N T I C S                                          
+//                                                              
+//------------------------------------------------------------------------------------------------
 
 
 
-#--- Places map
+//--- Places map
 map @typeVarMap {
   public var @uint mIndex
   %insertSetter insertKey %errorMessage "the '%K' place is already declared"
   %searchMethod searchKey %errorMessage "the '%K' place is not declared"
 }
 
-#--- Constants map
+//--- Constants map
 map @typeCstMap {
   public var @bool mSign
   public var @luint mValue
@@ -21,7 +21,7 @@ map @typeCstMap {
   %searchMethod searchKey %errorMessage "there '%K' constant is not defined"
 }
 
-#--- Precondition description
+//--- Precondition description
 abstract class @typePreconditionExpression %generatedInSeparateFile {
 }
 
@@ -81,7 +81,7 @@ class @typeStrictSupExpression : @typePreconditionExpression {
   public var @luint mConstant
 }
 
-#--- Post condition
+//--- Post condition
 abstract class @typePostcondition %generatedInSeparateFile {
 }
 
@@ -121,12 +121,12 @@ class @typeAssignInfinity : @typePostcondition {
   public var @uint mVar
 }
 
-#--- Post condition list
+//--- Post condition list
 list @typePostconditionList {
   public var @typePostcondition mPostcondition
 }
 
-#--- Transition list
+//--- Transition list
 list @typeTransitionList {
   public var @lstring mTransitionName
   public var @typePreconditionExpression mPreconditionExpression
@@ -135,18 +135,18 @@ list @typeTransitionList {
   public var @uint mHighTemporalBound
 }
 
-#--- Initial marking description
+//--- Initial marking description
 list @typeInitialMarkingList {
   public var @typePostcondition mInitValue
 }
 
-#--- count list
+//--- count list
 list @countList {
   public var @lstring mName
   public var @typePreconditionExpression mCondition
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 extern proc generate_code (
   ?let @uint hashMapSize,
@@ -156,5 +156,5 @@ extern proc generate_code (
   ?let @typeInitialMarkingList initialMarkingList,
   ?let @countList countList)
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 

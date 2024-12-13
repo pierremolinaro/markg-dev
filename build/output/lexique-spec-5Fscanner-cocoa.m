@@ -100,14 +100,14 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
   mLexicalAttribute_ulongValue = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
-    BOOL loop1091 = YES ;
+    BOOL loop1032 = YES ;
     do {
       scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_theString, mPreviousChar) ;
       if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
       }else{
-        loop1091 = NO ;
+        loop1032 = NO ;
       }
-    }while (loop1091 && scanningOk) ;
+    }while (loop1032 && scanningOk) ;
     if (mTokenCode == 0) {
       mTokenCode = search_into_spec_5F_scanner_galgasKeyWordList (mLexicalAttribute_theString) ;
     }
@@ -115,14 +115,14 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
       mTokenCode = spec_scanner_1_identifier ;
     }
   }else if (scanningOk && ([self testForInputChar:34])) {
-    BOOL loop1557 = YES ;
+    BOOL loop1499 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:126])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_theString, mPreviousChar) ;
       }else{
-        loop1557 = NO ;
+        loop1499 = NO ;
       }
-    }while (loop1557 && scanningOk) ;
+    }while (loop1499 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = spec_scanner_1_literal_5F_string ;
     }else{
@@ -180,24 +180,24 @@ static NSInteger search_into_spec_5F_scanner_galgasKeyWordList (NSString * inSea
     mTokenCode = spec_scanner_1__26_ ;
   }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
     scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
-    BOOL loop2451 = YES ;
+    BOOL loop2395 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
       }else if (scanningOk && ([self testForInputChar:95])) {
       }else{
-        loop2451 = NO ;
+        loop2395 = NO ;
       }
-    }while (loop2451 && scanningOk) ;
+    }while (loop2395 && scanningOk) ;
     mTokenCode = spec_scanner_1_literal_5F_integer ;
   }else if (scanningOk && ([self testForInputChar:35])) {
-    BOOL loop2700 = YES ;
+    BOOL loop2645 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputChar:11] || [self testForInputChar:12] || [self testForInputFromChar:14 toChar:65533])) {
       }else{
-        loop2700 = NO ;
+        loop2645 = NO ;
       }
-    }while (loop2700 && scanningOk) ;
+    }while (loop2645 && scanningOk) ;
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else   if ([self testForInputChar:'\0']) { // End of source text ?
     mTokenCode = spec_scanner_1_ ; // Empty string code

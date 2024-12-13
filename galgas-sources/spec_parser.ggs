@@ -1,8 +1,8 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   S Y N T A X                                                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
+//                                      
+//   S Y N T A X                        
+//                                      
+//------------------------------------------------------------------------------------------------
 
 syntax spec_parser (spec_scanner) {
 
@@ -48,7 +48,7 @@ rule <parse_bound>(
  !@uint lowTemporalBound,
  !@uint highTemporalBound)
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <parse_precondition>(
   ?!@typeVarMap inPlacesMap,
@@ -59,11 +59,11 @@ rule <parse_precondition>(
   while
     $|$
     <term>( !?inPlacesMap, !?ioConstantMap, ?let right)
-    outPreConditions = @typeOrExpression.init ( !outPreConditions, !right)
+    outPreConditions = @typeOrExpression ( !outPreConditions, !right)
   end
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <term>(
   ?!@typeVarMap inPlacesMap,
@@ -74,11 +74,11 @@ rule <term>(
   while
     $&$
     <factor>( !?inPlacesMap, !?ioConstantMap, ?let right)
-    outPreConditions = @typeAndExpression.init ( !outPreConditions, !right)
+    outPreConditions = @typeAndExpression ( !outPreConditions, !right)
   end
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <factor>(
   ?!@typeVarMap inPlacesMap,
@@ -87,13 +87,13 @@ rule <factor>(
  select
    $~$
    <factor>( !?inPlacesMap, !?ioConstantMap, ?outPreConditions)
-   outPreConditions = @typeComplementExpression.init ( !outPreConditions)
+   outPreConditions = @typeComplementExpression ( !outPreConditions)
   or
    <primary>( !?inPlacesMap, !?ioConstantMap, ?outPreConditions)
   end
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <primary>(
   ?!@typeVarMap inPlacesMap,
@@ -105,10 +105,10 @@ rule <primary>(
     $)$
   or
     $true$
-    outPreConditions = @typeTrueExpression.init
+    outPreConditions = @typeTrueExpression ()
   or
     $false$
-    outPreConditions = @typeFalseExpression.init
+    outPreConditions = @typeFalseExpression ()
   or
     ${$
     $identifier$( ?let name)
@@ -116,33 +116,33 @@ rule <primary>(
     select
       $==$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeEqualExpression.init ( !idx, !sign, !cst)
+      outPreConditions = @typeEqualExpression ( !idx, !sign, !cst)
     or
       $!=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeNonEqualExpression.init ( !idx, !sign, !cst)
+      outPreConditions = @typeNonEqualExpression ( !idx, !sign, !cst)
     or
       $<=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeInfOrEqualExpression.init ( !idx, !sign, !cst)
+      outPreConditions = @typeInfOrEqualExpression ( !idx, !sign, !cst)
     or
       $>=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeSupOrEqualExpression.init ( !idx, !sign, !cst)
+      outPreConditions = @typeSupOrEqualExpression ( !idx, !sign, !cst)
     or
       $<$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeStrictInfExpression.init ( !idx, !sign, !cst)
+      outPreConditions = @typeStrictInfExpression ( !idx, !sign, !cst)
     or
       $>$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      outPreConditions = @typeStrictSupExpression.init ( !idx, !sign, !cst)
+      outPreConditions = @typeStrictSupExpression ( !idx, !sign, !cst)
     end
     $}$
   end
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <parse_constant>(
   ?!@typeCstMap ioConstantMap,
@@ -161,7 +161,7 @@ rule <parse_constant>(
   end
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <parse_postcondition>(
   ?!@typeVarMap outPlacesMap,
@@ -174,26 +174,26 @@ rule <parse_postcondition>(
     let @typePostcondition p
     select
       $--$
-      p = @typePostDecrement.init ( !name, !idx)
+      p = @typePostDecrement ( !name, !idx)
     or
       $++$
-      p = @typePostIncrement.init ( !name, !idx)
+      p = @typePostIncrement ( !name, !idx)
     or
       $+=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      p = @typeAddConstant.init ( !name, !idx, !sign, !cst)
+      p = @typeAddConstant ( !name, !idx, !sign, !cst)
     or
       $-=$
       <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-      p = @typeSubConstant.init ( !name, !idx, !sign, !cst)
+      p = @typeSubConstant ( !name, !idx, !sign, !cst)
     or
       $:=$
       select
         <parse_constant>( !?ioConstantMap, ?let sign, ?let cst)
-        p = @typeAssignConstant.init ( !name, !idx, !sign, !cst)
+        p = @typeAssignConstant ( !name, !idx, !sign, !cst)
       or
         $infinity$
-        p = @typeAssignInfinity.init ( !name, !idx)
+        p = @typeAssignInfinity ( !name, !idx)
       end
     end
     !?outPostConditionsList.append (p)
@@ -202,7 +202,7 @@ rule <parse_postcondition>(
   end
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <parse_bound>(
  !@uint lowTemporalBound,
@@ -211,7 +211,7 @@ rule <parse_bound>(
   highTemporalBound = 0
 }
 
-#---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <parse_bound>(
  !@uint lowTemporalBound,
@@ -228,19 +228,7 @@ rule <parse_bound>(
   end
 }
 
-##---------------------------------------------------------------------------*
-#
-#abstract class @MyAbstractClass {
-# @typeInitialMarkingList mInitialMarkingList ;
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#class @MyClass extends @MyAbstractClass {
-# @typeTransitionList mTransitionList ;
-#}
-#
-##---------------------------------------------------------------------------*
+//------------------------------------------------------------------------------------------------
 
 rule <axiome>(
   !@uint outHashMapSize,
@@ -250,7 +238,7 @@ rule <axiome>(
   !@typeInitialMarkingList outInitialMarkingList,
   !@countList outCountList) {
   $system$
-#--- Options
+//--- Options
   select
     $hashmapsize$
     $literal_integer$( ?let n)
@@ -272,7 +260,7 @@ rule <axiome>(
   var constantMap =@typeCstMap []
   outCountList = @countList []
   repeat
-#--- constant
+//--- constant
   while
     $const$
     $identifier$( ?let constantName)
@@ -280,7 +268,7 @@ rule <axiome>(
     <parse_constant>( !?constantMap, ?let sign, ?let value)
     !?constantMap.insertKey (!constantName, !sign, !value)
     $;$
-#--- Variables
+//--- Variables
   while
     $var$
     repeat
@@ -290,7 +278,7 @@ rule <axiome>(
       $,$
     end
     $;$
-#--- Rule
+//--- Rule
   while
     $rule$
     $literal_string$( ?let transitionName)
@@ -307,7 +295,7 @@ rule <axiome>(
       highTemporalBound
     )
   end
-#--- Init
+//--- Init
   $init$
   outInitialMarkingList = @typeInitialMarkingList []
   repeat
@@ -316,18 +304,18 @@ rule <axiome>(
     $:=$
     select
       <parse_constant>( !?constantMap, ?let sign, ?let cst)
-      let @typePostcondition initValue = @typeAssignConstant.init ( !placeName, !placeID, !sign, !cst)
+      let @typePostcondition initValue = @typeAssignConstant ( !placeName, !placeID, !sign, !cst)
       !?outInitialMarkingList.append (initValue)
     or
       $infinity$
-      let @typePostcondition initValue = @typeAssignInfinity.init ( !placeName, !placeID)
+      let @typePostcondition initValue = @typeAssignInfinity ( !placeName, !placeID)
       !?outInitialMarkingList.append (initValue)
     end
   while
     $,$
   end
   $;$
-#--- Count list
+//--- Count list
   repeat
   while
     $count$
