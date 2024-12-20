@@ -4,60 +4,61 @@
 //--- END OF USER ZONE 1
 
 import AppKit
+import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 //   LEXIQUE spec_scanner
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gFont_spec_scanner = EBGenericPreferenceProperty <NSFont> (
+@MainActor fileprivate let gFont_spec_scanner = EBPreferenceProperty <NSFont> (
   defaultValue: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular),
   prefKey: "FontFor_" + spec_scanner_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gLineHeight_spec_scanner = EBGenericPreferenceProperty <Int> (
+@MainActor fileprivate let gLineHeight_spec_scanner = EBPreferenceProperty <Int> (
   defaultValue: 12,
   prefKey: "LineHeightFor_" + spec_scanner_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gColors_spec_scanner : [EBGenericPreferenceProperty <NSColor>] = [
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-identifier"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-keyWords"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-delimitors"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-integerStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-stringStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_spec_scanner_lexical_error"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_spec_scanner_template")
+@MainActor fileprivate let gColors_spec_scanner : [EBPreferenceProperty <NSColor>] = [
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-identifier"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-keyWords"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-delimitors"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-integerStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_spec_scanner-stringStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_spec_scanner_lexical_error"),
+  EBPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_spec_scanner_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gBoldStyle_spec_scanner : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-identifier"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-keyWords"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-delimitors"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-integerStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-stringStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_spec_scanner_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner_template")
+@MainActor fileprivate let gBoldStyle_spec_scanner : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-identifier"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-keyWords"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-delimitors"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-integerStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner-stringStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_spec_scanner_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_spec_scanner_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gItalicStyle_spec_scanner : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-identifier"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-keyWords"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-delimitors"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-integerStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-stringStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner_template")
+@MainActor fileprivate let gItalicStyle_spec_scanner : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-identifier"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-keyWords"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-delimitors"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-integerStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner-stringStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_spec_scanner_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -189,27 +190,27 @@ class SWIFT_Lexique_spec_scanner : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var font : EBGenericPreferenceProperty <NSFont> { return gFont_spec_scanner }
+  var font : EBPreferenceProperty <NSFont> { return gFont_spec_scanner }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var lineHeight : EBGenericPreferenceProperty <Int> { return gLineHeight_spec_scanner }
+  var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_spec_scanner }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+  func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {
     return gColors_spec_scanner [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gBoldStyle_spec_scanner [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func italic (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gItalicStyle_spec_scanner [Int (inStyleIndex)]
   }
 
@@ -469,6 +470,7 @@ class SWIFT_Lexique_spec_scanner : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
 
 //--------------------------------------------------------------------------------------------------
 

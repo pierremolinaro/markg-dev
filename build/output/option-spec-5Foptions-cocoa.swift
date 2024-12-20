@@ -13,8 +13,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "doNotPrintIteration",
     commandChar: "D",
     commandString: "do-not-print-iterations-message",
-    comment: "do not print a message for every iteration",
-    defaultValue: ""
+    comment: "do not print a message for every iteration"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -22,8 +21,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "computeSimultaneousFiring",
     commandChar: "",
     commandString: "simultaneous-firing",
-    comment: "perform simultaneous firing",
-    defaultValue: ""
+    comment: "perform simultaneous firing"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -31,8 +29,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printNodes",
     commandChar: "N",
     commandString: "print-nodes",
-    comment: "print accessibility set nodes",
-    defaultValue: ""
+    comment: "print accessibility set nodes"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -40,8 +37,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printStates",
     commandChar: "S",
     commandString: "print-states",
-    comment: "print accessibility states",
-    defaultValue: ""
+    comment: "print accessibility states"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -49,8 +45,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printInference",
     commandChar: "",
     commandString: "print-inference",
-    comment: "print inference expression for each transition",
-    defaultValue: ""
+    comment: "print inference expression for each transition"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -58,8 +53,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printMinMax",
     commandChar: "p",
     commandString: "print-min-maxs",
-    comment: "print min and max value for each variable",
-    defaultValue: ""
+    comment: "print min and max value for each variable"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -67,8 +61,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printPreConditions",
     commandChar: "P",
     commandString: "print-preconditions",
-    comment: "print precondition expression for each transition",
-    defaultValue: ""
+    comment: "print precondition expression for each transition"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -76,8 +69,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printIterationStates",
     commandChar: "i",
     commandString: "print-iterations-states",
-    comment: "print source and target states for each transition of every iteration",
-    defaultValue: ""
+    comment: "print source and target states for each transition of every iteration"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -85,8 +77,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printTemporalBounds",
     commandChar: "t",
     commandString: "print-temporal-bounds",
-    comment: "print temporal bounds for each transition",
-    defaultValue: ""
+    comment: "print temporal bounds for each transition"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -94,8 +85,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "printFiring",
     commandChar: "f",
     commandString: "print-transitions-firing-count",
-    comment: "print transitions firing count",
-    defaultValue: ""
+    comment: "print transitions firing count"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
@@ -103,8 +93,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "stopAfterIteration",
     commandChar: "s",
     commandString: "stop-after-iteration",
-    comment: "stop after performing given iterations (0 means never stop)",
-    defaultValue: "0"
+    comment: "stop after performing given iterations (0 means never stop)"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
@@ -112,8 +101,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "quiet_output",
     commandChar: "q",
     commandString: "quiet",
-    comment: "Quiet output",
-    defaultValue: ""
+    comment: "Quiet output"
   ))
   return array
 }
