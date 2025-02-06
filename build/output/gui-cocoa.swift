@@ -154,8 +154,8 @@ class SWIFT_Tokenizer_0_spec_scanner : SWIFT_Lexique_spec_scanner, SWIFT_Tokeniz
 //   Global functions
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
-  var result : SWIFT_Tokenizer_Protocol? = nil
+@MainActor func tokenizerFor (extension inExtension : String) -> (any SWIFT_Tokenizer_Protocol)? {
+  var result : (any SWIFT_Tokenizer_Protocol)? = nil
   if inExtension == "mg" {
     result = SWIFT_Tokenizer_0_spec_scanner ()
   }
@@ -164,7 +164,7 @@ class SWIFT_Tokenizer_0_spec_scanner : SWIFT_Lexique_spec_scanner, SWIFT_Tokeniz
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
+@MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {
   return [
     SWIFT_Tokenizer_0_spec_scanner ()
   ]
