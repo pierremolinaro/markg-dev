@@ -5,7 +5,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-func enterOptions () -> [SWIFT_CommandLineOption] {
+func enterOptionsFor_spec_5F_options () -> [SWIFT_CommandLineOption] {
   var array = [SWIFT_CommandLineOption] ()
   array.append (SWIFT_CommandLineOption (
     domainName: "spec_options",
