@@ -410,7 +410,7 @@ vddComputation (uint32_t inGarbagePeriod,
   }
   timer.stopTimer () ;
 //--- Compute count list
-  cEnumerator_countList current (inCountList, EnumerationOrder::up) ;
+  UpEnumerator_countList current (inCountList) ;
   while (current.hasCurrentObject ()) {
     auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).ptr () ;
     const C_AEDD aedd = p->buildAEDDexpression () ;
@@ -731,7 +731,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
   }
   timer.stopTimer () ;
 //--- Compute count list
-  cEnumerator_countList current (inCountList, EnumerationOrder::up) ;
+  UpEnumerator_countList current (inCountList) ;
   while (current.hasCurrentObject ()) {
     auto p = (const cPtr_typePreconditionExpression *) current.current_mCondition (HERE).ptr () ;
     const C_AEDD aedd = p->buildAEDDexpression () ;
@@ -821,7 +821,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
   const int32_t transitionsCount = (int32_t) inTransitionList.count () ;
 //--- Build places names array
   TC_UniqueArray <String> placeNames (placesCount COMMA_HERE) ;
-  cEnumerator_typeVarMap current (inPlacesMap, EnumerationOrder::up) ;
+  UpEnumerator_typeVarMap current (inPlacesMap) ;
   while (current.hasCurrentObject ()) {
     placeNames.appendObject (current.current_lkey (HERE).mProperty_string.stringValue ()) ;
     current.gotoNextObject () ;
@@ -830,7 +830,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
 //  printf ("BUILD INITIAL MARKING ARRAY\n") ; fflush (stdout) ;
   C_VDD initialMarking ;
   initialMarking.setToNullSet () ;
-  cEnumerator_typeInitialMarkingList currentPlace (inInitialMarkingList, EnumerationOrder::up) ;
+  UpEnumerator_typeInitialMarkingList currentPlace (inInitialMarkingList) ;
   while (currentPlace.hasCurrentObject ()) {
     auto q = (const cPtr_typePostcondition *) currentPlace.current_mInitValue (HERE).ptr () ;
     q->buildInitialMarking (initialMarking) ;
@@ -843,7 +843,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
   cPostConditionArray postcondition (transitionsCount, placesCount COMMA_HERE) ;
   TC_UniqueArray <uint32_t> lowBounds (transitionsCount COMMA_HERE) ;
   TC_UniqueArray <uint32_t> highBounds (transitionsCount COMMA_HERE) ;
-  cEnumerator_typeTransitionList currentTrans (inTransitionList, EnumerationOrder::up) ;
+  UpEnumerator_typeTransitionList currentTrans (inTransitionList) ;
   int32_t t = 0 ;
   while (currentTrans.hasCurrentObject ()) {
     lowBounds.appendObject (currentTrans.current_mLowTemporalBound (HERE).uintValue ()) ;
@@ -860,7 +860,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
       fflush (stdout) ;
     }
 //    printf ("post expression\n") ; fflush (stdout) ;
-    cEnumerator_typePostconditionList p (currentTrans.current_mPostconditionList (HERE), EnumerationOrder::up) ;
+    UpEnumerator_typePostconditionList p (currentTrans.current_mPostconditionList (HERE)) ;
     while (p.hasCurrentObject ()) {
       auto q = (const cPtr_typePostcondition *) p.current_mPostcondition (HERE).ptr () ;
       q->buildPostCondition (t, inCompiler, postcondition) ;
@@ -941,7 +941,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
       s.appendString ("): ") ;
       preconditionExp (i COMMA_HERE).printAEDDnodes (s.cString ()) ;
     }
-    cEnumerator_countList currentCount (inCountList, EnumerationOrder::up) ;
+    UpEnumerator_countList currentCount (inCountList) ;
     while (currentCount.hasCurrentObject ()) {
       String s ;
       s.appendString ("Count \"") ;
