@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typePreconditionExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typePreconditionExpression : public acStrongPtr_class {

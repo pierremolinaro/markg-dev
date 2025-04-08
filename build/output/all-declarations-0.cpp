@@ -8,9 +8,7 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_32_lstringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_lstringlist : public cCollectionElement {
@@ -103,9 +101,8 @@ GGS__32_lstringlist GGS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::enterElement (const GGS__32_lstringlist_2E_element & inValue,
-                                        Compiler * /* inCompiler */
-                                        COMMA_LOCATION_ARGS) {
+void GGS__32_lstringlist::plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inValue
+                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -144,9 +141,9 @@ void GGS__32_lstringlist::makeAttributesFromObjects (capCollectionElement & outA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::addAssign_operation (const GGS_lstring & inOperand0,
-                                               const GGS_lstring & inOperand1
-                                               COMMA_LOCATION_ARGS) {
+void GGS__32_lstringlist::addAssignOperation (const GGS_lstring & inOperand0,
+                                              const GGS_lstring & inOperand1
+                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement__32_lstringlist (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -336,9 +333,9 @@ GGS__32_lstringlist GGS__32_lstringlist::getter_subListToIndex (const GGS_uint &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::plusAssign_operation (const GGS__32_lstringlist inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__32_lstringlist::plusAssignOperation (const GGS__32_lstringlist inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1407,46 +1404,46 @@ GGS_luint Lexique_spec_5F_scanner::synthetizedAttribute_ulongValue (void) const 
 
 GGS_stringlist Lexique_spec_5F_scanner::symbols (LOCATION_ARGS) {
   GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  result.addAssign_operation (GGS_string ("identifier") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("literal_string") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("literal_integer") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("system") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("var") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("rule") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("init") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("end") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("true") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("false") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("const") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("count") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("infinity") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("hashmapsize") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("garbageperiod") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (">") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("<=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("==") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("|") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("~") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (",") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (";") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("(") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (")") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("++") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("--") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("+=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("-=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("{") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("}") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("-") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("[") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("]") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literal_integer") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("system") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("var") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("rule") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("init") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("end") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("true") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("false") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("const") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("count") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("infinity") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("hashmapsize") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("garbageperiod") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (">") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("<=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("==") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("|") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("~") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (",") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (";") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("(") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (")") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("++") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("--") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("+=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("-=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("{") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("}") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("-") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("[") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("]") COMMA_HERE) ;
   return result ;
 }
 
@@ -1696,51 +1693,6 @@ GGS_typeVarMap GGS_typeVarMap::getter_overriddenMap (Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
   GGS_typeVarMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeVarMap::enterElement (const GGS_typeVarMap_2E_element & inValue,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) {
-  cMapElement_typeVarMap * p = nullptr ;
-  macroMyNew (p, cMapElement_typeVarMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@typeVarMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeVarMap::addAssign_operation (const GGS_lstring & inKey,
-                                          const GGS_uint & inArgument0,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  cMapElement_typeVarMap * p = nullptr ;
-  macroMyNew (p, cMapElement_typeVarMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@typeVarMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeVarMap GGS_typeVarMap::add_operation (const GGS_typeVarMap & inOperand,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const {
-  GGS_typeVarMap result = *this ;
-  UpEnumerator_typeVarMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -2052,52 +2004,6 @@ GGS_typeCstMap GGS_typeCstMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeCstMap::enterElement (const GGS_typeCstMap_2E_element & inValue,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) {
-  cMapElement_typeCstMap * p = nullptr ;
-  macroMyNew (p, cMapElement_typeCstMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@typeCstMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeCstMap::addAssign_operation (const GGS_lstring & inKey,
-                                          const GGS_bool & inArgument0,
-                                          const GGS_luint & inArgument1,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  cMapElement_typeCstMap * p = nullptr ;
-  macroMyNew (p, cMapElement_typeCstMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@typeCstMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeCstMap GGS_typeCstMap::add_operation (const GGS_typeCstMap & inOperand,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const {
-  GGS_typeCstMap result = *this ;
-  UpEnumerator_typeCstMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mSign (HERE), enumerator.current_mValue (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_typeCstMap::setter_insertKey (GGS_lstring inKey,
                                        GGS_bool inArgument0,
                                        GGS_luint inArgument1,
@@ -2353,6 +2259,11 @@ ComparisonResult GGS_typePreconditionExpression::objectCompare (const GGS_typePr
 
 GGS_typePreconditionExpression::GGS_typePreconditionExpression (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_typePreconditionExpression::
+typePreconditionExpression_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4628,6 +4539,11 @@ GGS_typePostcondition::GGS_typePostcondition (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_typePostcondition::
+typePostcondition_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_typePostcondition::GGS_typePostcondition (const cPtr_typePostcondition * inSourcePtr) :
@@ -5459,9 +5375,7 @@ GGS_typeAssignInfinity_2E_weak GGS_typeAssignInfinity_2E_weak::extractObject (co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@typePostconditionList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typePostconditionList : public cCollectionElement {
@@ -5548,9 +5462,8 @@ GGS_typePostconditionList GGS_typePostconditionList::init (Compiler * COMMA_UNUS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typePostconditionList::enterElement (const GGS_typePostconditionList_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) {
+void GGS_typePostconditionList::plusPlusAssignOperation (const GGS_typePostconditionList_2E_element & inValue
+                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_typePostconditionList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -5586,8 +5499,8 @@ void GGS_typePostconditionList::makeAttributesFromObjects (capCollectionElement 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typePostconditionList::addAssign_operation (const GGS_typePostcondition & inOperand0
-                                                     COMMA_LOCATION_ARGS) {
+void GGS_typePostconditionList::addAssignOperation (const GGS_typePostcondition & inOperand0
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_typePostconditionList (inOperand0 COMMA_THERE)) ;
@@ -5760,9 +5673,9 @@ GGS_typePostconditionList GGS_typePostconditionList::getter_subListToIndex (cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typePostconditionList::plusAssign_operation (const GGS_typePostconditionList inOperand,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_typePostconditionList::plusAssignOperation (const GGS_typePostconditionList inOperand,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -5895,9 +5808,7 @@ GGS_typePostconditionList GGS_typePostconditionList::extractObject (const GGS_ob
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@typeTransitionList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typeTransitionList : public cCollectionElement {
@@ -6008,9 +5919,8 @@ GGS_typeTransitionList GGS_typeTransitionList::init (Compiler * COMMA_UNUSED_LOC
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeTransitionList::enterElement (const GGS_typeTransitionList_2E_element & inValue,
-                                           Compiler * /* inCompiler */
-                                           COMMA_LOCATION_ARGS) {
+void GGS_typeTransitionList::plusPlusAssignOperation (const GGS_typeTransitionList_2E_element & inValue
+                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_typeTransitionList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -6058,12 +5968,12 @@ void GGS_typeTransitionList::makeAttributesFromObjects (capCollectionElement & o
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeTransitionList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                  const GGS_typePreconditionExpression & inOperand1,
-                                                  const GGS_typePostconditionList & inOperand2,
-                                                  const GGS_uint & inOperand3,
-                                                  const GGS_uint & inOperand4
-                                                  COMMA_LOCATION_ARGS) {
+void GGS_typeTransitionList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                 const GGS_typePreconditionExpression & inOperand1,
+                                                 const GGS_typePostconditionList & inOperand2,
+                                                 const GGS_uint & inOperand3,
+                                                 const GGS_uint & inOperand4
+                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_typeTransitionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -6304,9 +6214,9 @@ GGS_typeTransitionList GGS_typeTransitionList::getter_subListToIndex (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeTransitionList::plusAssign_operation (const GGS_typeTransitionList inOperand,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_typeTransitionList::plusAssignOperation (const GGS_typeTransitionList inOperand,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6619,9 +6529,7 @@ GGS_typeTransitionList GGS_typeTransitionList::extractObject (const GGS_object &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@typeInitialMarkingList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typeInitialMarkingList : public cCollectionElement {
@@ -6708,9 +6616,8 @@ GGS_typeInitialMarkingList GGS_typeInitialMarkingList::init (Compiler * COMMA_UN
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeInitialMarkingList::enterElement (const GGS_typeInitialMarkingList_2E_element & inValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) {
+void GGS_typeInitialMarkingList::plusPlusAssignOperation (const GGS_typeInitialMarkingList_2E_element & inValue
+                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_typeInitialMarkingList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -6746,8 +6653,8 @@ void GGS_typeInitialMarkingList::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeInitialMarkingList::addAssign_operation (const GGS_typePostcondition & inOperand0
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_typeInitialMarkingList::addAssignOperation (const GGS_typePostcondition & inOperand0
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_typeInitialMarkingList (inOperand0 COMMA_THERE)) ;
@@ -6920,9 +6827,9 @@ GGS_typeInitialMarkingList GGS_typeInitialMarkingList::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeInitialMarkingList::plusAssign_operation (const GGS_typeInitialMarkingList inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_typeInitialMarkingList::plusAssignOperation (const GGS_typeInitialMarkingList inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7055,9 +6962,7 @@ GGS_typeInitialMarkingList GGS_typeInitialMarkingList::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@countList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_countList : public cCollectionElement {
@@ -7150,9 +7055,8 @@ GGS_countList GGS_countList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_countList::enterElement (const GGS_countList_2E_element & inValue,
-                                  Compiler * /* inCompiler */
-                                  COMMA_LOCATION_ARGS) {
+void GGS_countList::plusPlusAssignOperation (const GGS_countList_2E_element & inValue
+                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_countList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -7191,9 +7095,9 @@ void GGS_countList::makeAttributesFromObjects (capCollectionElement & outAttribu
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_countList::addAssign_operation (const GGS_lstring & inOperand0,
-                                         const GGS_typePreconditionExpression & inOperand1
-                                         COMMA_LOCATION_ARGS) {
+void GGS_countList::addAssignOperation (const GGS_lstring & inOperand0,
+                                        const GGS_typePreconditionExpression & inOperand1
+                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_countList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -7383,9 +7287,9 @@ GGS_countList GGS_countList::getter_subListToIndex (const GGS_uint & inIndex,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_countList::plusAssign_operation (const GGS_countList inOperand,
-                                          Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_countList::plusAssignOperation (const GGS_countList inOperand,
+                                         Compiler * /* inCompiler */
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7985,10 +7889,9 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GGS
                                                                              GGS_typePostconditionList & outArgument_outPostConditionsList,
                                                                              Lexique_spec_5F_scanner * inCompiler) {
   outArgument_outPostConditionsList.drop () ; // Release 'out' argument
-  GGS_typePostconditionList temp_0 = GGS_typePostconditionList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 170)) ;
-  outArgument_outPostConditionsList = temp_0 ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
+  outArgument_outPostConditionsList = GGS_typePostconditionList::init (inCompiler COMMA_HERE) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
     GGS_lstring var_name_4995 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 172)) ;
     GGS_uint var_idx_5041 ;
@@ -8043,7 +7946,7 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_parse_5F_postcondition_i5_ (GGS
     if (select_spec_5F_parser_6 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 201)) ;
     }else{
-      repeatFlag_1 = false ;
+      repeatFlag_0 = false ;
     }
   }
 }
@@ -8252,94 +8155,89 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GGS_uint & outArgum
   default:
     break ;
   }
-  GGS_typeTransitionList temp_0 = GGS_typeTransitionList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 258)) ;
-  outArgument_outTransitionList = temp_0 ;
-  GGS_typeVarMap temp_1 = GGS_typeVarMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 259)) ;
-  outArgument_outPlacesMap = temp_1 ;
-  GGS_typeCstMap temp_2 = GGS_typeCstMap::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 260)) ;
-  GGS_typeCstMap var_constantMap_7148 = temp_2 ;
-  GGS_countList temp_3 = GGS_countList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 261)) ;
-  outArgument_outCountList = temp_3 ;
-  bool repeatFlag_4 = true ;
-  while (repeatFlag_4) {
+  outArgument_outTransitionList = GGS_typeTransitionList::init (inCompiler COMMA_HERE) ;
+  outArgument_outPlacesMap = GGS_typeVarMap::init (inCompiler COMMA_HERE) ;
+  GGS_typeCstMap var_constantMap_7148 = GGS_typeCstMap::init (inCompiler COMMA_HERE) ;
+  outArgument_outCountList = GGS_countList::init (inCompiler COMMA_HERE) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
     switch (select_spec_5F_parser_11 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_const COMMA_SOURCE_FILE ("spec_parser.ggs", 265)) ;
-      GGS_lstring var_constantName_7274 = inCompiler->synthetizedAttribute_theString () ;
+      GGS_lstring var_constantName_7275 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 266)) ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 267)) ;
-      GGS_bool var_sign_7338 ;
-      GGS_luint var_value_7349 ;
-      nt_parse_5F_constant_ (var_constantMap_7148, var_sign_7338, var_value_7349, inCompiler) ;
+      GGS_bool var_sign_7339 ;
+      GGS_luint var_value_7350 ;
+      nt_parse_5F_constant_ (var_constantMap_7148, var_sign_7339, var_value_7350, inCompiler) ;
       {
-      var_constantMap_7148.setter_insertKey (var_constantName_7274, var_sign_7338, var_value_7349, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 269)) ;
+      var_constantMap_7148.setter_insertKey (var_constantName_7275, var_sign_7339, var_value_7350, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 269)) ;
       }
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 270)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_var COMMA_SOURCE_FILE ("spec_parser.ggs", 273)) ;
-      bool repeatFlag_5 = true ;
-      while (repeatFlag_5) {
-        GGS_lstring var_placeName_7493 = inCompiler->synthetizedAttribute_theString () ;
+      bool repeatFlag_1 = true ;
+      while (repeatFlag_1) {
+        GGS_lstring var_placeName_7494 = inCompiler->synthetizedAttribute_theString () ;
         inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 275)) ;
         {
-        outArgument_outPlacesMap.setter_insertKey (var_placeName_7493, outArgument_outPlacesMap.getter_count (SOURCE_FILE ("spec_parser.ggs", 276)), inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 276)) ;
+        outArgument_outPlacesMap.setter_insertKey (var_placeName_7494, outArgument_outPlacesMap.getter_count (SOURCE_FILE ("spec_parser.ggs", 276)), inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 276)) ;
         }
         if (select_spec_5F_parser_12 (inCompiler) == 2) {
           inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 278)) ;
         }else{
-          repeatFlag_5 = false ;
+          repeatFlag_1 = false ;
         }
       }
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 280)) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_rule COMMA_SOURCE_FILE ("spec_parser.ggs", 283)) ;
-      GGS_lstring var_transitionName_7665 = inCompiler->synthetizedAttribute_theString () ;
+      GGS_lstring var_transitionName_7666 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 284)) ;
-      GGS_typePreconditionExpression var_preConditions_7743 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_preConditions_7743, inCompiler) ;
-      GGS_uint var_lowTemporalBound_7782 ;
-      GGS_uint var_highTemporalBound_7805 ;
-      nt_parse_5F_bound_ (var_lowTemporalBound_7782, var_highTemporalBound_7805, inCompiler) ;
+      GGS_typePreconditionExpression var_preConditions_7744 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_preConditions_7744, inCompiler) ;
+      GGS_uint var_lowTemporalBound_7783 ;
+      GGS_uint var_highTemporalBound_7806 ;
+      nt_parse_5F_bound_ (var_lowTemporalBound_7783, var_highTemporalBound_7806, inCompiler) ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 287)) ;
-      GGS_typePostconditionList var_postConditions_7895 ;
-      nt_parse_5F_postcondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_postConditions_7895, inCompiler) ;
+      GGS_typePostconditionList var_postConditions_7896 ;
+      nt_parse_5F_postcondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_postConditions_7896, inCompiler) ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 289)) ;
       {
-      outArgument_outTransitionList.setter_append (var_transitionName_7665, var_preConditions_7743, var_postConditions_7895, var_lowTemporalBound_7782, var_highTemporalBound_7805, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
+      outArgument_outTransitionList.setter_append (var_transitionName_7666, var_preConditions_7744, var_postConditions_7896, var_lowTemporalBound_7783, var_highTemporalBound_7806, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 290)) ;
       }
     } break ;
     default:
-      repeatFlag_4 = false ;
+      repeatFlag_0 = false ;
       break ;
     }
   }
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_init COMMA_SOURCE_FILE ("spec_parser.ggs", 299)) ;
-  GGS_typeInitialMarkingList temp_6 = GGS_typeInitialMarkingList::init (inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 300)) ;
-  outArgument_outInitialMarkingList = temp_6 ;
-  bool repeatFlag_7 = true ;
-  while (repeatFlag_7) {
-    GGS_lstring var_placeName_8182 = inCompiler->synthetizedAttribute_theString () ;
+  outArgument_outInitialMarkingList = GGS_typeInitialMarkingList::init (inCompiler COMMA_HERE) ;
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
+    GGS_lstring var_placeName_8183 = inCompiler->synthetizedAttribute_theString () ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("spec_parser.ggs", 302)) ;
-    GGS_uint var_placeID_8238 ;
-    outArgument_outPlacesMap.method_searchKey (var_placeName_8182, var_placeID_8238, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 303)) ;
+    GGS_uint var_placeID_8239 ;
+    outArgument_outPlacesMap.method_searchKey (var_placeName_8183, var_placeID_8239, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 303)) ;
     inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A__3D_ COMMA_SOURCE_FILE ("spec_parser.ggs", 304)) ;
     switch (select_spec_5F_parser_14 (inCompiler)) {
     case 1: {
-      GGS_bool var_sign_8311 ;
-      GGS_luint var_cst_8322 ;
-      nt_parse_5F_constant_ (var_constantMap_7148, var_sign_8311, var_cst_8322, inCompiler) ;
-      GGS_typePostcondition var_initValue_8356 = GGS_typeAssignConstant::init_21__21__21__21_ (var_placeName_8182, var_placeID_8238, var_sign_8311, var_cst_8322, inCompiler COMMA_HERE) ;
+      GGS_bool var_sign_8312 ;
+      GGS_luint var_cst_8323 ;
+      nt_parse_5F_constant_ (var_constantMap_7148, var_sign_8312, var_cst_8323, inCompiler) ;
+      GGS_typePostcondition var_initValue_8357 = GGS_typeAssignConstant::init_21__21__21__21_ (var_placeName_8183, var_placeID_8239, var_sign_8312, var_cst_8323, inCompiler COMMA_HERE) ;
       {
-      outArgument_outInitialMarkingList.setter_append (var_initValue_8356, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 308)) ;
+      outArgument_outInitialMarkingList.setter_append (var_initValue_8357, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 308)) ;
       }
     } break ;
     case 2: {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_infinity COMMA_SOURCE_FILE ("spec_parser.ggs", 310)) ;
-      GGS_typePostcondition var_initValue_8527 = GGS_typeAssignInfinity::init_21__21_ (var_placeName_8182, var_placeID_8238, inCompiler COMMA_HERE) ;
+      GGS_typePostcondition var_initValue_8528 = GGS_typeAssignInfinity::init_21__21_ (var_placeName_8183, var_placeID_8239, inCompiler COMMA_HERE) ;
       {
-      outArgument_outInitialMarkingList.setter_append (var_initValue_8527, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 312)) ;
+      outArgument_outInitialMarkingList.setter_append (var_initValue_8528, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 312)) ;
       }
     } break ;
     default:
@@ -8348,25 +8246,25 @@ void cParser_spec_5F_parser::rule_spec_5F_parser_axiome_i8_ (GGS_uint & outArgum
     if (select_spec_5F_parser_13 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("spec_parser.ggs", 315)) ;
     }else{
-      repeatFlag_7 = false ;
+      repeatFlag_2 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 317)) ;
-  bool repeatFlag_8 = true ;
-  while (repeatFlag_8) {
+  bool repeatFlag_3 = true ;
+  while (repeatFlag_3) {
     if (select_spec_5F_parser_15 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_count COMMA_SOURCE_FILE ("spec_parser.ggs", 321)) ;
-      GGS_lstring var_name_8741 = inCompiler->synthetizedAttribute_theString () ;
+      GGS_lstring var_name_8742 = inCompiler->synthetizedAttribute_theString () ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("spec_parser.ggs", 322)) ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("spec_parser.ggs", 323)) ;
-      GGS_typePreconditionExpression var_conditions_8817 ;
-      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_conditions_8817, inCompiler) ;
+      GGS_typePreconditionExpression var_conditions_8818 ;
+      nt_parse_5F_precondition_ (outArgument_outPlacesMap, var_constantMap_7148, var_conditions_8818, inCompiler) ;
       inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("spec_parser.ggs", 325)) ;
       {
-      outArgument_outCountList.setter_append (var_name_8741, var_conditions_8817, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 326)) ;
+      outArgument_outCountList.setter_append (var_name_8742, var_conditions_8818, inCompiler COMMA_SOURCE_FILE ("spec_parser.ggs", 326)) ;
       }
     }else{
-      repeatFlag_8 = false ;
+      repeatFlag_3 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_spec_5F_scanner::kToken_end COMMA_SOURCE_FILE ("spec_parser.ggs", 328)) ;
@@ -12990,9 +12888,7 @@ GGS_typeVarMap_2E_element GGS_typeVarMap_2E_element::extractObject (const GGS_ob
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @typeVarMap_2E_element_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeVarMap_2E_element_3F_::GGS_typeVarMap_2E_element_3F_ (void) :
@@ -13251,9 +13147,7 @@ GGS_typeCstMap_2E_element GGS_typeCstMap_2E_element::extractObject (const GGS_ob
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Optional @typeCstMap_2E_element_3F_
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeCstMap_2E_element_3F_::GGS_typeCstMap_2E_element_3F_ (void) :

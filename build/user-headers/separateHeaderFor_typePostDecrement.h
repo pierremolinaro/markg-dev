@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typePostDecrement class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typePostDecrement : public cPtr_typePostcondition {

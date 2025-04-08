@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typePostIncrement class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typePostIncrement : public cPtr_typePostcondition {

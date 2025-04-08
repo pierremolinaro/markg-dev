@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeFalseExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeFalseExpression : public cPtr_typePreconditionExpression {

@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeNonEqualExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeNonEqualExpression : public cPtr_typePreconditionExpression {

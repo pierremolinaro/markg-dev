@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typePostcondition class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typePostcondition : public acStrongPtr_class {

@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeComplementExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeComplementExpression : public cPtr_typePreconditionExpression {

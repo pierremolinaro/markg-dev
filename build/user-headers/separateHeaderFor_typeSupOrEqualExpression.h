@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeSupOrEqualExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeSupOrEqualExpression : public cPtr_typePreconditionExpression {

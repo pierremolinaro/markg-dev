@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeAssignInfinity class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeAssignInfinity : public cPtr_typePostcondition {

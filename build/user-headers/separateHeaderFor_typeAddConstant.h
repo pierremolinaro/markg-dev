@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeAddConstant class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeAddConstant : public cPtr_typePostcondition {

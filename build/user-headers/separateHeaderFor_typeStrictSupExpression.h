@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeStrictSupExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeStrictSupExpression : public cPtr_typePreconditionExpression {

@@ -167,7 +167,7 @@ rule <parse_postcondition>(
   ?!@typeVarMap outPlacesMap,
   ?!@typeCstMap ioConstantMap,
   !@typePostconditionList outPostConditionsList) {
-  outPostConditionsList = @typePostconditionList []
+  outPostConditionsList = @typePostconditionList ()
   repeat
     $identifier$( ?let name)
     outPlacesMap.searchKey (!name, ?let idx)
@@ -255,10 +255,10 @@ rule <axiome>(
   or
     outGarbagePeriod = 16
   end
-  outTransitionList = @typeTransitionList []
-  outPlacesMap = @typeVarMap []
-  var constantMap =@typeCstMap []
-  outCountList = @countList []
+  outTransitionList = @typeTransitionList ()
+  outPlacesMap = @typeVarMap ()
+  var constantMap = @typeCstMap ()
+  outCountList = @countList ()
   repeat
 //--- constant
   while
@@ -297,7 +297,7 @@ rule <axiome>(
   end
 //--- Init
   $init$
-  outInitialMarkingList = @typeInitialMarkingList []
+  outInitialMarkingList = @typeInitialMarkingList ()
   repeat
     $identifier$( ?let placeName)
     outPlacesMap.searchKey (!placeName, ?let placeID)

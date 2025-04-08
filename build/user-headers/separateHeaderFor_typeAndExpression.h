@@ -3,9 +3,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @typeAndExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_typeAndExpression : public cPtr_typePreconditionExpression {
