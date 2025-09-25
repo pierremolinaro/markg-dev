@@ -581,7 +581,7 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
  void C_VDD::
  internalPrintSet (AbstractOutputStream & inStream,
                    cVDDnodeInfo * const inPtr,
-                   const TC_UniqueArray <String> & inNames,
+                   const GenericUniqueArray <String> & inNames,
                    int32_t inArray [],
                    const T_vdd_zsl_index inIndex) {
   if (inPtr == kNULL_SET) {
@@ -615,7 +615,7 @@ addValueAtIndex (const T_vdd_zsl_value inValue,
 
 void C_VDD
 ::printSet (AbstractOutputStream & inStream,
-            const TC_UniqueArray <String> & inNames) const {
+            const GenericUniqueArray <String> & inNames) const {
   if (mRootPointer == kEMPTY_SET) {
     inStream.appendString ("  (empty set)\n") ;
   }else if (mRootPointer == kNULL_SET) {
@@ -643,7 +643,7 @@ void C_VDD
  void C_VDD
  ::internalPrintSetNodes (AbstractOutputStream & inStream,
                           cVDDnodeInfo * const inPtr,
-                          const TC_UniqueArray <String> & inNames) {
+                          const GenericUniqueArray <String> & inNames) {
   if ((inPtr != kEMPTY_SET) && (inPtr != kNULL_SET) && (! inPtr->isMarked ())) {
     inPtr->mark () ;
     inStream.appendString ("  ") ;
@@ -674,7 +674,7 @@ void C_VDD
 
 void C_VDD
 ::printSetNodes (AbstractOutputStream & inStream,
-                 const TC_UniqueArray <String> & inNames) const {
+                 const GenericUniqueArray <String> & inNames) const {
 //--- Count nodes (for being able to display the elements count)
   getSetCardinal () ;
   gMap.unmarkAllObjects () ;
@@ -1538,7 +1538,7 @@ internalSaveNode (cVDDnodeInfo * const inPtr,
 //---------------------------------------------------------------------------*
 
 void C_VDD::
-saveArrayOnFile (const TC_UniqueArray <C_VDD> & inArray,
+saveArrayOnFile (const GenericUniqueArray <C_VDD> & inArray,
                  AbstractOutputStream & inOutputStream) {
 //--- Save nodes
   for (int32_t i=0 ; i<inArray.count () ; i++) {
@@ -1676,8 +1676,8 @@ T_vdd_zsl_value C_VDD::getMaxTokens (void) const {
 
 void C_VDD::
 internalComputeMinMax (cVDDnodeInfo * const inPtr,
-                       TC_UniqueArray <int32_t> & inMinArray,
-                       TC_UniqueArray <int32_t> & inMaxArray,
+                       GenericUniqueArray <int32_t> & inMinArray,
+                       GenericUniqueArray <int32_t> & inMaxArray,
                        const int32_t inIndexCount) {
   if ((inPtr != kEMPTY_SET) && (inPtr != kNULL_SET) && (! inPtr->isMarked ())) {
     inPtr->mark () ;
@@ -1699,8 +1699,8 @@ internalComputeMinMax (cVDDnodeInfo * const inPtr,
 //---------------------------------------------------------------------------*
 
 void C_VDD::
-computeMinAndMax (TC_UniqueArray <int32_t> & inMinArray,
-                  TC_UniqueArray <int32_t> & inMaxArray,
+computeMinAndMax (GenericUniqueArray <int32_t> & inMinArray,
+                  GenericUniqueArray <int32_t> & inMaxArray,
                   const int32_t inIndexCount) const {
   for (int32_t i=0 ; i<inIndexCount ; i++) {
     inMinArray (i COMMA_HERE) = 0 ;

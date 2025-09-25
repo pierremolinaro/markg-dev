@@ -520,28 +520,6 @@ fileprivate func search_into_spec_5F_scanner_galgasKeyWordList (_ inSearchedStri
 
 
 
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//               P A R S E    L E X I C A L    T O K E N
-//
-//--------------------------------------------------------------------------------------------------
-
-/* - (void) parseLexicalTokenForLexicalColoring {
-  BOOL scanningOk = YES ;
-  mTokenCode = 0 ;
-  while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-    scanningOk = [self internalParseLexicalTokenForLexicalColoring] ;
-  }
-//--- Error ?
-  if (! scanningOk) {
-    mTokenCode = -1 ;
-  }
-}
-
-*/
-
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 2

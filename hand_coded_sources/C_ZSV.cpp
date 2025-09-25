@@ -502,7 +502,7 @@ C_ZSV::cZSVinfo * C_ZSV::find_or_add (const T_vdd_zsl_index inIndex,
 //---------------------------------------------------------------------------*
 
  void C_ZSV::printVector (AbstractOutputStream & inStream,
-                           const TC_UniqueArray <String> & inNames,
+                           const GenericUniqueArray <String> & inNames,
                            const int32_t inFirst,
                            const int32_t inStep) const {
    bool firstPrint = true ;

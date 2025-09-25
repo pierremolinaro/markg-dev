@@ -29,7 +29,7 @@
 //---------------------------------------------------------------------------*
 
 #include "C_vdd_types.h"
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 #include "String-class.h"
 
 //---------------------------------------------------------------------------*
@@ -137,7 +137,7 @@ class C_VDD {
   public : static size_t getSizeOf_cVDDmaxInfos_objects (void) ;
 
 //--- Save an array of VDD objects in text file
-  public : static void saveArrayOnFile (const TC_UniqueArray <C_VDD> & inArray,
+  public : static void saveArrayOnFile (const GenericUniqueArray <C_VDD> & inArray,
                                         AbstractOutputStream & inOutputStream) ;
 
 //--- Decision Diagram
@@ -165,8 +165,8 @@ class C_VDD {
   public : C_VDD getBoundSet (void) const ;
 
 //---  Compute min and max value for each index
-  public : void computeMinAndMax (TC_UniqueArray <int32_t> & inMinArray,
-                                  TC_UniqueArray <int32_t> & inMaxArray,
+  public : void computeMinAndMax (GenericUniqueArray <int32_t> & inMinArray,
+                                  GenericUniqueArray <int32_t> & inMaxArray,
                                   const int32_t inIndexCount) const ;
 
 //--- Set comparison
@@ -205,11 +205,11 @@ class C_VDD {
 
 //--- Print a set
   public : void printSet (AbstractOutputStream & inStream,
-                          const TC_UniqueArray <String> & inNames) const ;
+                          const GenericUniqueArray <String> & inNames) const ;
 
 //--- Print the nodes of a set
   public : void printSetNodes (AbstractOutputStream & inStream,
-                          const TC_UniqueArray <String> & inNames) const ;
+                          const GenericUniqueArray <String> & inNames) const ;
 
 //--- Get node count
   public : int32_t getNodesCount (void) const ;
@@ -261,7 +261,7 @@ class C_VDD {
 
   private : static void internalPrintSet (AbstractOutputStream & inStream,
                              cVDDnodeInfo * const inPtr,
-                             const TC_UniqueArray <String> & inNames,
+                             const GenericUniqueArray <String> & inNames,
                              int32_t inArray [],
                              const T_vdd_zsl_index inIndex) ;
 
@@ -304,8 +304,8 @@ class C_VDD {
   private : static void internalUnmarkNodes (cVDDnodeInfo * const inPtr) ;
 
   private : static void internalComputeMinMax (cVDDnodeInfo * const inPtr,
-                                               TC_UniqueArray <int32_t> & inMinArray,
-                                               TC_UniqueArray <int32_t> & inMaxArray,
+                                               GenericUniqueArray <int32_t> & inMinArray,
+                                               GenericUniqueArray <int32_t> & inMaxArray,
                                                const int32_t inIndexCount) ;
 
   private : static void internalComputeInfos (cVDDnodeInfo * const inPtr,
@@ -315,7 +315,7 @@ class C_VDD {
 
   private : static void internalPrintSetNodes (AbstractOutputStream & inStream,
                                                cVDDnodeInfo * const inPtr,
-                                               const TC_UniqueArray <String> & inNames) ;
+                                               const GenericUniqueArray <String> & inNames) ;
 
   private : static void internalSaveNode (cVDDnodeInfo * const inPtr,
                                           AbstractOutputStream & inOutputStream) ;

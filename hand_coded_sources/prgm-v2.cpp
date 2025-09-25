@@ -4,7 +4,7 @@
 
 #include "Compiler.h"
 #include "TC_Array2.h"
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 #include "C_AEDD.h"
 #include "C_PCL.h"
 #include "C_VDD.h"
@@ -55,7 +55,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost != UNDEFINED_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be assigned (has been already assigned or incremented)",
-         TC_Array <FixItDescription> ()
+         GenericArray <FixItDescription> ()
           COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = ASSIGN_POST ;
@@ -88,7 +88,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost != UNDEFINED_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be assigned (has been already assigned or incremented)",
-         TC_Array <FixItDescription> ()
+         GenericArray <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mConstant = MAX_VDD_ZSL_VALUE ;
@@ -112,7 +112,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be decremented (has been already assigned)",
-         TC_Array <FixItDescription> ()
+         GenericArray <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -139,7 +139,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be incremented (has been already assigned)",
-         TC_Array <FixItDescription> ()
+         GenericArray <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -166,7 +166,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be incremented (has been already assigned)",
-         TC_Array <FixItDescription> ()
+         GenericArray <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -189,7 +189,7 @@ buildPostCondition (const int32_t inTransition,
   if (ioPostCondition (inTransition, varIndex COMMA_HERE).mPost == ASSIGN_POST) {
     inCompiler->semanticErrorAtLocation (mProperty_mVarName.mProperty_location,
          "This variable cannot be decremented (has been already assigned)",
-         TC_Array <FixItDescription> ()
+         GenericArray <FixItDescription> ()
          COMMA_HERE) ;
   }
   ioPostCondition (inTransition, varIndex COMMA_HERE).mPost = INC_POST ;
@@ -311,14 +311,14 @@ vddComputation (uint32_t inGarbagePeriod,
                 const String & /* inSourceFileName */,
                 const int32_t inTransitionsCount,
                 const C_VDD & inInitialMarking,
-                const TC_UniqueArray <C_AEDD> & inPreConditions,
-                const TC_UniqueArray <C_PCL> & inIncidenceVectors,
-                const TC_UniqueArray <String> & inPlaceNames,
-                const TC_UniqueArray <String> & inTransitionNames,
+                const GenericUniqueArray <C_AEDD> & inPreConditions,
+                const GenericUniqueArray <C_PCL> & inIncidenceVectors,
+                const GenericUniqueArray <String> & inPlaceNames,
+                const GenericUniqueArray <String> & inTransitionNames,
                 const GGS_countList & inCountList,
                 const uint32_t inLastIteration) {
   uint64_t stateCount = 0 ;
-  TC_UniqueArray <uint64_t> VDDtransitionsFiringCount (inTransitionsCount, 0 COMMA_HERE) ;
+  GenericUniqueArray <uint64_t> VDDtransitionsFiringCount (inTransitionsCount, 0 COMMA_HERE) ;
   C_PCL::collectUnusedNodes () ;
   C_VDD allStatesSet = inInitialMarking ;
 //--- Normalize garbage period
@@ -329,9 +329,9 @@ vddComputation (uint32_t inGarbagePeriod,
    gCout.appendString ("Computation with vector decision diagrams...\n") ;
    fflush (stdout) ;
 //--- Vector of transition source set
-  TC_UniqueArray <C_VDD> transitionSourceSet (inTransitionsCount, C_VDD () COMMA_HERE) ;
+  GenericUniqueArray <C_VDD> transitionSourceSet (inTransitionsCount, C_VDD () COMMA_HERE) ;
 //--- Vector of transition target set
-  TC_UniqueArray <C_VDD> transitionTargetSet (inTransitionsCount, C_VDD () COMMA_HERE) ;
+  GenericUniqueArray <C_VDD> transitionTargetSet (inTransitionsCount, C_VDD () COMMA_HERE) ;
 //--- Loop ------------------------------
   Timer timer ;
   timer.startTimer () ;
@@ -445,8 +445,8 @@ vddComputation (uint32_t inGarbagePeriod,
 //--- Print min and max token for each place ?
   if (inPrintMinAndMax) {
   gCout.appendString ("---------------- Print min and max for each variable\n") ;
-    TC_UniqueArray <int32_t> minToken (inPlaceNames.count (), 0 COMMA_HERE) ;
-    TC_UniqueArray <int32_t> maxToken (inPlaceNames.count (), 0 COMMA_HERE) ;
+    GenericUniqueArray <int32_t> minToken (inPlaceNames.count (), 0 COMMA_HERE) ;
+    GenericUniqueArray <int32_t> maxToken (inPlaceNames.count (), 0 COMMA_HERE) ;
     allStatesSet.computeMinAndMax (minToken, maxToken, inPlaceNames.count ()) ;
     for (int32_t i=0 ; i<inPlaceNames.count () ; i++) {
       gCout.appendString ("  Variable ") ;
@@ -542,9 +542,9 @@ computeWithDecisionTree (cComputationNode * & ioDecisionTree,
                          C_VDD & ioAccessibleStates,
                          const int32_t inTransitionIndex,
                          const C_VDD & inInputSet,
-                         const TC_UniqueArray <C_AEDD> & inPreConditions,
-                         const TC_UniqueArray <C_PCL> & inIncidenceVectors,
-                         TC_UniqueArray <bool> & ioFirableFlags) {
+                         const GenericUniqueArray <C_AEDD> & inPreConditions,
+                         const GenericUniqueArray <C_PCL> & inIncidenceVectors,
+                         GenericUniqueArray <bool> & ioFirableFlags) {
   if (inTransitionIndex < inPreConditions.count ()) {
   //--- Allocate decision tree if needed
     if (ioDecisionTree == NULL) {
@@ -589,9 +589,9 @@ computeWithDecisionTree (cComputationNode * & ioDecisionTree,
 static void
 printFiringCount (const cComputationNode * inDecisionTree,
                   const int32_t inTransitionIndex,
-                  const TC_UniqueArray <String> & inPlaceNames,
-                  const TC_UniqueArray <String> & inTransitionNames,
-                  TC_UniqueArray <bool> & ioFirableFlags) {
+                  const GenericUniqueArray <String> & inPlaceNames,
+                  const GenericUniqueArray <String> & inTransitionNames,
+                  GenericUniqueArray <bool> & ioFirableFlags) {
   if (inDecisionTree != NULL) {
     if (inDecisionTree->mCanBeFired) {
       const uint64_t firingCount = inDecisionTree->mFirableSet.getSetCardinal () ;
@@ -651,14 +651,14 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
                 const String & /* inSourceFileName */,
                 const int32_t inTransitionsCount,
                 const C_VDD & inInitialMarking,
-                const TC_UniqueArray <C_AEDD> & inPreConditions,
-                const TC_UniqueArray <C_PCL> & inIncidenceVectors,
-                const TC_UniqueArray <String> & inPlaceNames,
-                const TC_UniqueArray <String> & inTransitionNames,
+                const GenericUniqueArray <C_AEDD> & inPreConditions,
+                const GenericUniqueArray <C_PCL> & inIncidenceVectors,
+                const GenericUniqueArray <String> & inPlaceNames,
+                const GenericUniqueArray <String> & inTransitionNames,
                 const GGS_countList & inCountList,
                 const uint32_t inLastIteration) {
   uint64_t stateCount = 0 ;
-  TC_UniqueArray <uint64_t> VDDtransitionsFiringCount (inTransitionsCount, 0 COMMA_HERE) ;
+  GenericUniqueArray <uint64_t> VDDtransitionsFiringCount (inTransitionsCount, 0 COMMA_HERE) ;
   C_PCL::collectUnusedNodes () ;
   C_VDD allStatesSet = inInitialMarking ;
 //--- Normalize garbage period
@@ -671,7 +671,7 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 //--- Decision tree
   cComputationNode * mDecisionTree = NULL ;
 //--- Vector for maintaining firable transition set during tree traversing
-  TC_UniqueArray <bool> firableFlags (inTransitionsCount, false COMMA_HERE) ;
+  GenericUniqueArray <bool> firableFlags (inTransitionsCount, false COMMA_HERE) ;
 //--- Loop ------------------------------
   Timer timer ;
   timer.startTimer () ;
@@ -755,8 +755,8 @@ vddComputationForSimultaneousFiring (uint32_t inGarbagePeriod,
 //--- Print min and max token for each place ?
   if (inPrintMinAndMax) {
   gCout.appendString ("---------------- Print min and max for each variable\n") ;
-    TC_UniqueArray <int32_t> minToken (inPlaceNames.count (), 0 COMMA_HERE) ;
-    TC_UniqueArray <int32_t> maxToken (inPlaceNames.count (), 0 COMMA_HERE) ;
+    GenericUniqueArray <int32_t> minToken (inPlaceNames.count (), 0 COMMA_HERE) ;
+    GenericUniqueArray <int32_t> maxToken (inPlaceNames.count (), 0 COMMA_HERE) ;
     allStatesSet.computeMinAndMax (minToken, maxToken, inPlaceNames.count ()) ;
     for (int32_t i=0 ; i<inPlaceNames.count () ; i++) {
       gCout.appendString ("  Variable ") ;
@@ -820,7 +820,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
 //--- Transitions count
   const int32_t transitionsCount = (int32_t) inTransitionList.count () ;
 //--- Build places names array
-  TC_UniqueArray <String> placeNames (placesCount COMMA_HERE) ;
+  GenericUniqueArray <String> placeNames (placesCount COMMA_HERE) ;
   UpEnumerator_typeVarMap current (inPlacesMap) ;
   while (current.hasCurrentObject ()) {
     placeNames.appendObject (current.current_lkey (HERE).mProperty_string.stringValue ()) ;
@@ -838,11 +838,11 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
   }
 //--- Build transition name array, precondition expression array, post condition array
 //  printf ("BUILD DATA FROM TRANSITIONS\n") ; fflush (stdout) ;
-  TC_UniqueArray <String> transitionsNames (transitionsCount COMMA_HERE) ;
-  TC_UniqueArray <C_AEDD> preconditionExp (transitionsCount, C_AEDD () COMMA_HERE) ;
+  GenericUniqueArray <String> transitionsNames (transitionsCount COMMA_HERE) ;
+  GenericUniqueArray <C_AEDD> preconditionExp (transitionsCount, C_AEDD () COMMA_HERE) ;
   cPostConditionArray postcondition (transitionsCount, placesCount COMMA_HERE) ;
-  TC_UniqueArray <uint32_t> lowBounds (transitionsCount COMMA_HERE) ;
-  TC_UniqueArray <uint32_t> highBounds (transitionsCount COMMA_HERE) ;
+  GenericUniqueArray <uint32_t> lowBounds (transitionsCount COMMA_HERE) ;
+  GenericUniqueArray <uint32_t> highBounds (transitionsCount COMMA_HERE) ;
   UpEnumerator_typeTransitionList currentTrans (inTransitionList) ;
   int32_t t = 0 ;
   while (currentTrans.hasCurrentObject ()) {
@@ -871,7 +871,7 @@ void routine_generate_5F_code_3F__3F__3F__3F__3F__3F_ (const GGS_uint inHashMapS
   }
 //--- Build post conditions lists
 //  printf ("BUILD POST CONDITION LISTS\n") ; fflush (stdout) ;
-  TC_UniqueArray <C_PCL> incidenceVectors (transitionsCount, C_PCL () COMMA_HERE) ;
+  GenericUniqueArray <C_PCL> incidenceVectors (transitionsCount, C_PCL () COMMA_HERE) ;
   for (int32_t tt=0 ; tt<transitionsCount ; tt++) {
     for (int32_t p=0 ; p<placesCount ; p++) {
       incidenceVectors (tt COMMA_HERE).defineEntry ((T_vdd_zsl_index) p,
