@@ -7,24 +7,5 @@ project (0:0:1) -> "markg" {
   %MacSwiftApp
   %codeblocks-windows
   %applicationBundleBase : "fr.irccyn"
-
-  "sources/spec_scanner.ggs"
-  "sources/spec_options.ggs"
-  "sources/spec_semantics.ggs"
-  "sources/spec_parser.ggs"
-  "sources/spec_grammar.ggs"
-  "sources/spec_cocoa.ggs"
-  "sources/spec_main.ggs"
-
-  %tool-source : "hand_coded_sources/prgm-v2.cpp"
-  %tool-source : "hand_coded_sources/C_AEDD.cpp"
-  %tool-source : "hand_coded_sources/C_VDD.cpp"
-  %tool-source : "hand_coded_sources/C_VDD_hashmap.cpp"
-  %tool-source : "hand_coded_sources/C_ZSV.cpp"
-  %tool-source : "hand_coded_sources/C_ZSV_hashmap.cpp"
-  %tool-source : "hand_coded_sources/C_PCL.cpp"
-  %tool-source : "hand_coded_sources/C_PCL_hashmap.cpp"
-  %tool-source : "hand_coded_sources/cNode_hashmap.cpp"
-  %tool-source : "hand_coded_sources/C_AEDDPrimeCache2.cpp"
 }
 
