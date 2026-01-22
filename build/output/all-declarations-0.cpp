@@ -145,14 +145,6 @@ void GGS__32_lstringlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist GGS__32_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS__32_lstringlist GGS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__32_lstringlist result ;
   result.mArray.setCapacity (16) ; // Build
@@ -1512,8 +1504,8 @@ GGS_luint Lexique_spec_5F_scanner::synthetizedAttribute_ulongValue (void) const 
 //                         I N T R O S P E C T I O N                                             
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist Lexique_spec_5F_scanner::symbols (LOCATION_ARGS) {
-  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
+ GGS_stringlist Lexique_spec_5F_scanner::symbols (LOCATION_ARGS) {
+  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_THERE) ;
   result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("literal_integer") COMMA_HERE) ;
@@ -1725,14 +1717,6 @@ GGS_typeVarMap & GGS_typeVarMap::operator = (const GGS_typeVarMap & inSource) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeVarMap GGS_typeVarMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_typeVarMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeVarMap GGS_typeVarMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_typeVarMap result ;
   result.build (THERE) ;
   return result ;
@@ -2220,14 +2204,6 @@ GGS_typeCstMap & GGS_typeCstMap::operator = (const GGS_typeCstMap & inSource) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeCstMap GGS_typeCstMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_typeCstMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeCstMap GGS_typeCstMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_typeCstMap result ;
   result.build (THERE) ;
   return result ;
@@ -3015,14 +2991,6 @@ GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeTrueExpression) ;
 }
 //--------------------------------------------------------------------------------------------------
-
-GGS_typeTrueExpression GGS_typeTrueExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
-  GGS_typeTrueExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeTrueExpression (inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Pointer class for @typeTrueExpression class
 //--------------------------------------------------------------------------------------------------
 
@@ -3275,14 +3243,6 @@ GGS_typeFalseExpression::GGS_typeFalseExpression (const cPtr_typeFalseExpression
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeFalseExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFalseExpression GGS_typeFalseExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
-  GGS_typeFalseExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeFalseExpression (inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //Pointer class for @typeFalseExpression class
 //--------------------------------------------------------------------------------------------------
@@ -3539,16 +3499,6 @@ GGS_typeComplementExpression::GGS_typeComplementExpression (const cPtr_typeCompl
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeComplementExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeComplementExpression GGS_typeComplementExpression::class_func_new (const GGS_typePreconditionExpression & in_mExpression,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  GGS_typeComplementExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeComplementExpression (in_mExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_typePreconditionExpression GGS_typeComplementExpression::readProperty_mExpression (void) const {
@@ -3840,17 +3790,6 @@ GGS_typeAndExpression::GGS_typeAndExpression (const cPtr_typeAndExpression * inS
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeAndExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeAndExpression GGS_typeAndExpression::class_func_new (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                                             const GGS_typePreconditionExpression & in_mRightExpression,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_typeAndExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAndExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_typePreconditionExpression GGS_typeAndExpression::readProperty_mLeftExpression (void) const {
@@ -4171,17 +4110,6 @@ GGS_typeOrExpression::GGS_typeOrExpression (const cPtr_typeOrExpression * inSour
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeOrExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeOrExpression GGS_typeOrExpression::class_func_new (const GGS_typePreconditionExpression & in_mLeftExpression,
-                                                           const GGS_typePreconditionExpression & in_mRightExpression,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  GGS_typeOrExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeOrExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_typePreconditionExpression GGS_typeOrExpression::readProperty_mLeftExpression (void) const {
@@ -6260,14 +6188,6 @@ void GGS_typePostconditionList::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typePostconditionList GGS_typePostconditionList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_typePostconditionList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typePostconditionList GGS_typePostconditionList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typePostconditionList result ;
   result.mArray.setCapacity (16) ; // Build
@@ -6822,14 +6742,6 @@ void GGS_typeTransitionList::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeTransitionList GGS_typeTransitionList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_typeTransitionList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7644,14 +7556,6 @@ void GGS_typeInitialMarkingList::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeInitialMarkingList GGS_typeInitialMarkingList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_typeInitialMarkingList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typeInitialMarkingList GGS_typeInitialMarkingList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeInitialMarkingList result ;
   result.mArray.setCapacity (16) ; // Build
@@ -8185,14 +8089,6 @@ void GGS_countList::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_countList GGS_countList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_countList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9714,17 +9610,6 @@ mProperty_mPostcondition (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typePostconditionList_2E_element GGS_typePostconditionList_2E_element::class_func_new (const GGS_typePostcondition & in_mPostcondition,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typePostconditionList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mPostcondition = in_mPostcondition ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_typePostconditionList_2E_element::isValid (void) const {
   return mProperty_mPostcondition.isValid () ;
 }
@@ -9827,17 +9712,6 @@ void GGS_typeInitialMarkingList_2E_element::setInitializedProperties (Compiler *
 
 GGS_typeInitialMarkingList_2E_element::GGS_typeInitialMarkingList_2E_element (const GGS_typePostcondition & inOperand0) :
 mProperty_mInitValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeInitialMarkingList_2E_element GGS_typeInitialMarkingList_2E_element::class_func_new (const GGS_typePostcondition & in_mInitValue,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeInitialMarkingList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mInitValue = in_mInitValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9965,18 +9839,6 @@ GGS_typeEqualExpression::GGS_typeEqualExpression (const cPtr_typeEqualExpression
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeEqualExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeEqualExpression GGS_typeEqualExpression::class_func_new (const GGS_uint & in_mVar,
-                                                                 const GGS_bool & in_mNegativeConstant,
-                                                                 const GGS_luint & in_mConstant,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  GGS_typeEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_typeEqualExpression::readProperty_mVar (void) const {
@@ -10209,18 +10071,6 @@ GGS_typePreconditionExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeNonEqualExpression GGS_typeNonEqualExpression::class_func_new (const GGS_uint & in_mVar,
-                                                                       const GGS_bool & in_mNegativeConstant,
-                                                                       const GGS_luint & in_mConstant,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  GGS_typeNonEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeNonEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_typeNonEqualExpression::readProperty_mVar (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -10449,18 +10299,6 @@ GGS_typeInfOrEqualExpression::GGS_typeInfOrEqualExpression (const cPtr_typeInfOr
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeInfOrEqualExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeInfOrEqualExpression GGS_typeInfOrEqualExpression::class_func_new (const GGS_uint & in_mVar,
-                                                                           const GGS_bool & in_mNegativeConstant,
-                                                                           const GGS_luint & in_mConstant,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  GGS_typeInfOrEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeInfOrEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_typeInfOrEqualExpression::readProperty_mVar (void) const {
@@ -10693,18 +10531,6 @@ GGS_typePreconditionExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeSupOrEqualExpression GGS_typeSupOrEqualExpression::class_func_new (const GGS_uint & in_mVar,
-                                                                           const GGS_bool & in_mNegativeConstant,
-                                                                           const GGS_luint & in_mConstant,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  GGS_typeSupOrEqualExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeSupOrEqualExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_typeSupOrEqualExpression::readProperty_mVar (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -10933,18 +10759,6 @@ GGS_typeStrictInfExpression::GGS_typeStrictInfExpression (const cPtr_typeStrictI
 GGS_typePreconditionExpression (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeStrictInfExpression) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeStrictInfExpression GGS_typeStrictInfExpression::class_func_new (const GGS_uint & in_mVar,
-                                                                         const GGS_bool & in_mNegativeConstant,
-                                                                         const GGS_luint & in_mConstant,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  GGS_typeStrictInfExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeStrictInfExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_typeStrictInfExpression::readProperty_mVar (void) const {
@@ -11177,18 +10991,6 @@ GGS_typePreconditionExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeStrictSupExpression GGS_typeStrictSupExpression::class_func_new (const GGS_uint & in_mVar,
-                                                                         const GGS_bool & in_mNegativeConstant,
-                                                                         const GGS_luint & in_mConstant,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  GGS_typeStrictSupExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeStrictSupExpression (in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_typeStrictSupExpression::readProperty_mVar (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -11416,17 +11218,6 @@ GGS_typePostcondition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typePostIncrement GGS_typePostIncrement::class_func_new (const GGS_lstring & in_mVarName,
-                                                             const GGS_uint & in_mVar,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_typePostIncrement result ;
-  macroMyNew (result.mObjectPtr, cPtr_typePostIncrement (in_mVarName, in_mVar,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_typePostIncrement::readProperty_mVarName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -11623,17 +11414,6 @@ GGS_typePostDecrement::GGS_typePostDecrement (const cPtr_typePostDecrement * inS
 GGS_typePostcondition (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typePostDecrement) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typePostDecrement GGS_typePostDecrement::class_func_new (const GGS_lstring & in_mVarName,
-                                                             const GGS_uint & in_mVar,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_typePostDecrement result ;
-  macroMyNew (result.mObjectPtr, cPtr_typePostDecrement (in_mVarName, in_mVar,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_typePostDecrement::readProperty_mVarName (void) const {
@@ -11838,19 +11618,6 @@ GGS_typeAddConstant::GGS_typeAddConstant (const cPtr_typeAddConstant * inSourceP
 GGS_typePostcondition (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeAddConstant) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeAddConstant GGS_typeAddConstant::class_func_new (const GGS_lstring & in_mVarName,
-                                                         const GGS_uint & in_mVar,
-                                                         const GGS_bool & in_mNegativeConstant,
-                                                         const GGS_luint & in_mConstant,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_typeAddConstant result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAddConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_typeAddConstant::readProperty_mVarName (void) const {
@@ -12115,19 +11882,6 @@ GGS_typePostcondition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeSubConstant GGS_typeSubConstant::class_func_new (const GGS_lstring & in_mVarName,
-                                                         const GGS_uint & in_mVar,
-                                                         const GGS_bool & in_mNegativeConstant,
-                                                         const GGS_luint & in_mConstant,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_typeSubConstant result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeSubConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_typeSubConstant::readProperty_mVarName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -12390,19 +12144,6 @@ GGS_typePostcondition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeAssignConstant GGS_typeAssignConstant::class_func_new (const GGS_lstring & in_mVarName,
-                                                               const GGS_uint & in_mVar,
-                                                               const GGS_bool & in_mNegativeConstant,
-                                                               const GGS_luint & in_mConstant,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_typeAssignConstant result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAssignConstant (in_mVarName, in_mVar, in_mNegativeConstant, in_mConstant,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_typeAssignConstant::readProperty_mVarName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -12657,17 +12398,6 @@ GGS_typeAssignInfinity::GGS_typeAssignInfinity (const cPtr_typeAssignInfinity * 
 GGS_typePostcondition (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeAssignInfinity) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeAssignInfinity GGS_typeAssignInfinity::class_func_new (const GGS_lstring & in_mVarName,
-                                                               const GGS_uint & in_mVar,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_typeAssignInfinity result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeAssignInfinity (in_mVarName, in_mVar,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_typeAssignInfinity::readProperty_mVarName (void) const {
@@ -13879,19 +13609,6 @@ mProperty_mValue_31_ (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::class_func_new (const GGS_lstring & in_mValue0,
-                                                                               const GGS_lstring & in_mValue1,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue_30_ = in_mValue0 ;
-  result.mProperty_mValue_31_ = in_mValue1 ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS__32_lstringlist_2E_element::isValid (void) const {
   return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
 }
@@ -14004,19 +13721,6 @@ GGS_typeVarMap_2E_element::GGS_typeVarMap_2E_element (const GGS_lstring & inOper
                                                       const GGS_uint & inOperand1) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeVarMap_2E_element GGS_typeVarMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                     const GGS_uint & in_mIndex,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeVarMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14258,21 +13962,6 @@ GGS_typeCstMap_2E_element::GGS_typeCstMap_2E_element (const GGS_lstring & inOper
 mProperty_lkey (inOperand0),
 mProperty_mSign (inOperand1),
 mProperty_mValue (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeCstMap_2E_element GGS_typeCstMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                     const GGS_bool & in_mSign,
-                                                                     const GGS_luint & in_mValue,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeCstMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mSign = in_mSign ;
-  result.mProperty_mValue = in_mValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14535,25 +14224,6 @@ mProperty_mHighTemporalBound (inOperand4) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeTransitionList_2E_element GGS_typeTransitionList_2E_element::class_func_new (const GGS_lstring & in_mTransitionName,
-                                                                                     const GGS_typePreconditionExpression & in_mPreconditionExpression,
-                                                                                     const GGS_typePostconditionList & in_mPostconditionList,
-                                                                                     const GGS_uint & in_mLowTemporalBound,
-                                                                                     const GGS_uint & in_mHighTemporalBound,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeTransitionList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mTransitionName = in_mTransitionName ;
-  result.mProperty_mPreconditionExpression = in_mPreconditionExpression ;
-  result.mProperty_mPostconditionList = in_mPostconditionList ;
-  result.mProperty_mLowTemporalBound = in_mLowTemporalBound ;
-  result.mProperty_mHighTemporalBound = in_mHighTemporalBound ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_typeTransitionList_2E_element::isValid (void) const {
   return mProperty_mTransitionName.isValid () && mProperty_mPreconditionExpression.isValid () && mProperty_mPostconditionList.isValid () && mProperty_mLowTemporalBound.isValid () && mProperty_mHighTemporalBound.isValid () ;
 }
@@ -14675,19 +14345,6 @@ GGS_countList_2E_element::GGS_countList_2E_element (const GGS_lstring & inOperan
                                                     const GGS_typePreconditionExpression & inOperand1) :
 mProperty_mName (inOperand0),
 mProperty_mCondition (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_countList_2E_element GGS_countList_2E_element::class_func_new (const GGS_lstring & in_mName,
-                                                                   const GGS_typePreconditionExpression & in_mCondition,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_countList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mName = in_mName ;
-  result.mProperty_mCondition = in_mCondition ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
