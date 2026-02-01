@@ -89,7 +89,7 @@ let gPopUpData_spec_scanner : [[UInt16]] = [
 //   Block Comment for 'spec_scanner' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_spec_scanner : String? = nil
+let gLineComment_spec_scanner : String? = nil
 
 
 //--------------------------------------------------------------------------------------------------

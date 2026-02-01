@@ -175,8 +175,8 @@ class ScannerFor_spec_scanner : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func blockComment () -> String? {
-    return gBlockComment_spec_scanner
+  final override func lineComment () -> String? {
+    return gLineComment_spec_scanner
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

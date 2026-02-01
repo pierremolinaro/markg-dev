@@ -5166,8 +5166,6 @@ class cParser_spec_5F_parser {
                                       class GGS_countList & outArgument5,
                                       class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_axiome_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_axiome_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_factor_ (class GGS_typeVarMap & ioArgument0,
@@ -5175,15 +5173,11 @@ class cParser_spec_5F_parser {
                                       class GGS_typePreconditionExpression & outArgument2,
                                       class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_factor_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_factor_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_parse_5F_bound_ (class GGS_uint & outArgument0,
                                               class GGS_uint & outArgument1,
                                               class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_parse_5F_bound_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_parse_5F_bound_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
@@ -5192,16 +5186,12 @@ class cParser_spec_5F_parser {
                                                  class GGS_luint & outArgument2,
                                                  class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_parse_5F_constant_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_parse_5F_constant_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_parse_5F_postcondition_ (class GGS_typeVarMap & ioArgument0,
                                                       class GGS_typeCstMap & ioArgument1,
                                                       class GGS_typePostconditionList & outArgument2,
                                                       class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_parse_5F_postcondition_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_parse_5F_postcondition_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
@@ -5210,8 +5200,6 @@ class cParser_spec_5F_parser {
                                                      class GGS_typePreconditionExpression & outArgument2,
                                                      class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_parse_5F_precondition_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_parse_5F_precondition_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_primary_ (class GGS_typeVarMap & ioArgument0,
@@ -5219,16 +5207,12 @@ class cParser_spec_5F_parser {
                                        class GGS_typePreconditionExpression & outArgument2,
                                        class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_primary_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_primary_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_term_ (class GGS_typeVarMap & ioArgument0,
                                     class GGS_typeCstMap & ioArgument1,
                                     class GGS_typePreconditionExpression & outArgument2,
                                     class Lexique_spec_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_term_parse (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_term_indexing (class Lexique_spec_5F_scanner * inLexique) = 0 ;
 
@@ -5239,7 +5223,7 @@ class cParser_spec_5F_parser {
                                                                  GGS_typePreconditionExpression & outArgument2,
                                                                  Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_parse_5F_precondition_i0_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_parse_5F_precondition_i0_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_parse_5F_precondition_i0_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5248,7 +5232,7 @@ class cParser_spec_5F_parser {
                                                 GGS_typePreconditionExpression & outArgument2,
                                                 Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_term_i1_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_term_i1_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_term_i1_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5257,7 +5241,7 @@ class cParser_spec_5F_parser {
                                                   GGS_typePreconditionExpression & outArgument2,
                                                   Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_factor_i2_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_factor_i2_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_factor_i2_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5266,7 +5250,7 @@ class cParser_spec_5F_parser {
                                                    GGS_typePreconditionExpression & outArgument2,
                                                    Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_primary_i3_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_primary_i3_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_primary_i3_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5275,7 +5259,7 @@ class cParser_spec_5F_parser {
                                                              GGS_luint & outArgument2,
                                                              Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_parse_5F_constant_i4_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_parse_5F_constant_i4_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_parse_5F_constant_i4_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5284,7 +5268,7 @@ class cParser_spec_5F_parser {
                                                                   GGS_typePostconditionList & outArgument2,
                                                                   Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_parse_5F_postcondition_i5_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_parse_5F_postcondition_i5_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_parse_5F_postcondition_i5_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5292,7 +5276,7 @@ class cParser_spec_5F_parser {
                                                           GGS_uint & outArgument1,
                                                           Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_parse_5F_bound_i6_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_parse_5F_bound_i6_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_parse_5F_bound_i6_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5300,7 +5284,7 @@ class cParser_spec_5F_parser {
                                                           GGS_uint & outArgument1,
                                                           Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_parse_5F_bound_i7_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_parse_5F_bound_i7_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_parse_5F_bound_i7_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5312,7 +5296,7 @@ class cParser_spec_5F_parser {
                                                   GGS_countList & outArgument5,
                                                   Lexique_spec_5F_scanner * inLexique) ;
 
-  protected: void rule_spec_5F_parser_axiome_i8_parse (Lexique_spec_5F_scanner * inLexique) ;
+/*  protected: void rule_spec_5F_parser_axiome_i8_parse (Lexique_spec_5F_scanner * inLexique) ; */
 
   protected: void rule_spec_5F_parser_axiome_i8_indexing (Lexique_spec_5F_scanner * inLexique) ;
 
@@ -5361,7 +5345,7 @@ class cParser_spec_5F_parser {
 class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 //------------------------------------- 'axiome' non terminal
 //--- 'parse' label
-  public: virtual void nt_axiome_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_axiome_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_axiome_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5411,7 +5395,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'factor' non terminal
 //--- 'parse' label
-  public: virtual void nt_factor_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_factor_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_factor_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5424,7 +5408,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'parse_bound' non terminal
 //--- 'parse' label
-  public: virtual void nt_parse_5F_bound_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_parse_5F_bound_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_parse_5F_bound_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5436,7 +5420,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'parse_constant' non terminal
 //--- 'parse' label
-  public: virtual void nt_parse_5F_constant_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_parse_5F_constant_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_parse_5F_constant_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5449,7 +5433,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'parse_postcondition' non terminal
 //--- 'parse' label
-  public: virtual void nt_parse_5F_postcondition_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_parse_5F_postcondition_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_parse_5F_postcondition_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5462,7 +5446,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'parse_precondition' non terminal
 //--- 'parse' label
-  public: virtual void nt_parse_5F_precondition_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_parse_5F_precondition_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_parse_5F_precondition_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5475,7 +5459,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'primary' non terminal
 //--- 'parse' label
-  public: virtual void nt_primary_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_primary_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_primary_indexing (Lexique_spec_5F_scanner * inCompiler) ;
@@ -5488,7 +5472,7 @@ class cGrammar_spec_5F_grammar : public cParser_spec_5F_parser {
 
 //------------------------------------- 'term' non terminal
 //--- 'parse' label
-  public: virtual void nt_term_parse (Lexique_spec_5F_scanner * inCompiler) ;
+ /*  public: virtual void nt_term_parse (Lexique_spec_5F_scanner * inCompiler) ; */
 
 //--- indexing
   public: virtual void nt_term_indexing (Lexique_spec_5F_scanner * inCompiler) ;
