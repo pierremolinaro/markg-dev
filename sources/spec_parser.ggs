@@ -273,7 +273,7 @@ rule <axiome>(
     $var$
     repeat
       $identifier$( ?let placeName)
-      !?outPlacesMap.insertKey (!placeName, !outPlacesMap.count ())
+      !?outPlacesMap.insertKey (!placeName, !outPlacesMap.count)
     while
       $,$
     end
