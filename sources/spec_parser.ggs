@@ -224,7 +224,7 @@ rule <parse_bound>(
   lowTemporalBound = low.uint
   highTemporalBound = high.uint
   if lowTemporalBound > highTemporalBound then
-    error high : "High bound must be greater than or equal to low bound" 
+    error (high : "High bound must be greater than or equal to low bound")
   end
 }
 
