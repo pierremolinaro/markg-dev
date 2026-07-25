@@ -11,49 +11,49 @@
 //Class for element of '@_32_lstringlist' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement__32_lstringlist : public cCollectionElement {
+class CollectionElement__32_lstringlist : public CollectionElement {
   public: GGS__32_lstringlist_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement__32_lstringlist (const GGS_lstring & in_mValue_30_,
-                                              const GGS_lstring & in_mValue_31_
-                                              COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement__32_lstringlist (const GGS_lstring & in_mValue_30_,
+                                             const GGS_lstring & in_mValue_31_
+                                             COMMA_LOCATION_ARGS) ;
+  public: CollectionElement__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement__32_lstringlist::cCollectionElement__32_lstringlist (const GGS_lstring & in_mValue_30_,
-                                                                        const GGS_lstring & in_mValue_31_
-                                                                        COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement__32_lstringlist::CollectionElement__32_lstringlist (const GGS_lstring & in_mValue_30_,
+                                                                      const GGS_lstring & in_mValue_31_
+                                                                      COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mValue_30_, in_mValue_31_) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement__32_lstringlist::cCollectionElement__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement__32_lstringlist::CollectionElement__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mValue_30_, inElement.mProperty_mValue_31_) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement__32_lstringlist::isValid (void) const {
+bool CollectionElement__32_lstringlist::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement__32_lstringlist::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement__32_lstringlist (mObject.mProperty_mValue_30_, mObject.mProperty_mValue_31_ COMMA_HERE)) ;
+CollectionElement * CollectionElement__32_lstringlist::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement__32_lstringlist (mObject.mProperty_mValue_30_, mObject.mProperty_mValue_31_ COMMA_HERE)) ;
   return result ;
 }
 
@@ -72,8 +72,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
+    CollectionElement__32_lstringlist * p = (CollectionElement__32_lstringlist *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement__32_lstringlist) ;
     const GGS__32_lstringlist_2E_element element (p->mObject.mProperty_mValue_30_, p->mObject.mProperty_mValue_31_) ;
     mArray.appendObject (element) ;
   }
@@ -85,8 +85,8 @@ void GGS__32_lstringlist::makeAttributesFromObjects (capCollectionElement & outA
                                                      const GGS_lstring & in_mValue_30_,
                                                      const GGS_lstring & in_mValue_31_
                                                      COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_lstringlist * p = nullptr ;
-  macroMyNew (p, cCollectionElement__32_lstringlist (in_mValue_30_, in_mValue_31_ COMMA_THERE)) ;
+  CollectionElement__32_lstringlist * p = nullptr ;
+  macroMyNew (p, CollectionElement__32_lstringlist (in_mValue_30_, in_mValue_31_ COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -6061,47 +6061,47 @@ GGS_typeAssignInfinity_2E_weak GGS_typeAssignInfinity_2E_weak::extractObject (co
 //Class for element of '@typePostconditionList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_typePostconditionList : public cCollectionElement {
+class CollectionElement_typePostconditionList : public CollectionElement {
   public: GGS_typePostconditionList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_typePostconditionList (const GGS_typePostcondition & in_mPostcondition
-                                                    COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_typePostconditionList (const GGS_typePostconditionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_typePostconditionList (const GGS_typePostcondition & in_mPostcondition
+                                                   COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_typePostconditionList (const GGS_typePostconditionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_typePostconditionList::cCollectionElement_typePostconditionList (const GGS_typePostcondition & in_mPostcondition
-                                                                                    COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_typePostconditionList::CollectionElement_typePostconditionList (const GGS_typePostcondition & in_mPostcondition
+                                                                                  COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mPostcondition) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_typePostconditionList::cCollectionElement_typePostconditionList (const GGS_typePostconditionList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_typePostconditionList::CollectionElement_typePostconditionList (const GGS_typePostconditionList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mPostcondition) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_typePostconditionList::isValid (void) const {
+bool CollectionElement_typePostconditionList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_typePostconditionList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_typePostconditionList (mObject.mProperty_mPostcondition COMMA_HERE)) ;
+CollectionElement * CollectionElement_typePostconditionList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_typePostconditionList (mObject.mProperty_mPostcondition COMMA_HERE)) ;
   return result ;
 }
 
@@ -6120,8 +6120,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_typePostconditionList * p = (cCollectionElement_typePostconditionList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_typePostconditionList) ;
+    CollectionElement_typePostconditionList * p = (CollectionElement_typePostconditionList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_typePostconditionList) ;
     const GGS_typePostconditionList_2E_element element (p->mObject.mProperty_mPostcondition) ;
     mArray.appendObject (element) ;
   }
@@ -6132,8 +6132,8 @@ mArray () {
 void GGS_typePostconditionList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                            const GGS_typePostcondition & in_mPostcondition
                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement_typePostconditionList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_typePostconditionList (in_mPostcondition COMMA_THERE)) ;
+  CollectionElement_typePostconditionList * p = nullptr ;
+  macroMyNew (p, CollectionElement_typePostconditionList (in_mPostcondition COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -6591,55 +6591,55 @@ GGS_typePostconditionList GGS_typePostconditionList::extractObject (const GGS_ob
 //Class for element of '@typeTransitionList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_typeTransitionList : public cCollectionElement {
+class CollectionElement_typeTransitionList : public CollectionElement {
   public: GGS_typeTransitionList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_typeTransitionList (const GGS_lstring & in_mTransitionName,
-                                                 const GGS_typePreconditionExpression & in_mPreconditionExpression,
-                                                 const GGS_typePostconditionList & in_mPostconditionList,
-                                                 const GGS_uint & in_mLowTemporalBound,
-                                                 const GGS_uint & in_mHighTemporalBound
-                                                 COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_typeTransitionList (const GGS_typeTransitionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_typeTransitionList (const GGS_lstring & in_mTransitionName,
+                                                const GGS_typePreconditionExpression & in_mPreconditionExpression,
+                                                const GGS_typePostconditionList & in_mPostconditionList,
+                                                const GGS_uint & in_mLowTemporalBound,
+                                                const GGS_uint & in_mHighTemporalBound
+                                                COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_typeTransitionList (const GGS_typeTransitionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_typeTransitionList::cCollectionElement_typeTransitionList (const GGS_lstring & in_mTransitionName,
-                                                                              const GGS_typePreconditionExpression & in_mPreconditionExpression,
-                                                                              const GGS_typePostconditionList & in_mPostconditionList,
-                                                                              const GGS_uint & in_mLowTemporalBound,
-                                                                              const GGS_uint & in_mHighTemporalBound
-                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_typeTransitionList::CollectionElement_typeTransitionList (const GGS_lstring & in_mTransitionName,
+                                                                            const GGS_typePreconditionExpression & in_mPreconditionExpression,
+                                                                            const GGS_typePostconditionList & in_mPostconditionList,
+                                                                            const GGS_uint & in_mLowTemporalBound,
+                                                                            const GGS_uint & in_mHighTemporalBound
+                                                                            COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mTransitionName, in_mPreconditionExpression, in_mPostconditionList, in_mLowTemporalBound, in_mHighTemporalBound) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_typeTransitionList::cCollectionElement_typeTransitionList (const GGS_typeTransitionList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_typeTransitionList::CollectionElement_typeTransitionList (const GGS_typeTransitionList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mTransitionName, inElement.mProperty_mPreconditionExpression, inElement.mProperty_mPostconditionList, inElement.mProperty_mLowTemporalBound, inElement.mProperty_mHighTemporalBound) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_typeTransitionList::isValid (void) const {
+bool CollectionElement_typeTransitionList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_typeTransitionList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_typeTransitionList (mObject.mProperty_mTransitionName, mObject.mProperty_mPreconditionExpression, mObject.mProperty_mPostconditionList, mObject.mProperty_mLowTemporalBound, mObject.mProperty_mHighTemporalBound COMMA_HERE)) ;
+CollectionElement * CollectionElement_typeTransitionList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_typeTransitionList (mObject.mProperty_mTransitionName, mObject.mProperty_mPreconditionExpression, mObject.mProperty_mPostconditionList, mObject.mProperty_mLowTemporalBound, mObject.mProperty_mHighTemporalBound COMMA_HERE)) ;
   return result ;
 }
 
@@ -6658,8 +6658,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_typeTransitionList * p = (cCollectionElement_typeTransitionList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_typeTransitionList) ;
+    CollectionElement_typeTransitionList * p = (CollectionElement_typeTransitionList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_typeTransitionList) ;
     const GGS_typeTransitionList_2E_element element (p->mObject.mProperty_mTransitionName, p->mObject.mProperty_mPreconditionExpression, p->mObject.mProperty_mPostconditionList, p->mObject.mProperty_mLowTemporalBound, p->mObject.mProperty_mHighTemporalBound) ;
     mArray.appendObject (element) ;
   }
@@ -6674,8 +6674,8 @@ void GGS_typeTransitionList::makeAttributesFromObjects (capCollectionElement & o
                                                         const GGS_uint & in_mLowTemporalBound,
                                                         const GGS_uint & in_mHighTemporalBound
                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement_typeTransitionList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_typeTransitionList (in_mTransitionName, in_mPreconditionExpression, in_mPostconditionList, in_mLowTemporalBound, in_mHighTemporalBound COMMA_THERE)) ;
+  CollectionElement_typeTransitionList * p = nullptr ;
+  macroMyNew (p, CollectionElement_typeTransitionList (in_mTransitionName, in_mPreconditionExpression, in_mPostconditionList, in_mLowTemporalBound, in_mHighTemporalBound COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -7429,47 +7429,47 @@ GGS_typeTransitionList GGS_typeTransitionList::extractObject (const GGS_object &
 //Class for element of '@typeInitialMarkingList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_typeInitialMarkingList : public cCollectionElement {
+class CollectionElement_typeInitialMarkingList : public CollectionElement {
   public: GGS_typeInitialMarkingList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_typeInitialMarkingList (const GGS_typePostcondition & in_mInitValue
-                                                     COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_typeInitialMarkingList (const GGS_typeInitialMarkingList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_typeInitialMarkingList (const GGS_typePostcondition & in_mInitValue
+                                                    COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_typeInitialMarkingList (const GGS_typeInitialMarkingList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_typeInitialMarkingList::cCollectionElement_typeInitialMarkingList (const GGS_typePostcondition & in_mInitValue
-                                                                                      COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_typeInitialMarkingList::CollectionElement_typeInitialMarkingList (const GGS_typePostcondition & in_mInitValue
+                                                                                    COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mInitValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_typeInitialMarkingList::cCollectionElement_typeInitialMarkingList (const GGS_typeInitialMarkingList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_typeInitialMarkingList::CollectionElement_typeInitialMarkingList (const GGS_typeInitialMarkingList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mInitValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_typeInitialMarkingList::isValid (void) const {
+bool CollectionElement_typeInitialMarkingList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_typeInitialMarkingList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_typeInitialMarkingList (mObject.mProperty_mInitValue COMMA_HERE)) ;
+CollectionElement * CollectionElement_typeInitialMarkingList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_typeInitialMarkingList (mObject.mProperty_mInitValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -7488,8 +7488,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_typeInitialMarkingList * p = (cCollectionElement_typeInitialMarkingList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_typeInitialMarkingList) ;
+    CollectionElement_typeInitialMarkingList * p = (CollectionElement_typeInitialMarkingList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_typeInitialMarkingList) ;
     const GGS_typeInitialMarkingList_2E_element element (p->mObject.mProperty_mInitValue) ;
     mArray.appendObject (element) ;
   }
@@ -7500,8 +7500,8 @@ mArray () {
 void GGS_typeInitialMarkingList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                             const GGS_typePostcondition & in_mInitValue
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_typeInitialMarkingList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_typeInitialMarkingList (in_mInitValue COMMA_THERE)) ;
+  CollectionElement_typeInitialMarkingList * p = nullptr ;
+  macroMyNew (p, CollectionElement_typeInitialMarkingList (in_mInitValue COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -7959,49 +7959,49 @@ GGS_typeInitialMarkingList GGS_typeInitialMarkingList::extractObject (const GGS_
 //Class for element of '@countList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_countList : public cCollectionElement {
+class CollectionElement_countList : public CollectionElement {
   public: GGS_countList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_countList (const GGS_lstring & in_mName,
-                                        const GGS_typePreconditionExpression & in_mCondition
-                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_countList (const GGS_countList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_countList (const GGS_lstring & in_mName,
+                                       const GGS_typePreconditionExpression & in_mCondition
+                                       COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_countList (const GGS_countList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_countList::cCollectionElement_countList (const GGS_lstring & in_mName,
-                                                            const GGS_typePreconditionExpression & in_mCondition
-                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_countList::CollectionElement_countList (const GGS_lstring & in_mName,
+                                                          const GGS_typePreconditionExpression & in_mCondition
+                                                          COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mName, in_mCondition) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_countList::cCollectionElement_countList (const GGS_countList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_countList::CollectionElement_countList (const GGS_countList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mName, inElement.mProperty_mCondition) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_countList::isValid (void) const {
+bool CollectionElement_countList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_countList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_countList (mObject.mProperty_mName, mObject.mProperty_mCondition COMMA_HERE)) ;
+CollectionElement * CollectionElement_countList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_countList (mObject.mProperty_mName, mObject.mProperty_mCondition COMMA_HERE)) ;
   return result ;
 }
 
@@ -8020,8 +8020,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_countList * p = (cCollectionElement_countList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_countList) ;
+    CollectionElement_countList * p = (CollectionElement_countList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_countList) ;
     const GGS_countList_2E_element element (p->mObject.mProperty_mName, p->mObject.mProperty_mCondition) ;
     mArray.appendObject (element) ;
   }
@@ -8033,8 +8033,8 @@ void GGS_countList::makeAttributesFromObjects (capCollectionElement & outAttribu
                                                const GGS_lstring & in_mName,
                                                const GGS_typePreconditionExpression & in_mCondition
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_countList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_countList (in_mName, in_mCondition COMMA_THERE)) ;
+  CollectionElement_countList * p = nullptr ;
+  macroMyNew (p, CollectionElement_countList (in_mName, in_mCondition COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
