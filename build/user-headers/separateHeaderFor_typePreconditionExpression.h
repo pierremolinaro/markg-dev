@@ -6,7 +6,7 @@
 // Phase 2: pointer class for @typePreconditionExpression class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_typePreconditionExpression : public acStrongPtr_class {
+class cPtr_typePreconditionExpression : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;

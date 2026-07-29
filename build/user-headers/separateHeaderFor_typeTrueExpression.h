@@ -30,7 +30,7 @@ class cPtr_typeTrueExpression : public cPtr_typePreconditionExpression {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

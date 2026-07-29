@@ -107,10 +107,10 @@ class GGS__32_lstringlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS__32_lstringlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS__32_lstringlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mValue_30_,
                                                  const class GGS_lstring & in_mValue_31_
                                                  COMMA_LOCATION_ARGS) ;
@@ -1276,7 +1276,7 @@ class GGS_typePreconditionExpression_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_typePreconditionExpression_2E_weak init_nil (void) {
     GGS_typePreconditionExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1405,7 +1405,7 @@ class GGS_typeTrueExpression_2E_weak : public GGS_typePreconditionExpression_2E_
 //--------------------------------- nil initializer
   public: inline static GGS_typeTrueExpression_2E_weak init_nil (void) {
     GGS_typeTrueExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1534,7 +1534,7 @@ class GGS_typeFalseExpression_2E_weak : public GGS_typePreconditionExpression_2E
 //--------------------------------- nil initializer
   public: inline static GGS_typeFalseExpression_2E_weak init_nil (void) {
     GGS_typeFalseExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1667,7 +1667,7 @@ class GGS_typeComplementExpression_2E_weak : public GGS_typePreconditionExpressi
 //--------------------------------- nil initializer
   public: inline static GGS_typeComplementExpression_2E_weak init_nil (void) {
     GGS_typeComplementExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1804,7 +1804,7 @@ class GGS_typeAndExpression_2E_weak : public GGS_typePreconditionExpression_2E_w
 //--------------------------------- nil initializer
   public: inline static GGS_typeAndExpression_2E_weak init_nil (void) {
     GGS_typeAndExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1941,7 +1941,7 @@ class GGS_typeOrExpression_2E_weak : public GGS_typePreconditionExpression_2E_we
 //--------------------------------- nil initializer
   public: inline static GGS_typeOrExpression_2E_weak init_nil (void) {
     GGS_typeOrExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2082,7 +2082,7 @@ class GGS_typeEqualExpression_2E_weak : public GGS_typePreconditionExpression_2E
 //--------------------------------- nil initializer
   public: inline static GGS_typeEqualExpression_2E_weak init_nil (void) {
     GGS_typeEqualExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2223,7 +2223,7 @@ class GGS_typeNonEqualExpression_2E_weak : public GGS_typePreconditionExpression
 //--------------------------------- nil initializer
   public: inline static GGS_typeNonEqualExpression_2E_weak init_nil (void) {
     GGS_typeNonEqualExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2364,7 +2364,7 @@ class GGS_typeInfOrEqualExpression_2E_weak : public GGS_typePreconditionExpressi
 //--------------------------------- nil initializer
   public: inline static GGS_typeInfOrEqualExpression_2E_weak init_nil (void) {
     GGS_typeInfOrEqualExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2505,7 +2505,7 @@ class GGS_typeSupOrEqualExpression_2E_weak : public GGS_typePreconditionExpressi
 //--------------------------------- nil initializer
   public: inline static GGS_typeSupOrEqualExpression_2E_weak init_nil (void) {
     GGS_typeSupOrEqualExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2646,7 +2646,7 @@ class GGS_typeStrictInfExpression_2E_weak : public GGS_typePreconditionExpressio
 //--------------------------------- nil initializer
   public: inline static GGS_typeStrictInfExpression_2E_weak init_nil (void) {
     GGS_typeStrictInfExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2787,7 +2787,7 @@ class GGS_typeStrictSupExpression_2E_weak : public GGS_typePreconditionExpressio
 //--------------------------------- nil initializer
   public: inline static GGS_typeStrictSupExpression_2E_weak init_nil (void) {
     GGS_typeStrictSupExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -2916,7 +2916,7 @@ class GGS_typePostcondition_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_typePostcondition_2E_weak init_nil (void) {
     GGS_typePostcondition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3053,7 +3053,7 @@ class GGS_typePostIncrement_2E_weak : public GGS_typePostcondition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typePostIncrement_2E_weak init_nil (void) {
     GGS_typePostIncrement_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3190,7 +3190,7 @@ class GGS_typePostDecrement_2E_weak : public GGS_typePostcondition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typePostDecrement_2E_weak init_nil (void) {
     GGS_typePostDecrement_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3335,7 +3335,7 @@ class GGS_typeAddConstant_2E_weak : public GGS_typePostcondition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typeAddConstant_2E_weak init_nil (void) {
     GGS_typeAddConstant_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3480,7 +3480,7 @@ class GGS_typeSubConstant_2E_weak : public GGS_typePostcondition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typeSubConstant_2E_weak init_nil (void) {
     GGS_typeSubConstant_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3625,7 +3625,7 @@ class GGS_typeAssignConstant_2E_weak : public GGS_typePostcondition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typeAssignConstant_2E_weak init_nil (void) {
     GGS_typeAssignConstant_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3762,7 +3762,7 @@ class GGS_typeAssignInfinity_2E_weak : public GGS_typePostcondition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typeAssignInfinity_2E_weak init_nil (void) {
     GGS_typeAssignInfinity_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -3921,10 +3921,10 @@ class GGS_typePostconditionList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_typePostconditionList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_typePostconditionList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_typePostcondition & in_mPostcondition
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4220,10 +4220,10 @@ class GGS_typeTransitionList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_typeTransitionList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_typeTransitionList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mTransitionName,
                                                  const class GGS_typePreconditionExpression & in_mPreconditionExpression,
                                                  const class GGS_typePostconditionList & in_mPostconditionList,
@@ -4631,10 +4631,10 @@ class GGS_typeInitialMarkingList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_typeInitialMarkingList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_typeInitialMarkingList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_typePostcondition & in_mInitValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4924,10 +4924,10 @@ class GGS_countList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_countList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_countList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mName,
                                                  const class GGS_typePreconditionExpression & in_mCondition
                                                  COMMA_LOCATION_ARGS) ;
