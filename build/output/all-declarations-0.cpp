@@ -12269,7 +12269,7 @@ GGS_typeAssignInfinity GGS_typeAssignInfinity::extractObject (const GGS_object &
 //--------------------------------------------------------------------------------------------------
 
 static const int32_t gProductions_spec_grammar [] = {
-// At index 0 : <axiome>, in file 'spec_parser.ggs', line 233
+// At index 0 : <axiome>, in file 'spec_parser.galgas', line 233
   TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_system) // $system$
 , TOP_DOWN_NONTERMINAL (17) // <select_spec_5F_parser_9>
 , TOP_DOWN_NONTERMINAL (18) // <select_spec_5F_parser_10>
@@ -12283,31 +12283,31 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_NONTERMINAL (23) // <select_spec_5F_parser_15>
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_end) // $end$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 13 : <parse_precondition>, in file 'spec_parser.ggs', line 53
+// At index 13 : <parse_precondition>, in file 'spec_parser.galgas', line 53
 , TOP_DOWN_NONTERMINAL (2) // <term>
 , TOP_DOWN_NONTERMINAL (8) // <select_spec_5F_parser_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 16 : <term>, in file 'spec_parser.ggs', line 68
+// At index 16 : <term>, in file 'spec_parser.galgas', line 68
 , TOP_DOWN_NONTERMINAL (3) // <factor>
 , TOP_DOWN_NONTERMINAL (9) // <select_spec_5F_parser_1>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 19 : <factor>, in file 'spec_parser.ggs', line 83
+// At index 19 : <factor>, in file 'spec_parser.galgas', line 83
 , TOP_DOWN_NONTERMINAL (10) // <select_spec_5F_parser_2>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 21 : <primary>, in file 'spec_parser.ggs', line 98
+// At index 21 : <primary>, in file 'spec_parser.galgas', line 98
 , TOP_DOWN_NONTERMINAL (11) // <select_spec_5F_parser_3>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 23 : <parse_postcondition>, in file 'spec_parser.ggs', line 166
+// At index 23 : <parse_postcondition>, in file 'spec_parser.galgas', line 166
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (15) // <select_spec_5F_parser_7>
 , TOP_DOWN_NONTERMINAL (14) // <select_spec_5F_parser_6>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 27 : <parse_constant>, in file 'spec_parser.ggs', line 147
+// At index 27 : <parse_constant>, in file 'spec_parser.galgas', line 147
 , TOP_DOWN_NONTERMINAL (13) // <select_spec_5F_parser_5>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 29 : <parse_bound>, in file 'spec_parser.ggs', line 207
+// At index 29 : <parse_bound>, in file 'spec_parser.galgas', line 207
 , TOP_DOWN_END_PRODUCTION ()
-// At index 30 : <parse_bound>, in file 'spec_parser.ggs', line 216
+// At index 30 : <parse_bound>, in file 'spec_parser.galgas', line 216
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__5B_) // $[$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2C_) // $,$
@@ -12315,127 +12315,127 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__5D_) // $]$
 , TOP_DOWN_END_PRODUCTION ()
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 36 : <select_spec_5F_parser_0>, in file 'spec_parser.ggs', line 58
+// At index 36 : <select_spec_5F_parser_0>, in file 'spec_parser.galgas', line 58
 , TOP_DOWN_END_PRODUCTION ()
-// At index 37 : <select_spec_5F_parser_0>, in file 'spec_parser.ggs', line 58
+// At index 37 : <select_spec_5F_parser_0>, in file 'spec_parser.galgas', line 58
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__7C_) // $|$
 , TOP_DOWN_NONTERMINAL (2) // <term>
 , TOP_DOWN_NONTERMINAL (8) // <select_spec_5F_parser_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 41 : <select_spec_5F_parser_1>, in file 'spec_parser.ggs', line 73
+// At index 41 : <select_spec_5F_parser_1>, in file 'spec_parser.galgas', line 73
 , TOP_DOWN_END_PRODUCTION ()
-// At index 42 : <select_spec_5F_parser_1>, in file 'spec_parser.ggs', line 73
+// At index 42 : <select_spec_5F_parser_1>, in file 'spec_parser.galgas', line 73
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__26_) // $&$
 , TOP_DOWN_NONTERMINAL (3) // <factor>
 , TOP_DOWN_NONTERMINAL (9) // <select_spec_5F_parser_1>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 46 : <select_spec_5F_parser_2>, in file 'spec_parser.ggs', line 87
+// At index 46 : <select_spec_5F_parser_2>, in file 'spec_parser.galgas', line 87
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__7E_) // $~$
 , TOP_DOWN_NONTERMINAL (3) // <factor>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 49 : <select_spec_5F_parser_2>, in file 'spec_parser.ggs', line 87
+// At index 49 : <select_spec_5F_parser_2>, in file 'spec_parser.galgas', line 87
 , TOP_DOWN_NONTERMINAL (4) // <primary>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 51 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
+// At index 51 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (1) // <parse_precondition>
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 55 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
+// At index 55 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_true) // $true$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 57 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
+// At index 57 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_false) // $false$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 59 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
+// At index 59 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (12) // <select_spec_5F_parser_4>
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 64 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
+// At index 64 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3D__3D_) // $==$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 67 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
+// At index 67 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__21__3D_) // $!=$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 70 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
+// At index 70 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3C__3D_) // $<=$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 73 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
+// At index 73 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3E__3D_) // $>=$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 76 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
+// At index 76 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3C_) // $<$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 79 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
+// At index 79 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3E_) // $>$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 82 : <select_spec_5F_parser_5>, in file 'spec_parser.ggs', line 151
+// At index 82 : <select_spec_5F_parser_5>, in file 'spec_parser.galgas', line 151
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 84 : <select_spec_5F_parser_5>, in file 'spec_parser.ggs', line 151
+// At index 84 : <select_spec_5F_parser_5>, in file 'spec_parser.galgas', line 151
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2D_) // $-$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 87 : <select_spec_5F_parser_5>, in file 'spec_parser.ggs', line 151
+// At index 87 : <select_spec_5F_parser_5>, in file 'spec_parser.galgas', line 151
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 89 : <select_spec_5F_parser_6>, in file 'spec_parser.ggs', line 171
+// At index 89 : <select_spec_5F_parser_6>, in file 'spec_parser.galgas', line 171
 , TOP_DOWN_END_PRODUCTION ()
-// At index 90 : <select_spec_5F_parser_6>, in file 'spec_parser.ggs', line 171
+// At index 90 : <select_spec_5F_parser_6>, in file 'spec_parser.galgas', line 171
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (15) // <select_spec_5F_parser_7>
 , TOP_DOWN_NONTERMINAL (14) // <select_spec_5F_parser_6>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 95 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
+// At index 95 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2D__2D_) // $--$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 97 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
+// At index 97 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2B__2B_) // $++$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 99 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
+// At index 99 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2B__3D_) // $+=$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 102 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
+// At index 102 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2D__3D_) // $-=$
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 105 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
+// At index 105 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3A__3D_) // $:=$
 , TOP_DOWN_NONTERMINAL (16) // <select_spec_5F_parser_8>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 108 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
+// At index 108 : <select_spec_5F_parser_8>, in file 'spec_parser.galgas', line 191
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 110 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
+// At index 110 : <select_spec_5F_parser_8>, in file 'spec_parser.galgas', line 191
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_infinity) // $infinity$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 112 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
+// At index 112 : <select_spec_5F_parser_9>, in file 'spec_parser.galgas', line 242
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_hashmapsize) // $hashmapsize$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 116 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
+// At index 116 : <select_spec_5F_parser_9>, in file 'spec_parser.galgas', line 242
 , TOP_DOWN_END_PRODUCTION ()
-// At index 117 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
+// At index 117 : <select_spec_5F_parser_10>, in file 'spec_parser.galgas', line 250
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_garbageperiod) // $garbageperiod$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 121 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
+// At index 121 : <select_spec_5F_parser_10>, in file 'spec_parser.galgas', line 250
 , TOP_DOWN_END_PRODUCTION ()
-// At index 122 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+// At index 122 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
 , TOP_DOWN_END_PRODUCTION ()
-// At index 123 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+// At index 123 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_const) // $const$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3D_) // $=$
@@ -12443,14 +12443,14 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (19) // <select_spec_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 130 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+// At index 130 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_var) // $var$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (20) // <select_spec_5F_parser_12>
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (19) // <select_spec_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 136 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
+// At index 136 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_rule) // $rule$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TOP_DOWN_NONTERMINAL (1) // <parse_precondition>
@@ -12460,31 +12460,31 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (19) // <select_spec_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 145 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
+// At index 145 : <select_spec_5F_parser_12>, in file 'spec_parser.galgas', line 274
 , TOP_DOWN_END_PRODUCTION ()
-// At index 146 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
+// At index 146 : <select_spec_5F_parser_12>, in file 'spec_parser.galgas', line 274
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (20) // <select_spec_5F_parser_12>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 150 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
+// At index 150 : <select_spec_5F_parser_13>, in file 'spec_parser.galgas', line 301
 , TOP_DOWN_END_PRODUCTION ()
-// At index 151 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
+// At index 151 : <select_spec_5F_parser_13>, in file 'spec_parser.galgas', line 301
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3A__3D_) // $:=$
 , TOP_DOWN_NONTERMINAL (22) // <select_spec_5F_parser_14>
 , TOP_DOWN_NONTERMINAL (21) // <select_spec_5F_parser_13>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 157 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
+// At index 157 : <select_spec_5F_parser_14>, in file 'spec_parser.galgas', line 305
 , TOP_DOWN_NONTERMINAL (6) // <parse_constant>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 159 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
+// At index 159 : <select_spec_5F_parser_14>, in file 'spec_parser.galgas', line 305
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_infinity) // $infinity$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 161 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
+// At index 161 : <select_spec_5F_parser_15>, in file 'spec_parser.galgas', line 319
 , TOP_DOWN_END_PRODUCTION ()
-// At index 162 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
+// At index 162 : <select_spec_5F_parser_15>, in file 'spec_parser.galgas', line 319
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_count) // $count$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3A_) // $:$
@@ -12492,7 +12492,7 @@ static const int32_t gProductions_spec_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_spec_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (23) // <select_spec_5F_parser_15>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 169 : <>, in file '.ggs', line 0
+// At index 169 : <>, in file '.galgas', line 0
 , TOP_DOWN_NONTERMINAL (0) // <axiome>
 , TOP_DOWN_END_PRODUCTION ()
 } ;
@@ -12567,60 +12567,60 @@ static const ProductionNameDescriptor gProductionNames_spec_grammar [54] = {
 //--------------------------------------------------------------------------------------------------
 
 static const int32_t gProductionIndexes_spec_grammar [54] = {
-0, // index 0 : <axiome>, in file 'spec_parser.ggs', line 233
-13, // index 1 : <parse_precondition>, in file 'spec_parser.ggs', line 53
-16, // index 2 : <term>, in file 'spec_parser.ggs', line 68
-19, // index 3 : <factor>, in file 'spec_parser.ggs', line 83
-21, // index 4 : <primary>, in file 'spec_parser.ggs', line 98
-23, // index 5 : <parse_postcondition>, in file 'spec_parser.ggs', line 166
-27, // index 6 : <parse_constant>, in file 'spec_parser.ggs', line 147
-29, // index 7 : <parse_bound>, in file 'spec_parser.ggs', line 207
-30, // index 8 : <parse_bound>, in file 'spec_parser.ggs', line 216
-36, // index 9 : <select_spec_5F_parser_0>, in file 'spec_parser.ggs', line 58
-37, // index 10 : <select_spec_5F_parser_0>, in file 'spec_parser.ggs', line 58
-41, // index 11 : <select_spec_5F_parser_1>, in file 'spec_parser.ggs', line 73
-42, // index 12 : <select_spec_5F_parser_1>, in file 'spec_parser.ggs', line 73
-46, // index 13 : <select_spec_5F_parser_2>, in file 'spec_parser.ggs', line 87
-49, // index 14 : <select_spec_5F_parser_2>, in file 'spec_parser.ggs', line 87
-51, // index 15 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
-55, // index 16 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
-57, // index 17 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
-59, // index 18 : <select_spec_5F_parser_3>, in file 'spec_parser.ggs', line 102
-64, // index 19 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
-67, // index 20 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
-70, // index 21 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
-73, // index 22 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
-76, // index 23 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
-79, // index 24 : <select_spec_5F_parser_4>, in file 'spec_parser.ggs', line 116
-82, // index 25 : <select_spec_5F_parser_5>, in file 'spec_parser.ggs', line 151
-84, // index 26 : <select_spec_5F_parser_5>, in file 'spec_parser.ggs', line 151
-87, // index 27 : <select_spec_5F_parser_5>, in file 'spec_parser.ggs', line 151
-89, // index 28 : <select_spec_5F_parser_6>, in file 'spec_parser.ggs', line 171
-90, // index 29 : <select_spec_5F_parser_6>, in file 'spec_parser.ggs', line 171
-95, // index 30 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
-97, // index 31 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
-99, // index 32 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
-102, // index 33 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
-105, // index 34 : <select_spec_5F_parser_7>, in file 'spec_parser.ggs', line 175
-108, // index 35 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
-110, // index 36 : <select_spec_5F_parser_8>, in file 'spec_parser.ggs', line 191
-112, // index 37 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
-116, // index 38 : <select_spec_5F_parser_9>, in file 'spec_parser.ggs', line 242
-117, // index 39 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
-121, // index 40 : <select_spec_5F_parser_10>, in file 'spec_parser.ggs', line 250
-122, // index 41 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
-123, // index 42 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
-130, // index 43 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
-136, // index 44 : <select_spec_5F_parser_11>, in file 'spec_parser.ggs', line 262
-145, // index 45 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
-146, // index 46 : <select_spec_5F_parser_12>, in file 'spec_parser.ggs', line 274
-150, // index 47 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
-151, // index 48 : <select_spec_5F_parser_13>, in file 'spec_parser.ggs', line 301
-157, // index 49 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
-159, // index 50 : <select_spec_5F_parser_14>, in file 'spec_parser.ggs', line 305
-161, // index 51 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
-162, // index 52 : <select_spec_5F_parser_15>, in file 'spec_parser.ggs', line 319
-169 // index 53 : <>, in file '.ggs', line 0
+0, // index 0 : <axiome>, in file 'spec_parser.galgas', line 233
+13, // index 1 : <parse_precondition>, in file 'spec_parser.galgas', line 53
+16, // index 2 : <term>, in file 'spec_parser.galgas', line 68
+19, // index 3 : <factor>, in file 'spec_parser.galgas', line 83
+21, // index 4 : <primary>, in file 'spec_parser.galgas', line 98
+23, // index 5 : <parse_postcondition>, in file 'spec_parser.galgas', line 166
+27, // index 6 : <parse_constant>, in file 'spec_parser.galgas', line 147
+29, // index 7 : <parse_bound>, in file 'spec_parser.galgas', line 207
+30, // index 8 : <parse_bound>, in file 'spec_parser.galgas', line 216
+36, // index 9 : <select_spec_5F_parser_0>, in file 'spec_parser.galgas', line 58
+37, // index 10 : <select_spec_5F_parser_0>, in file 'spec_parser.galgas', line 58
+41, // index 11 : <select_spec_5F_parser_1>, in file 'spec_parser.galgas', line 73
+42, // index 12 : <select_spec_5F_parser_1>, in file 'spec_parser.galgas', line 73
+46, // index 13 : <select_spec_5F_parser_2>, in file 'spec_parser.galgas', line 87
+49, // index 14 : <select_spec_5F_parser_2>, in file 'spec_parser.galgas', line 87
+51, // index 15 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
+55, // index 16 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
+57, // index 17 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
+59, // index 18 : <select_spec_5F_parser_3>, in file 'spec_parser.galgas', line 102
+64, // index 19 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
+67, // index 20 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
+70, // index 21 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
+73, // index 22 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
+76, // index 23 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
+79, // index 24 : <select_spec_5F_parser_4>, in file 'spec_parser.galgas', line 116
+82, // index 25 : <select_spec_5F_parser_5>, in file 'spec_parser.galgas', line 151
+84, // index 26 : <select_spec_5F_parser_5>, in file 'spec_parser.galgas', line 151
+87, // index 27 : <select_spec_5F_parser_5>, in file 'spec_parser.galgas', line 151
+89, // index 28 : <select_spec_5F_parser_6>, in file 'spec_parser.galgas', line 171
+90, // index 29 : <select_spec_5F_parser_6>, in file 'spec_parser.galgas', line 171
+95, // index 30 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
+97, // index 31 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
+99, // index 32 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
+102, // index 33 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
+105, // index 34 : <select_spec_5F_parser_7>, in file 'spec_parser.galgas', line 175
+108, // index 35 : <select_spec_5F_parser_8>, in file 'spec_parser.galgas', line 191
+110, // index 36 : <select_spec_5F_parser_8>, in file 'spec_parser.galgas', line 191
+112, // index 37 : <select_spec_5F_parser_9>, in file 'spec_parser.galgas', line 242
+116, // index 38 : <select_spec_5F_parser_9>, in file 'spec_parser.galgas', line 242
+117, // index 39 : <select_spec_5F_parser_10>, in file 'spec_parser.galgas', line 250
+121, // index 40 : <select_spec_5F_parser_10>, in file 'spec_parser.galgas', line 250
+122, // index 41 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
+123, // index 42 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
+130, // index 43 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
+136, // index 44 : <select_spec_5F_parser_11>, in file 'spec_parser.galgas', line 262
+145, // index 45 : <select_spec_5F_parser_12>, in file 'spec_parser.galgas', line 274
+146, // index 46 : <select_spec_5F_parser_12>, in file 'spec_parser.galgas', line 274
+150, // index 47 : <select_spec_5F_parser_13>, in file 'spec_parser.galgas', line 301
+151, // index 48 : <select_spec_5F_parser_13>, in file 'spec_parser.galgas', line 301
+157, // index 49 : <select_spec_5F_parser_14>, in file 'spec_parser.galgas', line 305
+159, // index 50 : <select_spec_5F_parser_14>, in file 'spec_parser.galgas', line 305
+161, // index 51 : <select_spec_5F_parser_15>, in file 'spec_parser.galgas', line 319
+162, // index 52 : <select_spec_5F_parser_15>, in file 'spec_parser.galgas', line 319
+169 // index 53 : <>, in file '.galgas', line 0
 } ;
 
 //--------------------------------------------------------------------------------------------------
